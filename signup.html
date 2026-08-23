@@ -15,13 +15,59 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
   <style>
+    :root {
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --fs-2xs: 0.72rem;
+      --fs-xs: 0.8rem;
+      --fs-sm: 0.9rem;
+      --fs-base: 1rem;
+      --fs-md: 1.15rem;
+      --fs-lg: 1.25rem;
+      --fs-xl: 1.5rem;
+      --color-primary: #155EEF;
+      --color-primary-dark: #0E44B8;
+      --color-primary-50: #EFF4FF;
+      --color-secondary: #F4B400;
+      --color-accent: #16A34A;
+      --color-accent-50: #E8F8EE;
+      --surface-page: #F6F8FB;
+      --surface-card: #FFFFFF;
+      --surface-sunken: #EEF2F6;
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-muted: #6B7280;
+      --border-subtle: #E5E7EB;
+      --border-default: #D1D5DB;
+      --radius-xs: 6px;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-pill: 9999px;
+      --dur-fast: 180ms;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --focus-ring: 0 0 0 3px rgba(21, 94, 239, 0.25);
+    }
+
+    [data-theme="dark"] {
+      --surface-page: #0B1120;
+      --surface-card: #131D31;
+      --surface-sunken: #0E1626;
+      --text-primary: #F9FAFB;
+      --text-secondary: #D1D5DB;
+      --text-muted: #8A93A6;
+      --border-subtle: #1F2E4D;
+      --border-default: #2D3F66;
+      --color-primary-50: rgba(21, 94, 239, 0.15);
+    }
+
     *,
     *::before,
     *::after {
@@ -32,7 +78,109 @@
       margin: 0;
       font-family: var(--font-body);
       background: var(--surface-page);
-      color: var(--text-primary)
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(21, 94, 239, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(21, 94, 239, 0.35);
+      color: #fff;
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-card);
+      border: 1.5px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+
+    .icon-btn:hover {
+      background: var(--surface-sunken);
+      color: var(--color-primary);
+      border-color: var(--border-default);
+    }
+
+    .icon-btn svg { width: 18px; height: 18px; }
+
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    .btn-rtl-toggle {
+      height: 38px;
+      padding: 0 0.85rem;
+      border-radius: var(--radius-sm);
+      background: var(--surface-card);
+      border: 1.5px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+
+    .btn-rtl-toggle:hover {
+      background: var(--color-primary-50);
+      color: var(--color-primary);
+      border-color: rgba(21, 94, 239, 0.25);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      display: inline-block;
+      flex-shrink: 0;
+      animation: pulseDot 1.6s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     .auth-shell {
