@@ -1,0 +1,47 @@
+/* ==========================================================================
+   DARK MODE — refinements beyond the CSS-variable swap in style.css
+   ========================================================================== */
+
+[data-theme="dark"] .site-header{ border-color: var(--border-soft); background: rgba(11,17,32,0.92); }
+
+[data-theme="dark"] .hero-visual-frame{
+  background: linear-gradient(155deg, #16233F 0%, #0B1120 100%);
+  box-shadow: 0 30px 60px -25px rgba(0,0,0,0.6);
+}
+
+[data-theme="dark"] .tracking-panel{
+  background: #131B2C;
+  border: 1px solid var(--border-soft);
+}
+
+[data-theme="dark"] .feature-card:hover,
+[data-theme="dark"] .route-card:hover,
+[data-theme="dark"] .plan-card:hover{
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .btn-secondary-custom{ color: #7EA6FF; border-color: #2C3A57; }
+[data-theme="dark"] .btn-secondary-custom:hover{ background: rgba(21,94,239,0.14); border-color: var(--color-primary); color:#fff; }
+
+[data-theme="dark"] .icon-toggle,
+[data-theme="dark"] .btn-rtl-toggle{ background: var(--surface-card); border-color: var(--border-soft); color: var(--text-heading); }
+
+[data-theme="dark"] .route-filter-bar select,
+[data-theme="dark"] .route-filter-bar input,
+[data-theme="dark"] .form-control-custom{ background: #16233F; border-color: var(--border-soft); color: var(--text-heading); }
+
+[data-theme="dark"] .final-cta{
+  background: linear-gradient(135deg, #16233F 0%, #0B1120 100%);
+  border: 1px solid var(--border-soft);
+}
+[data-theme="dark"] .final-cta .btn-primary-custom{ background: var(--color-primary); color:#fff; border-color: var(--color-primary); }
+[data-theme="dark"] .final-cta .btn-primary-custom:hover{ background: var(--color-primary-dark); }
+
+[data-theme="dark"] ::selection{ background: var(--color-primary); color:#fff; }
+
+[data-theme="dark"] .mobile-nav-backdrop{ background: rgba(0,0,0,0.6); }
+
+/* Scrollbar (webkit) */
+[data-theme="dark"] ::-webkit-scrollbar{ width: 10px; height:10px; }
+[data-theme="dark"] ::-webkit-scrollbar-track{ background: #0B1120; }
+[data-theme="dark"] ::-webkit-scrollbar-thumb{ background: #26314A; border-radius: 10px; }

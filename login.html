@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Login — SafeRoute</title>
+<meta name="description" content="Access your child's route, daily journey, notifications, subscription and payment information.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/dark-mode.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<header id="main-header" class="site-header"></header>
+
+<section class="section">
+  <div class="container-custom" style="max-width: 980px;">
+    <div class="auth-wrap" data-reveal="scale-in">
+
+      <div class="auth-side">
+        <span class="eyebrow" style="color:#FFD97A;">Welcome Back, Parent</span>
+        <h2 style="color:#fff; font-size:1.6rem;">Access your child's route, daily journey, notifications, subscription and payment information.</h2>
+        <div class="ai-item"><i class="bi bi-geo-alt-fill"></i>Live route &amp; bus tracking</div>
+        <div class="ai-item"><i class="bi bi-bell-fill"></i>Boarding &amp; drop notifications</div>
+        <div class="ai-item"><i class="bi bi-receipt"></i>Subscription &amp; digital receipts</div>
+      </div>
+
+      <div class="auth-form-side">
+        <h1 class="h-card mb-2">Parent Login</h1>
+        <p class="lead-text mb-4" style="font-size:0.9rem;">This is a frontend demo — the parent portal is part of the next build phase.</p>
+
+        <form action="dashboard/index.html" class="js-demo-form" data-redirect="dashboard/index.html" data-success="Login successful! Redirecting to Parent Portal...">
+          <div class="form-field"><label class="form-label-custom" for="loginId">Email / Phone</label><input required type="text" id="loginId" class="form-control-custom" placeholder="you@example.com"></div>
+          <div class="form-field"><label class="form-label-custom" for="loginPass">Password</label><input required type="password" id="loginPass" class="form-control-custom" placeholder="••••••••"></div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <label class="form-check-row"><input type="checkbox" checked> Remember Me</label>
+            <a href="#" class="btn-ghost-custom" style="font-size:0.82rem;">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn-primary-custom w-100">Login</button>
+        </form>
+
+        <div class="auth-divider mt-4">New to SafeRoute?</div>
+        <a href="signup.html" class="btn-secondary-custom w-100 justify-content-center">Create Parent Account (Sign Up)</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== WHY PARENTS USE THE PORTAL ============================== -->
+<section class="section-tight">
+  <div class="container-custom" style="max-width: 980px;">
+    <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);" data-stagger="80">
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-geo-alt-fill"></i></span><h3>Live Tracking</h3><p>Follow the assigned bus in real time.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-bell-fill"></i></span><h3>Instant Updates</h3><p>Boarding and arrival notifications.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-receipt"></i></span><h3>Easy Receipts</h3><p>Download payment history anytime.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== NEED HELP SIGNING IN ============================== -->
+<section class="section-tight section-alt">
+  <div class="container-custom">
+    <div class="mini-support-row" data-reveal="fade-up">
+      <span>Need help signing in?</span>
+      <a href="contact.html">Contact Support</a>
+      <span>&middot;</span>
+      <a href="faq.html">Visit FAQ</a>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer" class="site-footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

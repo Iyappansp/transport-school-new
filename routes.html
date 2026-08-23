@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Routes — SafeRoute School Transport</title>
+<meta name="description" content="Explore pickup zones, sample routes and estimated timings for SafeRoute school transport.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/dark-mode.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<header id="main-header" class="site-header"></header>
+
+<section class="page-hero">
+  <div class="container-custom" data-reveal="fade-up">
+    <span class="eyebrow">Route Finder</span>
+    <h1 class="h-display">Find the Right School Route for Your Area.</h1>
+    <p class="lead-text mt-3">Explore pickup zones, sample routes and estimated timings. Final route availability depends on school schedules and current transport capacity.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="container-custom">
+    <div class="route-filter-bar" data-reveal="fade-up">
+      <select class="form-control-custom" aria-label="Filter by school"><option>School</option><option>Green Valley School</option><option>Sample School</option></select>
+      <select class="form-control-custom" aria-label="Filter by area"><option>Area</option><option>Peelamedu</option><option>Gandhipuram</option><option>RS Puram</option></select>
+      <select class="form-control-custom" aria-label="Filter by pickup time"><option>Pickup Time</option><option>Before 7:15 AM</option><option>After 7:15 AM</option></select>
+      <select class="form-control-custom" aria-label="Filter by availability"><option>Availability</option><option>Available</option><option>Limited</option></select>
+      <button type="button" class="btn-primary-custom btn-sm-custom">Search Route</button>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container-custom">
+    <div class="route-cards-grid" data-stagger="90">
+
+      <div class="route-card" data-reveal="fade-up">
+        <div class="route-card-top"><span class="route-tag">Route 08</span><span class="route-status available">Available</span></div>
+        <h4>Peelamedu → Sample School</h4>
+        <div class="route-meta">
+          <div><span>First Pickup</span><b>07:15 AM</b></div>
+          <div><span>School Arrival</span><b>08:05 AM</b></div>
+          <div><span>Stops</span><b>12</b></div>
+          <div><span>Service</span><b>AM &amp; PM</b></div>
+        </div>
+        <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal"
+          data-route-trigger data-route="Route 08" data-pickup="Peelamedu" data-first="07:15 AM"
+          data-arrival="08:05 AM" data-stops="12" data-service="Morning + Afternoon" data-availability="Available">
+          View Route <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="route-card" data-reveal="fade-up">
+        <div class="route-card-top"><span class="route-tag">Route 12</span><span class="route-status limited">Limited Availability</span></div>
+        <h4>Gandhipuram → Sample School</h4>
+        <div class="route-meta">
+          <div><span>First Pickup</span><b>07:05 AM</b></div>
+          <div><span>School Arrival</span><b>08:00 AM</b></div>
+          <div><span>Stops</span><b>10</b></div>
+          <div><span>Service</span><b>AM &amp; PM</b></div>
+        </div>
+        <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal"
+          data-route-trigger data-route="Route 12" data-pickup="Gandhipuram" data-first="07:05 AM"
+          data-arrival="08:00 AM" data-stops="10" data-service="Morning + Afternoon" data-availability="Limited Availability">
+          View Route <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="route-card" data-reveal="fade-up">
+        <div class="route-card-top"><span class="route-tag">Route 17</span><span class="route-status available">Available</span></div>
+        <h4>RS Puram → Sample School</h4>
+        <div class="route-meta">
+          <div><span>First Pickup</span><b>07:20 AM</b></div>
+          <div><span>School Arrival</span><b>08:10 AM</b></div>
+          <div><span>Stops</span><b>14</b></div>
+          <div><span>Service</span><b>AM &amp; PM</b></div>
+        </div>
+        <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal"
+          data-route-trigger data-route="Route 17" data-pickup="RS Puram" data-first="07:20 AM"
+          data-arrival="08:10 AM" data-stops="14" data-service="Morning + Afternoon" data-availability="Available">
+          View Route <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ROUTE ASSIGNMENT PROCESS ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <h2 class="h-section">How Route Assignment Works.</h2>
+    </div>
+    <div class="journey-timeline cols-5" data-stagger="80">
+      <div class="journey-step" data-reveal="fade-up"><h4>Choose School</h4><p style="font-size:0.85rem; color:var(--text-muted);">Select your child's school.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Select Pickup Area</h4><p style="font-size:0.85rem; color:var(--text-muted);">Tell us your general pickup zone.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Review Routes</h4><p style="font-size:0.85rem; color:var(--text-muted);">Compare matching route options.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Submit Request</h4><p style="font-size:0.85rem; color:var(--text-muted);">Send your preferred route request.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Receive Confirmation</h4><p style="font-size:0.85rem; color:var(--text-muted);">Get your assigned route and stop.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== CTA ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="final-cta" data-reveal="scale-in">
+      <h2 class="h-section">Can't Find Your Area?</h2>
+      <p>Our transport team can help you understand nearby pickup options.</p>
+      <a href="contact.html" class="btn-primary-custom">Contact Transport Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== AREAS WE SERVE ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Coverage</span>
+      <h2 class="h-section">Areas We Currently Serve.</h2>
+    </div>
+    <div class="chip-grid" data-reveal="fade-up">
+      <span class="chip-item"><i class="bi bi-geo-alt-fill"></i>Peelamedu</span>
+      <span class="chip-item"><i class="bi bi-geo-alt-fill"></i>Gandhipuram</span>
+      <span class="chip-item"><i class="bi bi-geo-alt-fill"></i>RS Puram</span>
+      <span class="chip-item"><i class="bi bi-geo-alt-fill"></i>Saibaba Colony</span>
+      <span class="chip-item"><i class="bi bi-geo-alt-fill"></i>Ram Nagar</span>
+      <span class="chip-item"><i class="bi bi-geo-alt-fill"></i>Race Course</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ROUTE FAQS ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="h-section">Route FAQs.</h2>
+    </div>
+    <div class="faq-accordion" style="max-width:780px;" data-reveal="fade-up">
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">Can I request a specific pickup stop?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">You can submit a preferred pickup area, and our transport team will confirm the closest available stop on a matching route.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">Can I change my assigned route?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Route changes can be requested from the Subscription page in the parent portal and are subject to availability.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">What happens if my preferred route is full?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">If a route shows limited availability, our transport team will suggest the nearest alternative route and stop.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer" class="site-footer"></footer>
+
+<!-- ============================== ROUTE DETAIL MODAL ============================== -->
+<div class="modal fade" id="routeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Route</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-row"><span>Pickup</span><b data-fill="pickup">—</b></div>
+        <div class="detail-row"><span>First Pickup</span><b data-fill="first">—</b></div>
+        <div class="detail-row"><span>School Arrival</span><b data-fill="arrival">—</b></div>
+        <div class="detail-row"><span>Stops</span><b data-fill="stops">—</b></div>
+        <div class="detail-row"><span>Service</span><b data-fill="service">—</b></div>
+        <div class="detail-row"><span>Availability</span><b data-fill="availability">—</b></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-custom" id="routeRequestBtn" data-bs-dismiss="modal">Request This Route</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

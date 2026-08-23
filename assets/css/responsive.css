@@ -1,0 +1,136 @@
+/* ==========================================================================
+   RESPONSIVE SYSTEM — tested 320 / 360 / 390 / 465 / 768 / 1024 / 1440
+   ========================================================================== */
+
+img, svg{ max-width: 100%; height:auto; }
+
+/* ---- ≤1024px : tablet ---- */
+@media (max-width: 1024px){
+  .main-nav{ display:none; }
+  .hamburger-btn{ display:flex; }
+  .hero-grid{ grid-template-columns: 1fr; }
+  .hero-visual{ order:-1; max-width: 480px; margin-inline:auto; width:100%; }
+  .feature-grid{ grid-template-columns: repeat(3, 1fr); }
+  .journey-timeline{ grid-template-columns: repeat(2, 1fr); }
+  .route-cards-grid{ grid-template-columns: repeat(2, 1fr); }
+  .safety-grid{ grid-template-columns: repeat(2, 1fr); }
+  .plans-grid{ grid-template-columns: repeat(2, 1fr); }
+  .plans-grid .plan-card:last-child{ grid-column: span 2; max-width: 420px; margin-inline:auto; width:100%; }
+  .testimonial-grid{ grid-template-columns: repeat(2, 1fr); }
+  .dash-grid{ grid-template-columns: repeat(2, 1fr); }
+  .tracking-panel{ grid-template-columns: 1fr; }
+  .footer-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---- ≤768px : large mobile / small tablet ---- */
+@media (max-width: 768px){
+  :root{ --section-pad-y: clamp(2.5rem, 8vw, 3.5rem); }
+  .feature-grid{ grid-template-columns: repeat(2, 1fr); }
+  .journey-timeline{ grid-template-columns: 1fr; }
+  .route-cards-grid{ grid-template-columns: 1fr; }
+  .safety-grid{ grid-template-columns: 1fr; }
+  .plans-grid{ grid-template-columns: 1fr; }
+  .plans-grid .plan-card:last-child{ grid-column: span 1; max-width: none; }
+  .testimonial-grid{ grid-template-columns: 1fr; }
+  .dash-grid{ grid-template-columns: repeat(2, 1fr); }
+  .footer-grid{ grid-template-columns: repeat(2, 1fr); }
+  .hero-stats{ gap: 1.75rem; }
+  .route-filter-bar{ flex-direction:column; }
+  .route-filter-bar select, .route-filter-bar input, .route-filter-bar button{ flex: 1 1 100%; width:100%; }
+}
+
+/* ---- ≤465px ---- */
+@media (max-width: 465px){
+  .hero-actions{ flex-direction:column; align-self:stretch; }
+  .hero-actions .btn-primary-custom, .hero-actions .btn-secondary-custom{ width:100%; }
+  .floating-card{ min-width: 148px; padding: 10px 12px; }
+  .fc-live{ inset-inline-start: -4%; }
+  .fc-next{ inset-inline-end: -4%; }
+  .fc-status{ inset-inline-start: 4%; }
+  .dash-grid{ grid-template-columns: 1fr; }
+  .final-cta .hero-actions, .final-cta > div > div{ flex-direction:column; }
+  .footer-grid{ grid-template-columns: 1fr; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+}
+
+/* ---- ≤390px ---- */
+@media (max-width: 390px){
+  .brand span.brand-text{ display:none; }
+  .header-actions{ gap: 6px; }
+  .icon-toggle{ width: 36px; height:36px; }
+  .hamburger-btn{ width:36px; height:36px; }
+  .dash-preview-top{ flex-direction:column; align-items:flex-start; }
+}
+
+/* ---- ≤360px ---- */
+@media (max-width: 360px){
+  .plan-price{ font-size: 1.7rem; }
+  .floating-card{ min-width: 132px; font-size: 0.85rem; }
+  .floating-card .fc-value{ font-size: 0.8rem; }
+}
+
+/* ---- ≤320px : hard floor ---- */
+@media (max-width: 320px){
+  :root{ --container-pad: 1rem; }
+  .floating-card{ position: static; margin-block: 10px; width: 100%; }
+  .hero-visual-frame{ padding-bottom: 12px; }
+  .h-display{ font-size: 1.9rem; }
+}
+
+/* Utility: never allow accidental horizontal scroll */
+html, body{ max-width: 100vw; overflow-x: hidden; }
+table{ width:100%; }
+
+/* ==========================================================================
+   PHASE 2 component responsiveness
+   ========================================================================== */
+@media (max-width: 1024px){
+  .editorial-hero-grid{ grid-template-columns: 1fr; }
+  .editorial-hero-visual{ order:-1; max-width: 420px; margin-inline:auto; width:100%; }
+  .bento-grid{ grid-template-columns: repeat(2, 1fr); }
+  .auth-side{ display:none; }
+  .auth-wrap{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px){
+  .step-flow{ flex-direction:column; gap:22px; align-items:stretch; }
+  .step-flow::before{ inset-block:0; inset-inline-start:22px; inset-inline-end:auto; width:2px; height:auto; }
+  .step-node{ flex-direction:row; text-align:start; align-items:center; gap:14px; }
+  .step-node .sn-dot{ margin-bottom:0; }
+
+  .editorial-block{ grid-template-columns: 1fr; }
+  .editorial-block.reverse .eb-visual{ order:0; }
+  .eb-visual{ max-width: 320px; margin-inline:auto; width:100%; }
+
+  .bento-grid{ grid-template-columns: 1fr; }
+  .form-grid-2{ grid-template-columns: 1fr; }
+
+  .compare-table{ min-width: 0; }
+  .compare-table thead{ display:none; }
+  .compare-table, .compare-table tbody, .compare-table tr, .compare-table td{ display:block; width:100%; }
+  .compare-table tr{ border-bottom:1px solid var(--border-soft); padding: 12px 16px; }
+  .compare-table tr:last-child{ border-bottom:none; }
+  .compare-table td{ border:none; padding: 6px 0; text-align:start; display:flex; justify-content:space-between; align-items:center; }
+  .compare-table td::before{ content: attr(data-label); font-size:0.76rem; color: var(--text-muted); font-weight:550; }
+  .compare-table td:first-child{ font-weight:600; font-size:0.95rem; padding-bottom:8px; display:block; }
+  .compare-table td:first-child::before{ content:none; }
+
+  .h-mega{ font-size: clamp(2rem, 8vw, 2.75rem); }
+}
+
+@media (max-width: 465px){
+  .flow-node{ font-size:0.85rem; padding: 12px 16px; }
+  .side-info-card{ padding: 1.5rem; }
+}
+
+/* ==========================================================================
+   PHASE 2b component responsiveness
+   ========================================================================== */
+@media (max-width: 768px){
+  .stat-strip{ grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
+  .mega-stats{ grid-template-columns: 1fr; gap: 1.75rem; }
+}
+@media (max-width: 465px){
+  .stat-strip{ grid-template-columns: 1fr 1fr; padding: 20px; }
+  .stat-strip .stat-item b{ font-size: 1.5rem; }
+}

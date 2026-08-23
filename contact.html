@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — SafeRoute School Transport</title>
+<meta name="description" content="Tell us your school, pickup area and preferred schedule. Our transport team can help identify suitable route options.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/dark-mode.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<header id="main-header" class="site-header"></header>
+
+<section class="page-hero">
+  <div class="container-custom" data-reveal="fade-up">
+    <span class="eyebrow">Get In Touch</span>
+    <h1 class="h-display">Let's Find the Right Transport Option for Your Child.</h1>
+    <p class="lead-text mt-3">Tell us your school, pickup area and preferred schedule. Our transport team can help identify suitable route options.</p>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container-custom">
+    <div class="row g-4">
+
+      <div class="col-lg-4" data-reveal="fade-right">
+        <div class="side-info-card h-100">
+          <h4 style="color:#fff; font-size:1.05rem; margin-bottom:6px;">Transport Support</h4>
+          <div class="side-info-row"><i class="bi bi-telephone-fill"></i><div><b>+91 XXX XXX XXXX</b><span>Call transport support</span></div></div>
+          <div class="side-info-row"><i class="bi bi-envelope-fill"></i><div><b>support@example.com</b><span>Email us anytime</span></div></div>
+          <div class="side-info-row"><i class="bi bi-clock-fill"></i><div><b>Monday&ndash;Saturday</b><span>6:00 AM&ndash;7:00 PM</span></div></div>
+        </div>
+      </div>
+
+      <div class="col-lg-8" data-reveal="fade-left">
+        <form class="js-demo-form" data-success="Your transport enquiry has been received.">
+          <div class="form-grid-2">
+            <div class="form-field"><label class="form-label-custom" for="cName">Parent Name</label><input required type="text" id="cName" class="form-control-custom" placeholder="Your full name"></div>
+            <div class="form-field"><label class="form-label-custom" for="cPhone">Phone</label><input required type="tel" id="cPhone" class="form-control-custom" placeholder="+91 XXX XXX XXXX"></div>
+            <div class="form-field"><label class="form-label-custom" for="cEmail">Email</label><input required type="email" id="cEmail" class="form-control-custom" placeholder="you@example.com"></div>
+            <div class="form-field"><label class="form-label-custom" for="cStudent">Student Name</label><input type="text" id="cStudent" class="form-control-custom" placeholder="Student's full name"></div>
+            <div class="form-field"><label class="form-label-custom" for="cSchool">School</label><input type="text" id="cSchool" class="form-control-custom" placeholder="e.g. Sample School"></div>
+            <div class="form-field"><label class="form-label-custom" for="cArea">Pickup Area</label><input type="text" id="cArea" class="form-control-custom" placeholder="e.g. Peelamedu"></div>
+          </div>
+          <div class="form-field">
+            <label class="form-label-custom" for="cRoute">Preferred Route</label>
+            <select id="cRoute" class="form-control-custom"><option>Not sure yet</option><option>Route 08</option><option>Route 12</option><option>Route 17</option></select>
+          </div>
+          <div class="form-field">
+            <label class="form-label-custom">Requirement</label>
+            <div class="pill-radio-group">
+              <input type="radio" name="requirement" id="reqMorning" class="pill-radio" checked><label for="reqMorning" class="pill-radio-label">Morning Pickup</label>
+              <input type="radio" name="requirement" id="reqAfternoon" class="pill-radio"><label for="reqAfternoon" class="pill-radio-label">Afternoon Drop</label>
+              <input type="radio" name="requirement" id="reqBoth" class="pill-radio"><label for="reqBoth" class="pill-radio-label">Both</label>
+            </div>
+          </div>
+          <div class="form-field"><label class="form-label-custom" for="cMessage">Message</label><textarea id="cMessage" class="form-control-custom" placeholder="Anything else we should know?"></textarea></div>
+          <button type="submit" class="btn-primary-custom">Send Transport Enquiry</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== LOCATION MAP ============================== -->
+<section class="section pt-0">
+  <div class="container-custom">
+    <div class="section-head center mb-4" data-reveal="fade-up">
+      <span class="eyebrow">Our Location</span>
+      <h2 class="h-section">Find Our Transport Operations Hub.</h2>
+    </div>
+    <div class="map-iframe-container" data-reveal="scale-in" style="border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border-soft); box-shadow:var(--shadow-card);">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.291771120286!2d76.9934372750697!3d11.016723989147178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859af2f971cb5%3A0x2fc1c81e183ed282!2sPeelamedu%2C%20Coimbatore%2C%20Tamil%20Nadu!5e0!2m3!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="420" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SafeRoute Transport Office Location Map"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="final-cta" data-reveal="scale-in">
+      <h2 class="h-section">Not Sure Which Route You Need?</h2>
+      <p>Share your school and pickup area and we'll help you understand the available route options.</p>
+      <a href="routes.html" class="btn-primary-custom">Explore Routes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== OTHER WAYS TO REACH US ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">More Options</span>
+      <h2 class="h-section">Other Ways to Reach Us.</h2>
+    </div>
+    <div class="bento-grid" data-stagger="80">
+      <a href="tel:+91XXXXXXXXXX" class="bento-card text-decoration-none" data-reveal="fade-up"><span class="bento-icon" style="background:var(--color-primary-tint); color:var(--color-primary);"><i class="bi bi-telephone-fill"></i></span><h4>Call Support</h4><p>Monday&ndash;Saturday, 6:00 AM&ndash;7:00 PM.</p></a>
+      <a href="mailto:support@example.com" class="bento-card text-decoration-none" data-reveal="fade-up"><span class="bento-icon" style="background:var(--color-success-tint); color:var(--color-success);"><i class="bi bi-envelope-fill"></i></span><h4>Email Us</h4><p>support@example.com</p></a>
+      <a href="faq.html" class="bento-card text-decoration-none" data-reveal="fade-up"><span class="bento-icon" style="background:var(--color-secondary-tint); color:#A87700;"><i class="bi bi-question-circle-fill"></i></span><h4>Browse FAQ</h4><p>Find quick answers before reaching out.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== BEFORE YOU REACH OUT ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Quick Answers</span>
+      <h2 class="h-section">Before You Reach Out.</h2>
+    </div>
+    <div class="faq-accordion" style="max-width:780px;" data-reveal="fade-up">
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">How soon will I hear back?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Enquiries submitted during support hours are typically reviewed the same day.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">What information should I include?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Your child's school and pickup area help our transport team suggest suitable route options faster.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">What are your support hours?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Our transport team is available Monday&ndash;Saturday, 6:00 AM&ndash;7:00 PM.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer" class="site-footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

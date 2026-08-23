@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Parent Account — SafeRoute</title>
+<meta name="description" content="Register your parent account to track your child's school bus in real-time, get boarding alerts, and manage transport subscriptions.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/dark-mode.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<header id="main-header" class="site-header"></header>
+
+<section class="section">
+  <div class="container-custom" style="max-width: 1040px;">
+    <div class="auth-wrap" data-reveal="scale-in">
+
+      <div class="auth-side">
+        <span class="eyebrow" style="color:#FFD97A;">Parent Registration</span>
+        <h2 style="color:#fff; font-size:1.6rem;">Join SafeRoute Student Transport System Today.</h2>
+        <p style="color:rgba(255,255,255,0.85); font-size:0.92rem; margin-block:16px;">Set up live bus tracking, boarding confirmations, and daily journey updates for your child in under two minutes.</p>
+        <div class="ai-item"><i class="bi bi-shield-check"></i>Verified school bus driver tracking</div>
+        <div class="ai-item"><i class="bi bi-bell-fill"></i>Instant SMS &amp; app boarding notifications</div>
+        <div class="ai-item"><i class="bi bi-credit-card-2-front-fill"></i>Flexible monthly or annual transport plans</div>
+        <div class="ai-item"><i class="bi bi-headset"></i>Dedicated 6 AM – 7 PM parent support hotline</div>
+      </div>
+
+      <div class="auth-form-side">
+        <h1 class="h-card mb-2">Create Account</h1>
+        <p class="lead-text mb-4" style="font-size:0.9rem;">Register as a parent to get started with SafeRoute transport services.</p>
+
+        <form action="dashboard/index.html" class="js-demo-form" data-redirect="dashboard/index.html" data-success="Account created successfully! Welcome to SafeRoute Parent Portal...">
+          <div class="form-field"><label class="form-label-custom" for="regName">Parent Full Name</label><input required type="text" id="regName" class="form-control-custom" placeholder="e.g. Priya Kumar"></div>
+          
+          <div class="form-grid-2">
+            <div class="form-field"><label class="form-label-custom" for="regEmail">Email Address</label><input required type="email" id="regEmail" class="form-control-custom" placeholder="parent@example.com"></div>
+            <div class="form-field"><label class="form-label-custom" for="regPhone">Mobile Phone</label><input required type="tel" id="regPhone" class="form-control-custom" placeholder="+91 XXX XXX XXXX"></div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-field"><label class="form-label-custom" for="regStudent">Child / Student Name</label><input required type="text" id="regStudent" class="form-control-custom" placeholder="e.g. Aarav Kumar"></div>
+            <div class="form-field"><label class="form-label-custom" for="regSchool">School Name</label><input required type="text" id="regSchool" class="form-control-custom" placeholder="e.g. Sample School"></div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-field"><label class="form-label-custom" for="regPass">Password</label><input required type="password" id="regPass" class="form-control-custom" placeholder="••••••••"></div>
+            <div class="form-field"><label class="form-label-custom" for="regConfirm">Confirm Password</label><input required type="password" id="regConfirm" class="form-control-custom" placeholder="••••••••"></div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-check-row"><input type="checkbox" required checked> I agree to the <a href="plans.html" class="btn-ghost-custom p-0 ms-1" style="font-size:0.85rem;">Transport Terms &amp; Policy</a></label>
+          </div>
+
+          <button type="submit" class="btn-primary-custom w-100">Create Parent Account</button>
+        </form>
+
+        <div class="auth-divider mt-4">Already registered?</div>
+        <a href="login.html" class="btn-secondary-custom w-100 justify-content-center">Sign In to Existing Account</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================== WHY REGISTER ============================== -->
+<section class="section-tight section-alt">
+  <div class="container-custom" style="max-width: 1040px;">
+    <div class="section-head center mb-4" data-reveal="fade-up">
+      <span class="eyebrow">Safe &amp; Connected</span>
+      <h2 class="h-section">Why Parents Trust SafeRoute.</h2>
+    </div>
+    <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);" data-stagger="80">
+      <div class="feature-card" data-reveal="fade-up"><span class="fc-icon" style="background:var(--color-primary-tint); color:var(--color-primary);"><i class="bi bi-geo-alt-fill"></i></span><h3>Real-Time GPS</h3><p>Accurate bus tracking and stop-by-stop ETA updates right on your phone.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="fc-icon" style="background:var(--color-success-tint); color:var(--color-success);"><i class="bi bi-person-check-fill"></i></span><h3>Child Safety</h3><p>Boarding logs and instant notification alerts when your child gets on or off.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="fc-icon" style="background:var(--color-secondary-tint); color:#A87700;"><i class="bi bi-credit-card-fill"></i></span><h3>Simple Billing</h3><p>Manage transport subscriptions and view digital payment receipts anytime.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer" class="site-footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+/* ==========================================================================
+   RTL — most mirroring is handled by logical properties (inset-inline,
+   padding-inline, margin-inline, text-align:start) already used in
+   style.css. This file covers the exceptions those don't reach.
+   ========================================================================== */
+
+[dir="rtl"]{ text-align: right; }
+
+[dir="rtl"] .eyebrow::before{ order: 2; }
+
+[dir="rtl"] .bi-arrow-right::before{ content: "\f12f"; } /* swap to arrow-left glyph */
+[dir="rtl"] .hero-actions,
+[dir="rtl"] .footer-bottom-links{ flex-direction: row-reverse; }
+
+[dir="rtl"] .journey-step::before{ direction: ltr; display:inline-block; }
+
+[dir="rtl"] .faq-question{ flex-direction: row-reverse; }
+
+[dir="rtl"] .dash-child-chip{ flex-direction: row-reverse; }
+
+[dir="rtl"] .testimonial-person{ flex-direction: row-reverse; }
+
+[dir="rtl"] .tracking-info-row{ flex-direction: row-reverse; }
+
+[dir="rtl"] .route-card-top{ flex-direction: row-reverse; }
+
+[dir="rtl"] .feature-card:hover,
+[dir="rtl"] .route-card:hover{ transform: translateY(-4px); } /* vertical only, no mirror needed */
+
+/* Mirror the route map SVG horizontally so the "journey" still reads start-to-end */
+[dir="rtl"] .tracking-map svg{ transform: scaleX(-1); }
+[dir="rtl"] .tracking-map svg text{ transform: scaleX(-1); }
+
+[dir="rtl"] .mobile-panel-close{ align-self:flex-start; }

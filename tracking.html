@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Bus Tracking — SafeRoute</title>
+<meta name="description" content="Follow the assigned bus route, view upcoming stops and check the latest journey status through the SafeRoute parent portal.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/dark-mode.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<header id="main-header" class="site-header"></header>
+
+<section class="page-hero">
+  <div class="container-custom" data-reveal="fade-up">
+    <span class="eyebrow">Live Bus Tracking</span>
+    <h1 class="h-display">Your Child's Route, Right in Front of You.</h1>
+    <p class="lead-text mt-3">Follow the assigned bus route, view upcoming stops and check the latest journey status through the parent portal.</p>
+    <a href="login.html" class="btn-primary-custom mt-4">Parent Login</a>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container-custom">
+    <div class="tracking-panel" data-reveal="fade-up">
+      <div class="tracking-map">
+        <span class="demo-badge">Live Demo</span>
+        <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map showing Bus 24 progressing along Route 08">
+          <path class="route-line" d="M 40 330 C 90 330, 90 230, 150 210 S 260 260, 300 190 S 400 90, 470 60"/>
+          <path class="route-line-progress" d="M 40 330 C 90 330, 90 230, 150 210 S 260 260, 300 190 S 400 90, 470 60"/>
+          <circle class="route-stop" cx="40" cy="330" r="6"/>
+          <text class="route-stop-label" x="14" y="352">Green Park</text>
+          <circle class="route-stop" cx="150" cy="210" r="6"/>
+          <text class="route-stop-label" x="118" y="196">Oak Street</text>
+          <circle class="route-stop" cx="300" cy="190" r="6"/>
+          <text class="route-stop-label" x="268" y="176">Lakeview Apts.</text>
+          <circle class="route-stop" cx="470" cy="60" r="7" fill="#F4B400"/>
+          <text class="route-stop-label" x="392" y="46">Green Valley School</text>
+          <g class="bus-marker"><circle class="bus-ring" r="13"/><circle class="bus-dot" r="6"/></g>
+        </svg>
+      </div>
+      <div class="tracking-info">
+        <h3 style="color:#fff; font-size:1.1rem; margin-bottom:18px;">Bus 24 <span class="status-chip ms-2"><span class="pulse-dot"></span>On Schedule</span></h3>
+        <div class="tracking-info-row"><span class="ti-label">Current Location</span><span class="ti-value">Central Avenue</span></div>
+        <div class="tracking-info-row"><span class="ti-label">Next Stop</span><span class="ti-value">Lakeview Apartments</span></div>
+        <div class="tracking-info-row"><span class="ti-label">ETA</span><span class="ti-value">08 min</span></div>
+        <div class="tracking-info-row"><span class="ti-label">Route</span><span class="ti-value">Route 08</span></div>
+        <div class="d-flex gap-2 flex-wrap mt-4">
+          <button type="button" class="btn-secondary-custom" style="color:#fff; border-color:rgba(255,255,255,0.5);" onclick="window.SafeRouteToast('Location refreshed.','bi-arrow-clockwise')">Refresh Location</button>
+          <button type="button" class="btn-secondary-custom" style="color:#fff; border-color:rgba(255,255,255,0.5);" onclick="window.SafeRouteToast('Simulating today\'s trip…','bi-play-circle')">Simulate Trip</button>
+          <a href="routes.html" class="btn-secondary-custom" style="color:#fff; border-color:rgba(255,255,255,0.5);">View Route</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== JOURNEY LOG ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Journey Log</span>
+      <h2 class="h-section">Today's Stops, In Order.</h2>
+    </div>
+    <div class="vtimeline mx-auto" data-reveal="fade-up">
+      <div class="vtimeline-item is-done"><div class="vtimeline-time">07:15 AM</div><div class="vtimeline-title">Pickup Stop</div></div>
+      <div class="vtimeline-item is-done"><div class="vtimeline-time">07:18 AM</div><div class="vtimeline-title">Child Boarded</div></div>
+      <div class="vtimeline-item is-done"><div class="vtimeline-time">08:05 AM</div><div class="vtimeline-title">School Arrival</div></div>
+      <div class="vtimeline-item is-done"><div class="vtimeline-time">03:30 PM</div><div class="vtimeline-title">Return Started</div></div>
+      <div class="vtimeline-item"><div class="vtimeline-time">03:58 PM</div><div class="vtimeline-title">Approaching Stop</div></div>
+      <div class="vtimeline-item"><div class="vtimeline-time">04:02 PM</div><div class="vtimeline-title">Expected Drop</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FEATURES ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <h2 class="h-section">What Parents Can See.</h2>
+    </div>
+    <div class="feature-grid" data-stagger="80">
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-bus-front-fill"></i></span><h3>Assigned Bus</h3><p>Which bus your child travels on.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-geo-alt-fill"></i></span><h3>Current Location</h3><p>Where the bus is right now.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-signpost-split-fill"></i></span><h3>Next Stop</h3><p>The upcoming stop on the route.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-clock-fill"></i></span><h3>ETA</h3><p>Estimated time to your stop.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-person-check-fill"></i></span><h3>Boarding Status</h3><p>Confirmation your child boarded.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-signpost-2-fill"></i></span><h3>Route Progress</h3><p>How far along the route the bus is.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-house-check-fill"></i></span><h3>Drop Status</h3><p>Confirmation of the afternoon drop.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="final-cta" data-reveal="scale-in">
+      <h2 class="h-section">Want to See Your Child's Route?</h2>
+      <a href="login.html" class="btn-primary-custom">Parent Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== HOW TRACKING WORKS ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Behind the Map</span>
+      <h2 class="h-section">How Tracking Works.</h2>
+    </div>
+    <div class="journey-timeline cols-4" data-stagger="80">
+      <div class="journey-step" data-reveal="fade-up"><h4>Bus Starts Route</h4><p style="font-size:0.85rem; color:var(--text-muted);">The assigned bus begins its scheduled route.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Position Shared</h4><p style="font-size:0.85rem; color:var(--text-muted);">The bus's location is shared with the parent portal.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Portal Updates</h4><p style="font-size:0.85rem; color:var(--text-muted);">The route map and ETA refresh as the journey progresses.</p></div>
+      <div class="journey-step" data-reveal="fade-up"><h4>Notifications Sent</h4><p style="font-size:0.85rem; color:var(--text-muted);">Parents are notified at key points like boarding and arrival.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== TRACKING FAQS ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="h-section">Tracking FAQs.</h2>
+    </div>
+    <div class="faq-accordion" style="max-width:780px;" data-reveal="fade-up">
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">Can I track the bus?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. The parent portal shows the assigned bus's current position, next stop and estimated arrival time.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">Will I receive arrival notifications?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Parents receive an update when the bus is approaching the pickup stop and again on arrival at school.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">What happens if the bus is delayed?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">The ETA shown in the parent portal updates to reflect the bus's current progress along the route.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer" class="site-footer"></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

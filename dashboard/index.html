@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Portal — SafeRoute Student Transport</title>
+<meta name="description" content="Track your child's school bus in real time, view boarding confirmations, manage your transport subscription and download receipts.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://saferoute.example.com/dashboard/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%23155EEF%22/><path d=%22M5 15V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7%22 stroke=%22white%22 stroke-width=%222%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/dashboard.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<link rel="stylesheet" href="../assets/css/dark-mode.css">
+<link rel="stylesheet" href="../assets/css/rtl.css">
+<style>
+/* ── Extra dashboard styles ── */
+.dash-welcome-banner {
+  background: linear-gradient(120deg, var(--color-primary-700) 0%, var(--color-primary) 55%, #1e6fd9 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+.dash-welcome-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 45% 60% at 90% -20%, rgba(244,180,0,0.3), transparent 55%),
+    radial-gradient(ellipse 60% 80% at -10% 100%, rgba(255,255,255,0.08), transparent 50%);
+}
+.dash-welcome-banner > * { position: relative; z-index: 1; }
+.dwb-text h2 { font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+.dwb-text p { font-size: var(--fs-sm); opacity: 0.85; }
+.dwb-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.btn-white { background: #fff; color: var(--color-primary); font-weight: 700; border: none; }
+.btn-white:hover { background: #f0f4ff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+.btn-outline-white { border: 1.5px solid rgba(255,255,255,0.5); background: transparent; color: #fff; font-weight: 600; }
+.btn-outline-white:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+/* Stat cards */
+.dash-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.dash-stat-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  transition: box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.dash-stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.dsc-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.dsc-icon svg { width: 20px; height: 20px; }
+.dsc-icon.blue { background: var(--color-primary-50); color: var(--color-primary); }
+.dsc-icon.gold { background: var(--color-secondary-50); color: var(--color-secondary-600); }
+.dsc-icon.green { background: var(--color-accent-50); color: var(--color-accent); }
+.dsc-icon.red { background: var(--color-danger-50); color: var(--color-danger); }
+.dsc-value { font-size: var(--fs-lg); font-weight: 800; font-family: var(--font-mono); line-height: 1; margin-bottom: 0.25rem; }
+.dsc-label { font-size: var(--fs-xs); color: var(--text-muted); font-weight: 500; }
+
+/* Two-col layout */
+.dash-two-col { display: grid; grid-template-columns: 1fr; gap: var(--space-5); margin-bottom: var(--space-6); }
+@media (min-width: 900px) { .dash-two-col { grid-template-columns: 1.4fr 1fr; } }
+
+/* Map panel */
+.map-demo-label {
+  position: absolute;
+  top: 0.75rem; left: 0.75rem;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.75rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 2;
+}
+.map-panel { position: relative; border-radius: var(--radius-lg); overflow: hidden; }
+.map-canvas {
+  width: 100%; height: 280px;
+  background: linear-gradient(175deg, var(--color-primary-50) 0%, var(--surface-sunken) 100%);
+}
+[data-theme="dark"] .map-canvas { background: linear-gradient(175deg, var(--color-primary-100) 0%, var(--surface-sunken) 100%); }
+.map-street { fill: none; stroke: var(--border-default); stroke-width: 12; stroke-linecap: round; opacity: 0.6; }
+.map-route-path { fill: none; stroke: var(--color-primary); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 8 4; animation: dashMove 2s linear infinite; }
+@keyframes dashMove { to { stroke-dashoffset: -24; } }
+.map-stop-dot { fill: var(--color-secondary); }
+.map-school-marker { fill: var(--color-accent); }
+.map-stop-label { fill: var(--text-secondary); font-size: 10px; font-family: var(--font-body); }
+.bus-dot { fill: var(--color-primary); }
+.map-bus-marker .bus-dot { filter: drop-shadow(0 0 6px rgba(21,94,239,0.7)); }
+
+/* Topbar user avatar */
+.topbar-user-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.4rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border-default);
+  background: var(--surface-card);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  cursor: pointer;
+}
+.topbar-user-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Section heading */
+.section-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); gap: var(--space-3); flex-wrap: wrap; }
+.section-heading h3 { font-size: var(--fs-md); font-weight: 700; }
+
+/* Journey timeline */
+.journey-timeline { display: flex; flex-direction: column; }
+.jt-item {
+  display: grid;
+  grid-template-columns: 60px 20px 1fr;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding-block: 0.75rem;
+}
+.jt-item + .jt-item { border-top: 1px solid var(--border-subtle); }
+.jt-time { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-muted); padding-top: 2px; }
+.jt-dot-col { display: flex; flex-direction: column; align-items: center; gap: 0; }
+.jt-dot {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-default);
+  background: var(--surface-card);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.jt-dot.done { background: var(--color-accent); border-color: var(--color-accent); }
+.jt-dot.done::after { content: '✓'; color: #fff; font-size: 9px; font-weight: 800; }
+.jt-dot.active { background: var(--color-primary); border-color: var(--color-primary); animation: pulse 1.6s ease-in-out infinite; }
+.jt-dot.active::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(21,94,239,.4)} 50%{box-shadow:0 0 0 7px rgba(21,94,239,0)} }
+.jt-label { font-size: var(--fs-sm); font-weight: 500; padding-top: 1px; }
+.jt-sublabel { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 0.2rem; }
+
+/* Notif badge */
+.notif-badge {
+  position: relative;
+}
+.notif-badge::after {
+  content: '';
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--color-danger);
+  border: 2px solid var(--surface-page);
+}
+
+/* Day period label */
+.dj-period-label { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; margin-bottom: var(--space-3); }
+
+/* Profile form */
+.form-field { margin-bottom: var(--space-5); }
+.form-field label { display: block; font-size: var(--fs-xs); font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.form-field input {
+  width: 100%; padding: 0.75rem 1rem;
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 180ms, box-shadow 180ms;
+}
+.form-field input:focus { border-color: var(--color-primary); box-shadow: var(--focus-ring); }
+
+/* Responsive table/cards */
+.table-wrap { overflow-x: auto; }
+.responsive-table { width: 100%; border-collapse: collapse; }
+.responsive-table th { text-align: start; font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border-subtle); }
+.responsive-table td { padding-block: var(--space-4); border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+.responsive-table tr:last-child td { border-bottom: none; }
+.card-rows { display: none; flex-direction: column; gap: var(--space-3); }
+@media (max-width: 640px) {
+  .responsive-table { display: none; }
+  .card-rows { display: flex; }
+}
+
+/* Receipt modal */
+.drawer-scrim { position: fixed; inset: 0; background: var(--surface-overlay); z-index: var(--z-overlay); opacity: 0; pointer-events: none; transition: opacity var(--dur-base) var(--ease-out); }
+.drawer-scrim.is-open { opacity: 1; pointer-events: auto; }
+.modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  width: min(480px, calc(100vw - 2rem));
+  z-index: var(--z-modal);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+  box-shadow: var(--shadow-xl);
+}
+.modal.is-open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+.modal-close { position: absolute; top: var(--space-5); right: var(--space-5); }
+.receipt-box { background: var(--surface-page); border: 1px dashed var(--border-strong); border-radius: var(--radius-md); padding: var(--space-6); font-family: var(--font-mono); font-size: var(--fs-xs); }
+.receipt-box .rb-brand { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-md); margin-bottom: var(--space-4); }
+.receipt-row { display: flex; justify-content: space-between; padding-block: 0.4rem; border-top: 1px solid var(--border-subtle); }
+
+/* Quick pay card */
+.quick-pay-card {
+  background: linear-gradient(135deg, var(--color-accent-50), var(--surface-card));
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+[data-theme="dark"] .quick-pay-card { background: linear-gradient(135deg, var(--color-accent-50), var(--surface-card)); }
+.quick-pay-card .qpc-label { font-size: var(--fs-xs); color: var(--color-accent-600); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+.quick-pay-card .qpc-plan { font-size: var(--fs-lg); font-weight: 800; margin-bottom: 0.2rem; }
+.quick-pay-card .qpc-renewal { font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: var(--space-5); }
+
+/* pulse-dot (global) */
+.pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; display: inline-block; flex-shrink: 0; animation: pulse 1.6s ease-in-out infinite; }
+.status-live { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-accent); font-weight: 700; font-size: var(--fs-xs); }
+</style>
+</head>
+<body data-dashboard data-asset-prefix="../">
+<a class="skip-link" href="#dashMain">Skip to content</a>
+
+<div class="dash-sidebar-scrim" id="dashScrim"></div>
+
+<div class="dash-shell">
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="dash-sidebar" id="dashSidebar" aria-label="Dashboard navigation">
+    <div class="dash-sidebar-head">
+      <a class="brand" href="../index.html" aria-label="SafeRoute home">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 16V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9"/>
+            <path d="M4 16h16v1.5a1 1 0 0 1-1 1h-1"/>
+            <path d="M6 18.5a1 1 0 0 1-1-1V16"/>
+            <circle cx="8" cy="18.5" r="1.6"/>
+            <circle cx="16" cy="18.5" r="1.6"/>
+            <path d="M4 11h16M9 7v4M15 7v4"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">SafeRoute</span>
+          <span class="brand-sub">Parent Portal</span>
+        </span>
+      </a>
+    </div>
+
+    <nav class="dash-sidebar-nav" aria-label="Dashboard sections">
+      <a class="dash-nav-link is-active" data-panel-link="overview" href="#overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7.5" height="7.5" rx="1.5"/><rect x="13" y="3.5" width="7.5" height="7.5" rx="1.5"/><rect x="3.5" y="13" width="7.5" height="7.5" rx="1.5"/><rect x="13" y="13" width="7.5" height="7.5" rx="1.5"/></svg>
+        Overview
+      </a>
+      <a class="dash-nav-link" data-panel-link="tracking" href="#tracking">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+        Live Tracking
+      </a>
+      <a class="dash-nav-link" data-panel-link="journey" href="#journey">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        Today's Journey
+      </a>
+      <a class="dash-nav-link" data-panel-link="notifications" href="#notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        Notifications
+        <span class="badge badge-danger" style="margin-inline-start:auto;padding:.18rem .55rem;font-size:.65rem">4</span>
+      </a>
+      <a class="dash-nav-link" data-panel-link="child" href="#child">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        My Child
+      </a>
+      <a class="dash-nav-link" data-panel-link="subscription" href="#subscription">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M3.5 9.5h17"/></svg>
+        Subscription
+      </a>
+      <a class="dash-nav-link" data-panel-link="payments" href="#payments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6.5c0-2-2.5-3-5-3s-5 1-5 3 2.5 3 5 3 5 1 5 3-2.5 3-5 3-5-1-5-3"/></svg>
+        Payments
+      </a>
+      <a class="dash-nav-link" data-panel-link="receipts" href="#receipts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+        Receipts
+      </a>
+      <a class="dash-nav-link" data-panel-link="profile" href="#profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        Profile
+      </a>
+    </nav>
+
+    <div class="dash-sidebar-foot">
+      <a class="dash-nav-link" href="../index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+        Back to Site
+      </a>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="dash-main">
+    <!-- Topbar -->
+    <div class="dash-topbar">
+      <button class="dash-menu-toggle" id="dashMenuToggle" type="button" aria-label="Open sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="dash-topbar-greeting">
+        <h1>Parent Portal</h1>
+        <p>Aarav &middot; Bus 24 &middot; Route 08</p>
+      </div>
+      <!-- Child selector chip -->
+      <span class="child-selector hide-mobile">
+        <span class="cs-dot"></span> Aarav Kumar
+      </span>
+      <!-- Notification -->
+      <button class="icon-btn notif-badge" id="topbarNotifBtn" aria-label="Notifications" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+      </button>
+      <!-- Theme toggle -->
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z"/></svg>
+      </button>
+      <!-- RTL text button -->
+      <button class="btn-rtl-toggle" id="rtlToggle" type="button" aria-label="Toggle right-to-left layout" title="Toggle RTL"><span id="rtlLabel" class="rtl-label">RTL</span></button>
+      <!-- Parent Login link -->
+      <a href="../login.html" class="btn-primary-custom btn-sm-custom hide-mobile">Parent Login</a>
+      <!-- Dashboard button -->
+      <a href="index.html" class="btn-secondary-custom btn-sm-custom hide-mobile">Dashboard</a>
+      <!-- User pill -->
+      <div class="topbar-user-pill hide-mobile">
+        <span class="topbar-user-avatar">PK</span>
+        Priya
+      </div>
+    </div>
+
+    <!-- Dashboard content -->
+    <main class="dash-content" id="dashMain">
+
+      <!-- ═══ OVERVIEW ═══ -->
+      <section class="dash-panel is-active" id="panel-overview" data-panel="overview">
+        <!-- Welcome banner -->
+        <div class="dash-welcome-banner">
+          <div class="dwb-text">
+            <h2>Good Morning, Priya! 👋</h2>
+            <p>Aarav has boarded Bus 24. School arrival is confirmed. Afternoon return starts at 3:30 PM.</p>
+          </div>
+          <div class="dwb-actions">
+            <button class="btn btn-white btn-sm" data-panel-goto="tracking" type="button">Track Live</button>
+            <button class="btn btn-outline-white btn-sm" data-panel-goto="journey" type="button">Today's Journey</button>
+          </div>
+        </div>
+
+        <!-- Stat cards -->
+        <div class="dash-stats-grid">
+          <div class="dash-stat-card">
+            <div class="dsc-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+            </div>
+            <div>
+              <div class="dsc-value">8 min</div>
+              <div class="dsc-label">Bus ETA</div>
+            </div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dsc-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div>
+              <div class="dsc-value">Boarded</div>
+              <div class="dsc-label">Child Status</div>
+            </div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dsc-icon gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div>
+              <div class="dsc-value">3:30 PM</div>
+              <div class="dsc-label">Return Starts</div>
+            </div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="dsc-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M3.5 9.5h17"/></svg>
+            </div>
+            <div>
+              <div class="dsc-value">Active</div>
+              <div class="dsc-label">Subscription</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two-column section: Map + Journey snapshot -->
+        <div class="dash-two-col">
+          <div>
+            <div class="section-heading">
+              <h3>Live Bus Location</h3>
+              <span class="status-live"><span class="pulse-dot"></span> Live</span>
+            </div>
+            <div class="dash-map-card">
+              <div class="dash-map-head">
+                <h3>Bus 24 &middot; Morning Pickup</h3>
+                <div class="dash-map-actions">
+                  <button class="btn btn-secondary btn-sm" id="dashRefreshBtn" type="button">Refresh</button>
+                  <button class="btn btn-primary btn-sm" data-panel-goto="tracking" type="button">Full View</button>
+                </div>
+              </div>
+              <div class="map-panel" style="border:none;border-radius:0">
+                <span class="map-demo-label"><span class="pulse-dot" style="background:#F4B400"></span> Demo Tracking Data</span>
+                <svg class="map-canvas" viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Live map showing Bus 24 position">
+                  <path class="map-street" d="M20 240 C 120 220 160 160 220 130 S 380 80 440 55 S 560 30 610 10"/>
+                  <path class="map-route-path" d="M60 225 C 150 200 195 145 252 120 S 405 70 462 44 S 560 18 590 5"/>
+                  <g transform="translate(60,225)"><circle class="map-stop-dot" r="6"/><text class="map-stop-label" x="10" y="4">Lakeview Apartments</text></g>
+                  <g transform="translate(490,44)"><circle class="map-stop-dot" r="6"/><text class="map-stop-label" x="10" y="-8">Riverside Road</text></g>
+                  <g transform="translate(595,8)"><circle class="map-school-marker" r="9"/><text class="map-stop-label" x="-36" y="-13" font-weight="700">SCHOOL</text></g>
+                  <g id="dashBusMarker" class="map-bus-marker" transform="translate(250,120)">
+                    <circle class="bus-dot" r="9"/>
+                    <circle r="9" fill="none" stroke="#155EEF" stroke-width="2" opacity=".5"><animate attributeName="r" values="9;18;9" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;.5" dur="2s" repeatCount="indefinite"/></circle>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-heading"><h3>Today's Journey</h3></div>
+            <div class="widget-card" style="padding:var(--space-5)">
+              <div class="dj-period-label">Morning Trip</div>
+              <div class="journey-timeline">
+                <div class="jt-item">
+                  <div class="jt-time">07:15</div>
+                  <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                  <div><div class="jt-label">Pickup Stop</div><div class="jt-sublabel">Lakeview Apartments</div></div>
+                </div>
+                <div class="jt-item">
+                  <div class="jt-time">07:18</div>
+                  <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                  <div><div class="jt-label">Boarded</div><div class="jt-sublabel">Aarav confirmed on bus</div></div>
+                </div>
+                <div class="jt-item">
+                  <div class="jt-time">08:05</div>
+                  <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                  <div><div class="jt-label">School Arrival</div><div class="jt-sublabel">Confirmed at school gate</div></div>
+                </div>
+              </div>
+              <div class="dj-period-label" style="margin-top:var(--space-5)">Afternoon Trip</div>
+              <div class="journey-timeline">
+                <div class="jt-item">
+                  <div class="jt-time">03:30</div>
+                  <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                  <div><div class="jt-label">Return Started</div><div class="jt-sublabel">Bus departed school</div></div>
+                </div>
+                <div class="jt-item">
+                  <div class="jt-time">03:58</div>
+                  <div class="jt-dot-col"><div class="jt-dot active"></div></div>
+                  <div><div class="jt-label">Approaching Stop</div><div class="jt-sublabel">8 minutes away</div></div>
+                </div>
+                <div class="jt-item">
+                  <div class="jt-time">04:02</div>
+                  <div class="jt-dot-col"><div class="jt-dot"></div></div>
+                  <div><div class="jt-label">Drop-off</div><div class="jt-sublabel">Awaiting</div></div>
+                </div>
+              </div>
+              <a href="#journey" class="btn btn-ghost btn-sm" data-panel-goto="journey" style="margin-top:var(--space-4);width:100%;justify-content:center">Full Journey Log</a>
+            </div>
+
+            <!-- Quick pay -->
+            <div class="quick-pay-card" style="margin-top:var(--space-5)">
+              <div class="qpc-label">Active Subscription</div>
+              <div class="qpc-plan">Monthly Plus</div>
+              <div class="qpc-renewal">Renews 01 Sep 2026 &middot; ₹X,XXX/mo</div>
+              <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+                <button class="btn btn-primary btn-sm" data-panel-goto="payments" type="button">Pay Now</button>
+                <button class="btn btn-secondary btn-sm" data-panel-goto="receipts" type="button">Receipts</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overview widget grid -->
+        <div class="section-heading"><h3>At a Glance</h3></div>
+        <div class="widget-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+          <div class="widget-card widget-reveal">
+            <h3>Today's Trip</h3>
+            <div class="widget-row"><span class="wr-label">Morning</span><span class="wr-value badge badge-accent">Completed</span></div>
+            <div class="widget-row"><span class="wr-label">Afternoon</span><span class="wr-value badge badge-muted">Upcoming</span></div>
+          </div>
+          <div class="widget-card widget-reveal" style="animation-delay:.05s">
+            <h3>Boarding</h3>
+            <div class="widget-row"><span class="wr-label">Boarded</span><span class="wr-value badge badge-accent">Yes</span></div>
+            <div class="widget-row"><span class="wr-label">School Arrival</span><span class="wr-value badge badge-accent">Confirmed</span></div>
+          </div>
+          <div class="widget-card widget-reveal" style="animation-delay:.1s">
+            <h3>Route</h3>
+            <div class="widget-row"><span class="wr-label">Bus</span><span class="wr-value">Bus 24</span></div>
+            <div class="widget-row"><span class="wr-label">Route</span><span class="wr-value">Route 08</span></div>
+          </div>
+          <div class="widget-card widget-reveal" style="animation-delay:.15s">
+            <h3>Payment</h3>
+            <div class="widget-row"><span class="wr-label">Last Payment</span><span class="wr-value">&#8377;X,XXX</span></div>
+            <div class="widget-row"><span class="wr-label">Status</span><span class="wr-value badge badge-accent">Paid</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ LIVE TRACKING ═══ -->
+      <section class="dash-panel" id="panel-tracking" data-panel="tracking">
+        <div class="dash-panel-head">
+          <h2>Live Bus Tracking</h2>
+          <p>Real-time position of Bus 24 along Route 08.</p>
+        </div>
+        <div class="dash-map-card">
+          <div class="dash-map-head">
+            <h3>Bus 24 &middot; Route 08</h3>
+            <div class="dash-map-actions">
+              <button class="btn btn-secondary btn-sm" id="dashRefreshBtn2" type="button">Refresh Location</button>
+              <button class="btn btn-primary btn-sm" type="button">Contact Transport</button>
+            </div>
+          </div>
+          <div class="map-panel" style="border:none;border-radius:0">
+            <span class="map-demo-label"><span class="pulse-dot" style="background:#F4B400"></span> Demo Tracking Data</span>
+            <svg class="map-canvas" viewBox="0 0 640 380" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bus 24 live route map">
+              <path class="map-street" d="M20 340 C 120 310 160 240 220 200 S 380 140 440 100 S 560 60 610 40"/>
+              <path class="map-street" d="M60 40 L 60 360" opacity=".4"/>
+              <path class="map-route-path" d="M60 330 C 150 290 196 220 255 185 S 406 128 465 88 S 564 50 594 32"/>
+              <g transform="translate(60,330)"><circle class="map-stop-dot" r="7"/><text class="map-stop-label" x="12" y="4">Lakeview Apartments</text></g>
+              <g transform="translate(490,88)"><circle class="map-stop-dot" r="7"/><text class="map-stop-label" x="12" y="-10">Riverside Road</text></g>
+              <g transform="translate(600,30)"><circle class="map-school-marker" r="11"/><text class="map-stop-label" x="-40" y="-16" font-weight="700">SCHOOL</text></g>
+              <g id="dashBusMarker2" class="map-bus-marker" transform="translate(255,185)">
+                <circle class="bus-dot" r="10"/>
+                <circle r="10" fill="none" stroke="#155EEF" stroke-width="2.5" opacity=".5">
+                  <animate attributeName="r" values="10;20;10" dur="2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values=".5;0;.5" dur="2s" repeatCount="indefinite"/>
+                </circle>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="widget-grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+          <div class="widget-card">
+            <h3>Status</h3>
+            <div class="widget-row"><span class="wr-label">Trip</span><span class="wr-value status-live"><span class="pulse-dot"></span> LIVE</span></div>
+            <div class="widget-row"><span class="wr-label">Bus</span><span class="wr-value">Bus 24</span></div>
+          </div>
+          <div class="widget-card">
+            <h3>ETA</h3>
+            <div class="widget-row"><span class="wr-label">Arrival</span><span class="wr-value">08 min</span></div>
+            <div class="widget-row"><span class="wr-label">Child</span><span class="wr-value badge badge-accent">Boarded</span></div>
+          </div>
+          <div class="widget-card">
+            <h3>Next Stop</h3>
+            <div class="widget-row"><span class="wr-label">Location</span><span class="wr-value">Lakeview Apts</span></div>
+            <div class="widget-row"><span class="wr-label">Route</span><span class="wr-value">Route 08</span></div>
+          </div>
+          <div class="widget-card">
+            <h3>Driver</h3>
+            <div class="widget-row"><span class="wr-label">Assigned</span><span class="wr-value">Rajan M.</span></div>
+            <div class="widget-row"><span class="wr-label">Verified</span><span class="wr-value badge badge-accent">Yes</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ TODAY'S JOURNEY ═══ -->
+      <section class="dash-panel" id="panel-journey" data-panel="journey">
+        <div class="dash-panel-head">
+          <h2>Today's Journey</h2>
+          <p>Boarding and alighting confirmation log for Aarav — 23 August 2026.</p>
+        </div>
+        <div class="dash-two-col">
+          <div class="dash-timeline-card">
+            <div class="dj-period-label">Morning Pickup</div>
+            <div class="journey-timeline">
+              <div class="jt-item">
+                <div class="jt-time">07:15</div>
+                <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                <div><div class="jt-label">Pickup Stop Ready</div><div class="jt-sublabel">Lakeview Apartments — Bus 24 arrived</div></div>
+              </div>
+              <div class="jt-item">
+                <div class="jt-time">07:18</div>
+                <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                <div><div class="jt-label">Aarav Boarded ✓</div><div class="jt-sublabel">Boarding confirmed by attendant</div></div>
+              </div>
+              <div class="jt-item">
+                <div class="jt-time">07:44</div>
+                <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                <div><div class="jt-label">En Route</div><div class="jt-sublabel">All stops completed</div></div>
+              </div>
+              <div class="jt-item">
+                <div class="jt-time">08:05</div>
+                <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                <div><div class="jt-label">School Arrival ✓</div><div class="jt-sublabel">Bus reached the school gate</div></div>
+              </div>
+            </div>
+
+            <div class="dj-period-label" style="margin-top:var(--space-6)">Afternoon Drop-off</div>
+            <div class="journey-timeline">
+              <div class="jt-item">
+                <div class="jt-time">03:30</div>
+                <div class="jt-dot-col"><div class="jt-dot done"></div></div>
+                <div><div class="jt-label">Return Started</div><div class="jt-sublabel">Bus departed school</div></div>
+              </div>
+              <div class="jt-item">
+                <div class="jt-time">03:58</div>
+                <div class="jt-dot-col"><div class="jt-dot active"></div></div>
+                <div><div class="jt-label">Approaching Your Stop</div><div class="jt-sublabel">Currently 8 minutes away</div></div>
+              </div>
+              <div class="jt-item">
+                <div class="jt-time">04:05</div>
+                <div class="jt-dot-col"><div class="jt-dot"></div></div>
+                <div><div class="jt-label">Drop-off — Awaiting</div><div class="jt-sublabel">Lakeview Apartments</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="widget-card" style="margin-bottom:var(--space-4)">
+              <h3>Day Summary</h3>
+              <div class="widget-row"><span class="wr-label">Child</span><span class="wr-value">Aarav Kumar</span></div>
+              <div class="widget-row"><span class="wr-label">Bus</span><span class="wr-value">Bus 24 · Route 08</span></div>
+              <div class="widget-row"><span class="wr-label">Pickup</span><span class="wr-value badge badge-accent">Confirmed</span></div>
+              <div class="widget-row"><span class="wr-label">Drop-off</span><span class="wr-value badge badge-muted">Pending</span></div>
+              <div class="widget-row"><span class="wr-label">Attendance</span><span class="wr-value badge badge-accent">Present</span></div>
+            </div>
+            <div class="widget-card">
+              <h3>Historical Log</h3>
+              <div class="widget-row"><span class="wr-label">Days Present</span><span class="wr-value">22 / 23</span></div>
+              <div class="widget-row"><span class="wr-label">Missed Days</span><span class="wr-value">1</span></div>
+              <div class="widget-row"><span class="wr-label">On-Time Rate</span><span class="wr-value">96%</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ NOTIFICATIONS ═══ -->
+      <section class="dash-panel" id="panel-notifications" data-panel="notifications">
+        <div class="dash-panel-head">
+          <h2>Notification Centre</h2>
+          <p>Arrival, boarding, drop-off, delay, route change and emergency alerts.</p>
+        </div>
+        <div class="dash-notif-list">
+          <div class="dash-notif-item">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:var(--color-primary);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z"/></svg>
+            <div>
+              <div class="dn-text">Bus 24 is approaching your pickup stop. Expected in <strong>8 minutes</strong>.</div>
+              <div class="dn-time">03:50 PM · Today</div>
+            </div>
+          </div>
+          <div class="dash-notif-item">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:var(--color-accent);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <div>
+              <div class="dn-text">Aarav boarded Bus 24 at Lakeview Apartments stop.</div>
+              <div class="dn-time">07:18 AM · Today</div>
+            </div>
+          </div>
+          <div class="dash-notif-item">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:var(--color-accent);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <div>
+              <div class="dn-text">Bus 24 has reached school. Morning trip complete.</div>
+              <div class="dn-time">08:05 AM · Today</div>
+            </div>
+          </div>
+          <div class="dash-notif-item">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:var(--color-secondary);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div>
+              <div class="dn-text">Afternoon return journey started. Bus 24 departing school at 3:30 PM.</div>
+              <div class="dn-time">03:30 PM · Today</div>
+            </div>
+          </div>
+          <div class="dash-notif-item">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:var(--color-accent);margin-top:2px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M3.5 9.5h17"/></svg>
+            <div>
+              <div class="dn-text">Receipt for August 2026 is available. <button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">Download</button></div>
+              <div class="dn-time">01 Aug · Subscription</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ MY CHILD ═══ -->
+      <section class="dash-panel" id="panel-child" data-panel="child">
+        <div class="dash-panel-head">
+          <h2>My Child</h2>
+          <p>Aarav's transport assignment, route and today's boarding status.</p>
+        </div>
+        <div class="widget-grid">
+          <div class="widget-card">
+            <h3>Student</h3>
+            <div class="widget-row"><span class="wr-label">Name</span><span class="wr-value">Aarav Kumar</span></div>
+            <div class="widget-row"><span class="wr-label">School</span><span class="wr-value">Sample School</span></div>
+            <div class="widget-row"><span class="wr-label">Class</span><span class="wr-value">Grade 6 · A</span></div>
+          </div>
+          <div class="widget-card">
+            <h3>Transport</h3>
+            <div class="widget-row"><span class="wr-label">Route</span><span class="wr-value">Route 08</span></div>
+            <div class="widget-row"><span class="wr-label">Bus</span><span class="wr-value">Bus 24</span></div>
+            <div class="widget-row"><span class="wr-label">Driver</span><span class="wr-value">Rajan M.</span></div>
+          </div>
+          <div class="widget-card">
+            <h3>Pickup</h3>
+            <div class="widget-row"><span class="wr-label">Area</span><span class="wr-value">Peelamedu</span></div>
+            <div class="widget-row"><span class="wr-label">Stop</span><span class="wr-value">Lakeview Apts</span></div>
+            <div class="widget-row"><span class="wr-label">Time</span><span class="wr-value">07:15 AM</span></div>
+          </div>
+          <div class="widget-card">
+            <h3>Today's Status</h3>
+            <div class="widget-row"><span class="wr-label">Boarded</span><span class="wr-value badge badge-accent">Yes</span></div>
+            <div class="widget-row"><span class="wr-label">School Arrival</span><span class="wr-value badge badge-accent">Confirmed</span></div>
+            <div class="widget-row"><span class="wr-label">Drop-off</span><span class="wr-value badge badge-muted">Pending</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ SUBSCRIPTION ═══ -->
+      <section class="dash-panel" id="panel-subscription" data-panel="subscription">
+        <div class="dash-panel-head">
+          <h2>Subscription</h2>
+          <p>Manage your transport plan, route, and billing preferences.</p>
+        </div>
+        <div class="subscription-card">
+          <div class="sub-header">
+            <div>
+              <div class="sub-plan-name">Monthly Plus</div>
+              <span class="badge badge-accent">Active</span>
+            </div>
+          </div>
+          <div class="sub-details-grid">
+            <div class="sub-detail"><div class="sd-label">Route</div><div class="sd-value">Route 08</div></div>
+            <div class="sub-detail"><div class="sd-label">Pickup</div><div class="sd-value">Peelamedu</div></div>
+            <div class="sub-detail"><div class="sd-label">Renewal</div><div class="sd-value">01 Sep 2026</div></div>
+            <div class="sub-detail"><div class="sd-label">Amount</div><div class="sd-value">&#8377;X,XXX/month</div></div>
+          </div>
+          <div class="sub-actions">
+            <button class="btn btn-primary btn-sm" type="button">Change Plan</button>
+            <button class="btn btn-secondary btn-sm" type="button">Update Route</button>
+            <button class="btn btn-secondary btn-sm" type="button">Pause Request</button>
+            <button class="btn btn-ghost btn-sm" data-panel-goto="payments" type="button">Payment History</button>
+          </div>
+        </div>
+
+        <!-- Available Plans -->
+        <div class="section-heading" style="margin-top:var(--space-6)"><h3>Available Plans</h3></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-4)">
+          <div class="widget-card" style="border-color:var(--border-subtle)">
+            <h3>Basic</h3>
+            <div style="font-size:var(--fs-xl);font-weight:800;font-family:var(--font-mono);margin-bottom:var(--space-2)">₹X,XXX<span style="font-size:var(--fs-xs);font-weight:400;opacity:.6">/month</span></div>
+            <p style="font-size:var(--fs-xs);color:var(--text-muted);margin-bottom:var(--space-4)">GPS tracking, boarding alerts, monthly receipt.</p>
+            <button class="btn btn-secondary btn-sm btn-block" type="button">Select Basic</button>
+          </div>
+          <div class="widget-card" style="border-color:var(--color-primary);position:relative">
+            <span class="badge badge-primary" style="position:absolute;top:.75rem;right:.75rem">Current</span>
+            <h3>Monthly Plus</h3>
+            <div style="font-size:var(--fs-xl);font-weight:800;font-family:var(--font-mono);margin-bottom:var(--space-2)">₹X,XXX<span style="font-size:var(--fs-xs);font-weight:400;opacity:.6">/month</span></div>
+            <p style="font-size:var(--fs-xs);color:var(--text-muted);margin-bottom:var(--space-4)">All Basic features + attendant support + priority notifications.</p>
+            <button class="btn btn-primary btn-sm btn-block" type="button" disabled>Active Plan</button>
+          </div>
+          <div class="widget-card">
+            <h3>Annual</h3>
+            <div style="font-size:var(--fs-xl);font-weight:800;font-family:var(--font-mono);margin-bottom:var(--space-2)">₹X,XXX<span style="font-size:var(--fs-xs);font-weight:400;opacity:.6">/year</span></div>
+            <p style="font-size:var(--fs-xs);color:var(--text-muted);margin-bottom:var(--space-4)">All Plus features. Best value — save 2 months.</p>
+            <button class="btn btn-secondary btn-sm btn-block" type="button">Select Annual</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PAYMENTS ═══ -->
+      <section class="dash-panel" id="panel-payments" data-panel="payments">
+        <div class="dash-panel-head">
+          <h2>Payment History</h2>
+          <p>Monthly transport payments and their status.</p>
+        </div>
+        <div class="pay-table-card table-wrap">
+          <table class="responsive-table">
+            <thead><tr><th>Month</th><th>Amount</th><th>Status</th><th>Receipt</th></tr></thead>
+            <tbody>
+              <tr><td>August 2026</td><td>&#8377;X,XXX</td><td><span class="badge badge-accent">Paid</span></td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">Download</button></td></tr>
+              <tr><td>July 2026</td><td>&#8377;X,XXX</td><td><span class="badge badge-accent">Paid</span></td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">Download</button></td></tr>
+              <tr><td>June 2026</td><td>&#8377;X,XXX</td><td><span class="badge badge-accent">Paid</span></td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026">Download</button></td></tr>
+              <tr><td>May 2026</td><td>&#8377;X,XXX</td><td><span class="badge badge-accent">Paid</span></td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="May 2026">Download</button></td></tr>
+            </tbody>
+          </table>
+          <div class="card-rows">
+            <div class="pay-card-row"><div class="pcr-top"><span>August 2026</span><span>&#8377;X,XXX</span></div><div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">Download</button></div></div>
+            <div class="pay-card-row"><div class="pcr-top"><span>July 2026</span><span>&#8377;X,XXX</span></div><div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">Download</button></div></div>
+            <div class="pay-card-row"><div class="pcr-top"><span>June 2026</span><span>&#8377;X,XXX</span></div><div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026">Download</button></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ RECEIPTS ═══ -->
+      <section class="dash-panel" id="panel-receipts" data-panel="receipts">
+        <div class="dash-panel-head">
+          <h2>Receipts</h2>
+          <p>Download digital receipts for your transport subscription payments.</p>
+        </div>
+        <div class="pay-table-card table-wrap">
+          <table class="responsive-table">
+            <thead><tr><th>Receipt No.</th><th>Billing Period</th><th>Amount</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>SR-DEMO-2026-008</td><td>August 2026</td><td>&#8377;X,XXX</td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">View</button></td></tr>
+              <tr><td>SR-DEMO-2026-007</td><td>July 2026</td><td>&#8377;X,XXX</td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">View</button></td></tr>
+              <tr><td>SR-DEMO-2026-006</td><td>June 2026</td><td>&#8377;X,XXX</td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026">View</button></td></tr>
+              <tr><td>SR-DEMO-2026-005</td><td>May 2026</td><td>&#8377;X,XXX</td><td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="May 2026">View</button></td></tr>
+            </tbody>
+          </table>
+          <div class="card-rows">
+            <div class="pay-card-row"><div class="pcr-top"><span>SR-DEMO-2026-008</span><span>&#8377;X,XXX</span></div><div class="pcr-meta"><span>August 2026</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">View</button></div></div>
+            <div class="pay-card-row"><div class="pcr-top"><span>SR-DEMO-2026-007</span><span>&#8377;X,XXX</span></div><div class="pcr-meta"><span>July 2026</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">View</button></div></div>
+            <div class="pay-card-row"><div class="pcr-top"><span>SR-DEMO-2026-006</span><span>&#8377;X,XXX</span></div><div class="pcr-meta"><span>June 2026</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026">View</button></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ PROFILE ═══ -->
+      <section class="dash-panel" id="panel-profile" data-panel="profile">
+        <div class="dash-panel-head">
+          <h2>Profile</h2>
+          <p>Parent and student information on file.</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-card">
+            <h3 style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:var(--space-5)">Parent Details</h3>
+            <div class="form-field"><label for="pfName">Full Name</label><input id="pfName" type="text" value="Priya Kumar"></div>
+            <div class="form-field"><label for="pfEmail">Email</label><input id="pfEmail" type="email" value="parent@example.com"></div>
+            <div class="form-field" style="margin-bottom:0"><label for="pfPhone">Phone</label><input id="pfPhone" type="tel" value="+91 XXX XXX XXXX"></div>
+          </div>
+          <div class="profile-card">
+            <h3 style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:var(--space-5)">Child Details</h3>
+            <div class="form-field"><label for="pfChildName">Child Name</label><input id="pfChildName" type="text" value="Aarav Kumar"></div>
+            <div class="form-field"><label for="pfSchool">School</label><input id="pfSchool" type="text" value="Sample School"></div>
+            <div class="form-field"><label for="pfPickup">Pickup Area</label><input id="pfPickup" type="text" value="Peelamedu"></div>
+            <div class="form-field" style="margin-bottom:0"><label for="pfRoute">Route / Bus</label><input id="pfRoute" type="text" value="Route 08 · Bus 24"></div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="button" style="margin-top:var(--space-6)">Save Changes</button>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- RECEIPT MODAL -->
+<div class="drawer-scrim" id="receiptScrim"></div>
+<div class="modal" id="receiptModal" role="dialog" aria-modal="true" aria-labelledby="receiptModalTitle">
+  <button class="icon-btn modal-close" id="receiptModalClose" type="button" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <h3 id="receiptModalTitle" style="margin-bottom:var(--space-5)">Receipt Preview</h3>
+  <div class="receipt-box">
+    <div class="rb-brand">SafeRoute Student Transport</div>
+    <div class="receipt-row"><span>Receipt No.</span><span>SR-DEMO-2026-008</span></div>
+    <div class="receipt-row"><span>Parent</span><span>Priya Kumar</span></div>
+    <div class="receipt-row"><span>Student</span><span>Aarav Kumar</span></div>
+    <div class="receipt-row"><span>Plan</span><span>Monthly Plus</span></div>
+    <div class="receipt-row"><span>Billing Period</span><span id="receiptMonthValue">August 2026</span></div>
+    <div class="receipt-row"><span>Amount</span><span>&#8377;X,XXX</span></div>
+    <div class="receipt-row"><span>Status</span><span style="color:var(--color-accent);font-weight:700">PAID</span></div>
+  </div>
+  <button class="btn btn-primary btn-block" type="button" style="margin-top:var(--space-5)">Download Receipt (PDF)</button>
+  <p style="font-size:var(--fs-xs);color:var(--text-muted);text-align:center;margin-top:var(--space-3)">Frontend demonstration only.</p>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

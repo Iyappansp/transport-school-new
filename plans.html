@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport Plans — SafeRoute</title>
+<meta name="description" content="Choose a transport plan based on your route, school schedule and required service period.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/dark-mode.css">
+<link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body>
+
+<header id="main-header" class="site-header"></header>
+
+<section class="page-hero center">
+  <div class="container-custom" data-reveal="fade-up">
+    <span class="eyebrow">Transport Plans</span>
+    <h1 class="h-display">Simple School Transport Plans for Every Routine.</h1>
+    <p class="lead-text mt-3">Choose a transport plan based on your route, school schedule and required service period.</p>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container-custom">
+    <div class="plans-grid" data-stagger="90">
+      <div class="plan-card" data-reveal="fade-up">
+        <div class="plan-name">Monthly Standard</div>
+        <div class="plan-price">₹X,XXX<span>/month</span></div>
+        <div class="plan-note">Billed monthly · Sample pricing</div>
+        <ul class="plan-features">
+          <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
+          <li><i class="bi bi-check-circle-fill"></i>Morning pickup</li>
+          <li><i class="bi bi-check-circle-fill"></i>Afternoon drop</li>
+          <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
+          <li><i class="bi bi-check-circle-fill"></i>Journey notifications</li>
+          <li><i class="bi bi-check-circle-fill"></i>Boarding updates</li>
+          <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
+        </ul>
+        <button type="button" class="btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#planModal" data-plan-trigger data-plan="Monthly Standard">Choose Standard</button>
+      </div>
+
+      <div class="plan-card is-popular" data-reveal="fade-up">
+        <span class="plan-popular-tag">Most Popular</span>
+        <div class="plan-name">Monthly Plus</div>
+        <div class="plan-price">₹X,XXX<span>/month</span></div>
+        <div class="plan-note">Billed monthly · Sample pricing</div>
+        <ul class="plan-features">
+          <li><i class="bi bi-check-circle-fill"></i>Everything in Standard</li>
+          <li><i class="bi bi-check-circle-fill"></i>Enhanced journey visibility</li>
+          <li><i class="bi bi-check-circle-fill"></i>Priority transport support</li>
+          <li><i class="bi bi-check-circle-fill"></i>Subscription management</li>
+          <li><i class="bi bi-check-circle-fill"></i>Payment history</li>
+          <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
+        </ul>
+        <button type="button" class="btn-primary-custom" data-bs-toggle="modal" data-bs-target="#planModal" data-plan-trigger data-plan="Monthly Plus">Choose Plus</button>
+      </div>
+
+      <div class="plan-card" data-reveal="fade-up">
+        <div class="plan-name">Full-Year Saver</div>
+        <div class="plan-price">₹XX,XXX<span>/year</span></div>
+        <div class="plan-note">Billed for the academic year</div>
+        <ul class="plan-features">
+          <li><i class="bi bi-check-circle-fill"></i>Academic-year transport</li>
+          <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
+          <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
+          <li><i class="bi bi-check-circle-fill"></i>Boarding updates</li>
+          <li><i class="bi bi-check-circle-fill"></i>Notifications</li>
+          <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
+        </ul>
+        <button type="button" class="btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#planModal" data-plan-trigger data-plan="Full-Year Saver">Request Details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== COMPARISON ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up"><h2 class="h-section">Compare Plans.</h2></div>
+    <div class="compare-wrap" data-reveal="fade-up">
+      <table class="compare-table">
+        <thead><tr><th>Feature</th><th>Standard</th><th>Plus</th><th>Full-Year</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Feature">Route Assignment</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">Morning Pickup</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">Afternoon Drop</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">GPS Tracking</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">Boarding Updates</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">Notifications</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">Payment History</td><td data-label="Standard"><i class="bi bi-dash-circle"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-dash-circle"></i></td></tr>
+          <tr><td data-label="Feature">Digital Receipts</td><td data-label="Standard"><i class="bi bi-check-circle-fill"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-check-circle-fill"></i></td></tr>
+          <tr><td data-label="Feature">Priority Support</td><td data-label="Standard"><i class="bi bi-dash-circle"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-dash-circle"></i></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== WHAT'S INCLUDED, EXPLAINED ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">In Plain Terms</span>
+      <h2 class="h-section">What's Included, Explained.</h2>
+    </div>
+    <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);" data-stagger="90">
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-geo-alt-fill"></i></span><h3>GPS Visibility</h3><p>See the assigned bus's route position in the parent portal.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-bell-fill"></i></span><h3>Boarding Updates</h3><p>Get notified when your child boards and when the bus arrives.</p></div>
+      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-receipt"></i></span><h3>Digital Receipts</h3><p>Every payment generates a receipt you can view or download.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PLAN FAQS ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="h-section">Plan FAQs.</h2>
+    </div>
+    <div class="faq-accordion" style="max-width:780px;" data-reveal="fade-up">
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">How does monthly billing work?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Monthly plans are billed each month based on the plan you select at sign-up.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">Can I change my plan?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes, plans can be changed from the Subscription page in the parent portal.</div></div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-question"><span class="fq-label">Can I download receipts?</span><i class="bi bi-plus-lg"></i></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Every payment generates a digital receipt that can be viewed or downloaded from the Receipts page.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="main-footer" class="site-footer"></footer>
+
+<!-- ============================== PLAN REQUEST MODAL ============================== -->
+<div class="modal fade" id="planModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Request Transport Plan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="plan-step-form">
+          <div class="form-grid-2">
+            <div class="form-field"><label class="form-label-custom" for="studentName">Student Name</label><input type="text" id="studentName" class="form-control-custom" placeholder="e.g. Aarav Kumar"></div>
+            <div class="form-field"><label class="form-label-custom" for="schoolInput">School</label><input type="text" id="schoolInput" class="form-control-custom" placeholder="e.g. Sample School"></div>
+            <div class="form-field"><label class="form-label-custom" for="pickupInput">Pickup Area</label><input type="text" id="pickupInput" class="form-control-custom" placeholder="e.g. Peelamedu"></div>
+            <div class="form-field">
+              <label class="form-label-custom" for="routeSelect">Preferred Route</label>
+              <select id="routeSelect" class="form-control-custom"><option>Route 08</option><option>Route 12</option><option>Route 17</option></select>
+            </div>
+            <div class="form-field">
+              <label class="form-label-custom" for="planSelect">Plan</label>
+              <select id="planSelect" class="form-control-custom"><option>Monthly Standard</option><option>Monthly Plus</option><option>Full-Year Saver</option></select>
+            </div>
+            <div class="form-field"><label class="form-label-custom" for="startDate">Start Date</label><input type="date" id="startDate" class="form-control-custom"></div>
+            <div class="form-field"><label class="form-label-custom" for="parentName">Parent Name</label><input type="text" id="parentName" class="form-control-custom" placeholder="e.g. Priya Kumar"></div>
+            <div class="form-field"><label class="form-label-custom" for="parentPhone">Phone</label><input type="tel" id="parentPhone" class="form-control-custom" placeholder="+91 XXX XXX XXXX"></div>
+          </div>
+          <div class="form-field"><label class="form-label-custom" for="parentEmail">Email</label><input type="email" id="parentEmail" class="form-control-custom" placeholder="parent@example.com"></div>
+        </div>
+
+        <div class="plan-step-summary d-none">
+          <div class="detail-row"><span>Selected Plan</span><b data-summary-plan>—</b></div>
+          <div class="detail-row"><span>Route</span><b data-summary-route>—</b></div>
+          <div class="detail-row"><span>Pickup</span><b data-summary-pickup>—</b></div>
+          <div class="detail-row"><span>Billing</span><b data-summary-billing>—</b></div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary-custom plan-step-form" id="planContinueBtn">Continue</button>
+        <button type="button" class="btn-primary-custom plan-step-summary d-none" id="planConfirmBtn">Confirm Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>
