@@ -20,8 +20,18 @@
   border-color: var(--color-primary);
 }
 
-[data-theme="dark"] .btn-secondary-custom{ color: #7EA6FF; border-color: #2C3A57; }
-[data-theme="dark"] .btn-secondary-custom:hover{ background: rgba(21,94,239,0.14); border-color: var(--color-primary); color:#fff; }
+[data-theme="dark"] .btn-secondary-custom{
+  background: #FF7A00;
+  color: #FFFFFF !important;
+  border-color: #FF7A00;
+  box-shadow: 0 4px 14px rgba(255, 122, 0, 0.35);
+}
+[data-theme="dark"] .btn-secondary-custom:hover{
+  background: #E66500;
+  border-color: #E66500;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 20px rgba(255, 122, 0, 0.45);
+}
 
 [data-theme="dark"] .icon-toggle,
 [data-theme="dark"] .btn-rtl-toggle{ background: var(--surface-card); border-color: var(--border-soft); color: var(--text-heading); }
@@ -40,6 +50,61 @@
 [data-theme="dark"] ::selection{ background: var(--color-primary); color:#fff; }
 
 [data-theme="dark"] .mobile-nav-backdrop{ background: rgba(0,0,0,0.6); }
+
+/* New Sections Dark Theme Adjustments */
+[data-theme="dark"] .live-lifecycle-card,
+[data-theme="dark"] .fare-estimator-card,
+[data-theme="dark"] .pool-creator-card,
+[data-theme="dark"] .matrix-container,
+[data-theme="dark"] .mission-glass-card{
+  background: #131B2C;
+  border-color: var(--border-soft);
+}
+[data-theme="dark"] .lifecycle-step-card{
+  background: #0E1626;
+}
+[data-theme="dark"] .lifecycle-step-card.is-live{
+  background: rgba(21, 94, 239, 0.18);
+  border-color: var(--color-primary);
+}
+[data-theme="dark"] .fare-summary-panel{
+  background: linear-gradient(145deg, #16233F, #10192A);
+}
+[data-theme="dark"] .saferoute-matrix-table th.highlight-col,
+[data-theme="dark"] .saferoute-matrix-table td.highlight-col{
+  background: rgba(21, 94, 239, 0.16);
+}
+
+[data-theme="dark"] .gallery-card,
+[data-theme="dark"] .telemetry-widget-card,
+[data-theme="dark"] .safety-pillar-card,
+[data-theme="dark"] .calc-container-card,
+[data-theme="dark"] .calc-total-box,
+[data-theme="dark"] .milestone-journey-card,
+[data-theme="dark"] .milestone-stat-box,
+[data-theme="dark"] .contact-card-container,
+[data-theme="dark"] .driver-profile-card{
+  background: #131B2C;
+  border-color: var(--border-soft);
+}
+
+[data-theme="dark"] .calc-segment-btn,
+[data-theme="dark"] .proximity-step-item,
+[data-theme="dark"] .driver-feed-msg,
+[data-theme="dark"] .env-metric-box{
+  background: #0E1626;
+  border-color: var(--border-soft);
+  color: var(--text-body);
+}
+
+[data-theme="dark"] .calc-results-panel{
+  background: linear-gradient(155deg, #0E1626, #131B2C);
+}
+
+[data-theme="dark"] .speed-bar-track{
+  background: #0E1626;
+}
+
 
 /* Scrollbar (webkit) */
 [data-theme="dark"] ::-webkit-scrollbar{ width: 10px; height:10px; }

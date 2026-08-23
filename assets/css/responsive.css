@@ -4,10 +4,14 @@
 
 img, svg{ max-width: 100%; height:auto; }
 
-/* ---- ≤1024px : tablet ---- */
+/* ---- ≤1024px : tablet / mobile ---- */
 @media (max-width: 1024px){
-  .main-nav{ display:none; }
-  .hamburger-btn{ display:flex; }
+  .main-nav{ display:none !important; }
+  .header-actions .icon-toggle,
+  .header-actions .btn-rtl-toggle,
+  .header-actions .btn-primary-custom,
+  .header-actions .btn-secondary-custom{ display:none !important; }
+  .hamburger-btn{ display:flex !important; }
   .hero-grid{ grid-template-columns: 1fr; }
   .hero-visual{ order:-1; max-width: 480px; margin-inline:auto; width:100%; }
   .feature-grid{ grid-template-columns: repeat(3, 1fr); }
@@ -77,8 +81,8 @@ img, svg{ max-width: 100%; height:auto; }
   .h-display{ font-size: 1.9rem; }
 }
 
-/* Utility: never allow accidental horizontal scroll */
-html, body{ max-width: 100vw; overflow-x: hidden; }
+/* Utility: never allow accidental horizontal scroll while keeping sticky fixed header working */
+html, body{ max-width: 100%; overflow-x: clip; }
 table{ width:100%; }
 
 /* ==========================================================================
@@ -90,6 +94,11 @@ table{ width:100%; }
   .bento-grid{ grid-template-columns: repeat(2, 1fr); }
   .auth-side{ display:none; }
   .auth-wrap{ grid-template-columns: 1fr; }
+  .lifecycle-steps-grid{ grid-template-columns: repeat(2, 1fr); }
+  .telematics-grid{ grid-template-columns: repeat(2, 1fr); }
+  .landmarks-grid{ grid-template-columns: repeat(2, 1fr); }
+  .impact-reviews-grid{ grid-template-columns: repeat(2, 1fr); }
+  .mission-vision-grid{ grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px){
@@ -116,11 +125,24 @@ table{ width:100%; }
   .compare-table td:first-child::before{ content:none; }
 
   .h-mega{ font-size: clamp(2rem, 8vw, 2.75rem); }
+
+  /* New sections mobile responsive */
+  .fare-estimator-grid{ grid-template-columns: 1fr; }
+  .lifecycle-steps-grid{ grid-template-columns: 1fr; }
+  .telematics-grid{ grid-template-columns: 1fr; }
+  .impact-hero-strip{ grid-template-columns: repeat(2, 1fr); }
+  .impact-reviews-grid{ grid-template-columns: 1fr; }
+  .landmarks-grid{ grid-template-columns: 1fr; }
+  .pool-creator-grid{ grid-template-columns: 1fr; }
+  .pool-form-row{ grid-template-columns: 1fr; }
+  .mission-vision-grid{ grid-template-columns: 1fr; }
 }
 
 @media (max-width: 465px){
   .flow-node{ font-size:0.85rem; padding: 12px 16px; }
   .side-info-card{ padding: 1.5rem; }
+  .impact-hero-strip{ grid-template-columns: 1fr; }
+  .lifecycle-header{ flex-direction: column; align-items: flex-start; }
 }
 
 /* ==========================================================================
@@ -134,3 +156,36 @@ table{ width:100%; }
   .stat-strip{ grid-template-columns: 1fr 1fr; padding: 20px; }
   .stat-strip .stat-item b{ font-size: 1.5rem; }
 }
+
+/* ==========================================================================
+   New Feature Sections Responsiveness (Gallery, Telemetry, Safety 3-Grid, Calc, Milestones)
+   ========================================================================== */
+@media (max-width: 1024px){
+  .transit-gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+  .telemetry-cockpit-grid{ grid-template-columns: repeat(2, 1fr); }
+  .safety-pillars-grid{ grid-template-columns: repeat(2, 1fr); }
+  .safety-pillars-grid .safety-pillar-card:last-child{ grid-column: span 2; }
+  .drivers-showcase-grid{ grid-template-columns: repeat(2, 1fr); }
+  .calc-grid{ grid-template-columns: 1fr; }
+  .milestones-track-grid{ grid-template-columns: repeat(2, 1fr); }
+  .milestone-stats-strip{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px){
+  .transit-gallery-grid{ grid-template-columns: 1fr; }
+  .telemetry-cockpit-grid{ grid-template-columns: 1fr; }
+  .safety-pillars-grid{ grid-template-columns: 1fr; }
+  .safety-pillars-grid .safety-pillar-card:last-child{ grid-column: span 1; }
+  .drivers-showcase-grid{ grid-template-columns: 1fr; }
+  .milestones-track-grid{ grid-template-columns: 1fr; }
+  .gallery-filter-bar{ justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
+  .gallery-filter-btn{ flex-shrink: 0; }
+}
+
+@media (max-width: 465px){
+  .calc-segmented{ grid-template-columns: 1fr; }
+  .milestone-stats-strip{ grid-template-columns: 1fr; }
+  .env-metrics-grid{ grid-template-columns: 1fr; }
+}
+
+

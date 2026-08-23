@@ -6,6 +6,7 @@
 <title>Live Bus Tracking — SafeRoute</title>
 <meta name="description" content="Follow the assigned bus route, view upcoming stops and check the latest journey status through the SafeRoute parent portal.">
 
+<link rel="icon" type="image/png" href="assets/image/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
@@ -55,9 +56,110 @@
         <div class="tracking-info-row"><span class="ti-label">ETA</span><span class="ti-value">08 min</span></div>
         <div class="tracking-info-row"><span class="ti-label">Route</span><span class="ti-value">Route 08</span></div>
         <div class="d-flex gap-2 flex-wrap mt-4">
-          <button type="button" class="btn-secondary-custom" style="color:#fff; border-color:rgba(255,255,255,0.5);" onclick="window.SafeRouteToast('Location refreshed.','bi-arrow-clockwise')">Refresh Location</button>
-          <button type="button" class="btn-secondary-custom" style="color:#fff; border-color:rgba(255,255,255,0.5);" onclick="window.SafeRouteToast('Simulating today\'s trip…','bi-play-circle')">Simulate Trip</button>
-          <a href="routes.html" class="btn-secondary-custom" style="color:#fff; border-color:rgba(255,255,255,0.5);">View Route</a>
+          <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Location refreshed.','bi-arrow-clockwise')">Refresh Location</button>
+          <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Simulating today\'s trip…','bi-play-circle')">Simulate Trip</button>
+          <a href="routes.html" class="btn-secondary-custom">View Route</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== LIVE ROUTE TELEMETRY & DISPATCH COCKPIT (NEW SECTION) ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Onboard IoT Telemetry</span>
+      <h2 class="h-section">Real-Time Vehicle Safety &amp; Sensor Telemetry.</h2>
+      <p class="lead-text">Bus 24 continuously broadcasts encrypted telemetry to the SafeRoute operations room every 5 seconds for complete journey transparency.</p>
+    </div>
+
+    <div class="telemetry-cockpit-grid" data-stagger="80">
+      <!-- Speed Radar & Governor -->
+      <div class="telemetry-widget-card" data-reveal="fade-up">
+        <div class="telemetry-widget-head">
+          <span class="telemetry-widget-title"><i class="bi bi-speedometer2"></i> Speed Radar</span>
+          <span class="telemetry-badge-live"><span class="pulse-dot"></span> Active</span>
+        </div>
+        <div class="speed-radar-display">
+          <span class="speed-number" id="liveSpeedNumber">34</span>
+          <span class="speed-unit">km/h</span>
+        </div>
+        <div class="speed-bar-track">
+          <div class="speed-bar-fill" id="liveSpeedBar" style="width: 85%;"></div>
+        </div>
+        <div class="telemetry-subnote">
+          <span>Governor Limit: <b>40 km/h</b></span>
+          <span style="color:var(--color-success);"><i class="bi bi-shield-fill-check"></i> Compliant</span>
+        </div>
+      </div>
+
+      <!-- Geofence Proximity Radar -->
+      <div class="telemetry-widget-card" data-reveal="fade-up">
+        <div class="telemetry-widget-head">
+          <span class="telemetry-widget-title"><i class="bi bi-geo-alt-fill"></i> Proximity Radar</span>
+          <span class="telemetry-badge-live"><span class="pulse-dot"></span> 0.8 km</span>
+        </div>
+        <div class="proximity-step-track">
+          <div class="proximity-step-item"><span>500m Outer Perimeter</span><i class="bi bi-check-circle-fill" style="color:var(--color-success);"></i></div>
+          <div class="proximity-step-item is-current"><span>250m Stop Approach</span><span class="spinner-grow spinner-grow-sm text-primary" style="width:12px;height:12px;"></span></div>
+          <div class="proximity-step-item"><span>Doorstep Curb Arrival</span><i class="bi bi-hourglass" style="color:var(--text-muted);"></i></div>
+        </div>
+        <div class="telemetry-subnote">
+          <span>Next: <b>Lakeview Apts.</b></span>
+          <span>ETA: <b>08 mins</b></span>
+        </div>
+      </div>
+
+      <!-- Driver & Attendant Feed -->
+      <div class="telemetry-widget-card" data-reveal="fade-up">
+        <div class="telemetry-widget-head">
+          <span class="telemetry-widget-title"><i class="bi bi-broadcast"></i> Dispatch Log</span>
+          <span class="telemetry-badge-live"><span class="pulse-dot"></span> Live</span>
+        </div>
+        <div class="driver-feed-box">
+          <div class="driver-feed-msg">
+            <div class="driver-feed-time">07:18 AM · Attendant Lakshmi</div>
+            <div>All students boarded &amp; seatbelts locked at Green Park.</div>
+          </div>
+          <div class="driver-feed-msg">
+            <div class="driver-feed-time">07:22 AM · Driver Murugan</div>
+            <div>Cleared Gandhipuram flyover without congestion.</div>
+          </div>
+        </div>
+        <div class="telemetry-subnote">
+          <span>2-Way Radio: <b>Connected</b></span>
+          <span style="color:var(--color-success);"><i class="bi bi-mic-fill"></i> HD Voice</span>
+        </div>
+      </div>
+
+      <!-- Environmental & Cabin Safety -->
+      <div class="telemetry-widget-card" data-reveal="fade-up">
+        <div class="telemetry-widget-head">
+          <span class="telemetry-widget-title"><i class="bi bi-shield-lock-fill"></i> Cabin Status</span>
+          <span class="telemetry-badge-live"><span class="pulse-dot"></span> Safe</span>
+        </div>
+        <div class="env-metrics-grid">
+          <div class="env-metric-box">
+            <b>22°C</b>
+            <span>AC Temp</span>
+          </div>
+          <div class="env-metric-box">
+            <b style="color:var(--color-success);">100%</b>
+            <span>Seatbelts</span>
+          </div>
+          <div class="env-metric-box">
+            <b>Locked</b>
+            <span>Door Interlock</span>
+          </div>
+          <div class="env-metric-box">
+            <b style="color:var(--color-primary);">1080p</b>
+            <span>AI CCTV</span>
+          </div>
+        </div>
+        <div class="telemetry-subnote">
+          <span>Central SOS Link: <b>Armed</b></span>
+          <span style="color:var(--color-success);"><i class="bi bi-circle-fill" style="font-size:7px;"></i> 0 Latency</span>
         </div>
       </div>
     </div>

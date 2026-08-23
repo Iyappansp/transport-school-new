@@ -6,6 +6,7 @@
 <title>Contact — SafeRoute School Transport</title>
 <meta name="description" content="Tell us your school, pickup area and preferred schedule. Our transport team can help identify suitable route options.">
 
+<link rel="icon" type="image/png" href="assets/image/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
@@ -20,9 +21,9 @@
 
 <header id="main-header" class="site-header"></header>
 
-<section class="page-hero">
+<section class="page-hero center">
   <div class="container-custom" data-reveal="fade-up">
-    <span class="eyebrow">Get In Touch</span>
+    <span class="eyebrow"><i class="bi bi-envelope-paper-fill"></i> Get In Touch</span>
     <h1 class="h-display">Let's Find the Right Transport Option for Your Child.</h1>
     <p class="lead-text mt-3">Tell us your school, pickup area and preferred schedule. Our transport team can help identify suitable route options.</p>
   </div>
@@ -30,44 +31,42 @@
 
 <section class="section pt-0">
   <div class="container-custom">
-    <div class="row g-4">
+    <div class="contact-card-container" data-reveal="scale-in">
+      <div class="contact-card-header text-center">
+        <span class="eyebrow mb-2"><i class="bi bi-chat-heart-fill"></i> Transport Enquiry</span>
+        <h2 class="h-section" style="font-size: clamp(1.4rem, 2.5vw, 1.9rem); margin-bottom: 8px;">Direct Transport Consultation</h2>
+        <p style="font-size: 0.92rem; color: var(--text-muted); max-width: 54ch; margin-inline: auto;">Submit your commute requirements below and our route coordinator will verify route availability within 24 hours.</p>
+      </div>
 
-      <div class="col-lg-4" data-reveal="fade-right">
-        <div class="side-info-card h-100">
-          <h4 style="color:#fff; font-size:1.05rem; margin-bottom:6px;">Transport Support</h4>
-          <div class="side-info-row"><i class="bi bi-telephone-fill"></i><div><b>+91 XXX XXX XXXX</b><span>Call transport support</span></div></div>
-          <div class="side-info-row"><i class="bi bi-envelope-fill"></i><div><b>support@example.com</b><span>Email us anytime</span></div></div>
-          <div class="side-info-row"><i class="bi bi-clock-fill"></i><div><b>Monday&ndash;Saturday</b><span>6:00 AM&ndash;7:00 PM</span></div></div>
+      <form class="js-demo-form" data-success="Your transport enquiry has been received. Our coordinator will contact you shortly.">
+        <div class="form-grid-2">
+          <div class="form-field"><label class="form-label-custom" for="cName">Parent Name <span class="text-danger">*</span></label><input required type="text" id="cName" class="form-control-custom" placeholder="Your full name"></div>
+          <div class="form-field"><label class="form-label-custom" for="cPhone">Phone Number <span class="text-danger">*</span></label><input required type="tel" id="cPhone" class="form-control-custom" placeholder="+91 98765 43210"></div>
+          <div class="form-field"><label class="form-label-custom" for="cEmail">Email Address <span class="text-danger">*</span></label><input required type="email" id="cEmail" class="form-control-custom" placeholder="you@example.com"></div>
+          <div class="form-field"><label class="form-label-custom" for="cStudent">Student Name</label><input type="text" id="cStudent" class="form-control-custom" placeholder="Student's full name"></div>
+          <div class="form-field"><label class="form-label-custom" for="cSchool">School Name</label><input type="text" id="cSchool" class="form-control-custom" placeholder="e.g. Green Valley Public School"></div>
+          <div class="form-field"><label class="form-label-custom" for="cArea">Pickup Area / Community</label><input type="text" id="cArea" class="form-control-custom" placeholder="e.g. Peelamedu / Lakeview Apts."></div>
         </div>
-      </div>
-
-      <div class="col-lg-8" data-reveal="fade-left">
-        <form class="js-demo-form" data-success="Your transport enquiry has been received.">
-          <div class="form-grid-2">
-            <div class="form-field"><label class="form-label-custom" for="cName">Parent Name</label><input required type="text" id="cName" class="form-control-custom" placeholder="Your full name"></div>
-            <div class="form-field"><label class="form-label-custom" for="cPhone">Phone</label><input required type="tel" id="cPhone" class="form-control-custom" placeholder="+91 XXX XXX XXXX"></div>
-            <div class="form-field"><label class="form-label-custom" for="cEmail">Email</label><input required type="email" id="cEmail" class="form-control-custom" placeholder="you@example.com"></div>
-            <div class="form-field"><label class="form-label-custom" for="cStudent">Student Name</label><input type="text" id="cStudent" class="form-control-custom" placeholder="Student's full name"></div>
-            <div class="form-field"><label class="form-label-custom" for="cSchool">School</label><input type="text" id="cSchool" class="form-control-custom" placeholder="e.g. Sample School"></div>
-            <div class="form-field"><label class="form-label-custom" for="cArea">Pickup Area</label><input type="text" id="cArea" class="form-control-custom" placeholder="e.g. Peelamedu"></div>
+        <div class="form-field">
+          <label class="form-label-custom" for="cRoute">Preferred Route</label>
+          <select id="cRoute" class="form-control-custom">
+            <option>Not sure yet (Help me choose)</option>
+            <option>Route 08 — Peelamedu &middot; Nava India &middot; Gandhipuram</option>
+            <option>Route 12 — RS Puram &middot; Saibaba Colony &middot; Thudiyalur</option>
+            <option>Route 17 — Saravanampatti &middot; Vilankurichi &middot; SITRA</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label-custom">Daily Travel Requirement</label>
+          <div class="pill-radio-group">
+            <input type="radio" name="requirement" id="reqMorning" class="pill-radio" checked><label for="reqMorning" class="pill-radio-label"><i class="bi bi-sun-fill me-1"></i> Morning Pickup</label>
+            <input type="radio" name="requirement" id="reqAfternoon" class="pill-radio"><label for="reqAfternoon" class="pill-radio-label"><i class="bi bi-sunset-fill me-1"></i> Afternoon Drop</label>
+            <input type="radio" name="requirement" id="reqBoth" class="pill-radio"><label for="reqBoth" class="pill-radio-label"><i class="bi bi-arrow-repeat me-1"></i> Both (Round Trip)</label>
           </div>
-          <div class="form-field">
-            <label class="form-label-custom" for="cRoute">Preferred Route</label>
-            <select id="cRoute" class="form-control-custom"><option>Not sure yet</option><option>Route 08</option><option>Route 12</option><option>Route 17</option></select>
-          </div>
-          <div class="form-field">
-            <label class="form-label-custom">Requirement</label>
-            <div class="pill-radio-group">
-              <input type="radio" name="requirement" id="reqMorning" class="pill-radio" checked><label for="reqMorning" class="pill-radio-label">Morning Pickup</label>
-              <input type="radio" name="requirement" id="reqAfternoon" class="pill-radio"><label for="reqAfternoon" class="pill-radio-label">Afternoon Drop</label>
-              <input type="radio" name="requirement" id="reqBoth" class="pill-radio"><label for="reqBoth" class="pill-radio-label">Both</label>
-            </div>
-          </div>
-          <div class="form-field"><label class="form-label-custom" for="cMessage">Message</label><textarea id="cMessage" class="form-control-custom" placeholder="Anything else we should know?"></textarea></div>
-          <button type="submit" class="btn-primary-custom">Send Transport Enquiry</button>
-        </form>
-      </div>
-
+        </div>
+        <div class="form-field"><label class="form-label-custom" for="cMessage">Additional Notes or Special Requests</label><textarea id="cMessage" class="form-control-custom" rows="3" placeholder="Tell us about sibling enrollments, landmark cues, or timing preferences..."></textarea></div>
+        <button type="submit" class="btn-primary-custom w-100 justify-content-center mt-2 py-3" style="font-size: 1rem;">Send Transport Enquiry <i class="bi bi-send-fill ms-2"></i></button>
+      </form>
     </div>
   </div>
 </section>

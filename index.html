@@ -6,6 +6,7 @@
 <title>SafeRoute — Every School Journey. Visible, Safe, Connected.</title>
 <meta name="description" content="SafeRoute is a school transport platform giving parents route visibility, live bus tracking, boarding updates and simple transport subscriptions.">
 
+<link rel="icon" type="image/png" href="assets/image/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
@@ -231,6 +232,92 @@
   </div>
 </section>
 
+<!-- ============================== LIVE JOURNEY LIFECYCLE (NEW SECTION 1) ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Interactive Journey Flow</span>
+      <h2 class="h-section">Experience the SafeRoute Daily Commute.</h2>
+      <p class="lead-text">Explore how real-time telematics, RFID tap updates, and campus geofencing keep parents informed from departure to doorstep.</p>
+    </div>
+
+    <div class="live-lifecycle-card" data-reveal="fade-up">
+      <div class="lifecycle-header">
+        <div>
+          <h3 style="font-size:1.15rem; font-weight:600; color:var(--text-heading); margin-bottom:4px;">Active Route 08: Green Park ↔ Green Valley School</h3>
+          <p style="font-size:0.84rem; color:var(--text-muted);">Assigned Vehicle: Bus 24 &middot; Driver: S. Murugan &middot; Attendant: Lakshmi</p>
+        </div>
+        <div class="lifecycle-tabs">
+          <button type="button" class="lifecycle-tab-btn active" data-lifecycle-tab="morning"><i class="bi bi-sun me-1"></i> Morning Pickup</button>
+          <button type="button" class="lifecycle-tab-btn" data-lifecycle-tab="evening"><i class="bi bi-moon-stars me-1"></i> Afternoon Return</button>
+        </div>
+      </div>
+
+      <div class="lifecycle-steps-grid" data-stagger="80">
+        <div class="lifecycle-step-card is-live" data-reveal="fade-up">
+          <div class="lifecycle-card-top">
+            <span class="lifecycle-icon"><i class="bi bi-house-heart"></i></span>
+            <span class="lifecycle-badge"><i class="bi bi-check2"></i> On Time</span>
+          </div>
+          <div class="lifecycle-card-body">
+            <h4>1. Stop Arrival</h4>
+            <p>Bus 24 arrives at Green Park stop.</p>
+          </div>
+          <div class="lifecycle-card-foot">
+            <span>Scheduled</span>
+            <b>07:15 AM</b>
+          </div>
+        </div>
+
+        <div class="lifecycle-step-card is-live" data-reveal="fade-up">
+          <div class="lifecycle-card-top">
+            <span class="lifecycle-icon"><i class="bi bi-upc-scan"></i></span>
+            <span class="lifecycle-badge"><i class="bi bi-broadcast"></i> Confirmed</span>
+          </div>
+          <div class="lifecycle-card-body">
+            <h4>2. RFID Boarded</h4>
+            <p>Aarav tapped card. Parent notified.</p>
+          </div>
+          <div class="lifecycle-card-foot">
+            <span>Boarding Log</span>
+            <b>07:18 AM</b>
+          </div>
+        </div>
+
+        <div class="lifecycle-step-card" data-reveal="fade-up">
+          <div class="lifecycle-card-top">
+            <span class="lifecycle-icon"><i class="bi bi-signpost-2-fill"></i></span>
+            <span class="lifecycle-badge"><i class="bi bi-speedometer2"></i> Speed 34 km/h</span>
+          </div>
+          <div class="lifecycle-card-body">
+            <h4>3. En Route</h4>
+            <p>Crossing Central Avenue flyover.</p>
+          </div>
+          <div class="lifecycle-card-foot">
+            <span>Live Telemetry</span>
+            <b>07:42 AM</b>
+          </div>
+        </div>
+
+        <div class="lifecycle-step-card" data-reveal="fade-up">
+          <div class="lifecycle-card-top">
+            <span class="lifecycle-icon"><i class="bi bi-building-check"></i></span>
+            <span class="lifecycle-badge"><i class="bi bi-geo-alt-fill"></i> Safely Reached</span>
+          </div>
+          <div class="lifecycle-card-body">
+            <h4>4. Campus Arrival</h4>
+            <p>Handover to school gate warden.</p>
+          </div>
+          <div class="lifecycle-card-foot">
+            <span>Gate Geofence</span>
+            <b>08:05 AM</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================== ROUTES ============================== -->
 <section class="section">
   <div class="container-custom">
@@ -404,6 +491,73 @@
         <div class="dash-tile"><div class="dt-label">School</div><div class="dt-value">Confirmed</div><div class="dt-sub" style="color:var(--color-success);">08:05 AM</div></div>
         <div class="dash-tile"><div class="dt-label">Afternoon</div><div class="dt-value">Upcoming</div><div class="dt-sub" style="color:var(--text-muted);">04:02 PM</div></div>
         <div class="dash-tile"><div class="dt-label">Subscription</div><div class="dt-value">Monthly Plus</div><div class="dt-sub" style="color:var(--color-success);">Active</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FARE & ROUTE ESTIMATOR (NEW SECTION 2) ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Cost &amp; Route Transparency</span>
+      <h2 class="h-section">Instant School Transport &amp; Fare Estimator.</h2>
+      <p class="lead-text">Calculate your estimated monthly transport fare, assigned bus fleet type, and estimated travel duration based on your neighborhood.</p>
+    </div>
+
+    <div class="fare-estimator-card" id="fareEstimatorWidget" data-reveal="scale-in">
+      <div class="fare-estimator-grid">
+        <div class="fare-form-wrap">
+          <div class="fare-field-group">
+            <label for="calcZoneSelect"><i class="bi bi-geo-alt-fill text-primary me-1"></i> Select Pickup Zone</label>
+            <select class="form-control-custom" id="calcZoneSelect" aria-label="Select pickup zone">
+              <option value="peelamedu" selected>Peelamedu &middot; Route 08</option>
+              <option value="gandhipuram">Gandhipuram &middot; Route 12</option>
+              <option value="rspuram">RS Puram &middot; Route 17</option>
+              <option value="saibaba">Saibaba Colony &middot; Route 05</option>
+            </select>
+          </div>
+
+          <div class="fare-field-group">
+            <label for="calcGradeSelect"><i class="bi bi-mortarboard-fill text-primary me-1"></i> Student Grade Level</label>
+            <select class="form-control-custom" id="calcGradeSelect" aria-label="Select student grade level">
+              <option value="primary" selected>Primary (Grades 1–5) — Dedicated Attendant Included</option>
+              <option value="middle">Middle School (Grades 6–8)</option>
+              <option value="high">High School (Grades 9–12)</option>
+            </select>
+          </div>
+
+          <div class="fare-field-group">
+            <label><i class="bi bi-arrow-left-right text-primary me-1"></i> Commute Frequency</label>
+            <div class="fare-options-pills">
+              <button type="button" class="fare-pill-opt active" data-freq="two-way">Two-Way (Morning + Afternoon)</button>
+              <button type="button" class="fare-pill-opt" data-freq="one-way">One-Way (Morning or Drop Only)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="fare-summary-panel" data-reveal="fade-left">
+          <div>
+            <span style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--color-primary);">Estimated Transport Fee</span>
+            <div class="fare-price-tag mt-1" id="calcResultPrice">₹2,400<span>/month</span></div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Includes GPS, RFID alerts &amp; insurance</p>
+          </div>
+
+          <div class="fare-summary-item">
+            <span>Assigned Route</span>
+            <b id="calcResultRoute">Route 08 (Peelamedu)</b>
+          </div>
+          <div class="fare-summary-item">
+            <span>Vehicle Type</span>
+            <b id="calcResultBus">Bus 24 (42-Seater AC)</b>
+          </div>
+          <div class="fare-summary-item">
+            <span>Avg. Travel Time</span>
+            <b id="calcResultEta">18–22 min</b>
+          </div>
+
+          <a href="plans.html" class="btn-primary-custom w-100 justify-content-center mt-2">Choose This Route <i class="bi bi-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </div>

@@ -32,3 +32,41 @@
 [dir="rtl"] .tracking-map svg text{ transform: scaleX(-1); }
 
 [dir="rtl"] .mobile-panel-close{ align-self:flex-start; }
+
+/* New Sections RTL Mirroring */
+[dir="rtl"] .lifecycle-card-top,
+[dir="rtl"] .lifecycle-card-foot,
+[dir="rtl"] .landmark-card-head,
+[dir="rtl"] .landmark-footer,
+[dir="rtl"] .fare-summary-item,
+[dir="rtl"] .impact-parent-meta,
+[dir="rtl"] .telematics-top,
+[dir="rtl"] .telematics-metric{
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .pool-info-item{
+  text-align: right;
+}
+[dir="rtl"] .saferoute-matrix-table th,
+[dir="rtl"] .saferoute-matrix-table td{
+  text-align: right;
+}
+[dir="rtl"] .saferoute-matrix-table th.highlight-col,
+[dir="rtl"] .saferoute-matrix-table td.highlight-col{
+  text-align: center;
+}
+
+[dir="rtl"] .telemetry-widget-head,
+[dir="rtl"] .telemetry-subnote,
+[dir="rtl"] .proximity-step-item,
+[dir="rtl"] .pillar-meta-strip,
+[dir="rtl"] .calc-label,
+[dir="rtl"] .calc-stat-row{
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .driver-feed-msg{
+  border-inline-start: none;
+  border-inline-end: 3px solid var(--color-primary);
+  text-align: right;
+}
+

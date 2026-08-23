@@ -6,6 +6,7 @@
 <title>Routes — SafeRoute School Transport</title>
 <meta name="description" content="Explore pickup zones, sample routes and estimated timings for SafeRoute school transport.">
 
+<link rel="icon" type="image/png" href="assets/image/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
@@ -96,8 +97,169 @@
   </div>
 </section>
 
-<!-- ============================== ROUTE ASSIGNMENT PROCESS ============================== -->
+<!-- ============================== LANDMARK DIRECTORY (NEW SECTION 1) ============================== -->
 <section class="section section-alt">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Designated Pickup Points</span>
+      <h2 class="h-section">Explore Stops &amp; Landmarks by Neighborhood.</h2>
+      <p class="lead-text">Browse designated bus stops across city corridors with morning pickup windows, return drop timings, and walking radiuses.</p>
+    </div>
+
+    <!-- Zone Nav Bar -->
+    <div class="zone-nav-bar" data-reveal="fade-up">
+      <button type="button" class="zone-nav-btn active" data-zone-nav="all">All Stops (6)</button>
+      <button type="button" class="zone-nav-btn" data-zone-nav="peelamedu">Peelamedu</button>
+      <button type="button" class="zone-nav-btn" data-zone-nav="gandhipuram">Gandhipuram</button>
+      <button type="button" class="zone-nav-btn" data-zone-nav="rspuram">RS Puram</button>
+      <button type="button" class="zone-nav-btn" data-zone-nav="saibaba">Saibaba Colony</button>
+    </div>
+
+    <!-- Landmarks Grid -->
+    <div class="landmarks-grid" data-stagger="80">
+      <div class="landmark-card" data-zone="peelamedu" data-reveal="fade-up">
+        <div class="landmark-card-head">
+          <span class="landmark-tag">Route 08 &middot; Stop 01</span>
+          <span style="font-size:0.75rem; color:var(--color-success); font-weight:600;"><i class="bi bi-shield-check"></i> Safe Pedestrian Zone</span>
+        </div>
+        <h4>Green Park Main Gate</h4>
+        <p style="font-size:0.84rem; color:var(--text-muted);">Opposite Green Park Community Hall &middot; 2 min walk from Towers A-E</p>
+        <div class="landmark-schedule">
+          <div class="schedule-item">
+            <span>Morning Pickup</span>
+            <b>07:15 AM</b>
+          </div>
+          <div class="schedule-item">
+            <span>Evening Return</span>
+            <b>04:02 PM</b>
+          </div>
+        </div>
+        <div class="landmark-footer">
+          <span>Bus 24 (42-Seater AC)</span>
+          <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal" data-route-trigger data-route="Route 08 - Stop 01 (Green Park)" data-pickup="Peelamedu" data-first="07:15 AM" data-arrival="08:05 AM" data-stops="12" data-service="Morning + Afternoon" data-availability="Available">Details &rarr;</button>
+        </div>
+      </div>
+
+      <div class="landmark-card" data-zone="peelamedu" data-reveal="fade-up">
+        <div class="landmark-card-head">
+          <span class="landmark-tag">Route 08 &middot; Stop 04</span>
+          <span style="font-size:0.75rem; color:var(--color-success); font-weight:600;"><i class="bi bi-shield-check"></i> Zebra Crossing</span>
+        </div>
+        <h4>Lakeview Apartments Circle</h4>
+        <p style="font-size:0.84rem; color:var(--text-muted);">Corner of Lakeview 2nd Cross &middot; Safe curb boarding zone</p>
+        <div class="landmark-schedule">
+          <div class="schedule-item">
+            <span>Morning Pickup</span>
+            <b>07:28 AM</b>
+          </div>
+          <div class="schedule-item">
+            <span>Evening Return</span>
+            <b>03:48 PM</b>
+          </div>
+        </div>
+        <div class="landmark-footer">
+          <span>Bus 24 (42-Seater AC)</span>
+          <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal" data-route-trigger data-route="Route 08 - Stop 04 (Lakeview)" data-pickup="Peelamedu" data-first="07:28 AM" data-arrival="08:05 AM" data-stops="12" data-service="Morning + Afternoon" data-availability="Available">Details &rarr;</button>
+        </div>
+      </div>
+
+      <div class="landmark-card" data-zone="gandhipuram" data-reveal="fade-up">
+        <div class="landmark-card-head">
+          <span class="landmark-tag">Route 12 &middot; Stop 02</span>
+          <span style="font-size:0.75rem; color:var(--color-secondary); font-weight:600;"><i class="bi bi-clock-history"></i> High Demand</span>
+        </div>
+        <h4>Cross Cut Road Junction</h4>
+        <p style="font-size:0.84rem; color:var(--text-muted);">Opposite Central Bank &middot; Covered transit shelter with benches</p>
+        <div class="landmark-schedule">
+          <div class="schedule-item">
+            <span>Morning Pickup</span>
+            <b>07:05 AM</b>
+          </div>
+          <div class="schedule-item">
+            <span>Evening Return</span>
+            <b>04:15 PM</b>
+          </div>
+        </div>
+        <div class="landmark-footer">
+          <span>Bus 18 (42-Seater AC)</span>
+          <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal" data-route-trigger data-route="Route 12 - Stop 02 (Cross Cut Rd)" data-pickup="Gandhipuram" data-first="07:05 AM" data-arrival="08:00 AM" data-stops="10" data-service="Morning + Afternoon" data-availability="Limited Availability">Details &rarr;</button>
+        </div>
+      </div>
+
+      <div class="landmark-card" data-zone="rspuram" data-reveal="fade-up">
+        <div class="landmark-card-head">
+          <span class="landmark-tag">Route 17 &middot; Stop 01</span>
+          <span style="font-size:0.75rem; color:var(--color-success); font-weight:600;"><i class="bi bi-shield-check"></i> Speed Bump Zone</span>
+        </div>
+        <h4>DB Road Flower Market</h4>
+        <p style="font-size:0.84rem; color:var(--text-muted);">Near Post Office Square &middot; Dedicated attendant assisted stop</p>
+        <div class="landmark-schedule">
+          <div class="schedule-item">
+            <span>Morning Pickup</span>
+            <b>07:20 AM</b>
+          </div>
+          <div class="schedule-item">
+            <span>Evening Return</span>
+            <b>03:55 PM</b>
+          </div>
+        </div>
+        <div class="landmark-footer">
+          <span>Bus 09 (32-Seater AC)</span>
+          <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal" data-route-trigger data-route="Route 17 - Stop 01 (DB Road)" data-pickup="RS Puram" data-first="07:20 AM" data-arrival="08:10 AM" data-stops="14" data-service="Morning + Afternoon" data-availability="Available">Details &rarr;</button>
+        </div>
+      </div>
+
+      <div class="landmark-card" data-zone="saibaba" data-reveal="fade-up">
+        <div class="landmark-card-head">
+          <span class="landmark-tag">Route 05 &middot; Stop 03</span>
+          <span style="font-size:0.75rem; color:var(--color-success); font-weight:600;"><i class="bi bi-shield-check"></i> Residential Gate</span>
+        </div>
+        <h4>NSR Road Colony Arch</h4>
+        <p style="font-size:0.84rem; color:var(--text-muted);">At Saibaba Temple Arch &middot; Wide turnaround bay for child safety</p>
+        <div class="landmark-schedule">
+          <div class="schedule-item">
+            <span>Morning Pickup</span>
+            <b>07:10 AM</b>
+          </div>
+          <div class="schedule-item">
+            <span>Evening Return</span>
+            <b>04:10 PM</b>
+          </div>
+        </div>
+        <div class="landmark-footer">
+          <span>Bus 14 (42-Seater AC)</span>
+          <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal" data-route-trigger data-route="Route 05 - Stop 03 (NSR Road)" data-pickup="Saibaba Colony" data-first="07:10 AM" data-arrival="08:00 AM" data-stops="11" data-service="Morning + Afternoon" data-availability="Available">Details &rarr;</button>
+        </div>
+      </div>
+
+      <div class="landmark-card" data-zone="rspuram" data-reveal="fade-up">
+        <div class="landmark-card-head">
+          <span class="landmark-tag">Route 17 &middot; Stop 06</span>
+          <span style="font-size:0.75rem; color:var(--color-success); font-weight:600;"><i class="bi bi-shield-check"></i> Safe Drop Bay</span>
+        </div>
+        <h4>Thiruvenkatasamy West</h4>
+        <p style="font-size:0.84rem; color:var(--text-muted);">Opposite Corporation Park &middot; Low traffic pickup point</p>
+        <div class="landmark-schedule">
+          <div class="schedule-item">
+            <span>Morning Pickup</span>
+            <b>07:35 AM</b>
+          </div>
+          <div class="schedule-item">
+            <span>Evening Return</span>
+            <b>03:40 PM</b>
+          </div>
+        </div>
+        <div class="landmark-footer">
+          <span>Bus 09 (32-Seater AC)</span>
+          <button type="button" class="btn-ghost-custom" data-bs-toggle="modal" data-bs-target="#routeModal" data-route-trigger data-route="Route 17 - Stop 06 (TV Samy Rd)" data-pickup="RS Puram" data-first="07:35 AM" data-arrival="08:10 AM" data-stops="14" data-service="Morning + Afternoon" data-availability="Available">Details &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== ROUTE ASSIGNMENT PROCESS ============================== -->
+<section class="section">
   <div class="container-custom">
     <div class="section-head center" data-reveal="fade-up">
       <h2 class="h-section">How Route Assignment Works.</h2>
@@ -108,6 +270,86 @@
       <div class="journey-step" data-reveal="fade-up"><h4>Review Routes</h4><p style="font-size:0.85rem; color:var(--text-muted);">Compare matching route options.</p></div>
       <div class="journey-step" data-reveal="fade-up"><h4>Submit Request</h4><p style="font-size:0.85rem; color:var(--text-muted);">Send your preferred route request.</p></div>
       <div class="journey-step" data-reveal="fade-up"><h4>Receive Confirmation</h4><p style="font-size:0.85rem; color:var(--text-muted);">Get your assigned route and stop.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== NEIGHBORHOOD ROUTE POOLING (NEW SECTION 2) ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="pool-creator-card" data-reveal="scale-in">
+      <div class="pool-creator-grid">
+        <div>
+          <span class="eyebrow">Route Expansion Program</span>
+          <h2 class="h-section" style="font-size:clamp(1.5rem, 2.8vw, 2.1rem);">Request a New Stop in Your Apartment or Layout.</h2>
+          <p class="lead-text mt-2" style="font-size:0.95rem;">Are multiple families in your community looking for reliable school transport? Register your neighborhood interest. Once 5 students in your area join, SafeRoute assigns a dedicated doorstep stop.</p>
+
+          <div class="pool-info-list">
+            <div class="pool-info-item">
+              <span class="pool-info-icon"><i class="bi bi-people-fill"></i></span>
+              <div>
+                <h5>5-Student Neighborhood Threshold</h5>
+                <p>Gather neighbors in your apartment building to trigger an automatic route routing expansion.</p>
+              </div>
+            </div>
+
+            <div class="pool-info-item">
+              <span class="pool-info-icon"><i class="bi bi-pin-map-fill"></i></span>
+              <div>
+                <h5>Doorstep Gated Community Stops</h5>
+                <p>Buses come right to your society security gate without requiring students to cross major streets.</p>
+              </div>
+            </div>
+
+            <div class="pool-info-item">
+              <span class="pool-info-icon"><i class="bi bi-tag-fill"></i></span>
+              <div>
+                <h5>Community Discount Benefit</h5>
+                <p>Receive up to 10% off annual subscription fees when 5 or more students enroll from one society.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:var(--surface-page); padding:clamp(1.5rem, 3vw, 2rem); border-radius:var(--radius-md); border:1px solid var(--border-soft);" data-reveal="fade-left">
+          <h4 style="font-size:1.1rem; font-weight:600; color:var(--text-heading); margin-bottom:6px;">Register Route Interest</h4>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:16px;">We will match you with nearby families and notify you when a route opens.</p>
+
+          <form id="routePoolForm" class="pool-form">
+            <div class="pool-form-group">
+              <label for="poolParentName" style="font-size:0.82rem; font-weight:600; color:var(--text-heading); margin-bottom:4px; display:block;">Parent Name</label>
+              <input type="text" id="poolParentName" class="form-control-custom" placeholder="e.g. Meera S." required>
+            </div>
+
+            <div class="pool-form-row">
+              <div>
+                <label for="poolPhoneInput" style="font-size:0.82rem; font-weight:600; color:var(--text-heading); margin-bottom:4px; display:block;">Phone Number</label>
+                <input type="tel" id="poolPhoneInput" class="form-control-custom" placeholder="+91 98765..." required>
+              </div>
+              <div>
+                <label for="poolStudentsCount" style="font-size:0.82rem; font-weight:600; color:var(--text-heading); margin-bottom:4px; display:block;">No. of Students</label>
+                <select id="poolStudentsCount" class="form-control-custom">
+                  <option>1 Student</option>
+                  <option selected>2–4 Students (Neighbors)</option>
+                  <option>5+ Students (Society Group)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pool-form-group">
+              <label for="poolAreaInput" style="font-size:0.82rem; font-weight:600; color:var(--text-heading); margin-bottom:4px; display:block;">Apartment / Layout / Area</label>
+              <input type="text" id="poolAreaInput" class="form-control-custom" placeholder="e.g. Palm Meadows, Race Course" required>
+            </div>
+
+            <div class="pool-form-group">
+              <label for="poolSchoolInput" style="font-size:0.82rem; font-weight:600; color:var(--text-heading); margin-bottom:4px; display:block;">Target School</label>
+              <input type="text" id="poolSchoolInput" class="form-control-custom" placeholder="e.g. Green Valley School" required>
+            </div>
+
+            <button type="submit" class="btn-primary-custom w-100 justify-content-center mt-2">Submit Route Interest <i class="bi bi-send-fill"></i></button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>

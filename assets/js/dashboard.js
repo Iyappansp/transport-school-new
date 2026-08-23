@@ -181,15 +181,96 @@
       });
     }
 
-    /* RTL label sync for dashboard topbar */
-    function syncRtl() {
-      var lbl = document.getElementById('rtlLabel');
-      if (lbl) lbl.textContent = document.documentElement.getAttribute('dir') === 'rtl' ? 'AR' : 'EN';
+    /* ------------------------------------------------------------------
+       5. LOGOUT CONFIRMATION MODAL
+    ------------------------------------------------------------------ */
+    function initLogoutModal() {
+      var logoutBtn = document.getElementById("dashLogoutBtn");
+      var modal = document.getElementById("logoutModal");
+      var scrimEl = document.getElementById("logoutScrim");
+      var cancelBtn = document.getElementById("logoutCancelBtn");
+      var confirmBtn = document.getElementById("logoutConfirmBtn");
+
+      if (!logoutBtn || !modal) return;
+
+      function openModal() {
+        modal.classList.add("is-open");
+        if (scrimEl) scrimEl.classList.add("is-open");
+        document.body.classList.add("nav-locked");
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        if (scrimEl) scrimEl.classList.remove("is-open");
+        document.body.classList.remove("nav-locked");
+      }
+
+      logoutBtn.addEventListener("click", openModal);
+      if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+      if (scrimEl) scrimEl.addEventListener("click", closeModal);
+      if (confirmBtn) {
+        confirmBtn.addEventListener("click", function () {
+          window.location.href = "../index.html";
+        });
+      }
+
+      window.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
     }
+
+    /* RTL & Theme sync for dashboard topbar and sidebar */
+    function syncThemeIcons() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'light';
+      document.querySelectorAll('.theme-toggle-btn i').forEach(function (icon) {
+        icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
+      });
+    }
+
+    function syncRtl() {
+      var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+      document.querySelectorAll('#rtlLabel, .rtl-label').forEach(function (lbl) {
+        lbl.textContent = isRtl ? 'LTR' : 'RTL';
+      });
+      document.querySelectorAll('#rtlToggle, #sidebarRtlToggle, .btn-rtl-toggle, .rtl-toggle-btn').forEach(function (btn) {
+        btn.classList.toggle('is-active', isRtl);
+      });
+    }
+
+    function toggleTheme() {
+      if (window.SafeRoutePrefs) {
+        window.SafeRoutePrefs.toggleTheme();
+      } else {
+        var curr = document.documentElement.getAttribute('data-theme') || 'light';
+        var next = curr === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('saferoute-theme', next);
+      }
+      syncThemeIcons();
+    }
+
+    function toggleRtl() {
+      if (window.SafeRoutePrefs) {
+        window.SafeRoutePrefs.toggleDir();
+      } else {
+        var curr = document.documentElement.getAttribute('dir') || 'ltr';
+        var next = curr === 'rtl' ? 'ltr' : 'rtl';
+        document.documentElement.setAttribute('dir', next);
+        localStorage.setItem('saferoute-dir', next);
+      }
+      syncRtl();
+    }
+
+    initLogoutModal();
     syncRtl();
-    var rtlBtn = document.getElementById('rtlToggle');
-    if (rtlBtn) rtlBtn.addEventListener('click', function () { window.SafeRoutePrefs && window.SafeRoutePrefs.toggleDir(); syncRtl(); });
-    var themeBtn = document.getElementById('themeToggle');
-    if (themeBtn) themeBtn.addEventListener('click', function () { window.SafeRoutePrefs && window.SafeRoutePrefs.toggleTheme(); });
+    syncThemeIcons();
+
+    document.querySelectorAll('#rtlToggle, #sidebarRtlToggle, .btn-rtl-toggle, .rtl-toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', toggleRtl);
+    });
+
+    document.querySelectorAll('#themeToggle, #sidebarThemeToggle, .theme-toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', toggleTheme);
+    });
   });
 })();

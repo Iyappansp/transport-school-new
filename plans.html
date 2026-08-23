@@ -6,6 +6,7 @@
 <title>Transport Plans — SafeRoute</title>
 <meta name="description" content="Choose a transport plan based on your route, school schedule and required service period.">
 
+<link rel="icon" type="image/png" href="assets/image/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
@@ -100,6 +101,87 @@
           <tr><td data-label="Feature">Priority Support</td><td data-label="Standard"><i class="bi bi-dash-circle"></i></td><td data-label="Plus"><i class="bi bi-check-circle-fill"></i></td><td data-label="Full-Year"><i class="bi bi-dash-circle"></i></td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== INTERACTIVE ROUTE COST CALCULATOR (NEW SECTION) ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow">Interactive Estimator</span>
+      <h2 class="h-section">Calculate Your Custom Route Cost.</h2>
+      <p class="lead-text">Select your student count, commute distance zone, and billing frequency to view instant transparent pricing with automated sibling discounts.</p>
+    </div>
+
+    <div class="calc-container-card" id="plansCalculator" data-reveal="scale-in">
+      <div class="calc-grid">
+        <!-- Controls Column -->
+        <div class="calc-controls">
+          <div class="calc-group">
+            <div class="calc-label">
+              <span>Number of Enrolling Students</span>
+              <span class="calc-sublabel"><i class="bi bi-tag-fill"></i> Up to 15% Sibling Discount</span>
+            </div>
+            <div class="calc-segmented">
+              <button type="button" class="calc-segment-btn active" data-calc-children="1">1 Student</button>
+              <button type="button" class="calc-segment-btn" data-calc-children="2">2 Students <span style="font-size:0.7rem; color:var(--color-primary); font-weight:700;">(-10%)</span></button>
+              <button type="button" class="calc-segment-btn" data-calc-children="3">3+ Students <span style="font-size:0.7rem; color:var(--color-primary); font-weight:700;">(-15%)</span></button>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <div class="calc-label">
+              <span>Home-to-School Distance Corridor</span>
+              <span class="calc-sublabel">Zone Tier</span>
+            </div>
+            <div class="calc-segmented">
+              <button type="button" class="calc-segment-btn active" data-calc-zone="1">Zone 1 (&lt; 5 km)</button>
+              <button type="button" class="calc-segment-btn" data-calc-zone="2">Zone 2 (5–10 km)</button>
+              <button type="button" class="calc-segment-btn" data-calc-zone="3">Zone 3 (10–18 km)</button>
+            </div>
+          </div>
+
+          <div class="calc-group" style="margin-bottom:0;">
+            <div class="calc-label">
+              <span>Billing Tenure</span>
+              <span class="calc-sublabel" style="color:var(--color-success);"><i class="bi bi-gift-fill"></i> Save 2 Months</span>
+            </div>
+            <div class="calc-segmented" style="grid-template-columns: 1fr 1fr;">
+              <button type="button" class="calc-segment-btn active" data-calc-tenure="monthly">Monthly Recurring</button>
+              <button type="button" class="calc-segment-btn" data-calc-tenure="annual">Academic Year (Save 15%)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Column -->
+        <div class="calc-results-panel">
+          <div class="calc-stat-row">
+            <span>Base Route Rate:</span>
+            <b id="calcBaseRow">₹2,400 / mo</b>
+          </div>
+          <div class="calc-stat-row">
+            <span>Multi-Sibling Discount:</span>
+            <b id="calcDiscountRow" style="color:var(--color-success);">None (1 Student)</b>
+          </div>
+          <div class="calc-stat-row">
+            <span>Term Savings:</span>
+            <b id="calcSavingsRow" style="color:var(--color-primary);">Available on Annual Plan</b>
+          </div>
+          <div class="calc-stat-row">
+            <span>All Safety Features:</span>
+            <b style="color:var(--color-success);"><i class="bi bi-shield-fill-check"></i> 100% Included</b>
+          </div>
+
+          <div class="calc-total-box">
+            <div class="calc-total-label" id="calcTotalTenureLabel">Monthly Total</div>
+            <div class="calc-total-amount" id="calcTotalAmount">₹2,400</div>
+            <div class="calc-total-sub"><i class="bi bi-check-circle-fill"></i> All taxes &amp; RFID hardware included</div>
+          </div>
+
+          <button type="button" class="btn-secondary-custom w-100 justify-content-center" data-bs-toggle="modal" data-bs-target="#planModal" data-plan-trigger data-plan="Custom Estimated Plan">Lock In Rate &amp; Request Route <i class="bi bi-arrow-right"></i></button>
+        </div>
+      </div>
     </div>
   </div>
 </section>

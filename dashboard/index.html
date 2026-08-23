@@ -9,13 +9,13 @@
     content="Track your child's school bus in real time, view boarding confirmations, manage your transport subscription and download receipts.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://saferoute.example.com/dashboard/">
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%23155EEF%22/><path d=%22M5 15V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7%22 stroke=%22white%22 stroke-width=%222%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+  <link rel="icon" type="image/png" href="../assets/image/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../assets/css/dashboard.css">
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
@@ -31,21 +31,7 @@
     <aside class="dash-sidebar" id="dashSidebar" aria-label="Dashboard navigation">
       <div class="dash-sidebar-head">
         <a class="brand" href="../index.html" aria-label="SafeRoute home">
-          <span class="brand-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M4 16V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9" />
-              <path d="M4 16h16v1.5a1 1 0 0 1-1 1h-1" />
-              <path d="M6 18.5a1 1 0 0 1-1-1V16" />
-              <circle cx="8" cy="18.5" r="1.6" />
-              <circle cx="16" cy="18.5" r="1.6" />
-              <path d="M4 11h16M9 7v4M15 7v4" />
-            </svg>
-          </span>
-          <span class="brand-text">
-            <span class="brand-name">SafeRoute</span>
-            <span class="brand-sub">Parent Portal</span>
-          </span>
+          <img src="../assets/image/logo1.png" alt="SafeRoute Logo" class="brand-logo-img">
         </a>
       </div>
 
@@ -128,14 +114,19 @@
       </nav>
 
       <div class="dash-sidebar-foot">
-        <a class="dash-nav-link" href="../index.html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-            <path d="M16 17l5-5-5-5M21 12H9" />
-          </svg>
-          Back to Site
-        </a>
+        <div class="dash-sidebar-controls" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button class="icon-toggle theme-toggle-btn" id="sidebarThemeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+              <i class="bi bi-moon-stars"></i>
+            </button>
+            <button class="btn-rtl-toggle rtl-toggle-btn" id="sidebarRtlToggle" type="button" aria-label="Toggle right-to-left layout" title="Toggle RTL"><span class="rtl-label">RTL</span></button>
+          </div>
+          <span style="font-size: var(--fs-2xs); color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Preferences</span>
+        </div>
+        <button type="button" class="dash-logout-btn" id="dashLogoutBtn" aria-label="Log Out">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Log Out</span>
+        </button>
       </div>
     </aside>
 
@@ -169,22 +160,13 @@
             </svg>
           </button>
           <!-- Theme toggle -->
-          <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode"
+          <button class="icon-toggle theme-toggle-btn" id="themeToggle" type="button" aria-label="Toggle dark mode"
             title="Toggle theme">
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round">
-              <circle cx="12" cy="12" r="4.2" />
-              <path
-                d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7" />
-            </svg>
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" />
-            </svg>
+            <i class="bi bi-moon-stars"></i>
           </button>
-          <!-- RTL text button -->
-          <button class="btn-rtl-toggle" id="rtlToggle" type="button" aria-label="Toggle right-to-left layout"
-            title="Toggle RTL"><span id="rtlLabel" class="rtl-label">EN</span></button>
+          <!-- RTL toggle button -->
+          <button class="btn-rtl-toggle rtl-toggle-btn" id="rtlToggle" type="button" aria-label="Toggle right-to-left layout"
+            title="Toggle RTL"><span id="rtlLabel" class="rtl-label">RTL</span></button>
           <!-- User profile pill -->
           <div class="topbar-user-pill hide-mobile" data-panel-goto="profile" title="View Profile">
             <span class="topbar-user-avatar">PK</span>
@@ -307,6 +289,17 @@
                   </svg>
                 </div>
               </div>
+
+              <!-- Active Subscription Quick Pay (Moved under Bus 24 Morning Pickup to fill empty space) -->
+              <div class="quick-pay-card" style="margin-top:var(--space-5)">
+                <div class="qpc-label">Active Subscription</div>
+                <div class="qpc-plan">Monthly Plus</div>
+                <div class="qpc-renewal">Renews 01 Sep 2026 &middot; ₹X,XXX/mo</div>
+                <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+                  <button class="btn btn-primary btn-sm" data-panel-goto="payments" type="button">Pay Now</button>
+                  <button class="btn btn-secondary btn-sm" data-panel-goto="receipts" type="button">Receipts</button>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -382,17 +375,6 @@
                 </div>
                 <a href="#journey" class="btn btn-ghost btn-sm" data-panel-goto="journey"
                   style="margin-top:var(--space-4);width:100%;justify-content:center">Full Journey Log</a>
-              </div>
-
-              <!-- Quick pay -->
-              <div class="quick-pay-card" style="margin-top:var(--space-5)">
-                <div class="qpc-label">Active Subscription</div>
-                <div class="qpc-plan">Monthly Plus</div>
-                <div class="qpc-renewal">Renews 01 Sep 2026 &middot; ₹X,XXX/mo</div>
-                <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
-                  <button class="btn btn-primary btn-sm" data-panel-goto="payments" type="button">Pay Now</button>
-                  <button class="btn btn-secondary btn-sm" data-panel-goto="receipts" type="button">Receipts</button>
-                </div>
               </div>
             </div>
           </div>
@@ -768,6 +750,20 @@
     </div>
     <button class="btn btn-primary btn-block" type="button" style="margin-top:var(--space-5)">Download Receipt (PDF)</button>
     <p style="font-size:var(--fs-2xs);color:var(--text-muted);text-align:center;margin-top:var(--space-3)">Frontend demonstration only.</p>
+  </div>
+
+  <!-- LOGOUT CONFIRMATION MODAL -->
+  <div class="drawer-scrim" id="logoutScrim"></div>
+  <div class="modal" id="logoutModal" role="dialog" aria-modal="true" aria-labelledby="logoutModalTitle" style="max-width: 420px; text-align: center; padding: 2.25rem 2rem; border-radius: var(--radius-lg); background: var(--surface-card); border: 1.5px solid var(--border-subtle); box-shadow: var(--shadow-xl);">
+    <div style="width: 58px; height: 58px; border-radius: 50%; background: rgba(239, 68, 68, 0.12); color: #EF4444; display: flex; align-items: center; justify-content: center; font-size: 1.65rem; margin: 0 auto 1.25rem;">
+      <i class="bi bi-box-arrow-right"></i>
+    </div>
+    <h3 id="logoutModalTitle" style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">Confirm Log Out</h3>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.75rem; line-height: 1.5;">Are you sure you want to end your current session and return to the home page?</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <button type="button" class="btn btn-secondary" id="logoutCancelBtn" style="border-radius: var(--radius-sm); font-weight: 600; padding: 0.65rem 1rem;">Cancel</button>
+      <button type="button" class="btn btn-danger" id="logoutConfirmBtn" style="background: #EF4444; border-color: #EF4444; color: #fff; border-radius: var(--radius-sm); font-weight: 600; padding: 0.65rem 1rem;">Log Out</button>
+    </div>
   </div>
 
   <script src="../assets/js/main.js"></script>

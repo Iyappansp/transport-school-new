@@ -80,7 +80,7 @@ body{
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   transition: background var(--dur-med) var(--ease-out), color var(--dur-med) var(--ease-out);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a{ text-decoration: none; color: inherit; }
@@ -149,22 +149,25 @@ p{ font-weight: 400; margin: 0; }
 
 .btn-secondary-custom{
   display: inline-flex; align-items: center; justify-content:center; gap: 8px;
-  background: transparent;
-  color: var(--color-primary);
-  font-weight: 550;
+  background: #FF7A00;
+  color: #FFFFFF !important;
+  font-weight: 600;
   font-size: 0.95rem;
   padding: 0.85rem 1.6rem;
   border-radius: var(--radius-sm);
-  border: 1.5px solid var(--color-primary);
-  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  border: 1.5px solid #FF7A00;
+  box-shadow: 0 4px 14px rgba(255, 122, 0, 0.25);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
   white-space: nowrap;
 }
 .btn-secondary-custom:hover{
-  background: var(--color-primary-tint);
+  background: #E66500;
+  color: #FFFFFF !important;
+  border-color: #E66500;
   transform: translateY(-2px);
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  box-shadow: 0 6px 18px rgba(255, 122, 0, 0.35);
 }
+.btn-secondary-custom:active{ transform: translateY(0); }
 .btn-ghost-custom{
   display:inline-flex; align-items:center; gap:6px;
   color: var(--color-primary); font-weight: 550; font-size: 0.92rem;
@@ -187,7 +190,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .site-header{
   position: sticky; top: 0; z-index: 1000; width: 100%;
   background: var(--surface-header);
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-soft, transparent);
   transition: box-shadow var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out), background var(--dur-med) var(--ease-out);
 }
@@ -199,11 +202,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display:flex; align-items:center; justify-content:space-between;
   padding-block: 16px; gap: 24px;
 }
-.brand{ display:flex; align-items:center; gap:10px; font-weight: 600; font-size: 1.15rem; color: var(--text-heading); flex-shrink:0; }
-.brand-mark{
-  width: 36px; height: 36px; border-radius: 10px;
-  background: linear-gradient(135deg, var(--color-primary), #4C86FF);
-  display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0;
+.brand{ display:inline-flex; align-items:center; gap:10px; font-weight: 700; font-size: 1.2rem; color: var(--text-heading); flex-shrink:0; text-decoration:none; }
+.brand-logo-img{
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  flex-shrink: 0;
+  display: block;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.brand:hover .brand-logo-img{
+  transform: scale(1.04);
 }
 .main-nav{ display:flex; align-items:center; gap: 4px; }
 .main-nav a{
@@ -216,19 +229,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .main-nav a.active{ background: var(--color-primary-tint); color: var(--color-primary); font-weight: 550; }
 .header-actions{ display:flex; align-items:center; gap: 10px; flex-shrink:0; }
 .icon-toggle{
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
   display:flex; align-items:center; justify-content:center;
   border: 1px solid var(--border-soft); background: var(--surface-card);
-  color: var(--text-body); transition: border-color var(--dur-fast), transform var(--dur-fast), color var(--dur-fast);
-  flex-shrink: 0;
+  color: var(--text-body); transition: border-color var(--dur-fast), transform var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+  flex-shrink: 0; cursor: pointer;
 }
 .icon-toggle:hover{ border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-1px); }
 .btn-rtl-toggle{
-  height: 38px; padding: 0 13px; border-radius: var(--radius-pill);
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
   display:flex; align-items:center; justify-content:center;
   border: 1px solid var(--border-soft); background: var(--surface-card);
   color: var(--text-body); font-weight: 700; font-size: 0.82rem;
-  letter-spacing: 0.04em; transition: border-color var(--dur-fast), transform var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+  letter-spacing: 0.02em; transition: border-color var(--dur-fast), transform var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
   cursor: pointer; flex-shrink: 0;
 }
 .btn-rtl-toggle:hover, .btn-rtl-toggle.is-active{
@@ -236,31 +249,62 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--color-primary); transform: translateY(-1px);
 }
 .hamburger-btn{
-  display:none; width: 40px; height: 40px; border-radius: 10px;
+  display:none; width: 40px; height: 40px; border-radius: var(--radius-sm);
   align-items:center; justify-content:center; border: 1px solid var(--border-soft);
-  background: var(--surface-card); color: var(--text-heading);
+  background: var(--surface-card); color: var(--text-heading); cursor: pointer;
 }
-.rtl-label{ font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; }
+.rtl-label{ font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em; }
 
-/* Mobile nav drawer */
+/* Mobile nav drawer — solid background */
 .mobile-nav-panel{
   position: fixed; inset-block: 0; inset-inline-end: 0;
-  width: min(320px, 86vw); background: var(--surface-card);
-  z-index: 1100; padding: 22px; transform: translateX(105%);
+  width: min(340px, 88vw);
+  background: #FFFFFF;
+  z-index: 10000; padding: 24px 20px; transform: translateX(105%);
   transition: transform var(--dur-med) var(--ease-out);
-  box-shadow: -18px 0 40px -20px rgba(0,0,0,0.35);
-  display:flex; flex-direction:column; gap: 4px;
+  box-shadow: -15px 0 45px rgba(0,0,0,0.45);
+  display:flex; flex-direction:column;
+  overflow-y: auto;
+}
+[data-theme="dark"] .mobile-nav-panel{
+  background: #0E1626 !important;
 }
 [dir="rtl"] .mobile-nav-panel{ transform: translateX(-105%); }
 .mobile-nav-panel.is-open{ transform: translateX(0); }
-.mobile-nav-panel a{ padding: 13px 10px; border-radius: 10px; font-weight: 500; color: var(--text-heading); font-size: 1rem; }
-.mobile-nav-panel a:hover{ background: var(--color-primary-tint); color: var(--color-primary); }
+.mobile-panel-header{
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 16px; margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.mobile-nav-links{
+  display: flex; flex-direction: column; gap: 4px;
+  margin-bottom: 20px;
+}
+.mobile-nav-links a{
+  padding: 10px 14px; border-radius: 8px; font-weight: 600;
+  color: var(--text-heading); font-size: 1rem;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+.mobile-nav-links a:hover,
+.mobile-nav-links a.is-active{
+  background: var(--color-primary-tint); color: var(--color-primary);
+}
+.mobile-nav-actions{
+  margin-top: auto; padding-top: 14px;
+  display: flex; flex-direction: column;
+}
 .mobile-nav-backdrop{
-  position: fixed; inset: 0; background: rgba(10,14,25,0.45);
-  z-index: 1090; opacity: 0; pointer-events:none; transition: opacity var(--dur-med) var(--ease-out);
+  position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  z-index: 9990; opacity: 0; pointer-events:none; transition: opacity var(--dur-med) var(--ease-out);
 }
 .mobile-nav-backdrop.is-open{ opacity: 1; pointer-events:auto; }
-.mobile-panel-close{ align-self:flex-end; margin-bottom: 6px; }
+.mobile-panel-close{
+  width: 38px; height: 38px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-soft); background: var(--surface-card);
+  color: var(--text-heading); cursor: pointer;
+}
 
 /* ==========================================================================
    Hero
@@ -504,8 +548,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .final-cta h2{ color:#fff; }
 .final-cta p{ color: rgba(255,255,255,0.82); max-width: 52ch; margin-inline:auto; margin-block: 16px 30px; }
-.final-cta .btn-secondary-custom{ color:#fff; border-color: rgba(255,255,255,0.55); }
-.final-cta .btn-secondary-custom:hover{ background: rgba(255,255,255,0.12); border-color:#fff; }
+.final-cta .btn-secondary-custom{ background: #FF7A00; color:#fff !important; border-color: #FF7A00; box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+.final-cta .btn-secondary-custom:hover{ background: #E66500; border-color: #E66500; color:#fff !important; }
 .final-cta .btn-primary-custom{ background:#fff; color: var(--color-primary); border-color:#fff; }
 .final-cta .btn-primary-custom:hover{ background: rgba(255,255,255,0.9); color: var(--color-primary-dark); }
 
@@ -750,3 +794,1485 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
 
 .mini-support-row{ display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; font-size:0.87rem; color: var(--text-muted); }
 .mini-support-row a{ color: var(--color-primary); font-weight:550; }
+
+/* ==========================================================================
+   NEW SECTIONS: 1. Guardian Live Journey Experience (Home)
+   ========================================================================== */
+.live-lifecycle-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+.lifecycle-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.lifecycle-tabs{
+  display: inline-flex;
+  background: var(--surface-page);
+  border: 1px solid var(--border-soft);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  gap: 4px;
+}
+.lifecycle-tab-btn{
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.lifecycle-tab-btn.active{
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.lifecycle-steps-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  position: relative;
+}
+.lifecycle-step-card{
+  background: var(--surface-page);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+.lifecycle-step-card:hover{
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+}
+.lifecycle-step-card.is-live{
+  border-color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+.lifecycle-card-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.lifecycle-icon{
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.lifecycle-badge{
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-success-tint);
+  color: var(--color-success);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lifecycle-badge.pending{
+  background: var(--surface-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+}
+.lifecycle-card-body h4{
+  font-size: 0.98rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-heading);
+}
+.lifecycle-card-body p{
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.lifecycle-card-foot{
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.lifecycle-card-foot b{
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 2. Instant Fare & Route Estimator (Home)
+   ========================================================================== */
+.fare-estimator-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  box-shadow: var(--shadow-card);
+}
+.fare-estimator-grid{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: center;
+}
+.fare-form-wrap{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.fare-field-group{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fare-field-group label{
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+.fare-options-pills{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.fare-pill-opt{
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border-soft);
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-size: 0.84rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.fare-pill-opt:hover{
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.fare-pill-opt.active{
+  border-color: var(--color-primary);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.fare-summary-panel{
+  background: linear-gradient(145deg, var(--color-primary-tint), var(--surface-page));
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fare-price-tag{
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.fare-price-tag span{
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.fare-summary-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 8px;
+  border-bottom: 1px dashed var(--border-soft);
+  font-size: 0.88rem;
+}
+.fare-summary-item:last-of-type{
+  border-bottom: none;
+}
+.fare-summary-item span{ color: var(--text-muted); }
+.fare-summary-item b{ color: var(--text-heading); font-weight: 600; }
+
+/* ==========================================================================
+   NEW SECTIONS: 3. Fleet Telematics & Onboard Safety Matrix (Home 2)
+   ========================================================================== */
+.telematics-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.telematics-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.telematics-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+.telematics-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.telematics-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+.telemetry-status{
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-success-tint);
+  color: var(--color-success);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.telematics-card h4{
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-heading);
+}
+.telematics-card p{
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.telematics-metric{
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.telematics-metric b{
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 4. Verified Parent Impact & Trust Metrics (Home 2)
+   ========================================================================== */
+.impact-hero-strip{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.impact-hero-box{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+}
+.impact-hero-box b{
+  display: block;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+.impact-hero-box span{
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.review-filter-bar{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.review-filter-pill{
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  color: var(--text-body);
+  font-size: 0.84rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.review-filter-pill.active{
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.impact-reviews-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.impact-review-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: var(--shadow-card);
+}
+.impact-stars{
+  color: var(--color-secondary);
+  font-size: 0.92rem;
+  display: flex;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+.impact-review-card p{
+  font-size: 0.9rem;
+  color: var(--text-body);
+  font-style: italic;
+  line-height: 1.55;
+}
+.impact-parent-meta{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+}
+.impact-parent-info{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.impact-avatar{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+.impact-name{ font-size: 0.88rem; font-weight: 600; color: var(--text-heading); }
+.impact-route{ font-size: 0.76rem; color: var(--text-muted); }
+.verified-tag{
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-success);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 5. School Hub & Pickup Landmark Directory (Routes)
+   ========================================================================== */
+.zone-nav-bar{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.zone-nav-btn{
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-soft);
+  color: var(--text-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.zone-nav-btn:hover{
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.zone-nav-btn.active{
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+.landmarks-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.landmark-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.landmark-card:hover{
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+}
+.landmark-card-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.landmark-tag{
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+.landmark-card h4{
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+.landmark-schedule{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: var(--surface-page);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  margin-block: 12px;
+}
+.schedule-item span{
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.schedule-item b{
+  font-size: 0.86rem;
+  color: var(--text-heading);
+  font-weight: 600;
+}
+.landmark-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 6. Neighborhood Route Pooling Co-creator (Routes)
+   ========================================================================== */
+.pool-creator-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  box-shadow: var(--shadow-card);
+}
+.pool-creator-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+.pool-form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pool-form-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.pool-info-list{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 18px;
+}
+.pool-info-item{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.pool-info-icon{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+.pool-info-item div h5{
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 2px;
+}
+.pool-info-item div p{
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 7. Mission, 2030 Vision & Core Values (About)
+   ========================================================================== */
+.mission-vision-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.mission-glass-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.mission-glass-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+.mission-icon-halo{
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.mission-glass-card h3{
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 12px;
+}
+.mission-glass-card p{
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.mission-key-stat{
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 8. Why Choose SafeRoute / Comparative Matrix (About)
+   ========================================================================== */
+.matrix-container{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: var(--shadow-card);
+  overflow-x: auto;
+}
+.saferoute-matrix-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+.saferoute-matrix-table th{
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  border-bottom: 2px solid var(--border-soft);
+  text-align: start;
+}
+.saferoute-matrix-table th.highlight-col{
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  text-align: center;
+}
+.saferoute-matrix-table td{
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-body);
+}
+.saferoute-matrix-table td.highlight-col{
+  background: var(--color-primary-tint);
+  text-align: center;
+}
+.matrix-check{
+  color: var(--color-success);
+  font-size: 1.15rem;
+}
+.matrix-cross{
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 9. Modern Transit & Fleet Gallery (Home 2)
+   ========================================================================== */
+.gallery-filter-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.gallery-filter-btn{
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 550;
+  border: 1px solid var(--border-soft);
+  background: var(--surface-card);
+  color: var(--text-body);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.gallery-filter-btn:hover{
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+.gallery-filter-btn.active{
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(21,94,239,0.25);
+}
+
+.transit-gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.gallery-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.gallery-card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--color-primary);
+}
+.gallery-thumb-wrapper{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0E1626;
+}
+.gallery-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+.gallery-card:hover .gallery-img{
+  transform: scale(1.08);
+}
+.gallery-badge{
+  position: absolute;
+  top: 12px;
+  inset-inline-start: 12px;
+  background: rgba(11, 17, 32, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.18);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+.gallery-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 17, 32, 0.45);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  z-index: 3;
+}
+.gallery-card:hover .gallery-overlay{
+  opacity: 1;
+}
+.gallery-zoom-btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-dark);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.gallery-zoom-btn:hover{
+  transform: scale(1.15);
+  color: var(--color-primary);
+}
+.gallery-caption{
+  padding: 1.25rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.gallery-caption h4{
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.gallery-caption p{
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 10. Live Route Telemetry & Command Cockpit (Tracking)
+   ========================================================================== */
+.telemetry-cockpit-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.telemetry-widget-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.telemetry-widget-card:hover{
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+.telemetry-widget-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.telemetry-widget-title{
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.telemetry-widget-title i{
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+.telemetry-badge-live{
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-success-tint);
+  color: var(--color-success);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.speed-radar-display{
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-block: 4px;
+}
+.speed-number{
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-heading);
+  letter-spacing: -0.02em;
+}
+.speed-unit{
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.speed-bar-track{
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-page);
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+.speed-bar-fill{
+  width: 85%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-success), var(--color-primary));
+  border-radius: var(--radius-pill);
+}
+.telemetry-subnote{
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.proximity-step-track{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block: 4px;
+}
+.proximity-step-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: var(--surface-page);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  color: var(--text-body);
+}
+.proximity-step-item.is-current{
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.driver-feed-box{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+.driver-feed-msg{
+  background: var(--surface-page);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  border-inline-start: 3px solid var(--color-primary);
+}
+.driver-feed-time{
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.env-metrics-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.env-metric-box{
+  background: var(--surface-page);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+.env-metric-box b{
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 750;
+  color: var(--text-heading);
+}
+.env-metric-box span{
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 11. Safety 3-Grid Container Architecture (Safety)
+   ========================================================================== */
+.safety-pillars-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.safety-pillar-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.safety-pillar-card:hover{
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-float);
+  border-color: var(--color-primary);
+}
+.pillar-media{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0E1626;
+}
+.pillar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+.safety-pillar-card:hover .pillar-img{
+  transform: scale(1.06);
+}
+.pillar-badge{
+  position: absolute;
+  top: 14px;
+  inset-inline-start: 14px;
+  background: rgba(11, 17, 32, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 650;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+.pillar-badge i{
+  color: var(--color-success);
+}
+.pillar-body{
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.pillar-body h3{
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.pillar-body p{
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+.pillar-points{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.pillar-point{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--text-body);
+}
+.pillar-point i{
+  color: var(--color-success);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pillar-meta-strip{
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.pillar-meta-strip b{
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 12. Interactive Route Cost Calculator (Plans)
+   ========================================================================== */
+.calc-container-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: var(--shadow-card);
+}
+.calc-grid{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: start;
+}
+.calc-group{
+  margin-bottom: 1.5rem;
+}
+.calc-label{
+  font-size: 0.86rem;
+  font-weight: 650;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calc-sublabel{
+  font-size: 0.76rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.calc-segmented{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.calc-segment-btn{
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-soft);
+  background: var(--surface-page);
+  color: var(--text-heading);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.calc-segment-btn:hover{
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.calc-segment-btn.active{
+  background: var(--color-primary-tint);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.calc-results-panel{
+  background: linear-gradient(155deg, var(--surface-page), var(--surface-card));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.calc-stat-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--text-body);
+}
+.calc-stat-row b{
+  color: var(--text-heading);
+  font-weight: 650;
+}
+.calc-total-box{
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  text-align: center;
+}
+.calc-total-label{
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.calc-total-amount{
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.calc-total-sub{
+  font-size: 0.76rem;
+  color: var(--color-success);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   NEW SECTIONS: 13. Fleet Milestones & Safety Track Record (About)
+   ========================================================================== */
+.milestones-track-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.milestone-journey-card{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.milestone-journey-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+.milestone-year-badge{
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+}
+.milestone-journey-card h4{
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.3;
+}
+.milestone-journey-card p{
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.milestone-stats-strip{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.milestone-stat-box{
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.milestone-stat-box b{
+  display: block;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.milestone-stat-box span{
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-weight: 550;
+}
+
+/* ==========================================================================
+   Contact Page Outlined Centered Container Card
+   ========================================================================== */
+.contact-card-container {
+  max-width: 820px;
+  margin-inline: auto;
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.contact-card-container:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-float);
+}
+.contact-card-header {
+  margin-bottom: 2rem;
+}
+.contact-card-header .eyebrow {
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Drivers Showcase Section (6 Drivers Grid with LinkedIn Badge)
+   ========================================================================== */
+.drivers-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 2.5rem;
+}
+
+.driver-profile-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.driver-profile-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-float);
+}
+
+.driver-media-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--surface-alt);
+}
+
+.driver-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.driver-profile-card:hover .driver-portrait-img {
+  transform: scale(1.05);
+}
+
+/* Realtime LinkedIn Badge on Left Top Corner */
+.driver-linkedin-badge {
+  position: absolute;
+  top: 14px;
+  inset-inline-start: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #0A66C2;
+  color: #FFFFFF !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 14px rgba(10, 102, 194, 0.45);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+  z-index: 5;
+  text-decoration: none;
+}
+
+.driver-linkedin-badge:hover {
+  transform: scale(1.15) rotate(6deg);
+  background: #004182;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 18px rgba(10, 102, 194, 0.65);
+}
+
+/* Status badge on Top Right Corner */
+.driver-status-badge {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  background: rgba(16, 24, 40, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 5;
+}
+
+.driver-status-badge i {
+  color: #10B981;
+}
+
+.driver-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.driver-header-meta {
+  margin-bottom: 0.85rem;
+}
+
+.driver-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.driver-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.driver-exp-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0.9rem;
+}
+
+.driver-exp-badge,
+.driver-trips-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.driver-exp-badge {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+}
+
+.driver-trips-badge {
+  background: var(--color-success-tint);
+  color: var(--color-success);
+}
+
+.driver-bio {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 1.1rem;
+}
+
+.driver-cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.driver-cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.driver-cert-item i {
+  color: var(--color-success);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+
+
+
