@@ -1,95 +1,812 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Parent Account — SafeRoute</title>
-<meta name="description" content="Register your parent account to track your child's school bus in real-time, get boarding alerts, and manage transport subscriptions.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — SafeRoute Student Transport</title>
+  <meta name="description"
+    content="Create your SafeRoute parent account to track your child's school bus, receive alerts and manage subscriptions.">
+  <meta name="robots" content="noindex">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><rect width=%2224%22 height=%2224%22 rx=%226%22 fill=%22%23155EEF%22/><path d=%22M5 15V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7%22 stroke=%22white%22 stroke-width=%222%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--surface-page);
+      color: var(--text-primary)
+    }
 
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
-<link rel="stylesheet" href="assets/css/dark-mode.css">
-<link rel="stylesheet" href="assets/css/rtl.css">
+    .auth-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr
+    }
+
+    /* Left panel */
+    .auth-panel-left {
+      position: relative;
+      background: linear-gradient(145deg, #08213d 0%, #0b3bab 35%, #1a6f4f 80%, #0d4a34 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4.5rem);
+      overflow: hidden;
+    }
+
+    .auth-panel-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 15% 85%, rgba(22, 163, 74, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 85% 10%, rgba(21, 94, 239, 0.3) 0%, transparent 55%);
+      z-index: 0;
+    }
+
+    .auth-panel-left>* {
+      position: relative;
+      z-index: 1
+    }
+
+    .auth-shapes {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden
+    }
+
+    .auth-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      animation: floatShape 8s ease-in-out infinite
+    }
+
+    .auth-shape:nth-child(1) {
+      width: 220px;
+      height: 220px;
+      top: -70px;
+      right: -60px;
+      animation-delay: 0s
+    }
+
+    .auth-shape:nth-child(2) {
+      width: 130px;
+      height: 130px;
+      bottom: 20%;
+      left: -40px;
+      animation-delay: -3s;
+      animation-duration: 11s
+    }
+
+    .auth-shape:nth-child(3) {
+      width: 80px;
+      height: 80px;
+      top: 38%;
+      right: 12%;
+      animation-delay: -5s;
+      animation-duration: 13s
+    }
+
+    @keyframes floatShape {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-22px) scale(1.04)
+      }
+    }
+
+    .auth-grid-dots {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 30px 30px
+    }
+
+    .auth-left-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      text-decoration: none
+    }
+
+    .auth-left-brand .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      backdrop-filter: blur(8px)
+    }
+
+    .auth-left-brand .brand-mark svg {
+      width: 22px;
+      height: 22px
+    }
+
+    .auth-left-brand .brand-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+      display: block
+    }
+
+    .auth-left-brand .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block
+    }
+
+    .auth-left-headline {
+      font-size: clamp(1.75rem, 2.2vw + 0.5rem, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.02em
+    }
+
+    .auth-left-desc {
+      font-size: clamp(0.88rem, 1vw+0.3rem, 1rem);
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 2.25rem
+    }
+
+    .auth-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem
+    }
+
+    .auth-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem
+    }
+
+    .auth-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      margin-top: 0.1rem
+    }
+
+    .auth-step-text strong {
+      display: block;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem
+    }
+
+    .auth-step-text span {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.8rem;
+      line-height: 1.5
+    }
+
+    /* Right panel */
+    .auth-panel-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+      background: var(--surface-page);
+      overflow-y: auto;
+    }
+
+    .auth-top-controls {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      display: flex;
+      gap: 0.6rem;
+      z-index: 10
+    }
+
+    [dir="rtl"] .auth-top-controls {
+      right: auto;
+      left: 1.25rem
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 460px
+    }
+
+    .auth-card-header {
+      text-align: center;
+      margin-bottom: 1.75rem
+    }
+
+    .auth-card-header h1 {
+      font-size: clamp(1.4rem, 1.8vw+0.5rem, 1.85rem);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em
+    }
+
+    .auth-card-header p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6
+    }
+
+    .auth-form .form-field {
+      margin-bottom: 0.95rem
+    }
+
+    .auth-form label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.38rem;
+      color: var(--text-secondary)
+    }
+
+    .auth-field-wrap {
+      position: relative;
+      display: flex;
+      align-items: center
+    }
+
+    .auth-field-wrap .field-icon {
+      position: absolute;
+      left: 0.85rem;
+      color: var(--text-muted);
+      pointer-events: none
+    }
+
+    .auth-field-wrap .field-icon svg {
+      width: 16px;
+      height: 16px
+    }
+
+    [dir="rtl"] .auth-field-wrap .field-icon {
+      left: auto;
+      right: 0.85rem
+    }
+
+    .auth-form input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      background: var(--surface-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--text-primary);
+      transition: border-color 180ms, box-shadow 180ms;
+      outline: none
+    }
+
+    [dir="rtl"] .auth-form input {
+      padding-right: 2.5rem;
+      padding-left: 1rem
+    }
+
+    .auth-form input:focus {
+      border-color: var(--color-primary);
+      box-shadow: var(--focus-ring)
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem
+    }
+
+    .pw-toggle {
+      position: absolute;
+      right: 0.85rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      transition: color 150ms
+    }
+
+    .pw-toggle:hover {
+      color: var(--color-primary)
+    }
+
+    .pw-toggle svg {
+      width: 17px;
+      height: 17px
+    }
+
+    [dir="rtl"] .pw-toggle {
+      right: auto;
+      left: 0.85rem
+    }
+
+    /* Password strength */
+    .pw-strength {
+      margin-top: 0.4rem;
+      display: flex;
+      gap: 0.3rem;
+      align-items: center
+    }
+
+    .pw-strength-bar {
+      height: 4px;
+      flex: 1;
+      border-radius: 99px;
+      background: var(--border-subtle);
+      transition: background .3s
+    }
+
+    .pw-strength-bar.weak {
+      background: #DC2626
+    }
+
+    .pw-strength-bar.fair {
+      background: #F4B400
+    }
+
+    .pw-strength-bar.strong {
+      background: #16A34A
+    }
+
+    .pw-strength-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap
+    }
+
+    .auth-terms {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem
+    }
+
+    .auth-terms input {
+      accent-color: var(--color-primary);
+      margin-top: 0.2rem;
+      flex-shrink: 0
+    }
+
+    .auth-terms a {
+      color: var(--color-primary);
+      font-weight: 600
+    }
+
+    .auth-terms a:hover {
+      text-decoration: underline
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.2rem 0;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle)
+    }
+
+    .auth-social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+      margin-bottom: 1.25rem
+    }
+
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.68rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border-default);
+      background: var(--surface-card);
+      color: var(--text-primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 180ms var(--ease-out)
+    }
+
+    .btn-social:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm)
+    }
+
+    .btn-social svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0
+    }
+
+    .auth-footer-link {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1.2rem
+    }
+
+    .auth-footer-link a {
+      color: var(--color-primary);
+      font-weight: 600
+    }
+
+    .auth-footer-link a:hover {
+      text-decoration: underline
+    }
+
+    .auth-demo-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      opacity: 0.7
+    }
+
+    @media(max-width:860px) {
+      .auth-shell {
+        grid-template-columns: 1fr
+      }
+
+      .auth-panel-left {
+        min-height: 260px;
+        padding: 2rem 1.75rem;
+        justify-content: flex-start
+      }
+
+      .auth-left-headline {
+        font-size: 1.5rem;
+        margin-bottom: 0.65rem
+      }
+
+      .auth-left-desc {
+        display: none
+      }
+
+      .auth-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.6rem
+      }
+
+      .auth-step-text span {
+        display: none
+      }
+
+      .auth-top-controls {
+        top: auto;
+        bottom: -3.5rem;
+        right: 1rem
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <a class="skip-link" href="#signupMain"
+    style="position:absolute;top:-40px;left:0;background:var(--color-primary);color:#fff;padding:.5rem 1rem;z-index:9999;border-radius:0 0 6px 0;transition:top .2s">Skip
+    to content</a>
 
-<header id="main-header" class="site-header"></header>
+  <div class="auth-shell">
 
-<section class="section">
-  <div class="container-custom" style="max-width: 1040px;">
-    <div class="auth-wrap" data-reveal="scale-in">
-
-      <div class="auth-side">
-        <span class="eyebrow" style="color:#FFD97A;">Parent Registration</span>
-        <h2 style="color:#fff; font-size:1.6rem;">Join SafeRoute Student Transport System Today.</h2>
-        <p style="color:rgba(255,255,255,0.85); font-size:0.92rem; margin-block:16px;">Set up live bus tracking, boarding confirmations, and daily journey updates for your child in under two minutes.</p>
-        <div class="ai-item"><i class="bi bi-shield-check"></i>Verified school bus driver tracking</div>
-        <div class="ai-item"><i class="bi bi-bell-fill"></i>Instant SMS &amp; app boarding notifications</div>
-        <div class="ai-item"><i class="bi bi-credit-card-2-front-fill"></i>Flexible monthly or annual transport plans</div>
-        <div class="ai-item"><i class="bi bi-headset"></i>Dedicated 6 AM – 7 PM parent support hotline</div>
+    <!-- LEFT PANEL -->
+    <div class="auth-panel-left" role="presentation">
+      <div class="auth-grid-dots"></div>
+      <div class="auth-shapes">
+        <div class="auth-shape"></div>
+        <div class="auth-shape"></div>
+        <div class="auth-shape"></div>
       </div>
 
-      <div class="auth-form-side">
-        <h1 class="h-card mb-2">Create Account</h1>
-        <p class="lead-text mb-4" style="font-size:0.9rem;">Register as a parent to get started with SafeRoute transport services.</p>
+      <a class="auth-left-brand" href="index.html" aria-label="SafeRoute home">
+        <span class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M4 16V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9" />
+            <path d="M4 16h16v1.5a1 1 0 0 1-1 1h-1" />
+            <path d="M6 18.5a1 1 0 0 1-1-1V16" />
+            <circle cx="8" cy="18.5" r="1.6" />
+            <circle cx="16" cy="18.5" r="1.6" />
+            <path d="M4 11h16M9 7v4M15 7v4" />
+          </svg>
+        </span>
+        <span>
+          <span class="brand-name">SafeRoute</span>
+          <span class="brand-sub">Student Transport</span>
+        </span>
+      </a>
 
-        <form action="dashboard/index.html" class="js-demo-form" data-redirect="dashboard/index.html" data-success="Account created successfully! Welcome to SafeRoute Parent Portal...">
-          <div class="form-field"><label class="form-label-custom" for="regName">Parent Full Name</label><input required type="text" id="regName" class="form-control-custom" placeholder="e.g. Priya Kumar"></div>
-          
-          <div class="form-grid-2">
-            <div class="form-field"><label class="form-label-custom" for="regEmail">Email Address</label><input required type="email" id="regEmail" class="form-control-custom" placeholder="parent@example.com"></div>
-            <div class="form-field"><label class="form-label-custom" for="regPhone">Mobile Phone</label><input required type="tel" id="regPhone" class="form-control-custom" placeholder="+91 XXX XXX XXXX"></div>
+      <h2 class="auth-left-headline">Get started in<br>three simple steps.</h2>
+      <p class="auth-left-desc">Create your free parent account and gain full visibility over your child's school
+        transport from day one.</p>
+
+      <div class="auth-steps">
+        <div class="auth-step">
+          <span class="auth-step-num">01</span>
+          <div class="auth-step-text">
+            <strong>Create Account</strong>
+            <span>Enter your details and set a password</span>
+          </div>
+        </div>
+        <div class="auth-step">
+          <span class="auth-step-num">02</span>
+          <div class="auth-step-text">
+            <strong>Add Your Child</strong>
+            <span>Link to the assigned route and bus</span>
+          </div>
+        </div>
+        <div class="auth-step">
+          <span class="auth-step-num">03</span>
+          <div class="auth-step-text">
+            <strong>Start Tracking</strong>
+            <span>Live GPS, alerts and boarding logs — live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="auth-panel-right">
+      <div class="auth-top-controls">
+        <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2" />
+            <path
+              d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" />
+          </svg>
+        </button>
+        <button class="icon-btn rtl-toggle" id="rtlToggle" type="button" aria-label="Toggle RTL"><span
+            id="rtlLabel">EN</span></button>
+      </div>
+
+      <main id="signupMain" class="auth-card">
+        <div class="auth-card-header">
+          <h1>Create Your Account</h1>
+          <p>Set up your SafeRoute parent portal account. It only takes a minute.</p>
+        </div>
+
+        <form id="signupForm" class="auth-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="signupFirstName">First Name</label>
+              <div class="auth-field-wrap">
+                <span class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                  </svg></span>
+                <input id="signupFirstName" type="text" placeholder="Priya" autocomplete="given-name" required>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="signupLastName">Last Name</label>
+              <div class="auth-field-wrap">
+                <span class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="8" r="4" />
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+                  </svg></span>
+                <input id="signupLastName" type="text" placeholder="Kumar" autocomplete="family-name" required>
+              </div>
+            </div>
           </div>
 
-          <div class="form-grid-2">
-            <div class="form-field"><label class="form-label-custom" for="regStudent">Child / Student Name</label><input required type="text" id="regStudent" class="form-control-custom" placeholder="e.g. Aarav Kumar"></div>
-            <div class="form-field"><label class="form-label-custom" for="regSchool">School Name</label><input required type="text" id="regSchool" class="form-control-custom" placeholder="e.g. Sample School"></div>
+          <div class="form-field">
+            <label for="signupEmail">Email Address</label>
+            <div class="auth-field-wrap">
+              <span class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+                  <path d="m4 6.5 8 6 8-6" />
+                </svg></span>
+              <input id="signupEmail" type="email" placeholder="parent@example.com" autocomplete="email" required>
+            </div>
           </div>
 
-          <div class="form-grid-2">
-            <div class="form-field"><label class="form-label-custom" for="regPass">Password</label><input required type="password" id="regPass" class="form-control-custom" placeholder="••••••••"></div>
-            <div class="form-field"><label class="form-label-custom" for="regConfirm">Confirm Password</label><input required type="password" id="regConfirm" class="form-control-custom" placeholder="••••••••"></div>
+          <div class="form-field">
+            <label for="signupPhone">Phone Number</label>
+            <div class="auth-field-wrap">
+              <span class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M4 5.5C4 4.7 4.7 4 5.5 4H8l1.5 4-2 1.3a12 12 0 0 0 5.2 5.2l1.3-2 4 1.5v2.5c0 .8-.7 1.5-1.5 1.5C9.6 18 4 12.4 4 5.5Z" />
+                </svg></span>
+              <input id="signupPhone" type="tel" placeholder="+91 XXX XXX XXXX" autocomplete="tel">
+            </div>
           </div>
 
-          <div class="mb-3">
-            <label class="form-check-row"><input type="checkbox" required checked> I agree to the <a href="plans.html" class="btn-ghost-custom p-0 ms-1" style="font-size:0.85rem;">Transport Terms &amp; Policy</a></label>
+          <div class="form-field">
+            <label for="signupPassword">Password</label>
+            <div class="auth-field-wrap">
+              <span class="field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="10.5" width="14" height="9" rx="2" />
+                  <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+                </svg></span>
+              <input id="signupPassword" type="password" placeholder="Create a strong password"
+                autocomplete="new-password" required style="padding-right:3rem" id="signupPassword">
+              <button class="pw-toggle" type="button" id="pwToggle" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </button>
+            </div>
+            <div class="pw-strength" id="pwStrength" aria-live="polite">
+              <div class="pw-strength-bar" id="sb1"></div>
+              <div class="pw-strength-bar" id="sb2"></div>
+              <div class="pw-strength-bar" id="sb3"></div>
+              <div class="pw-strength-bar" id="sb4"></div>
+              <span class="pw-strength-label" id="pwStrengthLabel">Password strength</span>
+            </div>
           </div>
 
-          <button type="submit" class="btn-primary-custom w-100">Create Parent Account</button>
+          <label class="auth-terms">
+            <input type="checkbox" id="signupTerms" required>
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+
+          <button class="btn btn-primary btn-block btn-lg" type="submit" id="signupSubmitBtn">Create Account</button>
         </form>
 
-        <div class="auth-divider mt-4">Already registered?</div>
-        <a href="login.html" class="btn-secondary-custom w-100 justify-content-center">Sign In to Existing Account</a>
-      </div>
+        <div class="auth-divider"><span>or sign up with</span></div>
 
+        <div class="auth-social-grid">
+          <button class="btn-social" type="button" aria-label="Sign up with Google">
+            <svg viewBox="0 0 24 24" width="17" height="17">
+              <path fill="#4285F4"
+                d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.87c2.27-2.09 3.56-5.17 3.56-8.74Z" />
+              <path fill="#34A853"
+                d="M12 24c3.24 0 5.95-1.07 7.94-2.9l-3.87-3c-1.08.72-2.46 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.1A12 12 0 0 0 12 24Z" />
+              <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56v-3.1H1.27a12 12 0 0 0 0 10.76l4-3.1Z" />
+              <path fill="#EA4335"
+                d="M12 4.75c1.76 0 3.34.6 4.58 1.79l3.44-3.44C17.94 1.19 15.24 0 12 0A12 12 0 0 0 1.27 6.62l4 3.1C6.22 6.86 8.87 4.75 12 4.75Z" />
+            </svg>
+            Google
+          </button>
+          <button class="btn-social" type="button" aria-label="Sign up with Apple">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+              <path
+                d="M16.5 0c.1 1.3-.4 2.6-1.2 3.5-.8.9-2.1 1.7-3.4 1.6-.1-1.3.5-2.6 1.2-3.5C13.9.7 15.2 0 16.5 0Zm4.2 17c-.6 1.4-1.3 2.7-2.3 3.9-.9 1.1-2 2.5-3.5 2.5-1.4 0-1.8-.9-3.4-.9-1.6 0-2.1.9-3.4.9-1.4.1-2.5-1.2-3.5-2.3C2.4 18.7.9 15.1 1.5 11.6c.4-2.4 1.9-4.6 4.1-5.7 1.1-.6 2.4-.9 3.6-.6.9.2 1.7.7 2.5.7.8 0 1.4-.4 2.5-.7 1.3-.3 2.6.1 3.7.9-1.7 1-2.6 2.8-2.4 4.7.2 2.3 1.8 3.6 2.2 3.9-.4 1-1 1.9-1.5 2.8Z" />
+            </svg>
+            Apple
+          </button>
+        </div>
+
+        <p class="auth-footer-link">Already have an account? <a href="login.html">Login</a></p>
+        <p class="auth-demo-note">Frontend demonstration only — no data is sent or stored.</p>
+      </main>
     </div>
   </div>
-</section>
 
-<!-- ============================== WHY REGISTER ============================== -->
-<section class="section-tight section-alt">
-  <div class="container-custom" style="max-width: 1040px;">
-    <div class="section-head center mb-4" data-reveal="fade-up">
-      <span class="eyebrow">Safe &amp; Connected</span>
-      <h2 class="h-section">Why Parents Trust SafeRoute.</h2>
-    </div>
-    <div class="feature-grid" style="grid-template-columns: repeat(3, 1fr);" data-stagger="80">
-      <div class="feature-card" data-reveal="fade-up"><span class="fc-icon" style="background:var(--color-primary-tint); color:var(--color-primary);"><i class="bi bi-geo-alt-fill"></i></span><h3>Real-Time GPS</h3><p>Accurate bus tracking and stop-by-stop ETA updates right on your phone.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="fc-icon" style="background:var(--color-success-tint); color:var(--color-success);"><i class="bi bi-person-check-fill"></i></span><h3>Child Safety</h3><p>Boarding logs and instant notification alerts when your child gets on or off.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="fc-icon" style="background:var(--color-secondary-tint); color:#A87700;"><i class="bi bi-credit-card-fill"></i></span><h3>Simple Billing</h3><p>Manage transport subscriptions and view digital payment receipts anytime.</p></div>
-    </div>
-  </div>
-</section>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      // Password toggle
+      var pwToggle = document.getElementById('pwToggle');
+      var pwInput = document.getElementById('signupPassword');
+      if (pwToggle && pwInput) {
+        pwToggle.addEventListener('click', function () {
+          pwInput.type = pwInput.type === 'password' ? 'text' : 'password';
+        });
+        // Password strength meter
+        pwInput.addEventListener('input', function () {
+          var v = pwInput.value;
+          var score = 0;
+          if (v.length >= 8) score++;
+          if (/[A-Z]/.test(v)) score++;
+          if (/[0-9]/.test(v)) score++;
+          if (/[^A-Za-z0-9]/.test(v)) score++;
+          var bars = ['sb1', 'sb2', 'sb3', 'sb4'];
+          var labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+          bars.forEach(function (id, i) { var b = document.getElementById(id); if (!b) return; b.className = 'pw-strength-bar'; if (i < score) { b.classList.add(score <= 1 ? 'weak' : score <= 2 ? 'fair' : 'strong'); } });
+          var lbl = document.getElementById('pwStrengthLabel');
+          if (lbl) lbl.textContent = v.length ? labels[score] : 'Password strength';
+        });
+      }
 
-<footer id="main-footer" class="site-footer"></footer>
+      // RTL label sync
+      function syncRtlLabel() {
+        var lbl = document.getElementById('rtlLabel');
+        if (lbl) lbl.textContent = document.documentElement.getAttribute('dir') === 'rtl' ? 'AR' : 'EN';
+      }
+      syncRtlLabel();
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/animations.js"></script>
+      var themeBtn = document.getElementById('themeToggle');
+      if (themeBtn) themeBtn.addEventListener('click', function () { window.SafeRoutePrefs && window.SafeRoutePrefs.toggleTheme(); });
+      var rtlBtn = document.getElementById('rtlToggle');
+      if (rtlBtn) rtlBtn.addEventListener('click', function () { window.SafeRoutePrefs && window.SafeRoutePrefs.toggleDir(); syncRtlLabel(); });
+
+      // Form submit → redirect to login
+      var form = document.getElementById('signupForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var btn = document.getElementById('signupSubmitBtn');
+          if (btn) { btn.textContent = 'Creating account…'; btn.disabled = true; }
+          setTimeout(function () { window.location.href = 'dashboard/index.html'; }, 900);
+        });
+      }
+    })();
+  </script>
 </body>
+
 </html>

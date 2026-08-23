@@ -138,7 +138,7 @@
     ];
     var idx = 0;
 
-    refreshBtns.forEach(function(refreshBtn, ri) {
+    refreshBtns.forEach(function (refreshBtn, ri) {
       if (!refreshBtn) return;
       refreshBtn.addEventListener("click", function () {
         idx = (idx + 1) % points.length;
@@ -182,28 +182,14 @@
     }
 
     /* RTL label sync for dashboard topbar */
-    function syncRtl(){
-      var lbl = document.getElementById('rtlLabel') || document.querySelector('#rtl-toggle .rtl-label');
-      var btn = document.getElementById('rtlToggle') || document.getElementById('rtl-toggle');
-      var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-      if(lbl) lbl.textContent = isRtl ? 'LTR' : 'RTL';
-      if(btn) btn.classList.toggle('is-active', isRtl);
+    function syncRtl() {
+      var lbl = document.getElementById('rtlLabel');
+      if (lbl) lbl.textContent = document.documentElement.getAttribute('dir') === 'rtl' ? 'AR' : 'EN';
     }
     syncRtl();
-    var rtlBtn = document.getElementById('rtlToggle') || document.getElementById('rtl-toggle');
-    if(rtlBtn) rtlBtn.addEventListener('click', function(){
-      var current = document.documentElement.getAttribute('dir') || 'ltr';
-      var next = current === 'rtl' ? 'ltr' : 'rtl';
-      document.documentElement.setAttribute('dir', next);
-      localStorage.setItem('saferoute-dir', next);
-      syncRtl();
-    });
-    var themeBtn = document.getElementById('themeToggle') || document.getElementById('theme-toggle');
-    if(themeBtn) themeBtn.addEventListener('click', function(){
-      var current = document.documentElement.getAttribute('data-theme') || 'light';
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('saferoute-theme', next);
-    });
+    var rtlBtn = document.getElementById('rtlToggle');
+    if (rtlBtn) rtlBtn.addEventListener('click', function () { window.SafeRoutePrefs && window.SafeRoutePrefs.toggleDir(); syncRtl(); });
+    var themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) themeBtn.addEventListener('click', function () { window.SafeRoutePrefs && window.SafeRoutePrefs.toggleTheme(); });
   });
 })();
