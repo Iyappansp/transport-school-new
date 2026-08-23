@@ -255,13 +255,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .rtl-label{ font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em; }
 
-/* Mobile nav drawer — solid background */
+/* Mobile nav drawer — solid background and flawless alignment */
 .mobile-nav-panel{
-  position: fixed; inset-block: 0; inset-inline-end: 0;
-  width: min(340px, 88vw);
+  position: fixed; top: 0; bottom: 0; inset-inline-end: 0;
+  width: min(340px, 86vw);
+  height: 100vh;
+  height: 100dvh;
   background: #FFFFFF;
-  z-index: 10000; padding: 24px 20px; transform: translateX(105%);
-  transition: transform var(--dur-med) var(--ease-out);
+  z-index: 100000;
+  padding: 22px 20px 26px;
+  box-sizing: border-box;
+  transform: translateX(105%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: -15px 0 45px rgba(0,0,0,0.45);
   display:flex; flex-direction:column;
   overflow-y: auto;
@@ -270,33 +275,58 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background: #0E1626 !important;
 }
 [dir="rtl"] .mobile-nav-panel{ transform: translateX(-105%); }
-.mobile-nav-panel.is-open{ transform: translateX(0); }
+.mobile-nav-panel.is-open{ transform: translateX(0) !important; }
 .mobile-panel-header{
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
   padding-bottom: 16px; margin-bottom: 14px;
   border-bottom: 1px solid var(--border-soft);
+  flex-shrink: 0;
+}
+.mobile-panel-header .brand-logo-img{
+  height: 44px; width: auto;
 }
 .mobile-nav-links{
-  display: flex; flex-direction: column; gap: 4px;
+  display: flex; flex-direction: column; gap: 6px;
   margin-bottom: 20px;
+  flex: 1;
 }
 .mobile-nav-links a{
   padding: 10px 14px; border-radius: 8px; font-weight: 600;
-  color: var(--text-heading); font-size: 1rem;
-  transition: background var(--dur-fast), color var(--dur-fast);
+  color: var(--text-heading); font-size: 1rem; text-decoration: none;
+  transition: background var(--dur-fast), color var(--dur-fast), transform var(--dur-fast);
 }
 .mobile-nav-links a:hover,
 .mobile-nav-links a.is-active{
   background: var(--color-primary-tint); color: var(--color-primary);
+  transform: translateX(4px);
+}
+[dir="rtl"] .mobile-nav-links a:hover,
+[dir="rtl"] .mobile-nav-links a.is-active{
+  transform: translateX(-4px);
 }
 .mobile-nav-actions{
   margin-top: auto; padding-top: 14px;
   display: flex; flex-direction: column;
+  flex-shrink: 0;
+}
+.mobile-sidebar-controls{
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-top: 14px; margin-top: 10px;
+  border-top: 1px solid var(--border-soft);
+}
+.mobile-pref-label{
+  font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.mobile-pref-toggles{
+  display: flex; align-items: center; gap: 8px;
 }
 .mobile-nav-backdrop{
-  position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.65);
   backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-  z-index: 9990; opacity: 0; pointer-events:none; transition: opacity var(--dur-med) var(--ease-out);
+  z-index: 99990; opacity: 0; pointer-events:none;
+  transition: opacity 0.3s var(--ease-out);
 }
 .mobile-nav-backdrop.is-open{ opacity: 1; pointer-events:auto; }
 .mobile-panel-close{
@@ -304,6 +334,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex; align-items: center; justify-content: center;
   border: 1px solid var(--border-soft); background: var(--surface-card);
   color: var(--text-heading); cursor: pointer;
+  transition: transform var(--dur-fast), background var(--dur-fast);
+}
+.mobile-panel-close:hover{
+  transform: scale(1.05);
 }
 
 /* ==========================================================================

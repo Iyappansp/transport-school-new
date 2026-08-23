@@ -73,11 +73,11 @@
       return `<a href="${l.href}" class="${active.trim()}">${l.label}</a>`;
     }).join("");
 
-    const mobileNavHtml = NAV_LINKS.map(
-      (l) => `<a href="${l.href}">${l.label}</a>`
-    ).join("") + 
-    `<a href="${root}login.html" class="fw-lead">Login</a>` +
-    `<a href="${root}dashboard/index.html" class="fw-lead">Dashboard</a>`;
+    const mobileNavLinksHtml = NAV_LINKS.map((l) => {
+      const file = l.href.split("/").pop();
+      const active = !isDashboard && file === currentFile ? ' class="is-active" aria-current="page"' : "";
+      return `<a href="${l.href}"${active}>${l.label}</a>`;
+    }).join("");
 
     mount.innerHTML = `
       <div class="header-inner container-custom">
@@ -99,35 +99,53 @@
           </button>
         </div>
       </div>
-      <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
-      <aside class="mobile-nav-panel" id="mobile-nav-panel" aria-label="Mobile navigation">
-        <div class="mobile-panel-header">
-          <a href="${root}index.html" class="brand" aria-label="SafeRoute Home">
-            <img src="${root}assets/image/logo1.png" alt="SafeRoute Logo" class="brand-logo-img">
-          </a>
-          <button type="button" class="icon-toggle mobile-panel-close" id="mobile-panel-close" aria-label="Close menu">
-            <i class="bi bi-x-lg"></i>
-          </button>
-        </div>
-        <nav class="mobile-nav-links" aria-label="Mobile navigation links">
-          ${mobileNavHtml}
-        </nav>
-        <div class="mobile-nav-actions">
-          <a href="${root}login.html" class="btn-primary-custom w-100 justify-content-center py-2 mb-2">Login</a>
-          <a href="${root}dashboard/index.html" class="btn-secondary-custom w-100 justify-content-center py-2 mb-3">Dashboard</a>
-          <div class="mobile-sidebar-controls" style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:14px; border-top:1px solid var(--border-soft);">
-            <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">Preferences</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <button type="button" class="icon-toggle theme-toggle-btn" id="theme-toggle-mobile" aria-label="Toggle dark mode" title="Toggle theme">
-                <i class="bi bi-moon-stars"></i>
-              </button>
-              <button type="button" class="btn-rtl-toggle rtl-toggle-btn" id="rtl-toggle-mobile" aria-label="Toggle RTL layout" title="Toggle RTL">
-                <span class="rtl-label">RTL</span>
-              </button>
-            </div>
+    `;
+
+    // Ensure backdrop & panel are in document.body to avoid sticky/backdrop-filter clipping
+    let backdrop = document.getElementById("mobile-nav-backdrop");
+    if (!backdrop) {
+      backdrop = document.createElement("div");
+      backdrop.id = "mobile-nav-backdrop";
+      backdrop.className = "mobile-nav-backdrop";
+      document.body.appendChild(backdrop);
+    }
+
+    let panel = document.getElementById("mobile-nav-panel");
+    if (!panel) {
+      panel = document.createElement("aside");
+      panel.id = "mobile-nav-panel";
+      panel.className = "mobile-nav-panel";
+      panel.setAttribute("aria-label", "Mobile navigation");
+      document.body.appendChild(panel);
+    }
+
+    panel.innerHTML = `
+      <div class="mobile-panel-header">
+        <a href="${root}index.html" class="brand" aria-label="SafeRoute Home">
+          <img src="${root}assets/image/logo1.png" alt="SafeRoute Logo" class="brand-logo-img">
+        </a>
+        <button type="button" class="icon-toggle mobile-panel-close" id="mobile-panel-close" aria-label="Close menu">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-links" aria-label="Mobile navigation links">
+        ${mobileNavLinksHtml}
+      </nav>
+      <div class="mobile-nav-actions">
+        <a href="${root}login.html" class="btn-primary-custom w-100 justify-content-center py-2 mb-2">Login</a>
+        <a href="${root}dashboard/index.html" class="btn-secondary-custom w-100 justify-content-center py-2 mb-3">Dashboard</a>
+        <div class="mobile-sidebar-controls">
+          <span class="mobile-pref-label">Preferences</span>
+          <div class="mobile-pref-toggles">
+            <button type="button" class="icon-toggle theme-toggle-btn" id="theme-toggle-mobile" aria-label="Toggle dark mode" title="Toggle theme">
+              <i class="bi bi-moon-stars"></i>
+            </button>
+            <button type="button" class="btn-rtl-toggle rtl-toggle-btn" id="rtl-toggle-mobile" aria-label="Toggle RTL layout" title="Toggle RTL">
+              <span class="rtl-label">RTL</span>
+            </button>
           </div>
         </div>
-      </aside>
+      </div>
     `;
   }
 
