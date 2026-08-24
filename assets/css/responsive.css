@@ -2,190 +2,305 @@
    RESPONSIVE SYSTEM — tested 320 / 360 / 390 / 465 / 768 / 1024 / 1440
    ========================================================================== */
 
-img, svg{ max-width: 100%; height:auto; }
+img, svg { max-width: 100%; height: auto; }
 
-/* ---- ≤1024px : tablet / mobile ---- */
-@media (max-width: 1024px){
-  .main-nav{ display:none !important; }
+/* Utility: never allow accidental horizontal scroll while keeping sticky fixed header working */
+html, body { max-width: 100%; overflow-x: clip; }
+table { width: 100%; }
+
+/* ==========================================================================
+   TABLET / TAB VIEW (≤1024px and >768px):
+   - 2-Column Grid Layout
+   - When Container count is ODD, Center the Last Container in the Middle
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .main-nav { display: none !important; }
   .header-actions .icon-toggle,
   .header-actions .btn-rtl-toggle,
   .header-actions .btn-primary-custom,
-  .header-actions .btn-secondary-custom{ display:none !important; }
-  .hamburger-btn{ display:flex !important; }
-  .hero-grid{ grid-template-columns: 1fr; }
-  .hero-visual{ order:-1; max-width: 480px; margin-inline:auto; width:100%; }
-  .feature-grid{ grid-template-columns: repeat(3, 1fr); }
-  .journey-timeline{ grid-template-columns: repeat(2, 1fr); }
-  .route-cards-grid{ grid-template-columns: repeat(2, 1fr); }
-  .safety-grid{ grid-template-columns: repeat(2, 1fr); }
-  .plans-grid{ grid-template-columns: repeat(2, 1fr); }
-  .plans-grid .plan-card:last-child{ grid-column: span 2; max-width: 420px; margin-inline:auto; width:100%; }
-  .testimonial-grid{ grid-template-columns: repeat(2, 1fr); }
-  .dash-grid{ grid-template-columns: repeat(2, 1fr); }
-  .tracking-panel{ grid-template-columns: 1fr; }
-  .footer-grid{ grid-template-columns: repeat(3, 1fr); }
+  .header-actions .btn-secondary-custom { display: none !important; }
+  .hamburger-btn { display: flex !important; }
+
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { order: -1; max-width: 480px; margin-inline: auto; width: 100%; }
+  /* Phone mockup tablet — scale whole scene down, phone stays 260px internally */
+  .hero-phone-wrap { order: -1; max-width: 520px; margin-inline: auto; width: 100%; padding: 50px 80px 70px; }
+  .phone-3d-scene { transform-origin: center top; }
+  .pb-live { left: -3%; }
+  .pb-next { right: -3%; }
+  .editorial-hero-grid { grid-template-columns: 1fr; }
+  .editorial-hero-visual { order: -1; max-width: 420px; margin-inline: auto; width: 100%; }
+
+  .auth-side { display: none; }
+  .auth-wrap { grid-template-columns: 1fr; }
+  .tracking-panel { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .calc-grid { grid-template-columns: 1fr; }
 }
 
-/* ---- ≤768px : large mobile / small tablet ---- */
-@media (max-width: 768px){
-  :root{ --section-pad-y: clamp(2.5rem, 8vw, 3.5rem); }
-  .feature-grid{ grid-template-columns: repeat(2, 1fr); }
-  .journey-timeline{ grid-template-columns: 1fr; }
-  .route-cards-grid{ grid-template-columns: 1fr; }
-  .safety-grid{ grid-template-columns: 1fr; }
-  .plans-grid{ grid-template-columns: 1fr; }
-  .plans-grid .plan-card:last-child{ grid-column: span 1; max-width: none; }
-  .testimonial-grid{ grid-template-columns: 1fr; }
-  .dash-grid{ grid-template-columns: repeat(2, 1fr); }
-  .footer-grid{ grid-template-columns: repeat(2, 1fr); }
-  .hero-stats{ gap: 1.75rem; }
-  .route-filter-bar{ flex-direction:column; }
-  .route-filter-bar select, .route-filter-bar input, .route-filter-bar button{ flex: 1 1 100%; width:100%; }
-}
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* 2-Column Layout for Tablet / Tab View */
+  .feature-grid,
+  .feature-grid.cols-3,
+  .feature-grid.cols-4,
+  .journey-timeline,
+  .journey-timeline.cols-3,
+  .journey-timeline.cols-4,
+  .journey-timeline.cols-5,
+  .journey-timeline.cols-8,
+  .route-cards-grid,
+  .safety-grid,
+  .plans-grid,
+  .testimonial-grid,
+  .dash-grid,
+  .bento-grid,
+  .lifecycle-steps-grid,
+  .telematics-grid,
+  .landmarks-grid,
+  .impact-reviews-grid,
+  .mission-vision-grid,
+  .transit-gallery-grid,
+  .telemetry-cockpit-grid,
+  .safety-pillars-grid,
+  .drivers-showcase-grid,
+  .milestones-track-grid,
+  .milestone-stats-strip,
+  .mega-stats,
+  .stat-strip,
+  .addons-grid,
+  .trust-guarantee-grid,
+  .impact-hero-strip {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 
-/* ---- ≤465px ---- */
-@media (max-width: 465px){
-  .hero-actions{ flex-direction:column; align-self:stretch; }
-  .hero-actions .btn-primary-custom, .hero-actions .btn-secondary-custom{ width:100%; }
-  .floating-card{ min-width: 148px; padding: 10px 12px; }
-  .fc-live{ inset-inline-start: -4%; }
-  .fc-next{ inset-inline-end: -4%; }
-  .fc-status{ inset-inline-start: 4%; }
-  .dash-grid{ grid-template-columns: 1fr; }
-  .final-cta .hero-actions, .final-cta > div > div{ flex-direction:column; }
-  .footer-grid{ grid-template-columns: 1fr; }
-  .footer-bottom{ flex-direction:column; align-items:flex-start; }
-}
-
-/* ---- ≤390px ---- */
-@media (max-width: 390px){
-  .brand span.brand-text{ display:none; }
-  .header-actions{ gap: 6px; }
-  .icon-toggle{ width: 36px; height:36px; }
-  .hamburger-btn{ width:36px; height:36px; }
-  .dash-preview-top{ flex-direction:column; align-items:flex-start; }
-}
-
-/* ---- ≤360px ---- */
-@media (max-width: 360px){
-  .plan-price{ font-size: 1.7rem; }
-  .floating-card{ min-width: 132px; font-size: 0.85rem; }
-  .floating-card .fc-value{ font-size: 0.8rem; }
-}
-
-/* ---- ≤320px : hard floor ---- */
-@media (max-width: 320px){
-  :root{ --container-pad: 1rem; }
-  .floating-card{ position: static; margin-block: 10px; width: 100%; }
-  .hero-visual-frame{ padding-bottom: 12px; }
-  .h-display{ font-size: 1.9rem; }
-}
-
-/* Utility: never allow accidental horizontal scroll while keeping sticky fixed header working */
-html, body{ max-width: 100%; overflow-x: clip; }
-table{ width:100%; }
-
-/* ==========================================================================
-   PHASE 2 component responsiveness
-   ========================================================================== */
-@media (max-width: 1024px){
-  .editorial-hero-grid{ grid-template-columns: 1fr; }
-  .editorial-hero-visual{ order:-1; max-width: 420px; margin-inline:auto; width:100%; }
-  .bento-grid{ grid-template-columns: repeat(2, 1fr); }
-  .auth-side{ display:none; }
-  .auth-wrap{ grid-template-columns: 1fr; }
-  .lifecycle-steps-grid{ grid-template-columns: repeat(2, 1fr); }
-  .telematics-grid{ grid-template-columns: repeat(2, 1fr); }
-  .landmarks-grid{ grid-template-columns: repeat(2, 1fr); }
-  .impact-reviews-grid{ grid-template-columns: repeat(2, 1fr); }
-  .mission-vision-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px){
-  .step-flow{ flex-direction:column; gap:22px; align-items:stretch; }
-  .step-flow::before{ inset-block:0; inset-inline-start:22px; inset-inline-end:auto; width:2px; height:auto; }
-  .step-node{ flex-direction:row; text-align:start; align-items:center; gap:14px; }
-  .step-node .sn-dot{ margin-bottom:0; }
-
-  .editorial-block{ grid-template-columns: 1fr; }
-  .editorial-block.reverse .eb-visual{ order:0; }
-  .eb-visual{ max-width: 320px; margin-inline:auto; width:100%; }
-
-  .bento-grid{ grid-template-columns: 1fr; }
-  .form-grid-2{ grid-template-columns: 1fr; }
-
-  .compare-table{ min-width: 0; }
-  .compare-table thead{ display:none; }
-  .compare-table, .compare-table tbody, .compare-table tr, .compare-table td{ display:block; width:100%; }
-  .compare-table tr{ border-bottom:1px solid var(--border-soft); padding: 12px 16px; }
-  .compare-table tr:last-child{ border-bottom:none; }
-  .compare-table td{ border:none; padding: 6px 0; text-align:start; display:flex; justify-content:space-between; align-items:center; }
-  .compare-table td::before{ content: attr(data-label); font-size:0.76rem; color: var(--text-muted); font-weight:550; }
-  .compare-table td:first-child{ font-weight:600; font-size:0.95rem; padding-bottom:8px; display:block; }
-  .compare-table td:first-child::before{ content:none; }
-
-  .h-mega{ font-size: clamp(2rem, 8vw, 2.75rem); }
-
-  /* New sections mobile responsive */
-  .fare-estimator-grid{ grid-template-columns: 1fr; }
-  .lifecycle-steps-grid{ grid-template-columns: 1fr; }
-  .telematics-grid{ grid-template-columns: 1fr; }
-  .impact-hero-strip{ grid-template-columns: repeat(2, 1fr); }
-  .impact-reviews-grid{ grid-template-columns: 1fr; }
-  .landmarks-grid{ grid-template-columns: 1fr; }
-  .pool-creator-grid{ grid-template-columns: 1fr; }
-  .pool-form-row{ grid-template-columns: 1fr; }
-  .mission-vision-grid{ grid-template-columns: 1fr; }
-}
-
-@media (max-width: 465px){
-  .flow-node{ font-size:0.85rem; padding: 12px 16px; }
-  .side-info-card{ padding: 1.5rem; }
-  .impact-hero-strip{ grid-template-columns: 1fr; }
-  .lifecycle-header{ flex-direction: column; align-items: flex-start; }
+  /* When container count is ODD in Tab View -> Center the Last Container in the Middle */
+  .feature-grid > :last-child:nth-child(odd),
+  .route-cards-grid > :last-child:nth-child(odd),
+  .safety-grid > :last-child:nth-child(odd),
+  .plans-grid > :last-child:nth-child(odd),
+  .plans-grid .plan-card:last-child:nth-child(odd),
+  .testimonial-grid > :last-child:nth-child(odd),
+  .dash-grid > :last-child:nth-child(odd),
+  .bento-grid > :last-child:nth-child(odd),
+  .lifecycle-steps-grid > :last-child:nth-child(odd),
+  .telematics-grid > :last-child:nth-child(odd),
+  .landmarks-grid > :last-child:nth-child(odd),
+  .impact-reviews-grid > :last-child:nth-child(odd),
+  .mission-vision-grid > :last-child:nth-child(odd),
+  .transit-gallery-grid > :last-child:nth-child(odd),
+  .telemetry-cockpit-grid > :last-child:nth-child(odd),
+  .safety-pillars-grid > :last-child:nth-child(odd),
+  .safety-pillars-grid .safety-pillar-card:last-child:nth-child(odd),
+  .drivers-showcase-grid > :last-child:nth-child(odd),
+  .milestones-track-grid > :last-child:nth-child(odd),
+  .milestone-stats-strip > :last-child:nth-child(odd),
+  .mega-stats > :last-child:nth-child(odd),
+  .stat-strip > :last-child:nth-child(odd),
+  .journey-timeline > :last-child:nth-child(odd),
+  .journey-timeline.cols-3 > :last-child:nth-child(odd),
+  .addons-grid > :last-child:nth-child(odd),
+  .trust-guarantee-grid > :last-child:nth-child(odd),
+  .impact-hero-strip > :last-child:nth-child(odd) {
+    grid-column: span 2 !important;
+    max-width: calc(50% - 10px) !important;
+    margin-inline: auto !important;
+    width: 100% !important;
+  }
 }
 
 /* ==========================================================================
-   PHASE 2b component responsiveness
+   MOBILE VIEW (≤768px):
+   - All Containers / Cards Display One by One (1 Column)
+   - Reset All Last Child Center / Span Constraints
    ========================================================================== */
-@media (max-width: 768px){
-  .stat-strip{ grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
-  .mega-stats{ grid-template-columns: 1fr; gap: 1.75rem; }
-}
-@media (max-width: 465px){
-  .stat-strip{ grid-template-columns: 1fr 1fr; padding: 20px; }
-  .stat-strip .stat-item b{ font-size: 1.5rem; }
+@media (max-width: 768px) {
+  :root { --section-pad-y: clamp(2.5rem, 8vw, 3.5rem); }
+
+  /* 1-Column "One by One" for Mobile Screens */
+  .feature-grid,
+  .feature-grid.cols-3,
+  .feature-grid.cols-4,
+  .journey-timeline,
+  .journey-timeline.cols-3,
+  .journey-timeline.cols-4,
+  .journey-timeline.cols-5,
+  .journey-timeline.cols-8,
+  .route-cards-grid,
+  .safety-grid,
+  .plans-grid,
+  .testimonial-grid,
+  .dash-grid,
+  .footer-grid,
+  .bento-grid,
+  .editorial-block,
+  .form-grid-2,
+  .lifecycle-steps-grid,
+  .fare-estimator-grid,
+  .telematics-grid,
+  .impact-hero-strip,
+  .impact-reviews-grid,
+  .landmarks-grid,
+  .pool-creator-grid,
+  .pool-form-row,
+  .mission-vision-grid,
+  .stat-strip,
+  .mega-stats,
+  .transit-gallery-grid,
+  .telemetry-cockpit-grid,
+  .safety-pillars-grid,
+  .drivers-showcase-grid,
+  .milestones-track-grid,
+  .milestone-stats-strip,
+  .env-metrics-grid,
+  .addons-grid,
+  .trust-guarantee-grid,
+  .enterprise-grid,
+  .enterprise-checklist,
+  .calc-grid,
+  .calc-segmented {
+    grid-template-columns: 1fr !important;
+  }
+
+  .enterprise-stats-panel {
+    border-inline-start: none;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  /* Reset last child centering & spans for mobile so each item fills full container width */
+  .feature-grid > :last-child,
+  .route-cards-grid > :last-child,
+  .safety-grid > :last-child,
+  .plans-grid > :last-child,
+  .plans-grid .plan-card:last-child,
+  .testimonial-grid > :last-child,
+  .dash-grid > :last-child,
+  .footer-grid > :last-child,
+  .bento-grid > :last-child,
+  .lifecycle-steps-grid > :last-child,
+  .telematics-grid > :last-child,
+  .landmarks-grid > :last-child,
+  .impact-reviews-grid > :last-child,
+  .mission-vision-grid > :last-child,
+  .transit-gallery-grid > :last-child,
+  .telemetry-cockpit-grid > :last-child,
+  .safety-pillars-grid > :last-child,
+  .safety-pillars-grid .safety-pillar-card:last-child,
+  .drivers-showcase-grid > :last-child,
+  .milestones-track-grid > :last-child,
+  .milestone-stats-strip > :last-child,
+  .mega-stats > :last-child,
+  .stat-strip > :last-child,
+  .journey-timeline > :last-child,
+  .journey-timeline.cols-3 > :last-child,
+  .addons-grid > :last-child,
+  .trust-guarantee-grid > :last-child,
+  .impact-hero-strip > :last-child {
+    grid-column: span 1 !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    width: 100% !important;
+  }
+
+  .step-flow { flex-direction: column; gap: 22px; align-items: stretch; }
+  .step-flow::before { inset-block: 0; inset-inline-start: 22px; inset-inline-end: auto; width: 2px; height: auto; }
+  .step-node { flex-direction: row; text-align: start; align-items: center; gap: 14px; }
+  .step-node .sn-dot { margin-bottom: 0; }
+
+  .editorial-block { grid-template-columns: 1fr; gap: 1.75rem; }
+  .editorial-block.reverse .eb-visual { order: 0; }
+  .eb-visual { max-width: 100%; width: 100%; aspect-ratio: 16/9; margin-inline: auto; border-radius: var(--radius-lg); overflow: hidden; }
+
+  .hero-stats { gap: 1.75rem; }
+  /* Phone mockup mobile — scale whole scene so all content stays readable */
+  .hero-phone-wrap { padding: 50px 30px 65px; max-width: 420px; }
+  .phone-3d-scene { transform: scale(0.82); transform-origin: center top; }
+  .pb-live { top: -2%; left: 0%; }
+  .pb-next { bottom: 18%; right: 0%; }
+  .pb-status { bottom: -5%; left: 4%; }
+  .route-filter-bar { flex-direction: column; }
+
+  .route-filter-bar select, .route-filter-bar input, .route-filter-bar button { flex: 1 1 100%; width: 100%; }
+
+  .compare-table { min-width: 0; }
+  .compare-table thead { display: none; }
+  .compare-table, .compare-table tbody, .compare-table tr, .compare-table td { display: block; width: 100%; }
+  .compare-table tr { border-bottom: 1px solid var(--border-soft); padding: 12px 16px; }
+  .compare-table tr:last-child { border-bottom: none; }
+  .compare-table td { border: none; padding: 6px 0; text-align: start; display: flex; justify-content: space-between; align-items: center; }
+  .compare-table td::before { content: attr(data-label); font-size: 0.76rem; color: var(--text-muted); font-weight: 550; }
+  .compare-table td:first-child { font-weight: 600; font-size: 0.95rem; padding-bottom: 8px; display: block; }
+  .compare-table td:first-child::before { content: none; }
+
+  .h-mega { font-size: clamp(2rem, 8vw, 2.75rem); }
+  .gallery-filter-bar,
+  .zone-nav-bar,
+  .review-filter-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow-x: visible !important;
+    gap: 8px !important;
+    padding-bottom: 0 !important;
+  }
+  .gallery-filter-btn,
+  .zone-nav-btn,
+  .review-filter-pill {
+    flex-shrink: initial !important;
+  }
 }
 
 /* ==========================================================================
-   New Feature Sections Responsiveness (Gallery, Telemetry, Safety 3-Grid, Calc, Milestones)
+   SMALL MOBILE VIEW (≤465px)
    ========================================================================== */
-@media (max-width: 1024px){
-  .transit-gallery-grid{ grid-template-columns: repeat(2, 1fr); }
-  .telemetry-cockpit-grid{ grid-template-columns: repeat(2, 1fr); }
-  .safety-pillars-grid{ grid-template-columns: repeat(2, 1fr); }
-  .safety-pillars-grid .safety-pillar-card:last-child{ grid-column: span 2; }
-  .drivers-showcase-grid{ grid-template-columns: repeat(2, 1fr); }
-  .calc-grid{ grid-template-columns: 1fr; }
-  .milestones-track-grid{ grid-template-columns: repeat(2, 1fr); }
-  .milestone-stats-strip{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 465px) {
+  .hero-actions { flex-direction: column; align-self: stretch; }
+  .hero-actions .btn-primary-custom, .hero-actions .btn-secondary-custom { width: 100%; }
+  /* Phone mockup — scale down, hide outer badges */
+  .pb-live, .pb-next, .pb-status { display: none; }
+  .hero-phone-wrap { padding: 30px 20px 40px; max-width: 340px; }
+  .phone-3d-scene { transform: scale(0.72); transform-origin: center top; }
+  .final-cta .hero-actions, .final-cta > div > div { flex-direction: column; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+
+  .flow-node { font-size: 0.85rem; padding: 12px 16px; }
+  .side-info-card { padding: 1.5rem; }
+  .lifecycle-header { flex-direction: column; align-items: flex-start; }
+
+  .stat-strip { padding: 20px; }
+  .stat-strip .stat-item b { font-size: 1.5rem; }
 }
 
-@media (max-width: 768px){
-  .transit-gallery-grid{ grid-template-columns: 1fr; }
-  .telemetry-cockpit-grid{ grid-template-columns: 1fr; }
-  .safety-pillars-grid{ grid-template-columns: 1fr; }
-  .safety-pillars-grid .safety-pillar-card:last-child{ grid-column: span 1; }
-  .drivers-showcase-grid{ grid-template-columns: 1fr; }
-  .milestones-track-grid{ grid-template-columns: 1fr; }
-  .gallery-filter-bar{ justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
-  .gallery-filter-btn{ flex-shrink: 0; }
+/* ==========================================================================
+   TINY MOBILE VIEW (≤390px)
+   ========================================================================== */
+@media (max-width: 390px) {
+  .brand span.brand-text { display: none; }
+  .header-actions { gap: 6px; }
+  .icon-toggle { width: 36px; height: 36px; }
+  .hamburger-btn { width: 36px; height: 36px; }
+  .dash-preview-top { flex-direction: column; align-items: flex-start; }
 }
 
-@media (max-width: 465px){
-  .calc-segmented{ grid-template-columns: 1fr; }
-  .milestone-stats-strip{ grid-template-columns: 1fr; }
-  .env-metrics-grid{ grid-template-columns: 1fr; }
+/* ==========================================================================
+   MICRO MOBILE VIEW (≤360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .plan-price { font-size: 1.7rem; }
+  .floating-card { min-width: 132px; font-size: 0.85rem; }
+  .floating-card .fc-value { font-size: 0.8rem; }
 }
+
+/* ==========================================================================
+   MINIMUM FLOOR (≤320px)
+   ========================================================================== */
+@media (max-width: 320px) {
+  :root { --container-pad: 1rem; }
+  /* Scale phone scene to tiny floor */
+  .phone-3d-scene { transform: scale(0.60); transform-origin: center top; }
+  .hero-phone-wrap { padding: 20px 10px 30px; max-width: 300px; }
+  .h-display { font-size: 1.9rem; }
+}
+
 
 

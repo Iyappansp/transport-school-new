@@ -135,7 +135,6 @@
         <a href="${root}login.html" class="btn-primary-custom w-100 justify-content-center py-2 mb-2">Login</a>
         <a href="${root}dashboard/index.html" class="btn-secondary-custom w-100 justify-content-center py-2 mb-3">Dashboard</a>
         <div class="mobile-sidebar-controls">
-          <span class="mobile-pref-label">Preferences</span>
           <div class="mobile-pref-toggles">
             <button type="button" class="icon-toggle theme-toggle-btn" id="theme-toggle-mobile" aria-label="Toggle dark mode" title="Toggle theme">
               <i class="bi bi-moon-stars"></i>

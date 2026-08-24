@@ -39,69 +39,159 @@
       </div>
     </div>
 
-    <div class="hero-visual" data-reveal="scale-in" data-reveal-delay="120">
-      <div class="hero-visual-frame">
-        <svg viewBox="0 0 480 408" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a school bus route on a city map">
-          <defs>
-            <linearGradient id="mapFade" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.10"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="480" height="408" fill="url(#mapFade)"/>
-          <!-- city blocks -->
-          <g fill="#ffffff" opacity="0.08">
-            <rect x="30" y="40" width="70" height="46" rx="6"/>
-            <rect x="120" y="30" width="50" height="60" rx="6"/>
-            <rect x="330" y="50" width="90" height="50" rx="6"/>
-            <rect x="60" y="270" width="60" height="70" rx="6"/>
-            <rect x="340" y="260" width="80" height="80" rx="6"/>
-            <rect x="200" y="300" width="60" height="50" rx="6"/>
-          </g>
-          <!-- route -->
-          <path d="M 55 90 C 60 160, 140 150, 150 210 S 260 260, 270 190 S 380 120, 415 100" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/>
-          <path d="M 55 90 C 60 160, 140 150, 150 210 S 260 260, 270 190 S 380 120, 415 100" fill="none" stroke="#F4B400" stroke-width="4" stroke-linecap="round"/>
-          <!-- stops -->
-          <circle cx="55" cy="90" r="6" fill="#0B1120" stroke="#fff" stroke-width="2"/>
-          <circle cx="150" cy="210" r="6" fill="#0B1120" stroke="#fff" stroke-width="2"/>
-          <circle cx="270" cy="190" r="6" fill="#0B1120" stroke="#fff" stroke-width="2"/>
-          <circle cx="415" cy="100" r="7" fill="#F4B400" stroke="#fff" stroke-width="2"/>
-          <!-- bus -->
-          <g transform="translate(150,210)">
-            <circle r="17" fill="#155EEF" stroke="#fff" stroke-width="3"/>
-            <path d="M -8 -6 h16 a2 2 0 0 1 2 2 v7 a2 2 0 0 1 -2 2 h-16 a2 2 0 0 1 -2 -2 v-7 a2 2 0 0 1 2 -2 z" fill="#fff"/>
-            <circle cx="-5" cy="5" r="1.6" fill="#155EEF"/>
-            <circle cx="5" cy="5" r="1.6" fill="#155EEF"/>
-          </g>
-        </svg>
-      </div>
+    <!-- ===== MOBILE APP PHONE MOCKUP ===== -->
+    <div class="hero-phone-wrap" data-reveal="scale-in" data-reveal-delay="120">
 
-      <div class="floating-card fc-live" data-reveal="fade-right" data-reveal-delay="260">
-        <span class="fc-icon bg-live"><i class="bi bi-broadcast"></i></span>
+      <!-- Floating badge: Live Bus -->
+      <div class="phone-badge pb-live" data-reveal="fade-right" data-reveal-delay="260">
+        <span class="pb-icon bg-live"><i class="bi bi-broadcast"></i></span>
         <div>
-          <span class="fc-label">Live Bus</span>
-          <span class="fc-value">Bus 24</span>
-          <span class="fc-sub"><span class="pulse-dot d-inline-block me-1"></span>On Route</span>
+          <span class="pb-label">Live Bus</span>
+          <span class="pb-value">Bus 24</span>
+          <span class="pb-sub"><span class="pulse-dot"></span>On Route</span>
         </div>
       </div>
 
-      <div class="floating-card fc-next" data-reveal="fade-left" data-reveal-delay="360">
-        <span class="fc-icon bg-next"><i class="bi bi-signpost-split"></i></span>
-        <div>
-          <span class="fc-label">Next Stop</span>
-          <span class="fc-value">Lakeview Apartments</span>
-          <span class="fc-sub">ETA · 08 min</span>
+      <!-- Phone frame -->
+      <div class="phone-3d-scene" id="phoneScene">
+        <div class="phone-frame" id="phoneFrame">
+          <!-- Phone body -->
+          <div class="phone-body">
+            <!-- Side buttons -->
+            <div class="phone-btn-vol-up"></div>
+            <div class="phone-btn-vol-down"></div>
+            <div class="phone-btn-power"></div>
+            <!-- Screen -->
+            <div class="phone-screen">
+              <!-- Dynamic Island -->
+              <div class="dynamic-island"></div>
+              <!-- Status bar -->
+              <div class="app-status-bar">
+                <span class="app-time">9:41</span>
+                <div class="app-status-icons">
+                  <i class="bi bi-wifi"></i>
+                  <i class="bi bi-reception-4"></i>
+                  <i class="bi bi-battery-half"></i>
+                </div>
+              </div>
+              <!-- App Content -->
+              <div class="app-content">
+                <!-- Header -->
+                <div class="app-header">
+                  <div class="app-user">
+                    <div class="app-avatar"><i class="bi bi-person-fill"></i></div>
+                    <div>
+                      <div class="app-greet">Welcome Back</div>
+                      <div class="app-name">Parent 👋</div>
+                    </div>
+                  </div>
+                  <div class="app-header-actions">
+                    <button class="app-icon-btn" aria-label="Notifications">
+                      <i class="bi bi-bell-fill"></i>
+                      <span class="app-notif-dot"></span>
+                    </button>
+                    <button class="app-icon-btn" aria-label="Chat">
+                      <i class="bi bi-chat-dots-fill"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Tracking Hero Card -->
+                <div class="app-track-card">
+                  <div class="app-track-badge">LIVE TRACKING</div>
+                  <div class="app-track-title">Bus 24 — Route 08</div>
+                  <div class="app-track-sub">On Route to Green Valley School</div>
+                  <a href="tracking.html" class="app-track-btn">Track Now <i class="bi bi-arrow-right"></i></a>
+                </div>
+
+                <!-- Stat row -->
+                <div class="app-stat-row">
+                  <div class="app-stat-card">
+                    <i class="bi bi-check-circle-fill text-success-app"></i>
+                    <div class="app-stat-num">3</div>
+                    <div class="app-stat-lbl">Onboard</div>
+                  </div>
+                  <div class="app-stat-card">
+                    <i class="bi bi-clock-fill text-warn-app"></i>
+                    <div class="app-stat-num">08 min</div>
+                    <div class="app-stat-lbl">ETA</div>
+                  </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="app-sched-header">
+                  <span class="app-sched-title">Today's Schedule</span>
+                  <span class="app-sched-tag">Route 08</span>
+                </div>
+                <div class="app-sched-item is-live">
+                  <div class="app-sched-line"></div>
+                  <div class="app-sched-info">
+                    <div class="app-sched-name">Morning Pickup</div>
+                    <div class="app-sched-meta">07:45 AM · Green Park</div>
+                  </div>
+                  <span class="app-chip live">LIVE</span>
+                </div>
+                <div class="app-sched-item">
+                  <div class="app-sched-line"></div>
+                  <div class="app-sched-info">
+                    <div class="app-sched-name">Afternoon Drop</div>
+                    <div class="app-sched-meta">03:15 PM · Oak Street</div>
+                  </div>
+                  <span class="app-chip next">Next</span>
+                </div>
+
+                <!-- Bottom Nav -->
+                <div class="app-bottom-nav">
+                  <div class="app-nav-item active">
+                    <i class="bi bi-house-fill"></i>
+                    <span>Home</span>
+                  </div>
+                  <div class="app-nav-item">
+                    <i class="bi bi-calendar3"></i>
+                    <span>Schedule</span>
+                  </div>
+                  <div class="app-nav-item">
+                    <i class="bi bi-map"></i>
+                    <span>Routes</span>
+                  </div>
+                  <div class="app-nav-item" style="position:relative;">
+                    <i class="bi bi-broadcast"></i>
+                    <span class="app-nav-dot"></span>
+                    <span>Tracking</span>
+                  </div>
+                  <div class="app-nav-item">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="floating-card fc-status" data-reveal="fade-up" data-reveal-delay="460">
-        <span class="fc-icon bg-status"><i class="bi bi-check-circle-fill"></i></span>
+      <!-- Floating badge: Next Stop -->
+      <div class="phone-badge pb-next" data-reveal="fade-left" data-reveal-delay="360">
+        <span class="pb-icon bg-next"><i class="bi bi-signpost-split"></i></span>
         <div>
-          <span class="fc-label">Child Status</span>
-          <span class="fc-value">Boarded</span>
-          <span class="fc-sub">08:12 AM</span>
+          <span class="pb-label">Next Stop</span>
+          <span class="pb-value">Lakeview Apts.</span>
+          <span class="pb-sub">ETA · 08 min</span>
         </div>
       </div>
+
+      <!-- Floating badge: Child Status -->
+      <div class="phone-badge pb-status" data-reveal="fade-up" data-reveal-delay="460">
+        <span class="pb-icon bg-status"><i class="bi bi-check-circle-fill"></i></span>
+        <div>
+          <span class="pb-label">Child Status</span>
+          <span class="pb-value">Boarded</span>
+          <span class="pb-sub">08:12 AM</span>
+        </div>
+      </div>
+
+      <!-- Glow backdrop -->
+      <div class="phone-glow" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -254,7 +344,7 @@
       </div>
 
       <div class="lifecycle-steps-grid" data-stagger="80">
-        <div class="lifecycle-step-card is-live" data-reveal="fade-up">
+        <div class="lifecycle-step-card" data-reveal="fade-up">
           <div class="lifecycle-card-top">
             <span class="lifecycle-icon"><i class="bi bi-house-heart"></i></span>
             <span class="lifecycle-badge"><i class="bi bi-check2"></i> On Time</span>
@@ -269,7 +359,7 @@
           </div>
         </div>
 
-        <div class="lifecycle-step-card is-live" data-reveal="fade-up">
+        <div class="lifecycle-step-card" data-reveal="fade-up">
           <div class="lifecycle-card-top">
             <span class="lifecycle-icon"><i class="bi bi-upc-scan"></i></span>
             <span class="lifecycle-badge"><i class="bi bi-broadcast"></i> Confirmed</span>
@@ -425,7 +515,7 @@
     <div class="plans-grid" data-stagger="90">
       <div class="plan-card" data-reveal="fade-up">
         <div class="plan-name">Monthly Standard</div>
-        <div class="plan-price">₹X,XXX<span>/month</span></div>
+        <div class="plan-price">₹999<span>/month</span></div>
         <div class="plan-note">Billed monthly · Sample pricing</div>
         <ul class="plan-features">
           <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
@@ -440,7 +530,7 @@
       <div class="plan-card is-popular" data-reveal="fade-up">
         <span class="plan-popular-tag">Most Popular</span>
         <div class="plan-name">Monthly Plus</div>
-        <div class="plan-price">₹X,XXX<span>/month</span></div>
+        <div class="plan-price">₹1499<span>/month</span></div>
         <div class="plan-note">Billed monthly · Sample pricing</div>
         <ul class="plan-features">
           <li><i class="bi bi-check-circle-fill"></i>Everything in Standard</li>
@@ -453,7 +543,7 @@
       </div>
       <div class="plan-card" data-reveal="fade-up">
         <div class="plan-name">Full-Year Saver</div>
-        <div class="plan-price">₹XX,XXX<span>/year</span></div>
+        <div class="plan-price">₹1500<span>/year</span></div>
         <div class="plan-note">Billed for the academic year</div>
         <ul class="plan-features">
           <li><i class="bi bi-check-circle-fill"></i>Academic-year transport</li>
@@ -630,39 +720,35 @@
   </div>
 </section>
 
-<!-- ============================== FINAL CTA ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="final-cta" data-reveal="scale-in">
-      <h2 class="h-section">Make Every School Journey Easier to Trust.</h2>
-      <p>Better visibility for parents. A dependable daily journey for students.</p>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="login.html" class="btn-primary-custom">Parent Login</a>
-        <a href="routes.html" class="btn-secondary-custom">Explore Routes</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============================== GETTING STARTED ============================== -->
-<section class="section section-alt">
+<section class="section section-alt" id="getting-started">
   <div class="container-custom">
     <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">Getting Started</span>
+      <span class="eyebrow"><i class="bi bi-compass-fill"></i> Getting Started</span>
       <h2 class="h-section">Getting Started Is Simple.</h2>
+      <p class="lead-text">Set up your student's safe, predictable school commute in three easy steps.</p>
     </div>
     <div class="journey-timeline cols-3" data-stagger="90">
       <div class="journey-step" data-reveal="fade-up">
+        <div class="step-icon-badge" style="width:48px; height:48px; border-radius:50%; background:var(--color-primary-tint); color:var(--color-primary); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin:0 auto 16px;">
+          <i class="bi bi-tag-fill"></i>
+        </div>
         <h4>Choose a Plan</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Pick the transport plan that fits your child's schedule.</p>
+        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Pick the transport plan that fits your child's schedule and distance zone.</p>
       </div>
       <div class="journey-step" data-reveal="fade-up">
+        <div class="step-icon-badge" style="width:48px; height:48px; border-radius:50%; background:var(--color-secondary-tint); color:#D97706; display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin:0 auto 16px;">
+          <i class="bi bi-signpost-2-fill"></i>
+        </div>
         <h4>Get a Route Assigned</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Share your school and pickup area to receive a matching route.</p>
+        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Share your school and pickup area to receive an optimized matching route.</p>
       </div>
       <div class="journey-step" data-reveal="fade-up">
+        <div class="step-icon-badge" style="width:48px; height:48px; border-radius:50%; background:var(--color-success-tint); color:var(--color-success); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin:0 auto 16px;">
+          <i class="bi bi-broadcast-pin"></i>
+        </div>
         <h4>Start Tracking</h4>
-        <p style="font-size:0.85rem; color:var(--text-muted);">Log in to the parent portal and follow the daily journey.</p>
+        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Log in to the parent portal and follow the live daily journey with instant alerts.</p>
       </div>
     </div>
   </div>
@@ -672,7 +758,7 @@
 <section class="section">
   <div class="container-custom">
     <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">Coverage</span>
+      <span class="eyebrow"><i class="bi bi-geo-alt-fill"></i> Coverage</span>
       <h2 class="h-section">Coverage At a Glance.</h2>
     </div>
     <div class="stat-strip" data-reveal="scale-in">
@@ -685,10 +771,115 @@
   </div>
 </section>
 
+<!-- ============================== FINAL CTA ============================== -->
+<section class="section section-alt">
+  <div class="container-custom">
+    <div class="final-cta" data-reveal="scale-in">
+      <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#FFD166; border-color:rgba(255,255,255,0.3); margin-bottom:14px;"><i class="bi bi-stars"></i> Get Started Today</span>
+      <h2 class="h-section">Make Every School Journey Easier to Trust.</h2>
+      <p>Better visibility for parents. A dependable, monitored daily journey for your children.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
+        <a href="routes.html" class="btn-secondary-custom">Explore Routes</a>
+      </div>
+      <div class="final-cta-chips">
+        <span class="final-cta-chip"><i class="bi bi-patch-check-fill"></i> Verified Drivers</span>
+        <span class="final-cta-chip"><i class="bi bi-broadcast"></i> Live GPS Telematics</span>
+        <span class="final-cta-chip"><i class="bi bi-shield-check"></i> Zero Incident Record</span>
+        <span class="final-cta-chip"><i class="bi bi-headset"></i> Dedicated Dispatch Team</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="main-footer" class="site-footer"></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/animations.js"></script>
+<script>
+/* ======= Phone 3D Push / Tilt Effect ======= */
+(function () {
+  const scene = document.getElementById('phoneScene');
+  const frame = document.getElementById('phoneFrame');
+  if (!scene || !frame) return;
+
+  const MAX_TILT = 12; // degrees — slightly softer
+  let rafId;
+  let isHovering = false;
+  let targetX = 0, targetY = 0, currentX = -6, currentY = 3; // start at CSS default pose
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function tick() {
+    // Slower lerp = silkier motion
+    currentX = lerp(currentX, targetX, 0.07);
+    currentY = lerp(currentY, targetY, 0.07);
+
+    frame.style.transform =
+      `perspective(900px) rotateY(${currentX}deg) rotateX(${-currentY}deg) translateZ(${(Math.abs(currentX) + Math.abs(currentY)) * 0.6}px) scale(1.025)`;
+
+    if (isHovering) {
+      rafId = requestAnimationFrame(tick);
+    } else {
+      // Easing back to rest — continue until close enough to starting pose
+      const dx = Math.abs(currentX - (-6));
+      const dy = Math.abs(currentY - 3);
+      if (dx > 0.05 || dy > 0.05) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        // Close enough — hand back to CSS animation
+        frame.style.transform = '';
+        scene.classList.remove('is-tilting');
+      }
+    }
+  }
+
+  scene.addEventListener('mouseenter', () => {
+    isHovering = true;
+    scene.classList.add('is-tilting');
+    // Capture current animated pose before pausing
+    const computed = getComputedStyle(frame).transform;
+    cancelAnimationFrame(rafId);
+    tick();
+  });
+
+  scene.addEventListener('mousemove', (e) => {
+    const rect = scene.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    // Clamp so it never exceeds MAX_TILT
+    targetX = Math.max(-MAX_TILT, Math.min(MAX_TILT, dx * MAX_TILT));
+    targetY = Math.max(-MAX_TILT, Math.min(MAX_TILT, dy * MAX_TILT));
+  });
+
+  scene.addEventListener('mouseleave', () => {
+    isHovering = false;
+    // Ease back to resting pose (-6, 3 deg) then hand back to CSS
+    targetX = -6;
+    targetY = 3;
+    rafId = requestAnimationFrame(tick);
+  });
+
+  // Touch support — gentle tilt on mobile
+  scene.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    const rect = scene.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    targetX = Math.max(-6, Math.min(6, ((touch.clientX - cx) / (rect.width / 2)) * 6));
+    targetY = Math.max(-4, Math.min(4, ((touch.clientY - cy) / (rect.height / 2)) * 4));
+    if (!isHovering) { isHovering = true; scene.classList.add('is-tilting'); tick(); }
+  }, { passive: true });
+
+  scene.addEventListener('touchend', () => {
+    isHovering = false;
+    targetX = -6; targetY = 3;
+    rafId = requestAnimationFrame(tick);
+  });
+})();
+</script>
 </body>
 </html>

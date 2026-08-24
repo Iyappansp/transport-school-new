@@ -9,6 +9,28 @@
   box-shadow: 0 30px 60px -25px rgba(0,0,0,0.6);
 }
 
+/* Phone mockup dark mode — keep screen light (simulates app) */
+[data-theme="dark"] .phone-frame{
+  background: linear-gradient(160deg, #1e2d4a 0%, #0a1220 60%, #111d35 100%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 40px 80px -20px rgba(0,0,0,0.8),
+    0 20px 40px -10px rgba(21,94,239,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+[data-theme="dark"] .phone-glow{
+  background: radial-gradient(ellipse at center, rgba(21,94,239,0.3) 0%, transparent 70%);
+}
+/* Phone app screen stays light regardless of theme */
+[data-theme="dark"] .phone-screen { background: #f6f8fb; }
+[data-theme="dark"] .app-content,
+[data-theme="dark"] .app-header,
+[data-theme="dark"] .app-stat-card,
+[data-theme="dark"] .app-sched-item,
+[data-theme="dark"] .app-bottom-nav,
+[data-theme="dark"] .app-icon-btn { background: revert; color: revert; border-color: revert; }
+
+
 [data-theme="dark"] .tracking-panel{
   background: #131B2C;
   border: 1px solid var(--border-soft);
@@ -41,8 +63,8 @@
 [data-theme="dark"] .form-control-custom{ background: #16233F; border-color: var(--border-soft); color: var(--text-heading); }
 
 [data-theme="dark"] .final-cta{
-  background: linear-gradient(135deg, #16233F 0%, #0B1120 100%);
-  border: 1px solid var(--border-soft);
+  background: linear-gradient(135deg, rgba(11, 17, 32, 0.92) 0%, rgba(21, 94, 239, 0.80) 100%), url('../image/cta-banner.jpg') center/cover no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 [data-theme="dark"] .final-cta .btn-primary-custom{ background: var(--color-primary); color:#fff; border-color: var(--color-primary); }
 [data-theme="dark"] .final-cta .btn-primary-custom:hover{ background: var(--color-primary-dark); }
@@ -60,12 +82,10 @@
   background: #131B2C;
   border-color: var(--border-soft);
 }
-[data-theme="dark"] .lifecycle-step-card{
-  background: #0E1626;
-}
+[data-theme="dark"] .lifecycle-step-card,
 [data-theme="dark"] .lifecycle-step-card.is-live{
-  background: rgba(21, 94, 239, 0.18);
-  border-color: var(--color-primary);
+  background: #0E1626;
+  border-color: var(--border-soft);
 }
 [data-theme="dark"] .fare-summary-panel{
   background: linear-gradient(145deg, #16233F, #10192A);
@@ -83,9 +103,22 @@
 [data-theme="dark"] .milestone-journey-card,
 [data-theme="dark"] .milestone-stat-box,
 [data-theme="dark"] .contact-card-container,
-[data-theme="dark"] .driver-profile-card{
+[data-theme="dark"] .driver-profile-card,
+[data-theme="dark"] .enterprise-tier-card,
+[data-theme="dark"] .enterprise-stat-box,
+[data-theme="dark"] .addon-card,
+[data-theme="dark"] .trust-guarantee-card {
   background: #131B2C;
   border-color: var(--border-soft);
+}
+
+[data-theme="dark"] .enterprise-stats-panel {
+  background: linear-gradient(155deg, #0E1626, #131B2C);
+}
+
+[data-theme="dark"] .addon-card:hover,
+[data-theme="dark"] .trust-guarantee-card:hover {
+  border-color: var(--color-primary);
 }
 
 [data-theme="dark"] .calc-segment-btn,

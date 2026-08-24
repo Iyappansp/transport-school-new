@@ -21,16 +21,21 @@
 
 <header id="main-header" class="site-header"></header>
 
-<section class="page-hero">
+<section class="page-hero page-hero--tracking">
   <div class="container-custom" data-reveal="fade-up">
-    <span class="eyebrow">Live Bus Tracking</span>
+    <div class="page-hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="separator"><i class="bi bi-chevron-right"></i></span>
+      <span class="current">Live Tracking</span>
+    </div>
+    <span class="eyebrow"><i class="bi bi-broadcast-pin"></i> Live Bus Tracking</span>
     <h1 class="h-display">Your Child's Route, Right in Front of You.</h1>
     <p class="lead-text mt-3">Follow the assigned bus route, view upcoming stops and check the latest journey status through the parent portal.</p>
-    <a href="login.html" class="btn-primary-custom mt-4">Parent Login</a>
+    <a href="login.html" class="btn-primary-custom mt-4"><i class="bi bi-person-fill-lock"></i> Parent Login</a>
   </div>
 </section>
 
-<section class="section pt-0">
+<section class="section">
   <div class="container-custom">
     <div class="tracking-panel" data-reveal="fade-up">
       <div class="tracking-map">
@@ -202,14 +207,6 @@
   </div>
 </section>
 
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="final-cta" data-reveal="scale-in">
-      <h2 class="h-section">Want to See Your Child's Route?</h2>
-      <a href="login.html" class="btn-primary-custom">Parent Login</a>
-    </div>
-  </div>
-</section>
 
 <!-- ============================== HOW TRACKING WORKS ============================== -->
 <section class="section">
@@ -246,6 +243,24 @@
       <div class="faq-item">
         <button type="button" class="faq-question"><span class="fq-label">What happens if the bus is delayed?</span><i class="bi bi-plus-lg"></i></button>
         <div class="faq-answer"><div class="faq-answer-inner">The ETA shown in the parent portal updates to reflect the bus's current progress along the route.</div></div>
+      </div>
+    </div>
+  </div>
+<!-- ============================== FINAL CTA ============================== -->
+<section class="section">
+  <div class="container-custom">
+    <div class="final-cta" data-reveal="scale-in">
+      <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#FFD166; border-color:rgba(255,255,255,0.3); margin-bottom:14px;"><i class="bi bi-broadcast"></i> Live Fleet Telematics</span>
+      <h2 class="h-section">Want to Track Your Child's Bus in Real Time?</h2>
+      <p>Log in to access instant satellite GPS tracking, stop ETA countdowns, and automated boarding notifications.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
+        <a href="routes.html" class="btn-secondary-custom">View All Routes</a>
+      </div>
+      <div class="final-cta-chips">
+        <span class="final-cta-chip"><i class="bi bi-geo-alt-fill"></i> Sub-Second GPS Refresh</span>
+        <span class="final-cta-chip"><i class="bi bi-bell-fill"></i> Automated Boarding Push Alerts</span>
+        <span class="final-cta-chip"><i class="bi bi-shield-check"></i> Encrypted Parent Authentication</span>
       </div>
     </div>
   </div>

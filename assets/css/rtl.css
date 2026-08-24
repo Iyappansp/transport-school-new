@@ -33,6 +33,20 @@
 
 [dir="rtl"] .mobile-panel-close{ align-self:flex-start; }
 
+/* Phone mockup RTL — flip tilt direction, swap badge positions */
+@keyframes phone-float-rtl{
+  0%,100%{ transform: perspective(900px) rotateY(6deg) rotateX(3deg) translateY(0px); }
+  50%{ transform: perspective(900px) rotateY(6deg) rotateX(3deg) translateY(-10px); }
+}
+[dir="rtl"] .phone-frame{ animation-name: phone-float-rtl; }
+[dir="rtl"] .pb-live{ left: auto; right: -8%; }
+[dir="rtl"] .pb-next{ right: auto; left: -8%; }
+[dir="rtl"] .pb-status{ left: auto; right: 10%; }
+[dir="rtl"] .app-header{ flex-direction: row-reverse; }
+[dir="rtl"] .app-user{ flex-direction: row-reverse; }
+[dir="rtl"] .app-sched-item{ flex-direction: row-reverse; }
+
+
 /* New Sections RTL Mirroring */
 [dir="rtl"] .lifecycle-card-top,
 [dir="rtl"] .lifecycle-card-foot,
@@ -61,7 +75,9 @@
 [dir="rtl"] .proximity-step-item,
 [dir="rtl"] .pillar-meta-strip,
 [dir="rtl"] .calc-label,
-[dir="rtl"] .calc-stat-row{
+[dir="rtl"] .calc-stat-row,
+[dir="rtl"] .enterprise-stat-box,
+[dir="rtl"] .addon-foot {
   flex-direction: row-reverse;
 }
 [dir="rtl"] .driver-feed-msg{
@@ -69,4 +85,8 @@
   border-inline-end: 3px solid var(--color-primary);
   text-align: right;
 }
+[dir="rtl"] .enterprise-checklist li {
+  text-align: right;
+}
+
 

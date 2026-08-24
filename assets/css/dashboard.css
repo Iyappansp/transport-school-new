@@ -197,6 +197,12 @@ body[data-dashboard] *::after {
   height: 100vh;
   z-index: 90;
   transition: transform var(--dur-med) var(--ease-out);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dash-sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .dash-sidebar-head {
@@ -250,11 +256,17 @@ body[data-dashboard] *::after {
 
 .dash-sidebar-nav {
   flex: 1;
-  padding: 1rem 0.85rem;
+  padding: 0.85rem 0.75rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dash-sidebar-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .dash-nav-link {
@@ -1578,9 +1590,56 @@ body[data-dashboard] *::after {
     top: 0;
     left: 0;
     height: 100vh;
+    height: 100dvh;
     transform: translateX(-100%);
     z-index: 95;
     box-shadow: var(--shadow-xl);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-y: auto;
+  }
+
+  .dash-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dash-sidebar-head {
+    padding: 0.85rem 1.25rem;
+  }
+
+  .dash-sidebar-head .brand-logo-img {
+    height: 42px;
+  }
+
+  .dash-sidebar-nav {
+    padding: 0.4rem 0.65rem;
+    gap: 0.15rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .dash-sidebar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dash-nav-link {
+    padding: 0.48rem 0.75rem;
+    font-size: 0.82rem;
+    gap: 0.65rem;
+  }
+
+  .dash-sidebar-foot {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .dash-sidebar-controls {
+    margin-bottom: 6px !important;
+    padding-bottom: 6px !important;
+  }
+
+  .dash-logout-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.82rem;
   }
 
   [dir="rtl"] .dash-sidebar {
