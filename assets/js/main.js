@@ -187,11 +187,23 @@
             <a href="${root}dashboard/index.html">Receipts</a>
           </div>
        
-          <div class="footer-col">
+          <div class="footer-col footer-col-contact">
             <h5>Contact</h5>
-            <address>+91 98765 43210</address>
-            <p>support@saferoute.com</p>
-            <p>Monday&ndash;Saturday<br>6:00 AM&ndash;7:00 PM</p>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="bi bi-telephone-fill"></i></span>
+              <a href="tel:+919876543210" class="footer-contact-link">+91 98765 43210</a>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="bi bi-envelope-fill"></i></span>
+              <a href="mailto:support@saferoute.com" class="footer-contact-link">support@saferoute.com</a>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="bi bi-clock-fill"></i></span>
+              <div class="footer-contact-text">
+                <strong>Monday&ndash;Saturday</strong>
+                <span>6:00 AM&ndash;7:00 PM</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="footer-bottom">

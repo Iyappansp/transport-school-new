@@ -94,4 +94,48 @@
   text-align: right;
 }
 
+/* Routes RTL Phone Number & Bidi Fixes */
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] #poolPhoneInput {
+  direction: ltr !important;
+  text-align: right !important;
+  unicode-bidi: isolate !important;
+}
+[dir="rtl"] select,
+[dir="rtl"] option {
+  direction: rtl;
+  unicode-bidi: plaintext;
+  text-align: right;
+}
+
+/* Plans RTL Institutional Tier Alignment & Arrow Fixes */
+[dir="rtl"] .enterprise-tier-card {
+  text-align: right;
+}
+[dir="rtl"] .enterprise-content {
+  text-align: right;
+}
+[dir="rtl"] .enterprise-stats-panel {
+  text-align: right;
+}
+[dir="rtl"] .enterprise-stat-box {
+  text-align: right;
+  flex-direction: row;
+}
+[dir="rtl"] .enterprise-stat-box > div {
+  text-align: right;
+}
+[dir="rtl"] .enterprise-checklist li {
+  text-align: right;
+  justify-content: flex-start;
+}
+[dir="rtl"] .enterprise-checklist li i {
+  margin-inline-end: 8px;
+}
+[dir="rtl"] .btn-primary-custom i.bi-arrow-right,
+[dir="rtl"] .btn-secondary-custom i.bi-arrow-right {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
 

@@ -1150,6 +1150,21 @@ body[data-dashboard] *::after {
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
   width: 100%;
+  align-items: stretch;
+}
+
+.overview-at-glance-grid .widget-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.overview-at-glance-grid .widget-row {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (min-width: 1200px) {

@@ -569,6 +569,66 @@ table { width: 100%; }
 }
 
 /* ==========================================================================
+   MATRIX TABLE MOBILE STACKED CARDS (<=600px & 360px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  .matrix-container {
+    overflow-x: visible !important;
+    padding: 1rem 0.75rem !important;
+  }
+  .saferoute-matrix-table {
+    min-width: 0 !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  .saferoute-matrix-table thead {
+    display: none !important;
+  }
+  .saferoute-matrix-table tbody {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .saferoute-matrix-table tr {
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--surface-page) !important;
+    border: 1px solid var(--border-soft) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 14px 16px !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .saferoute-matrix-table td {
+    padding: 0 !important;
+    border: none !important;
+    text-align: start !important;
+    font-size: 0.85rem !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  .saferoute-matrix-table td:first-child {
+    font-weight: 700 !important;
+    color: var(--text-heading) !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    margin-bottom: 4px !important;
+  }
+  .saferoute-matrix-table td.highlight-col {
+    background: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .saferoute-matrix-table td:nth-child(3),
+  .saferoute-matrix-table td:nth-child(4) {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
    MINIMUM FLOOR (≤320px)
    ========================================================================== */
 @media (max-width: 320px) {
