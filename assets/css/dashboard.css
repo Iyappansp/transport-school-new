@@ -670,6 +670,7 @@ body[data-dashboard] *::after {
   width: 28px;
   height: 28px;
   border-radius: 50%;
+  overflow: hidden;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-700));
   color: #fff;
   display: inline-flex;
@@ -678,6 +679,12 @@ body[data-dashboard] *::after {
   font-size: 0.72rem;
   font-weight: 800;
   flex-shrink: 0;
+}
+.topbar-user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ==========================================================================
@@ -837,6 +844,14 @@ body[data-dashboard] *::after {
 .btn-ghost:hover {
   background: var(--color-primary-50);
   color: var(--color-primary-dark);
+}
+
+[data-theme="dark"] .btn-ghost {
+  color: #93C5FD;
+}
+[data-theme="dark"] .btn-ghost:hover {
+  background: rgba(21, 94, 239, 0.35);
+  color: #FFFFFF !important;
 }
 
 .btn-white {
@@ -1261,36 +1276,55 @@ body[data-dashboard] *::after {
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.65rem;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
   border-radius: var(--radius-pill);
   font-size: var(--fs-xs);
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  width: fit-content;
+  max-width: max-content;
+  transition: all 0.18s ease;
+}
+
+.badge i {
+  font-size: 0.85em;
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
 }
 
-.badge-primary {
+.badge-primary, .badge.primary {
   background: var(--color-primary-50);
   color: var(--color-primary);
+  border: 1px solid rgba(21, 94, 239, 0.22);
 }
 
-.badge-accent {
+.badge-accent, .badge-success, .badge.success, .badge.done, .badge.completed {
   background: var(--color-accent-50);
   color: var(--color-accent-600);
+  border: 1px solid rgba(22, 163, 74, 0.22);
 }
 
-.badge-warning {
+.badge-warning, .badge.warning, .badge.progress, .badge.on-schedule {
   background: var(--color-warning-50);
   color: var(--color-warning);
+  border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
-.badge-danger {
+.badge-danger, .badge.danger, .badge.alert {
   background: var(--color-danger-50);
   color: var(--color-danger);
+  border: 1px solid rgba(239, 68, 68, 0.24);
 }
 
-.badge-muted {
+.badge-muted, .badge.muted, .badge.upcoming {
   background: var(--surface-sunken);
   color: var(--text-muted);
+  border: 1px solid var(--border-soft);
 }
 
 .pulse-dot {

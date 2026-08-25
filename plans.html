@@ -48,7 +48,6 @@
           <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
           <li><i class="bi bi-check-circle-fill"></i>Journey notifications</li>
           <li><i class="bi bi-check-circle-fill"></i>Boarding updates</li>
-          <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
         </ul>
         <button type="button" class="btn-secondary-custom" data-bs-toggle="modal" data-bs-target="#planModal" data-plan-trigger data-plan="Monthly Standard">Choose Standard</button>
       </div>
@@ -157,6 +156,17 @@
             </div>
             <div class="calc-segmented" style="grid-template-columns: 1fr 1fr;">
               <button type="button" class="calc-segment-btn active" data-calc-tenure="monthly">Monthly Recurring</button>
+              <button type="button" class="calc-segment-btn" data-calc-tenure="annual">Academic Year (Save 15%)</button>
+            </div>
+          </div>
+<br>
+            <div class="calc-group" style="margin-bottom:0;">
+            <div class="calc-label">
+              <span>Preferred Mode of Transport</span>
+              <span class="calc-sublabel" style="color:var(--color-success);"><i class="bi bi-gift-fill"></i> Save 2 Months</span>
+            </div>
+            <div class="calc-segmented" style="grid-template-columns: 1fr 1fr;">
+              <button type="button" class="calc-segment-btn active" data-calc-tenure="monthly">Recurring</button>
               <button type="button" class="calc-segment-btn" data-calc-tenure="annual">Academic Year (Save 15%)</button>
             </div>
           </div>
@@ -278,42 +288,58 @@
 
     <div class="addons-grid" data-stagger="80">
       <div class="addon-card" data-reveal="fade-up">
-        <div class="addon-icon-wrap"><i class="bi bi-house-door-fill"></i></div>
-        <h4>Doorstep Gate Pickup</h4>
-        <p>Direct stop at your apartment complex gate or residential society entrance for maximum safety.</p>
-        <div class="addon-foot">
-          <div class="addon-price">+₹350 <span>/ month</span></div>
-          <span class="addon-tag">Popular</span>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Doorstep-Gate.png" alt="Doorstep Gate Pickup" loading="lazy">
+        </div>
+        <div class="addon-card-body">
+          <h4>Doorstep Gate Pickup</h4>
+          <p>Direct stop at your apartment complex gate or residential society entrance for maximum safety.</p>
+          <div class="addon-foot">
+            <div class="addon-price">+₹350 <span>/ month</span></div>
+            <span class="addon-tag">Popular</span>
+          </div>
         </div>
       </div>
 
       <div class="addon-card" data-reveal="fade-up">
-        <div class="addon-icon-wrap"><i class="bi bi-chat-left-dots-fill"></i></div>
-        <h4>Dual Parent Alert Feed</h4>
-        <p>Simultaneous real-time boarding alerts, delays, and ETA push notifications to both parents' phones.</p>
-        <div class="addon-foot">
-          <div class="addon-price">+₹150 <span>/ month</span></div>
-          <span class="addon-tag">Family</span>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Dual-Parent.png" alt="Dual Parent Alert Feed" loading="lazy">
+        </div>
+        <div class="addon-card-body">
+          <h4>Dual Parent Alert Feed</h4>
+          <p>Simultaneous real-time boarding alerts, delays, and ETA push notifications to both parents.</p>
+          <div class="addon-foot">
+            <div class="addon-price">+₹150 <span>/ month</span></div>
+            <span class="addon-tag">Family</span>
+          </div>
         </div>
       </div>
 
       <div class="addon-card" data-reveal="fade-up">
-        <div class="addon-icon-wrap"><i class="bi bi-people-fill"></i></div>
-        <h4>Sibling Reserved Row</h4>
-        <p>Guaranteed adjacent seating for siblings travelling together with dedicated chaperone assistance.</p>
-        <div class="addon-foot">
-          <div class="addon-price">+₹200 <span>/ month</span></div>
-          <span class="addon-tag">Siblings</span>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Sibling-Reserved.png" alt="Sibling Reserved Row" loading="lazy">
+        </div>
+        <div class="addon-card-body">
+          <h4>Sibling Reserved Row</h4>
+          <p>Guaranteed adjacent seating for siblings travelling together with dedicated chaperone assistance.</p>
+          <div class="addon-foot">
+            <div class="addon-price">+₹200 <span>/ month</span></div>
+            <span class="addon-tag">Siblings</span>
+          </div>
         </div>
       </div>
 
       <div class="addon-card" data-reveal="fade-up">
-        <div class="addon-icon-wrap"><i class="bi bi-clock-fill"></i></div>
-        <h4>Extended Activity Pass</h4>
-        <p>After-school late trip pickup flexibility for students enrolled in sports, tuition, or arts clubs.</p>
-        <div class="addon-foot">
-          <div class="addon-price">+₹400 <span>/ month</span></div>
-          <span class="addon-tag">Flexible</span>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Extended-Activity.png" alt="Extended Activity Pass" loading="lazy">
+        </div>
+        <div class="addon-card-body">
+          <h4>Extended Activity Pass</h4>
+          <p>After-school late trip pickup flexibility for students enrolled in sports, tuition, or arts clubs.</p>
+          <div class="addon-foot">
+            <div class="addon-price">+₹400 <span>/ month</span></div>
+            <span class="addon-tag">Flexible</span>
+          </div>
         </div>
       </div>
     </div>
@@ -331,27 +357,43 @@
 
     <div class="trust-guarantee-grid" data-stagger="80">
       <div class="trust-guarantee-card" data-reveal="fade-up">
-        <div class="trust-icon-halo"><i class="bi bi-arrow-counterclockwise"></i></div>
-        <h4>7-Day Trial Refund</h4>
-        <p>Not 100% satisfied during the first week? Cancel with full money-back guarantee.</p>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/7-Day-Trial.png" alt="7-Day Trial Refund" loading="lazy">
+        </div>
+        <div class="trust-card-body">
+          <h4>7-Day Trial Refund</h4>
+          <p>Not 100% satisfied during the first week? Cancel with full money-back guarantee.</p>
+        </div>
       </div>
 
       <div class="trust-guarantee-card" data-reveal="fade-up">
-        <div class="trust-icon-halo"><i class="bi bi-pause-circle-fill"></i></div>
-        <h4>Vacation Billing Pause</h4>
-        <p>Freeze subscriptions during summer and winter breaks with automatic fee adjustments.</p>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Vacation-Billing.png" alt="Vacation Billing Pause" loading="lazy">
+        </div>
+        <div class="trust-card-body">
+          <h4>Vacation Billing Pause</h4>
+          <p>Freeze subscriptions during summer and winter breaks with automatic fee adjustments.</p>
+        </div>
       </div>
 
       <div class="trust-guarantee-card" data-reveal="fade-up">
-        <div class="trust-icon-halo"><i class="bi bi-receipt-cutoff"></i></div>
-        <h4>Zero Hidden Surcharges</h4>
-        <p>Taxes, vehicle maintenance, and RFID tracking hardware cards are completely included.</p>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Zero-Hidden.png" alt="Zero Hidden Surcharges" loading="lazy">
+        </div>
+        <div class="trust-card-body">
+          <h4>Zero Hidden Surcharges</h4>
+          <p>Taxes, vehicle maintenance, and RFID tracking hardware cards are completely included.</p>
+        </div>
       </div>
 
       <div class="trust-guarantee-card" data-reveal="fade-up">
-        <div class="trust-icon-halo"><i class="bi bi-shield-fill-check"></i></div>
-        <h4>Verified Attendant Care</h4>
-        <p>Every single bus route is accompanied by a certified, first-aid trained child attendant.</p>
+        <div class="card-media-banner">
+          <img src="assets/ai/plans/Verified-Attendant.png" alt="Verified Attendant Care" loading="lazy">
+        </div>
+        <div class="trust-card-body">
+          <h4>Verified Attendant Care</h4>
+          <p>Every single bus route is accompanied by a certified, first-aid trained child attendant.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -366,24 +408,45 @@
     </div>
     <div class="feature-grid cols-3" data-stagger="90">
       <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/plans/GPS-Visibility.png" alt="GPS Visibility"></div>
+        <div class="card-media-banner"><img src="assets/ai/plans/GPS-Visibility.png" alt="GPS Visibility" loading="lazy"></div>
         <div class="feature-card-body">
           <h3>GPS Visibility</h3>
-          <p>See the assigned bus's route position in the parent portal.</p>
+          <p>See the assigned bus's live route position and precise ETA in the parent portal.</p>
         </div>
       </div>
       <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/plans/Boarding-Updates.png" alt="Boarding Updates"></div>
+        <div class="card-media-banner"><img src="assets/ai/plans/Boarding-Updates.png" alt="Boarding Updates" loading="lazy"></div>
         <div class="feature-card-body">
           <h3>Boarding Updates</h3>
-          <p>Get notified when your child boards and when the bus arrives.</p>
+          <p>Get notified when your child boards and when the bus arrives at your stop.</p>
         </div>
       </div>
       <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/plans/Digital-Receipts.png" alt="Digital Receipts"></div>
+        <div class="card-media-banner"><img src="assets/ai/plans/Digital-Receipts.png" alt="Digital Receipts" loading="lazy"></div>
         <div class="feature-card-body">
           <h3>Digital Receipts</h3>
-          <p>Every payment generates a receipt you can view or download.</p>
+          <p>Every payment generates an instant digital receipt you can view or download.</p>
+        </div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/plans/Documented-Onboarding.png" alt="Documented Onboarding" loading="lazy"></div>
+        <div class="feature-card-body">
+          <h3>Documented Onboarding</h3>
+          <p>Complete route allocation and parent verification paperwork handled digitally.</p>
+        </div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/plans/Logged-Boarding.png" alt="Logged Boarding" loading="lazy"></div>
+        <div class="feature-card-body">
+          <h3>Logged Boarding</h3>
+          <p>RFID smart-card taps log verified timestamps for every student boarding and drop-off.</p>
+        </div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/plans/Routine-Vehicle.png" alt="Routine Vehicle Maintenance" loading="lazy"></div>
+        <div class="feature-card-body">
+          <h3>Routine Maintenance</h3>
+          <p>Daily 24-point mechanical, tire, brake, and emergency safety checks on all fleet vehicles.</p>
         </div>
       </div>
     </div>

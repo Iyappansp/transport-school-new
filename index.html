@@ -1,907 +1,1027 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SafeRoute — Every School Journey. Visible, Safe, Connected.</title>
-<meta name="description" content="SafeRoute is a school transport platform giving parents route visibility, live bus tracking, boarding updates and simple transport subscriptions.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeRoute — Every School Journey.</title>
+  <meta name="description"
+    content="SafeRoute is a school transport platform giving parents route visibility, live bus tracking, boarding updates and simple transport subscriptions.">
 
-<link rel="icon" type="image/png" href="assets/image/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" type="image/png" href="assets/image/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
 
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
-<link rel="stylesheet" href="assets/css/dark-mode.css">
-<link rel="stylesheet" href="assets/css/rtl.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
+
 <body>
 
-<header id="main-header" class="site-header"></header>
+  <header id="main-header" class="site-header"></header>
 
-<!-- ============================== HERO ============================== -->
-<section class="hero">
-  <div class="container-custom hero-grid">
-    <div class="hero-copy" data-reveal="fade-up">
-      <span class="eyebrow">Smart School Transport</span>
-      <h1 class="h-display">Every School Journey. Visible, Safe, Connected.</h1>
-      <p class="lead-text">Reliable student transportation designed around modern parents — with route visibility, live bus tracking, boarding updates and clear daily journey information.</p>
-      <div class="hero-actions">
-        <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
-        <a href="routes.html" class="btn-secondary-custom">Explore Routes</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><b>12</b><span>Active routes today</span></div>
-        <div class="hero-stat"><b>08 min</b><span>Average ETA accuracy window</span></div>
-        <div class="hero-stat"><b>6:00 AM–7:00 PM</b><span>Transport support hours</span></div>
-      </div>
-    </div>
-
-    <!-- ===== MOBILE APP PHONE MOCKUP ===== -->
-    <div class="hero-phone-wrap" data-reveal="scale-in" data-reveal-delay="120">
-
-      <!-- Floating badge: Live Bus -->
-      <div class="phone-badge pb-live" data-reveal="fade-right" data-reveal-delay="260">
-        <span class="pb-icon bg-live"><i class="bi bi-broadcast"></i></span>
-        <div>
-          <span class="pb-label">Live Bus</span>
-          <span class="pb-value">Bus 24</span>
-          <span class="pb-sub"><span class="pulse-dot"></span>On Route</span>
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <div class="container-custom hero-grid">
+      <div class="hero-copy" data-reveal="fade-up">
+        <span class="eyebrow">Smart School Transport</span>
+        <h1 class="h-display">Every School Journey.</h1>
+        <p class="lead-text">Reliable student transportation designed around modern parents — with route visibility,
+          live bus tracking, boarding updates and clear daily journey information.</p>
+        <div class="hero-actions">
+          <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
+          <a href="routes.html" class="btn-secondary-custom">Explore Routes</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>12</b><span>Active routes today</span></div>
+          <div class="hero-stat"><b>08 min</b><span>Average ETA accuracy window</span></div>
+          <!-- <div class="hero-stat"><b>6:00 AM–7:00 PM</b><span>Transport support hours</span></div> -->
         </div>
       </div>
 
-      <!-- Phone frame -->
-      <div class="phone-3d-scene" id="phoneScene">
-        <div class="phone-frame" id="phoneFrame">
-          <!-- Phone body -->
-          <div class="phone-body">
-            <!-- Side buttons -->
-            <div class="phone-btn-vol-up"></div>
-            <div class="phone-btn-vol-down"></div>
-            <div class="phone-btn-power"></div>
-            <!-- Screen -->
-            <div class="phone-screen">
-              <!-- Dynamic Island -->
-              <div class="dynamic-island"></div>
-              <!-- Status bar -->
-              <div class="app-status-bar">
-                <span class="app-time">9:41</span>
-                <div class="app-status-icons">
-                  <i class="bi bi-wifi"></i>
-                  <i class="bi bi-reception-4"></i>
-                  <i class="bi bi-battery-half"></i>
+      <!-- ===== MOBILE APP PHONE MOCKUP ===== -->
+      <div class="hero-phone-wrap" data-reveal="scale-in" data-reveal-delay="120">
+
+        <!-- Floating badge: Live Bus -->
+        <div class="phone-badge pb-live" data-reveal="fade-right" data-reveal-delay="260">
+          <span class="pb-icon bg-live"><i class="bi bi-broadcast"></i></span>
+          <div>
+            <span class="pb-label">Live Bus</span>
+            <span class="pb-value">Bus 24</span>
+            <span class="pb-sub"><span class="pulse-dot"></span>On Route</span>
+          </div>
+        </div>
+
+        <!-- Phone frame -->
+        <div class="phone-3d-scene" id="phoneScene">
+          <div class="phone-frame" id="phoneFrame">
+            <!-- Phone body -->
+            <div class="phone-body">
+              <!-- Side buttons -->
+              <div class="phone-btn-vol-up"></div>
+              <div class="phone-btn-vol-down"></div>
+              <div class="phone-btn-power"></div>
+              <!-- Screen -->
+              <div class="phone-screen">
+                <!-- Dynamic Island -->
+                <div class="dynamic-island"></div>
+                <!-- Status bar -->
+                <div class="app-status-bar">
+                  <span class="app-time">9:41</span>
+                  <div class="app-status-icons">
+                    <i class="bi bi-wifi"></i>
+                    <i class="bi bi-reception-4"></i>
+                    <i class="bi bi-battery-half"></i>
+                  </div>
                 </div>
-              </div>
-              <!-- App Content -->
-              <div class="app-content">
-                <!-- Header -->
-                <div class="app-header">
-                  <div class="app-user">
-                    <div class="app-avatar"><i class="bi bi-person-fill"></i></div>
-                    <div>
-                      <div class="app-greet">Welcome Back</div>
-                      <div class="app-name">Parent 👋</div>
+                <!-- App Content -->
+                <div class="app-content">
+                  <!-- Header -->
+                  <div class="app-header">
+                    <div class="app-user">
+                      <div class="app-avatar"><i class="bi bi-person-fill"></i></div>
+                      <div>
+                        <div class="app-greet">Welcome Back</div>
+                        <div class="app-name">Parent 👋</div>
+                      </div>
+                    </div>
+                    <div class="app-header-actions">
+                      <button class="app-icon-btn" aria-label="Notifications">
+                        <i class="bi bi-bell-fill"></i>
+                        <span class="app-notif-dot"></span>
+                      </button>
+                      <button class="app-icon-btn" aria-label="Chat">
+                        <i class="bi bi-chat-dots-fill"></i>
+                      </button>
                     </div>
                   </div>
-                  <div class="app-header-actions">
-                    <button class="app-icon-btn" aria-label="Notifications">
-                      <i class="bi bi-bell-fill"></i>
-                      <span class="app-notif-dot"></span>
-                    </button>
-                    <button class="app-icon-btn" aria-label="Chat">
-                      <i class="bi bi-chat-dots-fill"></i>
-                    </button>
-                  </div>
-                </div>
 
-                <!-- Tracking Hero Card -->
-                <div class="app-track-card">
-                  <div class="app-track-badge">LIVE TRACKING</div>
-                  <div class="app-track-title">Bus 24 — Route 08</div>
-                  <div class="app-track-sub">On Route to Green Valley School</div>
-                  <a href="tracking.html" class="app-track-btn">Track Now <i class="bi bi-arrow-right"></i></a>
-                </div>
+                  <!-- Tracking Hero Card -->
+                  <div class="app-track-card">
+                    <div class="app-track-badge">LIVE TRACKING</div>
+                    <div class="app-track-title">Bus 24 — Route 08</div>
+                    <div class="app-track-sub">On Route to Green Valley School</div>
+                    <a href="tracking.html" class="app-track-btn">Track Now <i class="bi bi-arrow-right"></i></a>
+                  </div>
 
-                <!-- Stat row -->
-                <div class="app-stat-row">
-                  <div class="app-stat-card">
-                    <i class="bi bi-check-circle-fill text-success-app"></i>
-                    <div class="app-stat-num">3</div>
-                    <div class="app-stat-lbl">Onboard</div>
+                  <!-- Stat row -->
+                  <div class="app-stat-row">
+                    <div class="app-stat-card">
+                      <i class="bi bi-check-circle-fill text-success-app"></i>
+                      <div class="app-stat-num">3</div>
+                      <div class="app-stat-lbl">Onboard</div>
+                    </div>
+                    <div class="app-stat-card">
+                      <i class="bi bi-clock-fill text-warn-app"></i>
+                      <div class="app-stat-num">08 min</div>
+                      <div class="app-stat-lbl">ETA</div>
+                    </div>
                   </div>
-                  <div class="app-stat-card">
-                    <i class="bi bi-clock-fill text-warn-app"></i>
-                    <div class="app-stat-num">08 min</div>
-                    <div class="app-stat-lbl">ETA</div>
-                  </div>
-                </div>
 
-                <!-- Schedule -->
-                <div class="app-sched-header">
-                  <span class="app-sched-title">Today's Schedule</span>
-                  <span class="app-sched-tag">Route 08</span>
-                </div>
-                <div class="app-sched-item is-live">
-                  <div class="app-sched-line"></div>
-                  <div class="app-sched-info">
-                    <div class="app-sched-name">Morning Pickup</div>
-                    <div class="app-sched-meta">07:45 AM · Green Park</div>
+                  <!-- Schedule -->
+                  <div class="app-sched-header">
+                    <span class="app-sched-title">Today's Schedule</span>
+                    <span class="app-sched-tag">Route 08</span>
                   </div>
-                  <span class="app-chip live">LIVE</span>
-                </div>
-                <div class="app-sched-item">
-                  <div class="app-sched-line"></div>
-                  <div class="app-sched-info">
-                    <div class="app-sched-name">Afternoon Drop</div>
-                    <div class="app-sched-meta">03:15 PM · Oak Street</div>
+                  <div class="app-sched-item is-live">
+                    <div class="app-sched-line"></div>
+                    <div class="app-sched-info">
+                      <div class="app-sched-name">Morning Pickup</div>
+                      <div class="app-sched-meta">07:45 AM · Green Park</div>
+                    </div>
+                    <span class="app-chip live">LIVE</span>
                   </div>
-                  <span class="app-chip next">Next</span>
-                </div>
+                  <div class="app-sched-item">
+                    <div class="app-sched-line"></div>
+                    <div class="app-sched-info">
+                      <div class="app-sched-name">Afternoon Drop</div>
+                      <div class="app-sched-meta">03:15 PM · Oak Street</div>
+                    </div>
+                    <span class="app-chip next">Next</span>
+                  </div>
 
-                <!-- Bottom Nav -->
-                <div class="app-bottom-nav">
-                  <div class="app-nav-item active">
-                    <i class="bi bi-house-fill"></i>
-                    <span>Home</span>
-                  </div>
-                  <div class="app-nav-item">
-                    <i class="bi bi-calendar3"></i>
-                    <span>Schedule</span>
-                  </div>
-                  <div class="app-nav-item">
-                    <i class="bi bi-map"></i>
-                    <span>Routes</span>
-                  </div>
-                  <div class="app-nav-item" style="position:relative;">
-                    <i class="bi bi-broadcast"></i>
-                    <span class="app-nav-dot"></span>
-                    <span>Tracking</span>
-                  </div>
-                  <div class="app-nav-item">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
+                  <!-- Bottom Nav -->
+                  <div class="app-bottom-nav">
+                    <div class="app-nav-item active">
+                      <i class="bi bi-house-fill"></i>
+                      <span>Home</span>
+                    </div>
+                    <div class="app-nav-item">
+                      <i class="bi bi-calendar3"></i>
+                      <span>Schedule</span>
+                    </div>
+                    <div class="app-nav-item">
+                      <i class="bi bi-map"></i>
+                      <span>Routes</span>
+                    </div>
+                    <div class="app-nav-item" style="position:relative;">
+                      <i class="bi bi-broadcast"></i>
+                      <span class="app-nav-dot"></span>
+                      <span>Tracking</span>
+                    </div>
+                    <div class="app-nav-item">
+                      <i class="bi bi-person"></i>
+                      <span>Profile</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Floating badge: Next Stop -->
-      <div class="phone-badge pb-next" data-reveal="fade-left" data-reveal-delay="360">
-        <span class="pb-icon bg-next"><i class="bi bi-signpost-split"></i></span>
-        <div>
-          <span class="pb-label">Next Stop</span>
-          <span class="pb-value">Lakeview Apts.</span>
-          <span class="pb-sub">ETA · 08 min</span>
-        </div>
-      </div>
-
-      <!-- Floating badge: Child Status -->
-      <div class="phone-badge pb-status" data-reveal="fade-up" data-reveal-delay="460">
-        <span class="pb-icon bg-status"><i class="bi bi-check-circle-fill"></i></span>
-        <div>
-          <span class="pb-label">Child Status</span>
-          <span class="pb-value">Boarded</span>
-          <span class="pb-sub">08:12 AM</span>
-        </div>
-      </div>
-
-      <!-- Glow backdrop -->
-      <div class="phone-glow" aria-hidden="true"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== TRUST ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <h2 class="h-section">The Information Parents Need, When They Need It.</h2>
-    </div>
-    <div class="feature-grid" data-stagger="90">
-      <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/gps.png" alt="GPS Tracking"></div>
-        <div class="feature-card-body">
-          <h3>GPS Tracking</h3>
-          <p>See the assigned bus route.</p>
-        </div>
-      </div>
-      <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/BoardingAlerts.png" alt="Boarding Alerts"></div>
-        <div class="feature-card-body">
-          <h3>Boarding Alerts</h3>
-          <p>Know when your child boards.</p>
-        </div>
-      </div>
-      <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Verified-Team.png" alt="Verified Team"></div>
-        <div class="feature-card-body">
-          <h3>Verified Team</h3>
-          <p>Know who operates the route.</p>
-        </div>
-      </div>
-      <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Route-Monitoring.png" alt="Route Monitoring"></div>
-        <div class="feature-card-body">
-          <h3>Route Monitoring</h3>
-          <p>Stay informed throughout the journey.</p>
-        </div>
-      </div>
-      <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/DigitalReceipts.png" alt="Digital Receipts"></div>
-        <div class="feature-card-body">
-          <h3>Digital Receipts</h3>
-          <p>Manage transport payments.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== LIVE TRACKING ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="section-head" data-reveal="fade-up">
-      <span class="eyebrow">Live Tracking</span>
-      <h2 class="h-section">Know Where the Bus Is Before You Need to Ask.</h2>
-      <p class="lead-text">Follow the assigned route, view the current bus position and see the next scheduled stop through the parent portal.</p>
-    </div>
-
-    <div class="tracking-panel" data-reveal="fade-up">
-      <div class="tracking-map">
-        <span class="demo-badge">Demo Tracking Data</span>
-        <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map showing Bus 24 progressing along Route 08">
-          <path class="route-line" d="M 40 330 C 90 330, 90 230, 150 210 S 260 260, 300 190 S 400 90, 470 60"/>
-          <path class="route-line-progress" d="M 40 330 C 90 330, 90 230, 150 210 S 260 260, 300 190 S 400 90, 470 60"/>
-
-          <circle class="route-stop" cx="40" cy="330" r="6"/>
-          <text class="route-stop-label" x="14" y="352">Green Park</text>
-
-          <circle class="route-stop" cx="150" cy="210" r="6"/>
-          <text class="route-stop-label" x="118" y="196">Oak Street</text>
-
-          <circle class="route-stop" cx="300" cy="190" r="6"/>
-          <text class="route-stop-label" x="268" y="176">Lakeview Apts.</text>
-
-          <circle class="route-stop" cx="470" cy="60" r="7" fill="#F4B400"/>
-          <text class="route-stop-label" x="392" y="46">Green Valley School</text>
-
-          <g class="bus-marker">
-            <circle class="bus-ring" r="13"/>
-            <circle class="bus-dot" r="6"/>
-          </g>
-        </svg>
-      </div>
-      <div class="tracking-info">
-        <h3 style="color:#fff; font-size:1.1rem; margin-bottom:18px;">Bus 24 <span class="status-chip ms-2"><span class="pulse-dot"></span>On Schedule</span></h3>
-        <div class="tracking-info-row">
-          <span class="ti-label">Current Location</span>
-          <span class="ti-value">Central Avenue</span>
-        </div>
-        <div class="tracking-info-row">
-          <span class="ti-label">Next Stop</span>
-          <span class="ti-value">Lakeview Apartments</span>
-        </div>
-        <div class="tracking-info-row">
-          <span class="ti-label">ETA</span>
-          <span class="ti-value">08 min</span>
-        </div>
-        <div class="tracking-info-row">
-          <span class="ti-label">Route</span>
-          <span class="ti-value">Route 08</span>
-        </div>
-        <a href="login.html" class="btn-primary-custom mt-4">Open Parent Tracking</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== DAILY JOURNEY ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="section-head" data-reveal="fade-up">
-      <span class="eyebrow">Daily Journey</span>
-      <h2 class="h-section">More Than a Bus Ride.</h2>
-    </div>
-    <div class="journey-timeline" data-stagger="90">
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/ChildBoarded.png" alt="Child Boarded"></div>
-        <div class="journey-step-body">
-          <div class="js-time">08:12 AM</div>
-          <h4>Child Boarded</h4>
-          <span class="journey-badge done"><i class="bi bi-check-lg"></i> Completed</span>
-        </div>
-      </div>
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Bus-Route.png" alt="Bus On Route"></div>
-        <div class="journey-step-body">
-          <div class="js-time">In progress</div>
-          <h4>Bus On Route</h4>
-          <span class="journey-badge progress"><i class="bi bi-arrow-repeat"></i> On Schedule</span>
-        </div>
-      </div>
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/School-Arrival.png" alt="School Arrival"></div>
-        <div class="journey-step-body">
-          <div class="js-time">08:05 AM</div>
-          <h4>School Arrival</h4>
-          <span class="journey-badge done"><i class="bi bi-check-lg"></i> Completed</span>
-        </div>
-      </div>
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Afternoon-Drop.png" alt="Afternoon Drop"></div>
-        <div class="journey-step-body">
-          <div class="js-time">04:02 PM</div>
-          <h4>Afternoon Drop</h4>
-          <span class="journey-badge upcoming"><i class="bi bi-clock"></i> Upcoming</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== LIVE JOURNEY LIFECYCLE (NEW SECTION 1) ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">Interactive Journey Flow</span>
-      <h2 class="h-section">Experience the SafeRoute Daily Commute.</h2>
-      <p class="lead-text">Explore how real-time telematics, RFID tap updates, and campus geofencing keep parents informed from departure to doorstep.</p>
-    </div>
-
-    <div class="live-lifecycle-card" data-reveal="fade-up">
-      <div class="lifecycle-header">
-        <div>
-          <h3 style="font-size:1.15rem; font-weight:600; color:var(--text-heading); margin-bottom:4px;">Active Route 08: Green Park ↔ Green Valley School</h3>
-          <p style="font-size:0.84rem; color:var(--text-muted);">Assigned Vehicle: Bus 24 &middot; Driver: S. Murugan &middot; Attendant: Lakshmi</p>
-        </div>
-        <div class="lifecycle-tabs">
-          <button type="button" class="lifecycle-tab-btn active" data-lifecycle-tab="morning"><i class="bi bi-sun me-1"></i> Morning Pickup</button>
-          <button type="button" class="lifecycle-tab-btn" data-lifecycle-tab="evening"><i class="bi bi-moon-stars me-1"></i> Afternoon Return</button>
-        </div>
-      </div>
-
-      <div class="lifecycle-steps-grid" data-stagger="80">
-        <div class="lifecycle-step-card" data-reveal="fade-up">
-          <div class="card-media-banner">
-            <img src="assets/ai/home/Stop-Arrival.png" alt="Stop Arrival">
-            <span class="lifecycle-badge"><i class="bi bi-check2"></i> On Time</span>
-          </div>
-          <div class="lifecycle-card-body">
-            <h4>1. Stop Arrival</h4>
-            <p>Bus 24 arrives at Green Park stop.</p>
-          </div>
-          <div class="lifecycle-card-foot">
-            <span>Scheduled</span>
-            <b>07:15 AM</b>
-          </div>
-        </div>
-
-        <div class="lifecycle-step-card" data-reveal="fade-up">
-          <div class="card-media-banner">
-            <img src="assets/ai/home/RFID-Boarded.png" alt="RFID Boarded">
-            <span class="lifecycle-badge"><i class="bi bi-broadcast"></i> Confirmed</span>
-          </div>
-          <div class="lifecycle-card-body">
-            <h4>2. RFID Boarded</h4>
-            <p>Aarav tapped card. Parent notified.</p>
-          </div>
-          <div class="lifecycle-card-foot">
-            <span>Boarding Log</span>
-            <b>07:18 AM</b>
-          </div>
-        </div>
-
-        <div class="lifecycle-step-card" data-reveal="fade-up">
-          <div class="card-media-banner">
-            <img src="assets/ai/home/En-Route.png" alt="En Route">
-            <span class="lifecycle-badge"><i class="bi bi-speedometer2"></i> Speed 34 km/h</span>
-          </div>
-          <div class="lifecycle-card-body">
-            <h4>3. En Route</h4>
-            <p>Crossing Central Avenue flyover.</p>
-          </div>
-          <div class="lifecycle-card-foot">
-            <span>Live Telemetry</span>
-            <b>07:42 AM</b>
-          </div>
-        </div>
-
-        <div class="lifecycle-step-card" data-reveal="fade-up">
-          <div class="card-media-banner">
-            <img src="assets/ai/home/Campus-Arrival.png" alt="Campus Arrival">
-            <span class="lifecycle-badge"><i class="bi bi-geo-alt-fill"></i> Safely Reached</span>
-          </div>
-          <div class="lifecycle-card-body">
-            <h4>4. Campus Arrival</h4>
-            <p>Handover to school gate warden.</p>
-          </div>
-          <div class="lifecycle-card-foot">
-            <span>Gate Geofence</span>
-            <b>08:05 AM</b>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== ROUTES ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="section-head" data-reveal="fade-up">
-      <span class="eyebrow">Routes</span>
-      <h2 class="h-section">Find the Route That Fits Your Area.</h2>
-    </div>
-
-    <div class="route-filter-bar" data-reveal="fade-up">
-      <select aria-label="Filter by school"><option>School</option><option>Green Valley School</option><option>Sample School</option></select>
-      <select aria-label="Filter by area"><option>Area</option><option>Peelamedu</option><option>Gandhipuram</option><option>RS Puram</option></select>
-      <select aria-label="Filter by pickup time"><option>Pickup Time</option><option>Before 7:15 AM</option><option>After 7:15 AM</option></select>
-      <select aria-label="Filter by availability"><option>Availability</option><option>Available</option><option>Limited</option></select>
-      <button type="button" class="btn-primary-custom btn-sm-custom">Search Route</button>
-    </div>
-
-    <div class="route-cards-grid" data-stagger="90">
-      <div class="route-card" data-reveal="fade-up">
-        <div class="route-card-top"><span class="route-tag">Route 08</span><span class="route-status available">Available</span></div>
-        <h4>Peelamedu → Sample School</h4>
-        <div class="route-meta">
-          <div><span>First Pickup</span><b>07:15 AM</b></div>
-          <div><span>School Arrival</span><b>08:05 AM</b></div>
-          <div><span>Stops</span><b>12</b></div>
-          <div><span>Service</span><b>AM &amp; PM</b></div>
-        </div>
-        <a href="routes.html" class="btn-ghost-custom">View Route <i class="bi bi-arrow-right"></i></a>
-      </div>
-      <div class="route-card" data-reveal="fade-up">
-        <div class="route-card-top"><span class="route-tag">Route 12</span><span class="route-status limited">Limited Availability</span></div>
-        <h4>Gandhipuram → Sample School</h4>
-        <div class="route-meta">
-          <div><span>First Pickup</span><b>07:05 AM</b></div>
-          <div><span>School Arrival</span><b>08:00 AM</b></div>
-          <div><span>Stops</span><b>10</b></div>
-          <div><span>Service</span><b>AM &amp; PM</b></div>
-        </div>
-        <a href="routes.html" class="btn-ghost-custom">View Route <i class="bi bi-arrow-right"></i></a>
-      </div>
-      <div class="route-card" data-reveal="fade-up">
-        <div class="route-card-top"><span class="route-tag">Route 17</span><span class="route-status available">Available</span></div>
-        <h4>RS Puram → Sample School</h4>
-        <div class="route-meta">
-          <div><span>First Pickup</span><b>07:20 AM</b></div>
-          <div><span>School Arrival</span><b>08:10 AM</b></div>
-          <div><span>Stops</span><b>14</b></div>
-          <div><span>Service</span><b>AM &amp; PM</b></div>
-        </div>
-        <a href="routes.html" class="btn-ghost-custom">View Route <i class="bi bi-arrow-right"></i></a>
-      </div>
-    </div>
-
-    <div class="text-center mt-4" data-reveal="fade-up">
-      <a href="routes.html" class="btn-secondary-custom">View All Routes</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== SAFETY ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="section-head" data-reveal="fade-up">
-      <span class="eyebrow">Safety</span>
-      <h2 class="h-section">Safety Is Built Into Every Route.</h2>
-    </div>
-    <div class="safety-grid" data-stagger="80">
-      <div class="safety-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Driver-Verification.png" alt="Driver Verification"></div>
-        <div class="safety-card-body"><h4>Driver Verification</h4><p>Onboarding and documentation checks before route assignment.</p></div>
-      </div>
-      <div class="safety-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Attendant-Support.png" alt="Attendant Support"></div>
-        <div class="safety-card-body"><h4>Attendant Support</h4><p>Support during boarding, travel and drop-off where assigned.</p></div>
-      </div>
-      <div class="safety-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Vehicle-Checks.png" alt="Vehicle Checks"></div>
-        <div class="safety-card-body"><h4>Vehicle Checks</h4><p>Routine inspection and maintenance before each route.</p></div>
-      </div>
-      <div class="safety-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/GPS-Visibility.png" alt="GPS Visibility"></div>
-        <div class="safety-card-body"><h4>GPS Visibility</h4><p>Route position shared with the parent portal.</p></div>
-      </div>
-      <div class="safety-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Boarding-Records.png" alt="Boarding Records"></div>
-        <div class="safety-card-body"><h4>Boarding Records</h4><p>Boarding and alighting confirmations logged daily.</p></div>
-      </div>
-      <div class="safety-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Routes-Monitoring.png" alt="Route Monitoring"></div>
-        <div class="safety-card-body"><h4>Route Monitoring</h4><p>Journeys observed from pickup through drop-off.</p></div>
-      </div>
-    </div>
-    <div class="text-center mt-4" data-reveal="fade-up">
-      <a href="safety.html" class="btn-secondary-custom">Explore Safety</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== PLANS ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">Plans</span>
-      <h2 class="h-section">Simple Plans for Everyday School Travel.</h2>
-    </div>
-    <div class="plans-grid" data-stagger="90">
-      <div class="plan-card" data-reveal="fade-up">
-        <div class="plan-name">Monthly Standard</div>
-        <div class="plan-price">₹999<span>/month</span></div>
-        <div class="plan-note">Billed monthly · Sample pricing</div>
-        <ul class="plan-features">
-          <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
-          <li><i class="bi bi-check-circle-fill"></i>Morning pickup</li>
-          <li><i class="bi bi-check-circle-fill"></i>Afternoon drop</li>
-          <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
-          <li><i class="bi bi-check-circle-fill"></i>Journey notifications</li>
-          <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
-        </ul>
-        <a href="plans.html" class="btn-secondary-custom">Choose Standard</a>
-      </div>
-      <div class="plan-card is-popular" data-reveal="fade-up">
-        <span class="plan-popular-tag">Most Popular</span>
-        <div class="plan-name">Monthly Plus</div>
-        <div class="plan-price">₹1499<span>/month</span></div>
-        <div class="plan-note">Billed monthly · Sample pricing</div>
-        <ul class="plan-features">
-          <li><i class="bi bi-check-circle-fill"></i>Everything in Standard</li>
-          <li><i class="bi bi-check-circle-fill"></i>Enhanced journey visibility</li>
-          <li><i class="bi bi-check-circle-fill"></i>Priority transport support</li>
-          <li><i class="bi bi-check-circle-fill"></i>Subscription management</li>
-          <li><i class="bi bi-check-circle-fill"></i>Payment history</li>
-        </ul>
-        <a href="plans.html" class="btn-primary-custom">Choose Plus</a>
-      </div>
-      <div class="plan-card" data-reveal="fade-up">
-        <div class="plan-name">Full-Year Saver</div>
-        <div class="plan-price">₹1500<span>/year</span></div>
-        <div class="plan-note">Billed for the academic year</div>
-        <ul class="plan-features">
-          <li><i class="bi bi-check-circle-fill"></i>Academic-year transport</li>
-          <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
-          <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
-          <li><i class="bi bi-check-circle-fill"></i>Boarding updates</li>
-          <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
-        </ul>
-        <a href="plans.html" class="btn-secondary-custom">Request Details</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== DASHBOARD PREVIEW ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">Parent Portal</span>
-      <h2 class="h-section">Everything Parents Need, In One Place.</h2>
-    </div>
-    <div class="dash-preview" data-reveal="scale-in">
-      <div class="dash-preview-top">
-        <div class="dash-child-chip">
-          <span class="dash-avatar">A</span>
+        <!-- Floating badge: Next Stop -->
+        <div class="phone-badge pb-next" data-reveal="fade-left" data-reveal-delay="360">
+          <span class="pb-icon bg-next"><i class="bi bi-signpost-split"></i></span>
           <div>
-            <div style="font-weight:600; color:var(--text-heading); font-size:0.95rem;">Aarav</div>
-            <div style="font-size:0.78rem; color:var(--text-muted);">Bus 24 · Boarded · ETA 08 min</div>
+            <span class="pb-label">Next Stop</span>
+            <span class="pb-value">Lakeview Apts.</span>
+            <span class="pb-sub">ETA · 08 min</span>
           </div>
         </div>
-        <a href="login.html" class="btn-primary-custom btn-sm-custom">Open Parent Portal</a>
-      </div>
-      <div class="dash-grid">
-        <div class="dash-tile"><div class="dt-label">Morning</div><div class="dt-value">Completed</div><div class="dt-sub" style="color:var(--color-success);">On time</div></div>
-        <div class="dash-tile"><div class="dt-label">School</div><div class="dt-value">Confirmed</div><div class="dt-sub" style="color:var(--color-success);">08:05 AM</div></div>
-        <div class="dash-tile"><div class="dt-label">Afternoon</div><div class="dt-value">Upcoming</div><div class="dt-sub" style="color:var(--text-muted);">04:02 PM</div></div>
-        <div class="dash-tile"><div class="dt-label">Subscription</div><div class="dt-value">Monthly Plus</div><div class="dt-sub" style="color:var(--color-success);">Active</div></div>
+
+        <!-- Floating badge: Child Status -->
+        <!-- <div class="phone-badge pb-status" data-reveal="fade-up" data-reveal-delay="460">
+          <span class="pb-icon bg-status"><i class="bi bi-check-circle-fill"></i></span>
+          <div>
+            <span class="pb-label">Child Status</span>
+            <span class="pb-value">Boarded</span>
+            <span class="pb-sub">08:12 AM</span>
+          </div>
+        </div> -->
+
+        <!-- Glow backdrop -->
+        <div class="phone-glow" aria-hidden="true"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================== FARE & ROUTE ESTIMATOR (NEW SECTION 2) ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">Cost &amp; Route Transparency</span>
-      <h2 class="h-section">Instant School Transport &amp; Fare Estimator.</h2>
-      <p class="lead-text">Calculate your estimated monthly transport fare, assigned bus fleet type, and estimated travel duration based on your neighborhood.</p>
+  <!-- ============================== TRUST ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <h2 class="h-section">The Information Parents Need, When They Need It.</h2>
+      </div>
+      <div class="feature-grid" data-stagger="90">
+        <div class="feature-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/gps.png" alt="GPS Tracking"></div>
+          <div class="feature-card-body">
+            <h3>GPS Tracking</h3>
+            <p>See the assigned bus route.</p>
+          </div>
+        </div>
+        <div class="feature-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/BoardingAlerts.png" alt="Boarding Alerts"></div>
+          <div class="feature-card-body">
+            <h3>Boarding Alerts</h3>
+            <p>Know when your child boards.</p>
+          </div>
+        </div>
+        <div class="feature-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Verified-Team.png" alt="Verified Team"></div>
+          <div class="feature-card-body">
+            <h3>Verified Team</h3>
+            <p>Know who operates the route.</p>
+          </div>
+        </div>
+        <div class="feature-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Route-Monitoring.png" alt="Route Monitoring"></div>
+          <div class="feature-card-body">
+            <h3>Route Monitoring</h3>
+            <p>Stay informed throughout the journey.</p>
+          </div>
+        </div>
+        <div class="feature-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/DigitalReceipts.png" alt="Digital Receipts"></div>
+          <div class="feature-card-body">
+            <h3>Digital Receipts</h3>
+            <p>Manage transport payments.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="fare-estimator-card" id="fareEstimatorWidget" data-reveal="scale-in">
-      <div class="fare-estimator-grid">
-        <div class="fare-form-wrap">
-          <div class="fare-field-group">
-            <label for="calcZoneSelect"><i class="bi bi-geo-alt-fill text-primary me-1"></i> Select Pickup Zone</label>
-            <select class="form-control-custom" id="calcZoneSelect" aria-label="Select pickup zone">
-              <option value="peelamedu" selected>Peelamedu &middot; Route 08</option>
-              <option value="gandhipuram">Gandhipuram &middot; Route 12</option>
-              <option value="rspuram">RS Puram &middot; Route 17</option>
-              <option value="saibaba">Saibaba Colony &middot; Route 05</option>
-            </select>
+  <!-- ============================== LIVE TRACKING ============================== -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="section-head" data-reveal="fade-up">
+        <span class="eyebrow">Live Tracking</span>
+        <h2 class="h-section">Know Where the Bus Is Before You Need to Ask.</h2>
+        <p class="lead-text">Follow the assigned route, view the current bus position and see the next scheduled stop
+          through the parent portal.</p>
+      </div>
+
+      <div class="tracking-panel" data-reveal="fade-up">
+        <div class="tracking-map">
+          <span class="demo-badge">Demo Tracking Data</span>
+          <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Map showing Bus 24 progressing along Route 08">
+            <path class="route-line" d="M 40 330 C 90 330, 90 230, 150 210 S 260 260, 300 190 S 400 90, 470 60" />
+            <path class="route-line-progress"
+              d="M 40 330 C 90 330, 90 230, 150 210 S 260 260, 300 190 S 400 90, 470 60" />
+
+            <circle class="route-stop" cx="40" cy="330" r="6" />
+            <text class="route-stop-label" x="14" y="352">Green Park</text>
+
+            <circle class="route-stop" cx="150" cy="210" r="6" />
+            <text class="route-stop-label" x="118" y="196">Oak Street</text>
+
+            <circle class="route-stop" cx="300" cy="190" r="6" />
+            <text class="route-stop-label" x="268" y="176">Lakeview Apts.</text>
+
+            <circle class="route-stop" cx="470" cy="60" r="7" fill="#F4B400" />
+            <text class="route-stop-label" x="392" y="46">Green Valley School</text>
+
+            <g class="bus-marker">
+              <circle class="bus-ring" r="13" />
+              <circle class="bus-dot" r="6" />
+            </g>
+          </svg>
+        </div>
+        <div class="tracking-info">
+          <h3 style="color:#fff; font-size:1.1rem; margin-bottom:18px;">Bus 24 <span class="status-chip ms-2"><span
+                class="pulse-dot"></span>On Schedule</span></h3>
+          <div class="tracking-info-row">
+            <span class="ti-label">Current Location</span>
+            <span class="ti-value">Central Avenue</span>
+          </div>
+          <div class="tracking-info-row">
+            <span class="ti-label">Next Stop</span>
+            <span class="ti-value">Lakeview Apartments</span>
+          </div>
+          <div class="tracking-info-row">
+            <span class="ti-label">ETA</span>
+            <span class="ti-value">08 min</span>
+          </div>
+          <div class="tracking-info-row">
+            <span class="ti-label">Route</span>
+            <span class="ti-value">Route 08</span>
+          </div>
+          <div class="tracking-info-row">
+            <span class="ti-label">School Name</span>
+            <span class="ti-value">Green Valley School</span>
+          </div>
+          <a href="login.html" class="btn-primary-custom mt-4">Open Parent Tracking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DAILY JOURNEY ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="section-head" data-reveal="fade-up">
+        <span class="eyebrow">Daily Journey</span>
+        <h2 class="h-section">More Than a Bus Ride.</h2>
+      </div>
+      <div class="journey-timeline" data-stagger="90">
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/ChildBoarded.png" alt="Child Boarded"></div>
+          <div class="journey-step-body">
+            <div class="js-time"><i class="bi bi-clock me-1"></i> 07:18 AM</div>
+            <h4>Child Boarded</h4>
+            <span class="journey-badge done"><i class="bi bi-check-lg"></i> Completed</span>
+          </div>
+        </div>
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Bus-Route.png" alt="Bus On Route"></div>
+          <div class="journey-step-body">
+            <div class="js-time"><i class="bi bi-clock me-1"></i> 07:42 AM</div>
+            <h4>Bus On Route</h4>
+            <span class="journey-badge progress"><i class="bi bi-arrow-repeat"></i> On Schedule</span>
+          </div>
+        </div>
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/School-Arrival.png" alt="School Arrival"></div>
+          <div class="journey-step-body">
+            <div class="js-time"><i class="bi bi-clock me-1"></i> 08:05 AM</div>
+            <h4>School Arrival</h4>
+            <span class="journey-badge done"><i class="bi bi-check-lg"></i> Completed</span>
+          </div>
+        </div>
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Afternoon-Drop.png" alt="Afternoon Drop"></div>
+          <div class="journey-step-body">
+            <div class="js-time"><i class="bi bi-clock me-1"></i> 04:02 PM</div>
+            <h4>Afternoon Drop</h4>
+            <span class="journey-badge upcoming"><i class="bi bi-clock"></i> Upcoming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== LIVE JOURNEY LIFECYCLE (NEW SECTION 1) ============================== -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow">Interactive Journey Flow</span>
+        <h2 class="h-section">Experience the SafeRoute Daily Commute.</h2>
+        <p class="lead-text">Explore how real-time telematics, RFID tap updates, and campus geofencing keep parents
+          informed from departure to doorstep.</p>
+      </div>
+
+      <div class="live-lifecycle-card" data-reveal="fade-up">
+        <div class="lifecycle-header">
+          <div>
+            <h3 style="font-size:1.15rem; font-weight:600; color:var(--text-heading); margin-bottom:4px;">Active Route
+              08: Green Park ↔ Green Valley School</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted);">Assigned Vehicle: Bus 24 &middot; Driver: S. Murugan
+              &middot; Attendant: Lakshmi</p>
+          </div>
+          <div class="lifecycle-tabs">
+            <button type="button" class="lifecycle-tab-btn active" data-lifecycle-tab="morning"><i
+                class="bi bi-sun me-1"></i> Morning Pickup</button>
+            <button type="button" class="lifecycle-tab-btn" data-lifecycle-tab="evening"><i
+                class="bi bi-moon-stars me-1"></i> Afternoon Return</button>
+          </div>
+        </div>
+
+        <div class="lifecycle-steps-grid" data-stagger="80">
+          <div class="lifecycle-step-card" data-reveal="fade-up">
+            <div class="card-media-banner">
+              <img src="assets/ai/home/Stop-Arrival.png" alt="Stop Arrival">
+              <span class="lifecycle-badge"><i class="bi bi-check2"></i> On Time</span>
+            </div>
+            <div class="lifecycle-card-body">
+              <h4>1. Stop Arrival</h4>
+              <p>Bus 24 arrives at Green Park stop.</p>
+            </div>
+            <div class="lifecycle-card-foot">
+              <span>Scheduled</span>
+              <b>07:15 AM</b>
+            </div>
           </div>
 
-          <div class="fare-field-group">
-            <label for="calcGradeSelect"><i class="bi bi-mortarboard-fill text-primary me-1"></i> Student Grade Level</label>
-            <select class="form-control-custom" id="calcGradeSelect" aria-label="Select student grade level">
-              <option value="primary" selected>Primary (Grades 1–5) — Dedicated Attendant Included</option>
-              <option value="middle">Middle School (Grades 6–8)</option>
-              <option value="high">High School (Grades 9–12)</option>
-            </select>
+          <div class="lifecycle-step-card" data-reveal="fade-up">
+            <div class="card-media-banner">
+              <img src="assets/ai/home/RFID-Boarded.png" alt="RFID Boarded">
+              <span class="lifecycle-badge"><i class="bi bi-broadcast"></i> Confirmed</span>
+            </div>
+            <div class="lifecycle-card-body">
+              <h4>2. RFID Boarded</h4>
+              <p>Aarav tapped card notified.</p>
+            </div>
+            <div class="lifecycle-card-foot">
+              <span>Boarding Log</span>
+              <b>07:18 AM</b>
+            </div>
           </div>
 
-          <div class="fare-field-group">
-            <label><i class="bi bi-arrow-left-right text-primary me-1"></i> Commute Frequency</label>
-            <div class="fare-options-pills">
-              <button type="button" class="fare-pill-opt active" data-freq="two-way">Two-Way (Morning + Afternoon)</button>
-              <button type="button" class="fare-pill-opt" data-freq="one-way">One-Way (Morning or Drop Only)</button>
+          <div class="lifecycle-step-card" data-reveal="fade-up">
+            <div class="card-media-banner">
+              <img src="assets/ai/home/En-Route.png" alt="En Route">
+              <span class="lifecycle-badge"><i class="bi bi-speedometer2"></i> Speed 34 km/h</span>
+            </div>
+            <div class="lifecycle-card-body">
+              <h4>3. En Route</h4>
+              <p>Crossing Central Avenue flyover.</p>
+            </div>
+            <div class="lifecycle-card-foot">
+              <span>Live Telemetry</span>
+              <b>07:42 AM</b>
+            </div>
+          </div>
+
+          <div class="lifecycle-step-card" data-reveal="fade-up">
+            <div class="card-media-banner">
+              <img src="assets/ai/home/Campus-Arrival.png" alt="Campus Arrival">
+              <span class="lifecycle-badge"><i class="bi bi-geo-alt-fill"></i> Safely Reached</span>
+            </div>
+            <div class="lifecycle-card-body">
+              <h4>4. Campus Arrival</h4>
+              <p>Handover to school gate warden.</p>
+            </div>
+            <div class="lifecycle-card-foot">
+              <span>Gate Geofence</span>
+              <b>08:05 AM</b>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="fare-summary-panel" data-reveal="fade-left">
-          <div>
-            <span style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--color-primary);">Estimated Transport Fee</span>
-            <div class="fare-price-tag mt-1" id="calcResultPrice">₹2,400<span>/month</span></div>
-            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Includes GPS, RFID alerts &amp; insurance</p>
+  <!-- ============================== ROUTES ============================== -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="section-head" data-reveal="fade-up">
+        <span class="eyebrow">Routes</span>
+        <h2 class="h-section">Find the Route That Fits Your Area.</h2>
+      </div>
+
+      <div class="route-filter-bar" data-reveal="fade-up">
+        <select aria-label="Filter by school">
+          <option>School</option>
+          <option>Green Valley School</option>
+          <option>Sample School</option>
+        </select>
+        <select aria-label="Filter by area">
+          <option>Area</option>
+          <option>Peelamedu</option>
+          <option>Gandhipuram</option>
+          <option>RS Puram</option>
+        </select>
+        <select aria-label="Filter by pickup time">
+          <option>Pickup Time</option>
+          <option>Before 7:15 AM</option>
+          <option>After 7:15 AM</option>
+        </select>
+        <select aria-label="Filter by availability">
+          <option>Availability</option>
+          <option>Available</option>
+          <option>Limited</option>
+        </select>
+        <button type="button" class="btn-primary-custom btn-sm-custom">Search Route</button>
+      </div>
+
+      <div class="route-cards-grid" data-stagger="90">
+        <div class="route-card" data-reveal="fade-up">
+          <div class="route-card-top"><span class="route-tag">Route 08</span><span
+              class="route-status available">Available</span></div>
+          <h4>Peelamedu → Sample School</h4>
+          <div class="route-meta">
+            <div><span>First Pickup</span><b>07:15 AM</b></div>
+            <div><span>School Arrival</span><b>08:05 AM</b></div>
+            <div><span>Stops</span><b>12</b></div>
+            <div><span>Service</span><b>AM &amp; PM</b></div>
+          </div>
+          <a href="routes.html" class="btn-primary-custom">View Route <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="route-card" data-reveal="fade-up">
+          <div class="route-card-top"><span class="route-tag">Route 12</span><span class="route-status limited">Limited
+              Availability</span></div>
+          <h4>Gandhipuram → Sample School</h4>
+          <div class="route-meta">
+            <div><span>First Pickup</span><b>07:05 AM</b></div>
+            <div><span>School Arrival</span><b>08:00 AM</b></div>
+            <div><span>Stops</span><b>10</b></div>
+            <div><span>Service</span><b>AM &amp; PM</b></div>
+          </div>
+          <a href="routes.html" class="btn-primary-custom">View Route <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="route-card" data-reveal="fade-up">
+          <div class="route-card-top"><span class="route-tag">Route 17</span><span
+              class="route-status available">Available</span></div>
+          <h4>RS Puram → Sample School</h4>
+          <div class="route-meta">
+            <div><span>First Pickup</span><b>07:20 AM</b></div>
+            <div><span>School Arrival</span><b>08:10 AM</b></div>
+            <div><span>Stops</span><b>14</b></div>
+            <div><span>Service</span><b>AM &amp; PM</b></div>
+          </div>
+          <a href="routes.html" class="btn-primary-custom">View Route <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="text-center mt-4" data-reveal="fade-up">
+        <a href="routes.html" class="btn-secondary-custom">View All Routes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SAFETY ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="section-head" data-reveal="fade-up">
+        <span class="eyebrow">Safety</span>
+        <h2 class="h-section">Safety Is Built Into Every Route.</h2>
+      </div>
+      <div class="safety-grid" data-stagger="80">
+        <div class="safety-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Driver-Verification.png" alt="Driver Verification">
+          </div>
+          <div class="safety-card-body">
+            <h4>Driver Verification</h4>
+            <p>Onboarding and documentation checks before route.</p>
+          </div>
+        </div>
+        <div class="safety-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Attendant-Support.png" alt="Attendant Support"></div>
+          <div class="safety-card-body">
+            <h4>Attendant Support</h4>
+            <p>Support during boarding, travel and drop-off where assigned.</p>
+          </div>
+        </div>
+        <div class="safety-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Vehicle-Checks.png" alt="Vehicle Checks"></div>
+          <div class="safety-card-body">
+            <h4>Vehicle Checks</h4>
+            <p>Routine inspection and maintenance before each route.</p>
+          </div>
+        </div>
+        <div class="safety-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/GPS-Visibility.png" alt="GPS Visibility"></div>
+          <div class="safety-card-body">
+            <h4>GPS Visibility</h4>
+            <p>Route position shared with the parent portal.</p>
+          </div>
+        </div>
+        <div class="safety-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Boarding-Records.png" alt="Boarding Records"></div>
+          <div class="safety-card-body">
+            <h4>Boarding Records</h4>
+            <p>Boarding and alighting confirmations logged.</p>
+          </div>
+        </div>
+        <div class="safety-card" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Routes-Monitoring.png" alt="Route Monitoring"></div>
+          <div class="safety-card-body">
+            <h4>Route Monitoring</h4>
+            <p>Journeys observed from pickup through drop-off.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4" data-reveal="fade-up">
+        <a href="safety.html" class="btn-secondary-custom">Explore Safety</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PLANS ============================== -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow">Plans</span>
+        <h2 class="h-section">Simple Plans for Everyday School Travel.</h2>
+      </div>
+      <div class="plans-grid" data-stagger="90">
+        <div class="plan-card" data-reveal="fade-up">
+          <div class="plan-name">Monthly Standard</div>
+          <div class="plan-price">₹999<span>/month</span></div>
+          <div class="plan-note">Billed monthly · Sample pricing</div>
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
+            <li><i class="bi bi-check-circle-fill"></i>Morning pickup</li>
+            <li><i class="bi bi-check-circle-fill"></i>Afternoon drop</li>
+            <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
+            <li><i class="bi bi-check-circle-fill"></i>Journey notifications</li>
+            <!-- <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li> -->
+          </ul>
+          <a href="plans.html" class="btn-secondary-custom">Choose Standard</a>
+        </div>
+        <div class="plan-card is-popular" data-reveal="fade-up">
+          <span class="plan-popular-tag">Most Popular</span>
+          <div class="plan-name">Monthly Plus</div>
+          <div class="plan-price">₹1499<span>/month</span></div>
+          <div class="plan-note">Billed monthly · Sample pricing</div>
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>Everything in Standard</li>
+            <li><i class="bi bi-check-circle-fill"></i>Enhanced journey visibility</li>
+            <li><i class="bi bi-check-circle-fill"></i>Priority transport support</li>
+            <li><i class="bi bi-check-circle-fill"></i>Subscription management</li>
+            <li><i class="bi bi-check-circle-fill"></i>Payment history</li>
+          </ul>
+          <a href="plans.html" class="btn-primary-custom">Choose Plus</a>
+        </div>
+        <div class="plan-card" data-reveal="fade-up">
+          <div class="plan-name">Full-Year Saver</div>
+          <div class="plan-price">₹1500<span>/year</span></div>
+          <div class="plan-note">Billed for the academic year</div>
+          <ul class="plan-features">
+            <li><i class="bi bi-check-circle-fill"></i>Academic-year transport</li>
+            <li><i class="bi bi-check-circle-fill"></i>Assigned route</li>
+            <li><i class="bi bi-check-circle-fill"></i>GPS visibility</li>
+            <li><i class="bi bi-check-circle-fill"></i>Boarding updates</li>
+            <li><i class="bi bi-check-circle-fill"></i>Digital receipts</li>
+          </ul>
+          <a href="plans.html" class="btn-secondary-custom">Request Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DASHBOARD PREVIEW ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow">Parent Portal</span>
+        <h2 class="h-section">Everything Parents Need, In One Place.</h2>
+      </div>
+      <div class="dash-preview" data-reveal="scale-in">
+        <div class="dash-preview-top">
+          <div class="dash-child-chip">
+            <span class="dash-avatar">A</span>
+            <div>
+              <div style="font-weight:600; color:var(--text-heading); font-size:0.95rem;">Aarav</div>
+              <div style="font-size:0.78rem; color:var(--text-muted);">Bus 24 · Boarded · ETA 08 min</div>
+            </div>
+          </div>
+          <a href="login.html" class="btn-primary-custom btn-sm-custom">Open Parent Portal</a>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-tile">
+            <div class="dt-label">Morning</div>
+            <div class="dt-value">Completed</div>
+            <div class="dt-sub" style="color:var(--color-success);">On time</div>
+          </div>
+          <div class="dash-tile">
+            <div class="dt-label">School</div>
+            <div class="dt-value">Confirmed</div>
+            <div class="dt-sub" style="color:var(--color-success);">08:05 AM</div>
+          </div>
+          <div class="dash-tile">
+            <div class="dt-label">Afternoon</div>
+            <div class="dt-value">Upcoming</div>
+            <div class="dt-sub" style="color:var(--text-muted);">04:02 PM</div>
+          </div>
+          <div class="dash-tile">
+            <div class="dt-label">Subscription</div>
+            <div class="dt-value">Monthly Plus</div>
+            <div class="dt-sub" style="color:var(--color-success);">Active</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FARE & ROUTE ESTIMATOR (NEW SECTION 2) ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow">Cost &amp; Route Transparency</span>
+        <h2 class="h-section">Instant School Transport &amp; Fare Estimator.</h2>
+        <p class="lead-text">Calculate your estimated monthly transport fare, assigned bus fleet type, and estimated
+          travel duration based on your neighborhood.</p>
+      </div>
+
+      <div class="fare-estimator-card" id="fareEstimatorWidget" data-reveal="scale-in">
+        <div class="fare-estimator-grid">
+          <div class="fare-form-wrap">
+            <div class="fare-field-group">
+              <label for="calcZoneSelect"><i class="bi bi-geo-alt-fill text-primary me-1"></i> Select Pickup
+                Zone</label>
+              <select class="form-control-custom" id="calcZoneSelect" aria-label="Select pickup zone">
+                <option value="peelamedu" selected>Peelamedu &middot; Route 08</option>
+                <option value="gandhipuram">Gandhipuram &middot; Route 12</option>
+                <option value="rspuram">RS Puram &middot; Route 17</option>
+                <option value="saibaba">Saibaba Colony &middot; Route 05</option>
+              </select>
+            </div>
+
+            <div class="fare-field-group">
+              <label for="calcGradeSelect"><i class="bi bi-mortarboard-fill text-primary me-1"></i> Student Grade
+                Level</label>
+              <select class="form-control-custom" id="calcGradeSelect" aria-label="Select student grade level">
+                <option value="primary" selected>Primary (Grades 1–5) — Dedicated Attendant Included</option>
+                <option value="middle">Middle School (Grades 6–8)</option>
+                <option value="high">High School (Grades 9–12)</option>
+              </select>
+            </div>
+
+            <div class="fare-field-group">
+              <label><i class="bi bi-arrow-left-right text-primary me-1"></i> Commute Frequency</label>
+              <div class="fare-options-pills">
+                <button type="button" class="fare-pill-opt active" data-freq="two-way">Two-Way (Morning +
+                  Afternoon)</button>
+                <button type="button" class="fare-pill-opt" data-freq="one-way">One-Way (Morning or Drop Only)</button>
+              </div>
+            </div>
           </div>
 
-          <div class="fare-summary-item">
-            <span>Assigned Route</span>
-            <b id="calcResultRoute">Route 08 (Peelamedu)</b>
+          <div class="fare-summary-panel" data-reveal="fade-left">
+            <div>
+              <span
+                style="font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--color-primary);">Estimated
+                Transport Fee</span>
+              <div class="fare-price-tag mt-1" id="calcResultPrice">₹2,400<span>/month</span></div>
+              <p style="font-size:0.78rem; color:var(--text-muted); margin-top:4px;">Includes GPS, RFID alerts &amp;
+                insurance</p>
+            </div>
+
+            <div class="fare-summary-item">
+              <span>Assigned Route</span>
+              <b id="calcResultRoute">Route 08 (Peelamedu)</b>
+            </div>
+            <div class="fare-summary-item">
+              <span>Vehicle Type</span>
+              <b id="calcResultBus">Bus 24 (42-Seater AC)</b>
+            </div>
+            <div class="fare-summary-item">
+              <span>Avg. Travel Time</span>
+              <b id="calcResultEta">18–22 min</b>
+            </div>
+
+            <a href="plans.html" class="btn-primary-custom w-100 justify-content-center mt-2">Choose This Route <i
+                class="bi bi-arrow-right"></i></a>
           </div>
-          <div class="fare-summary-item">
-            <span>Vehicle Type</span>
-            <b id="calcResultBus">Bus 24 (42-Seater AC)</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== TESTIMONIALS ============================== -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <h2 class="h-section">Built Around the Questions Parents Ask Every Morning.</h2>
+        <p class="lead-text">Trusted by thousands of families across 18 premier school districts.</p>
+      </div>
+      <div class="testimonial-grid" data-stagger="90">
+        <div class="testimonial-card" data-reveal="fade-up">
+          <p class="tq">"I used to call the school every morning to check if the bus had left. Now I just check the app
+            before breakfast and know."</p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar"><img src="assets/image/testimonials/parent-priya.jpg" alt="Priya K."
+                loading="lazy"></span>
+            <div>
+              <div class="testimonial-name">Priya K.</div>
+              <div class="testimonial-role">Parent &bull; Class 10</div>
+            </div>
           </div>
-          <div class="fare-summary-item">
-            <span>Avg. Travel Time</span>
-            <b id="calcResultEta">18–22 min</b>
+          <span class="sample-flag">Verified Parent Review</span>
+        </div>
+        <div class="testimonial-card" data-reveal="fade-up">
+          <p class="tq">"Getting an instant RFID notification the moment my daughter boards makes our mornings
+            completely stress-free."</p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar"><img src="assets/image/testimonials/parent-kavitha.jpg" alt="Kavitha N."
+                loading="lazy"></span>
+            <div>
+              <div class="testimonial-name">Kavitha N.</div>
+              <div class="testimonial-role">Parent &bull; Class 5</div>
+            </div>
           </div>
-
-          <a href="plans.html" class="btn-primary-custom w-100 justify-content-center mt-2">Choose This Route <i class="bi bi-arrow-right"></i></a>
+          <span class="sample-flag">Verified Parent Review</span>
+        </div>
+        <div class="testimonial-card" data-reveal="fade-up">
+          <p class="tq">"Downloading last month's transport fee receipt for reimbursement took less than a minute
+            directly from the parent portal."</p>
+          <div class="testimonial-person">
+            <span class="testimonial-avatar"><img src="assets/image/testimonials/parent-ramesh.jpg" alt="Ramesh K."
+                loading="lazy"></span>
+            <div>
+              <div class="testimonial-name">Ramesh Kumar</div>
+              <div class="testimonial-role">Parent &bull; Class 7</div>
+            </div>
+          </div>
+          <span class="sample-flag">Verified Parent Review</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================== TESTIMONIALS ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <h2 class="h-section">Built Around the Questions Parents Ask Every Morning.</h2>
-    </div>
-    <div class="testimonial-grid" data-stagger="90">
-      <div class="testimonial-card" data-reveal="fade-up">
-        <p class="tq">"I used to call the school every morning to check if the bus had left. Now I just check the app before breakfast."</p>
-        <div class="testimonial-person">
-          <span class="testimonial-avatar">P</span>
-          <div><div class="testimonial-name">Priya K.</div><div class="testimonial-role">Parent, Class 10</div></div>
+  <!-- ============================== FAQ ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="h-section">Common Questions.</h2>
+      </div>
+      <div class="faq-accordion" data-reveal="fade-up">
+        <div class="faq-item">
+          <button type="button" class="faq-question">How does bus tracking work? <i class="bi bi-plus-lg"></i></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Once logged in, parents can view the assigned bus's current position, next
+              stop and estimated arrival time on the route map inside the parent portal.</div>
+          </div>
         </div>
-        <span class="sample-flag">Sample testimonial</span>
-      </div>
-      <div class="testimonial-card" data-reveal="fade-up">
-        <p class="tq">"Getting a notification the moment my daughter boards makes the morning a lot less stressful."</p>
-        <div class="testimonial-person">
-          <span class="testimonial-avatar">R</span>
-          <div><div class="testimonial-name">Rahul S.</div><div class="testimonial-role">Parent, Class 6</div></div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Can I see my child's route? <i class="bi bi-plus-lg"></i></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. Your child's assigned route, pickup stop and scheduled timings are listed
+              under "My Child" in the parent portal.</div>
+          </div>
         </div>
-        <span class="sample-flag">Sample testimonial</span>
-      </div>
-      <div class="testimonial-card" data-reveal="fade-up">
-        <p class="tq">"Downloading last month's receipt for reimbursement took less than a minute."</p>
-        <div class="testimonial-person">
-          <span class="testimonial-avatar">M</span>
-          <div><div class="testimonial-name">Meera J.</div><div class="testimonial-role">Parent, Class 3</div></div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Will I receive boarding notifications? <i
+              class="bi bi-plus-lg"></i></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Parents receive an update when their child boards the bus and again when the
+              bus reaches the school or the return stop.</div>
+          </div>
         </div>
-        <span class="sample-flag">Sample testimonial</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== FAQ ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow">FAQ</span>
-      <h2 class="h-section">Common Questions.</h2>
-    </div>
-    <div class="faq-accordion" data-reveal="fade-up">
-      <div class="faq-item">
-        <button type="button" class="faq-question">How does bus tracking work? <i class="bi bi-plus-lg"></i></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Once logged in, parents can view the assigned bus's current position, next stop and estimated arrival time on the route map inside the parent portal.</div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question">Can I see my child's route? <i class="bi bi-plus-lg"></i></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes. Your child's assigned route, pickup stop and scheduled timings are listed under "My Child" in the parent portal.</div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question">Will I receive boarding notifications? <i class="bi bi-plus-lg"></i></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Parents receive an update when their child boards the bus and again when the bus reaches the school or the return stop.</div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question">How are drivers verified? <i class="bi bi-plus-lg"></i></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Drivers go through an onboarding and documentation process before being assigned to a route. Details are covered on the Safety page.</div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-question">Can I download receipts? <i class="bi bi-plus-lg"></i></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes. Every transport payment generates a digital receipt that can be viewed or downloaded from the Receipts page in the parent portal.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================== GETTING STARTED ============================== -->
-<section class="section section-alt" id="getting-started">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow"><i class="bi bi-compass-fill"></i> Getting Started</span>
-      <h2 class="h-section">Getting Started Is Simple.</h2>
-      <p class="lead-text">Set up your student's safe, predictable school commute in three easy steps.</p>
-    </div>
-    <div class="journey-timeline cols-3" data-stagger="90">
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Choose-Plan.png" alt="Choose a Plan"></div>
-        <div class="journey-step-body">
-          <h4>Choose a Plan</h4>
-          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Pick the transport plan that fits your child's schedule and distance zone.</p>
+        <div class="faq-item">
+          <button type="button" class="faq-question">How are drivers verified? <i class="bi bi-plus-lg"></i></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Drivers go through an onboarding and documentation process before being
+              assigned to a route. Details are covered on the Safety page.</div>
+          </div>
         </div>
-      </div>
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Route-Assigned.png" alt="Get a Route Assigned"></div>
-        <div class="journey-step-body">
-          <h4>Get a Route Assigned</h4>
-          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Share your school and pickup area to receive an optimized matching route.</p>
-        </div>
-      </div>
-      <div class="journey-step" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/home/Start-Tracking.png" alt="Start Tracking"></div>
-        <div class="journey-step-body">
-          <h4>Start Tracking</h4>
-          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Log in to the parent portal and follow the live daily journey with instant alerts.</p>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Can I download receipts? <i class="bi bi-plus-lg"></i></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Yes. Every transport payment generates a digital receipt that can be viewed or
+              downloaded from the Receipts page in the parent portal.</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================== COVERAGE AT A GLANCE ============================== -->
-<section class="section">
-  <div class="container-custom">
-    <div class="section-head center" data-reveal="fade-up">
-      <span class="eyebrow"><i class="bi bi-geo-alt-fill"></i> Coverage</span>
-      <h2 class="h-section">Coverage At a Glance.</h2>
-    </div>
-    <div class="stat-strip" data-reveal="scale-in">
-      <div class="stat-item"><b>12</b><span>Active routes</span></div>
-      <div class="stat-item"><b>3</b><span>Pickup zones covered</span></div>
-      <div class="stat-item"><b>08 min</b><span>Average ETA window</span></div>
-      <div class="stat-item"><b>13 hrs</b><span>Daily support coverage</span></div>
-    </div>
-    <p class="text-center mt-3" style="font-size:0.78rem; color:var(--text-muted);">Sample figures for demonstration.</p>
-  </div>
-</section>
-
-<!-- ============================== FINAL CTA ============================== -->
-<section class="section section-alt">
-  <div class="container-custom">
-    <div class="final-cta" data-reveal="scale-in">
-      <span class="eyebrow" style="background:rgba(255,255,255,0.15); color:#FFD166; border-color:rgba(255,255,255,0.3); margin-bottom:14px;"><i class="bi bi-stars"></i> Get Started Today</span>
-      <h2 class="h-section">Make Every School Journey Easier to Trust.</h2>
-      <p>Better visibility for parents. A dependable, monitored daily journey for your children.</p>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
-        <a href="routes.html" class="btn-secondary-custom">Explore Routes</a>
+  <!-- ============================== GETTING STARTED ============================== -->
+  <section class="section section-alt" id="getting-started">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow"><i class="bi bi-compass-fill"></i> Getting Started</span>
+        <h2 class="h-section">Getting Started Is Simple.</h2>
+        <p class="lead-text">Set up your student's safe, predictable school commute in three easy steps.</p>
       </div>
-      <div class="final-cta-chips">
-        <span class="final-cta-chip"><i class="bi bi-patch-check-fill"></i> Verified Drivers</span>
-        <span class="final-cta-chip"><i class="bi bi-broadcast"></i> Live GPS Telematics</span>
-        <span class="final-cta-chip"><i class="bi bi-shield-check"></i> Zero Incident Record</span>
-        <span class="final-cta-chip"><i class="bi bi-headset"></i> Dedicated Dispatch Team</span>
+      <div class="journey-timeline cols-3" data-stagger="90">
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Choose-Plan.png" alt="Choose a Plan"></div>
+          <div class="journey-step-body">
+            <h4>Choose a Plan</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Pick the transport plan that fits
+              your child's schedule and distance zone.</p>
+          </div>
+        </div>
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Route-Assigned.png" alt="Get a Route Assigned"></div>
+          <div class="journey-step-body">
+            <h4>Get a Route Assigned</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Share your school and pickup area to
+              receive an optimized matching route.</p>
+          </div>
+        </div>
+        <div class="journey-step" data-reveal="fade-up">
+          <div class="card-media-banner"><img src="assets/ai/home/Start-Tracking.png" alt="Start Tracking"></div>
+          <div class="journey-step-body">
+            <h4>Start Tracking</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">Log in to the parent portal and
+              follow the live daily journey with instant alerts.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer id="main-footer" class="site-footer"></footer>
+  <!-- ============================== COVERAGE AT A GLANCE ============================== -->
+  <section class="section">
+    <div class="container-custom">
+      <div class="section-head center" data-reveal="fade-up">
+        <span class="eyebrow"><i class="bi bi-geo-alt-fill"></i> Coverage</span>
+        <h2 class="h-section">Coverage At a Glance.</h2>
+      </div>
+      <div class="stat-strip" data-reveal="scale-in">
+        <div class="stat-item"><b>12</b><span>Active routes</span></div>
+        <div class="stat-item"><b>3</b><span>Pickup zones covered</span></div>
+        <div class="stat-item"><b>08 min</b><span>Average ETA window</span></div>
+        <div class="stat-item"><b>13 hrs</b><span>Daily support coverage</span></div>
+      </div>
+      <p class="text-center mt-3" style="font-size:0.78rem; color:var(--text-muted);">Sample figures for demonstration.
+      </p>
+    </div>
+  </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/animations.js"></script>
-<script>
-/* ======= Phone 3D Push / Tilt Effect ======= */
-(function () {
-  const scene = document.getElementById('phoneScene');
-  const frame = document.getElementById('phoneFrame');
-  if (!scene || !frame) return;
+  <!-- ============================== FINAL CTA ============================== -->
+  <section class="section section-alt">
+    <div class="container-custom">
+      <div class="final-cta" data-reveal="scale-in">
+        <span class="eyebrow"
+          style="background:rgba(255,255,255,0.15); color:#FFD166; border-color:rgba(255,255,255,0.3); margin-bottom:14px;"><i
+            class="bi bi-stars"></i> Get Started Today</span>
+        <h2 class="h-section">Make Every School Journey Easier to Trust.</h2>
+        <p>Better visibility for parents. A dependable, monitored daily journey for your children.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
+          <a href="routes.html" class="btn-secondary-custom">Explore Routes</a>
+        </div>
+        <div class="final-cta-chips">
+          <span class="final-cta-chip"><i class="bi bi-patch-check-fill"></i> Verified Drivers</span>
+          <span class="final-cta-chip"><i class="bi bi-broadcast"></i> Live GPS Telematics</span>
+          <span class="final-cta-chip"><i class="bi bi-shield-check"></i> Zero Incident Record</span>
+          <span class="final-cta-chip"><i class="bi bi-headset"></i> Dedicated Dispatch Team</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  const MAX_TILT = 12; // degrees — slightly softer
-  let rafId;
-  let isHovering = false;
-  let targetX = 0, targetY = 0, currentX = -6, currentY = 3; // start at CSS default pose
+  <footer id="main-footer" class="site-footer"></footer>
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    /* ======= Phone 3D Push / Tilt Effect ======= */
+    (function () {
+      const scene = document.getElementById('phoneScene');
+      const frame = document.getElementById('phoneFrame');
+      if (!scene || !frame) return;
 
-  function tick() {
-    // Slower lerp = silkier motion
-    currentX = lerp(currentX, targetX, 0.07);
-    currentY = lerp(currentY, targetY, 0.07);
+      const MAX_TILT = 12; // degrees — slightly softer
+      let rafId;
+      let isHovering = false;
+      let targetX = 0, targetY = 0, currentX = -6, currentY = 3; // start at CSS default pose
 
-    frame.style.transform =
-      `perspective(900px) rotateY(${currentX}deg) rotateX(${-currentY}deg) translateZ(${(Math.abs(currentX) + Math.abs(currentY)) * 0.6}px) scale(1.025)`;
+      function lerp(a, b, t) { return a + (b - a) * t; }
 
-    if (isHovering) {
-      rafId = requestAnimationFrame(tick);
-    } else {
-      // Easing back to rest — continue until close enough to starting pose
-      const dx = Math.abs(currentX - (-6));
-      const dy = Math.abs(currentY - 3);
-      if (dx > 0.05 || dy > 0.05) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        // Close enough — hand back to CSS animation
-        frame.style.transform = '';
-        scene.classList.remove('is-tilting');
+      function tick() {
+        // Slower lerp = silkier motion
+        currentX = lerp(currentX, targetX, 0.07);
+        currentY = lerp(currentY, targetY, 0.07);
+
+        frame.style.transform =
+          `perspective(900px) rotateY(${currentX}deg) rotateX(${-currentY}deg) translateZ(${(Math.abs(currentX) + Math.abs(currentY)) * 0.6}px) scale(1.025)`;
+
+        if (isHovering) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          // Easing back to rest — continue until close enough to starting pose
+          const dx = Math.abs(currentX - (-6));
+          const dy = Math.abs(currentY - 3);
+          if (dx > 0.05 || dy > 0.05) {
+            rafId = requestAnimationFrame(tick);
+          } else {
+            // Close enough — hand back to CSS animation
+            frame.style.transform = '';
+            scene.classList.remove('is-tilting');
+          }
+        }
       }
-    }
-  }
 
-  scene.addEventListener('mouseenter', () => {
-    isHovering = true;
-    scene.classList.add('is-tilting');
-    // Capture current animated pose before pausing
-    const computed = getComputedStyle(frame).transform;
-    cancelAnimationFrame(rafId);
-    tick();
-  });
+      scene.addEventListener('mouseenter', () => {
+        isHovering = true;
+        scene.classList.add('is-tilting');
+        // Capture current animated pose before pausing
+        const computed = getComputedStyle(frame).transform;
+        cancelAnimationFrame(rafId);
+        tick();
+      });
 
-  scene.addEventListener('mousemove', (e) => {
-    const rect = scene.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) / (rect.width / 2);
-    const dy = (e.clientY - cy) / (rect.height / 2);
-    // Clamp so it never exceeds MAX_TILT
-    targetX = Math.max(-MAX_TILT, Math.min(MAX_TILT, dx * MAX_TILT));
-    targetY = Math.max(-MAX_TILT, Math.min(MAX_TILT, dy * MAX_TILT));
-  });
+      scene.addEventListener('mousemove', (e) => {
+        const rect = scene.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = (e.clientX - cx) / (rect.width / 2);
+        const dy = (e.clientY - cy) / (rect.height / 2);
+        // Clamp so it never exceeds MAX_TILT
+        targetX = Math.max(-MAX_TILT, Math.min(MAX_TILT, dx * MAX_TILT));
+        targetY = Math.max(-MAX_TILT, Math.min(MAX_TILT, dy * MAX_TILT));
+      });
 
-  scene.addEventListener('mouseleave', () => {
-    isHovering = false;
-    // Ease back to resting pose (-6, 3 deg) then hand back to CSS
-    targetX = -6;
-    targetY = 3;
-    rafId = requestAnimationFrame(tick);
-  });
+      scene.addEventListener('mouseleave', () => {
+        isHovering = false;
+        // Ease back to resting pose (-6, 3 deg) then hand back to CSS
+        targetX = -6;
+        targetY = 3;
+        rafId = requestAnimationFrame(tick);
+      });
 
-  // Touch support — gentle tilt on mobile
-  scene.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    const rect = scene.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    targetX = Math.max(-6, Math.min(6, ((touch.clientX - cx) / (rect.width / 2)) * 6));
-    targetY = Math.max(-4, Math.min(4, ((touch.clientY - cy) / (rect.height / 2)) * 4));
-    if (!isHovering) { isHovering = true; scene.classList.add('is-tilting'); tick(); }
-  }, { passive: true });
+      // Touch support — gentle tilt on mobile
+      scene.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const rect = scene.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        targetX = Math.max(-6, Math.min(6, ((touch.clientX - cx) / (rect.width / 2)) * 6));
+        targetY = Math.max(-4, Math.min(4, ((touch.clientY - cy) / (rect.height / 2)) * 4));
+        if (!isHovering) { isHovering = true; scene.classList.add('is-tilting'); tick(); }
+      }, { passive: true });
 
-  scene.addEventListener('touchend', () => {
-    isHovering = false;
-    targetX = -6; targetY = 3;
-    rafId = requestAnimationFrame(tick);
-  });
-})();
-</script>
+      scene.addEventListener('touchend', () => {
+        isHovering = false;
+        targetX = -6; targetY = 3;
+        rafId = requestAnimationFrame(tick);
+      });
+    })();
+  </script>
 </body>
+
 </html>

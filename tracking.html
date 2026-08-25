@@ -28,7 +28,7 @@
       <span class="separator"><i class="bi bi-chevron-right"></i></span>
       <span class="current">Live Tracking</span>
     </div>
-    <span class="eyebrow"><i class="bi bi-broadcast-pin"></i> Live Bus Tracking</span>
+    <!-- <span class="eyebrow"><i class="bi bi-broadcast-pin"></i> Live Bus Tracking</span> -->
     <h1 class="h-display">Your Child's Route, Right in Front of You.</h1>
     <p class="lead-text mt-3">Follow the assigned bus route, view upcoming stops and check the latest journey status through the parent portal.</p>
     <a href="login.html" class="btn-primary-custom mt-4"><i class="bi bi-person-fill-lock"></i> Parent Login</a>
@@ -60,10 +60,11 @@
         <div class="tracking-info-row"><span class="ti-label">Next Stop</span><span class="ti-value">Lakeview Apartments</span></div>
         <div class="tracking-info-row"><span class="ti-label">ETA</span><span class="ti-value">08 min</span></div>
         <div class="tracking-info-row"><span class="ti-label">Route</span><span class="ti-value">Route 08</span></div>
+        <div class="tracking-info-row"><span class="ti-label">Female Attendant</span><span class="ti-value">Lakshmi</span></div>
         <div class="d-flex gap-2 flex-wrap mt-4">
           <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Location refreshed.','bi-arrow-clockwise')">Refresh Location</button>
           <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Simulating today\'s trip…','bi-play-circle')">Simulate Trip</button>
-          <a href="routes.html" class="btn-secondary-custom">View Route</a>
+          <!-- <a href="routes.html" class="btn-secondary-custom">View Route</a> -->
         </div>
       </div>
     </div>
@@ -225,13 +226,14 @@
   </div>
 </section>
 
-<!-- ============================== FEATURES ============================== -->
+<!-- ============================== FEATURES (3x2 GRID) ============================== -->
 <section class="section">
   <div class="container-custom">
     <div class="section-head center" data-reveal="fade-up">
       <h2 class="h-section">What Parents Can See.</h2>
+      <p class="lead-text">Complete visibility at every milestone of your child's daily school route.</p>
     </div>
-    <div class="feature-grid" data-stagger="80">
+    <div class="feature-grid cols-3" data-stagger="80">
       <div class="feature-card" data-reveal="fade-up">
         <div class="card-media-banner"><img src="assets/ai/tracking/Assigned-Bus.png" alt="Assigned Bus"></div>
         <div class="feature-card-body"><h3>Assigned Bus</h3><p>Which bus your child travels on.</p></div>
@@ -251,10 +253,6 @@
       <div class="feature-card" data-reveal="fade-up">
         <div class="card-media-banner"><img src="assets/ai/tracking/Boarding-Status.png" alt="Boarding Status"></div>
         <div class="feature-card-body"><h3>Boarding Status</h3><p>Confirmation your child boarded.</p></div>
-      </div>
-      <div class="feature-card" data-reveal="fade-up">
-        <div class="card-media-banner"><img src="assets/ai/tracking/Route-Progress.png" alt="Route Progress"></div>
-        <div class="feature-card-body"><h3>Route Progress</h3><p>How far along the route the bus is.</p></div>
       </div>
       <div class="feature-card" data-reveal="fade-up">
         <div class="card-media-banner"><img src="assets/ai/tracking/Drop-Status.png" alt="Drop Status"></div>
@@ -327,6 +325,8 @@
       </div>
     </div>
   </div>
+</section>
+
 <!-- ============================== FINAL CTA ============================== -->
 <section class="section">
   <div class="container-custom">

@@ -63,6 +63,10 @@
 }
 [dir="rtl"] .saferoute-matrix-table th,
 [dir="rtl"] .saferoute-matrix-table td{
+  text-align: center;
+}
+[dir="rtl"] .saferoute-matrix-table th:first-child,
+[dir="rtl"] .saferoute-matrix-table td:first-child{
   text-align: right;
 }
 [dir="rtl"] .saferoute-matrix-table th.highlight-col,
