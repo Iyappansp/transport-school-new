@@ -37,14 +37,15 @@ table { width: 100%; }
   .hamburger-btn { display: flex !important; }
 
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; max-width: 480px; margin-inline: auto; width: 100%; }
+  .hero-copy { order: 1; }
+  .hero-visual { order: 2 !important; max-width: 480px; margin-inline: auto; width: 100%; margin-top: 2rem; }
   /* Phone mockup tablet — scale whole scene down, phone stays 260px internally */
-  .hero-phone-wrap { order: -1; max-width: 520px; margin-inline: auto; width: 100%; padding: 50px 80px 70px; }
+  .hero-phone-wrap { order: 2 !important; max-width: 520px; margin-inline: auto; width: 100%; padding: 40px 40px 60px; margin-top: 1.5rem; }
   .phone-3d-scene { transform-origin: center top; }
   .pb-live { left: -3%; }
   .pb-next { right: -3%; }
   .editorial-hero-grid { grid-template-columns: 1fr; }
-  .editorial-hero-visual { order: -1; max-width: 420px; margin-inline: auto; width: 100%; }
+  .editorial-hero-visual { order: 2 !important; max-width: 420px; margin-inline: auto; width: 100%; margin-top: 2rem; }
 
   .auth-side { display: none; }
   .auth-wrap { grid-template-columns: 1fr; }
@@ -53,7 +54,20 @@ table { width: 100%; }
   .calc-grid { grid-template-columns: 1fr; }
 }
 
-@media (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 992px) and (max-width: 1024px) {
+  .journey-timeline.cols-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    max-width: 1080px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .journey-timeline.cols-5 {
+    grid-template-columns: repeat(5, 1fr) !important;
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 991px) {
   /* 2-Column Layout for Tablet / Tab View */
   .feature-grid,
   .feature-grid.cols-3,
@@ -118,6 +132,7 @@ table { width: 100%; }
   .stat-strip > :last-child:nth-child(odd),
   .journey-timeline > :last-child:nth-child(odd),
   .journey-timeline.cols-3 > :last-child:nth-child(odd),
+  .journey-timeline.cols-5 > :last-child:nth-child(odd),
   .addons-grid > :last-child:nth-child(odd),
   .trust-guarantee-grid > :last-child:nth-child(odd),
   .impact-hero-strip > :last-child:nth-child(odd) {
@@ -129,11 +144,11 @@ table { width: 100%; }
 }
 
 /* ==========================================================================
-   MOBILE VIEW (≤768px):
+   MOBILE VIEW (≤640px):
    - All Containers / Cards Display One by One (1 Column)
    - Reset All Last Child Center / Span Constraints
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   :root { --section-pad-y: clamp(2.5rem, 8vw, 3.5rem); }
 
   /* 1-Column "One by One" for Mobile Screens */

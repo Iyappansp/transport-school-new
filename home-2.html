@@ -33,8 +33,8 @@
 
   <header id="main-header" class="site-header"></header>
 
-  <!-- ============================== EDITORIAL HERO ============================== -->
-  <section class="hero hero--video-bg">
+  <!-- ============================== CENTERED VIDEO HERO ============================== -->
+  <section class="hero hero--video-center">
     <div class="hero-video-bg-container">
       <video autoplay muted loop playsinline class="hero-video-bg-media" poster="assets/image/hero-home2.jpg">
         <source src="assets/ai/video.mp4" type="video/mp4">
@@ -42,32 +42,37 @@
       <div class="hero-video-bg-overlay"></div>
     </div>
 
-    <div class="container-custom editorial-hero-grid position-relative" style="z-index: 2;">
-      <div data-reveal="fade-up">
-        <span class="eyebrow"><i class="bi bi-camera-video-fill me-1"></i> The Smarter Way To School Transport</span>
-        <h1 class="h-mega">See the Journey. Know the Stop. Stay Connected.</h1>
-        <p class="lead-text" style="margin-block:20px 30px; max-width:48ch;">A connected school transport experience
-          that gives parents greater visibility from pickup to drop-off.</p>
-        <a href="#journey" class="btn-primary-custom">See How It Works <i class="bi bi-arrow-down"></i></a>
+    <div class="container-custom position-relative" style="z-index: 2;" data-reveal="fade-up">
+      <span class="eyebrow mx-auto mb-3" style="background: rgba(21, 94, 239, 0.2); color: #93C5FD; border-color: rgba(147, 197, 253, 0.35);">
+        <i class="bi bi-camera-video-fill me-1"></i> The Smarter Way To School Transport
+      </span>
+      <h1 class="h-mega text-center" style="max-width: 22ch; margin-inline: auto;">
+        See the Journey. Know the Stop. Stay Connected.
+      </h1>
+      <p class="lead-text text-center mx-auto" style="margin-block: 20px 32px; max-width: 56ch;">
+        A connected school transport experience that gives parents greater visibility and peace of mind from pickup to drop-off.
+      </p>
+      <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
+        <a href="#journey" class="btn-primary-custom" style="padding: 13px 28px; font-size: 1rem;">
+          See How It Works <i class="bi bi-arrow-down ms-1"></i>
+        </a>
+        <a href="routes.html" class="btn-secondary-custom" style="padding: 13px 28px; font-size: 1rem;">
+          Explore Routes <i class="bi bi-arrow-right ms-1"></i>
+        </a>
       </div>
 
-      <div class="editorial-hero-visual" data-reveal="scale-in" data-reveal-delay="140">
-        <div class="hero-visual-frame" style="overflow:hidden; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl); border: 1px solid var(--border-soft);">
-          <video autoplay muted loop playsinline class="hero-video-card-media" poster="assets/image/hero-home2.jpg">
-            <source src="assets/ai/video.mp4" type="video/mp4">
-          </video>
+      <div class="hero-center-badges" data-reveal="fade-up" data-reveal-delay="200">
+        <div class="hero-center-badge">
+          <i class="bi bi-check-circle-fill" style="color:#4ADE80;"></i>
+          <span><b>07:18 AM</b> Child Boarded</span>
         </div>
-        <div class="editorial-floating ef-1" data-reveal="fade-right" data-reveal-delay="260">
-          <i class="bi bi-check-circle-fill" style="color:var(--color-success);"></i>
-          <div><b>07:18 AM</b><span>Child Boarded</span></div>
+        <div class="hero-center-badge">
+          <i class="bi bi-geo-alt-fill" style="color:#60A5FA;"></i>
+          <span><b>08:05 AM</b> School Arrival</span>
         </div>
-        <div class="editorial-floating ef-2" data-reveal="fade-left" data-reveal-delay="360">
-          <i class="bi bi-building" style="color:var(--color-primary);"></i>
-          <div><b>08:05 AM</b><span>School Arrival</span></div>
-        </div>
-        <div class="editorial-floating ef-3" data-reveal="fade-up" data-reveal-delay="460">
-          <i class="bi bi-arrow-repeat" style="color:#A87700;"></i>
-          <div><b>03:30 PM</b><span>Return Started</span></div>
+        <div class="hero-center-badge">
+          <i class="bi bi-arrow-repeat" style="color:#FBBF24;"></i>
+          <span><b>03:30 PM</b> Return Started</span>
         </div>
       </div>
     </div>
@@ -271,12 +276,12 @@
             <span class="telemetry-status"><span class="pulse-dot"></span> Live Recording</span>
           </div>
           <div class="telematics-content">
-            <h4>Dual HD AI Dashcam &amp; Cabin Monitor</h4>
+            <h4>Dual HD AI Dashcam &amp; Cabin</h4>
             <p>Monitors front road conditions and passenger cabin behavior with encrypted cloud synchronization for
               total transit transparency.</p>
             <div class="telematics-metric">
-              <span>Resolution &amp; Privacy</span>
-              <b>1080p 60fps Encrypted</b>
+              <span>Resolution</span>
+              <b>1080p Encrypted</b>
             </div>
           </div>
         </div>
@@ -305,10 +310,10 @@
           <div class="telematics-content">
             <h4>Smart RFID Tap Terminal</h4>
             <p>Mounted at the entry door. Every student taps their SafeRoute SmartCard upon boarding and drop-off,
-              triggering instant push notifications to parents.</p>
+              triggering instant push.</p>
             <div class="telematics-metric">
-              <span>Notification Latency</span>
-              <b>&lt; 0.4s Instant SMS / App</b>
+              <span>Notification</span>
+              <b>&lt; 0.4s Instant SMS</b>
             </div>
           </div>
         </div>
@@ -319,12 +324,12 @@
             <span class="telemetry-status"><span class="pulse-dot"></span> Ready</span>
           </div>
           <div class="telematics-content">
-            <h4>Panic SOS &amp; Emergency Dispatch</h4>
+            <h4>Panic SOS Emergency</h4>
             <p>Direct dashboard panic switch enables driver or attendant to instantly notify the 24/7 central dispatch
               room and emergency services.</p>
             <div class="telematics-metric">
-              <span>Emergency Response</span>
-              <b>Direct 24/7 Central Line</b>
+              <span>Emergency</span>
+              <b>Direct 24/7 Central</b>
             </div>
           </div>
         </div>
@@ -685,7 +690,7 @@
           style="background:rgba(255,255,255,0.15); color:#FFD166; border-color:rgba(255,255,255,0.3); margin-bottom:14px;"><i
             class="bi bi-shield-lock-fill"></i> Peace of Mind Every Day</span>
         <h2 class="h-section">A Better Transport Experience Starts With Better Visibility.</h2>
-        <p>Join hundreds of parents who have upgraded to transparent, trackable, and safe school transportation.</p>
+        <br><!-- <p>Join hundreds of parents who have upgraded to transparent, trackable, and safe school transportation.</p> -->
         <div class="d-flex justify-content-center gap-3 flex-wrap">
           <a href="login.html" class="btn-primary-custom">Parent Login <i class="bi bi-arrow-right"></i></a>
           <a href="plans.html" class="btn-secondary-custom">View All Plans</a>

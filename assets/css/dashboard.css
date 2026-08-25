@@ -1142,6 +1142,26 @@ body[data-dashboard] *::after {
 .wr-value {
   color: var(--text-primary);
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.overview-at-glance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .overview-at-glance-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .overview-at-glance-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .dj-period-label {
@@ -1352,12 +1372,13 @@ body[data-dashboard] *::after {
 }
 
 /* ==========================================================================
-   Forms & Profile
+   Forms, Profile & Widgets
    ========================================================================== */
 .profile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-5);
+  width: 100%;
 }
 
 .profile-card {
@@ -1366,6 +1387,39 @@ body[data-dashboard] *::after {
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.widget-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 0.75rem;
+  font-size: var(--fs-xs);
+  min-width: 0;
+}
+
+.widget-row:last-child {
+  border-bottom: none;
+}
+
+.wr-label {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.wr-value {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: end;
+  white-space: nowrap;
 }
 
 .form-field {
@@ -1697,19 +1751,71 @@ body[data-dashboard] *::after {
 
 @media (max-width: 640px) {
   .dash-topbar {
-    padding: 0 var(--space-4);
+    height: auto;
+    min-height: 58px;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .dash-topbar-left {
+    gap: 0.45rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .dash-topbar-greeting h1 {
+    font-size: 0.95rem;
+  }
+
+  .dash-topbar-greeting p {
+    font-size: 0.7rem;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .dash-topbar-right {
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+
+  .dash-topbar-right .icon-btn,
+  .dash-topbar-right .icon-toggle,
+  .dash-topbar-right .btn-rtl-toggle {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+    padding: 0;
   }
 
   .dash-content {
-    padding: var(--space-4);
+    padding: 0.75rem 0.65rem;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .dash-welcome-banner {
-    padding: var(--space-6);
+    padding: 1.25rem 1rem;
   }
 
   .dash-stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
+
+  .profile-card {
+    padding: 1.1rem 0.9rem;
+  }
+
+  .subscription-card,
+  .pay-table-card,
+  .quick-pay-card {
+    padding: 1.1rem 0.9rem;
   }
 
   .responsive-table {
@@ -1722,5 +1828,62 @@ body[data-dashboard] *::after {
 
   .sub-details-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .sub-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .sub-actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 0.5rem 0.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .dash-topbar {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .dash-topbar-greeting p {
+    display: none;
+  }
+
+  .dash-topbar-right .icon-btn,
+  .dash-topbar-right .icon-toggle,
+  .dash-topbar-right .btn-rtl-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.78rem;
+  }
+
+  .dash-content {
+    padding: 0.6rem 0.45rem;
+  }
+
+  .profile-card,
+  .subscription-card,
+  .pay-table-card {
+    padding: 0.85rem 0.7rem;
+  }
+
+  .widget-row {
+    font-size: 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .wr-label, .wr-value {
+    font-size: 0.75rem;
+  }
+
+  .sub-actions {
+    grid-template-columns: 1fr;
   }
 }

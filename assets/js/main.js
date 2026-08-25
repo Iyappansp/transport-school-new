@@ -186,12 +186,7 @@
             <a href="${root}dashboard/index.html">Subscription</a>
             <a href="${root}dashboard/index.html">Receipts</a>
           </div>
-          <div class="footer-col">
-            <h5>Company</h5>
-            <a href="${root}about.html">About</a>
-            <a href="${root}faq.html">FAQ</a>
-            <a href="${root}contact.html">Contact</a>
-          </div>
+       
           <div class="footer-col">
             <h5>Contact</h5>
             <address>+91 98765 43210</address>
