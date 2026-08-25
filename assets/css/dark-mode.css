@@ -272,6 +272,7 @@
 [data-theme="dark"] .route-tag,
 [data-theme="dark"] .telemetry-badge-live,
 [data-theme="dark"] .enterprise-badge,
+[data-theme="dark"] .eyebrow,
 [data-theme="dark"] .status-pill.primary {
   background: rgba(21, 94, 239, 0.22) !important;
   color: #70A1FF !important;

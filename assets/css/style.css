@@ -103,11 +103,34 @@ p{ font-weight: 400; margin: 0; }
 .h-section{ font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 600; letter-spacing: -0.015em; }
 .h-card{ font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 600; }
 .eyebrow{
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 0.78rem; font-weight: 550; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--color-primary); margin-bottom: 14px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  font-family: inherit !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: var(--color-primary) !important;
+  background: var(--color-primary-tint) !important;
+  border: 1px solid rgba(21, 94, 239, 0.25) !important;
+  padding: 5px 14px !important;
+  border-radius: var(--radius-pill) !important;
+  margin-bottom: 14px !important;
+  line-height: 1.2 !important;
+  width: fit-content !important;
+  max-width: max-content !important;
+  box-shadow: 0 2px 8px rgba(21, 94, 239, 0.08) !important;
+  transition: all var(--dur-fast) var(--ease-out) !important;
 }
-.eyebrow::before{ content:""; width: 18px; height: 2px; background: var(--color-secondary); border-radius: 2px; }
+.eyebrow::before{ content: none !important; }
+.eyebrow i{
+  font-size: 0.88em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 .lead-text{ font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--text-muted); font-weight: 400; line-height: 1.7; }
 
 /* ==========================================================================
@@ -859,6 +882,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .route-tag,
 .lifecycle-badge,
 .telemetry-badge-live,
+.telemetry-status,
 .status-pill,
 .status-chip,
 .badge-custom,
@@ -866,7 +890,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .driver-status-badge,
 .step-badge,
 .demo-badge,
-.enterprise-badge {
+.gallery-badge,
+.enterprise-badge,
+.addon-tag {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1368,30 +1394,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   margin-inline: auto;
 }
 .page-hero .eyebrow{
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(21, 94, 239, 0.22) !important;
+  color: #93C5FD !important;
+  border: 1px solid rgba(147, 197, 253, 0.35) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFD166 !important;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 650;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  padding: 5px 16px !important;
+  border-radius: var(--radius-pill) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 16px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
 }
 .page-hero .eyebrow::before{
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #FFD166;
-  box-shadow: 0 0 10px #FFD166;
+  content: none !important;
 }
 .page-hero-breadcrumb{
   display: inline-flex;
@@ -2797,6 +2818,8 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
 }
 .calc-sublabel{
   font-size: 0.76rem;
@@ -2807,6 +2830,9 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+}
+.calc-segmented--2col{
+  grid-template-columns: repeat(2, 1fr);
 }
 .calc-segment-btn{
   padding: 10px 14px;
@@ -3701,30 +3727,27 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
 .step-node:hover .step-media img {
   transform: scale(1.08);
 }
-.step-node .step-badge {
+.step-node .step-badge,
+.step-node .step-badge.is-complete {
   position: absolute;
   top: 14px;
   inset-inline-start: 14px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(11, 17, 32, 0.85);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  font-size: 0.74rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(16, 24, 40, 0.65) !important;
+  color: #4ADE80 !important;
+  border: 1px solid rgba(74, 222, 128, 0.35) !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  border-radius: var(--radius-pill) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
   z-index: 3;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
   width: fit-content !important;
   max-width: max-content !important;
-}
-.step-node .step-badge.is-complete {
-  color: #4ADE80;
-  border-color: rgba(74, 222, 128, 0.35);
 }
 
 /* Hover reveal overlay */
@@ -4019,15 +4042,15 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.40;
-  filter: brightness(0.85);
+  opacity: 0.70;
+  filter: brightness(0.95) contrast(1.05);
 }
 .hero--video-center .hero-video-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(11, 17, 32, 0.55) 0%, rgba(11, 17, 32, 0.85) 68%, rgba(11, 17, 32, 0.98) 100%);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  background: radial-gradient(circle at center, rgba(11, 17, 32, 0.35) 0%, rgba(11, 17, 32, 0.60) 65%, rgba(11, 17, 32, 0.85) 100%);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
 }
 .hero--video-center .container-custom {
   position: relative;
@@ -4054,30 +4077,32 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-top: 36px;
-  padding-top: 26px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 .hero-center-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(16, 24, 40, 0.78);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  padding: 8px 18px;
+  padding: 7px 18px;
   border-radius: var(--radius-pill);
   color: #FFFFFF;
   font-size: 0.85rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
-  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all var(--dur-fast) var(--ease-out);
 }
 .hero-center-badge:hover {
   transform: translateY(-2px);
-  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .hero-center-badge b {
   color: #FFFFFF;
@@ -4085,7 +4110,7 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
   margin-inline-end: 4px;
 }
 .hero-center-badge span {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* ==========================================================================

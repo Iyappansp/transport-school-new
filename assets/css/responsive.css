@@ -194,15 +194,180 @@ table { width: 100%; }
   .enterprise-grid,
   .enterprise-checklist,
   .calc-grid,
-  .calc-segmented {
+  .calc-segmented,
+  .addons-grid,
+  .trust-guarantee-grid {
     grid-template-columns: 1fr !important;
   }
 
   .step-node { height: 230px !important; }
 
+  /* Plans Page Mobile Refinements */
+  .calc-container-card {
+    padding: 1.25rem 1rem !important;
+  }
+  .calc-grid {
+    gap: 1.5rem !important;
+  }
+  .calc-group {
+    margin-bottom: 1.25rem !important;
+  }
+  .calc-label {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    margin-bottom: 8px !important;
+    width: 100% !important;
+  }
+  .calc-label span:first-child {
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+    color: var(--text-heading) !important;
+  }
+  .calc-sublabel {
+    font-size: 0.76rem !important;
+    font-weight: 600 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+  .calc-segmented {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .calc-segment-btn {
+    padding: 10px 12px !important;
+    font-size: 0.84rem !important;
+    width: 100% !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+  .hero-center-badges {
+    gap: 8px !important;
+    margin-top: 24px !important;
+    padding-top: 18px !important;
+  }
+  .hero-center-badge {
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+  }
+  .calc-results-panel {
+    padding: 1.25rem 1rem !important;
+    gap: 1rem !important;
+  }
+  .calc-stat-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 4px 8px !important;
+    font-size: 0.84rem !important;
+  }
+  .calc-total-box {
+    padding: 1rem 0.75rem !important;
+  }
+  .calc-total-amount {
+    font-size: 1.85rem !important;
+  }
+  .calc-total-sub {
+    font-size: 0.74rem !important;
+  }
+
+  .enterprise-tier-card {
+    border-radius: var(--radius-lg) !important;
+  }
+  .enterprise-content {
+    padding: 1.5rem 1rem !important;
+  }
+  .enterprise-content h3 {
+    font-size: 1.35rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 12px !important;
+  }
+  .enterprise-content p {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .enterprise-checklist {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 1.5rem !important;
+    padding: 0 !important;
+  }
+  .enterprise-checklist li {
+    font-size: 0.85rem !important;
+  }
+  .enterprise-content .d-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .enterprise-content .btn-primary-custom,
+  .enterprise-content .btn-secondary-custom {
+    width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 0.85rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
   .enterprise-stats-panel {
-    border-inline-start: none;
-    border-top: 1px solid var(--border-soft);
+    border-inline-start: none !important;
+    border-top: 1px solid var(--border-soft) !important;
+    padding: 1.5rem 1rem !important;
+    gap: 12px !important;
+  }
+  .enterprise-stat-box {
+    padding: 14px 16px !important;
+    gap: 12px !important;
+  }
+  .enterprise-stat-icon {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.2rem !important;
+  }
+  .enterprise-stat-box b {
+    font-size: 1.2rem !important;
+  }
+  .enterprise-stat-box span {
+    font-size: 0.78rem !important;
+  }
+
+  .addon-card .card-media-banner,
+  .trust-guarantee-card .card-media-banner {
+    height: 180px !important;
+    width: 100% !important;
+  }
+  .addon-card-body,
+  .trust-card-body {
+    padding: 16px 14px !important;
+  }
+  .addon-card h4,
+  .trust-guarantee-card h4 {
+    font-size: 1.05rem !important;
+  }
+  .addon-card p,
+  .trust-guarantee-card p {
+    font-size: 0.84rem !important;
+  }
+  .addon-foot {
+    padding-top: 10px !important;
+  }
+  .addon-price {
+    font-size: 0.9rem !important;
+  }
+
+  .plan-card {
+    padding: 1.5rem 1.25rem !important;
+  }
+  .plan-card .btn-primary-custom,
+  .plan-card .btn-secondary-custom {
+    width: 100% !important;
+    justify-content: center !important;
   }
 
   /* Reset last child centering & spans for mobile so each item fills full container width */
@@ -319,6 +484,17 @@ table { width: 100%; }
 
   .stat-strip { padding: 20px; }
   .stat-strip .stat-item b { font-size: 1.5rem; }
+
+  .calc-container-card { padding: 1rem 0.75rem !important; }
+  .calc-results-panel { padding: 1rem 0.75rem !important; }
+  .enterprise-content { padding: 1.25rem 0.75rem !important; }
+  .enterprise-stats-panel { padding: 1.25rem 0.75rem !important; }
+  .enterprise-stat-box { padding: 12px 14px !important; gap: 10px !important; }
+  .enterprise-stat-icon { width: 38px !important; height: 38px !important; font-size: 1.1rem !important; }
+  .enterprise-stat-box b { font-size: 1.1rem !important; }
+  .enterprise-stat-box span { font-size: 0.75rem !important; }
+  .final-cta-chips { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; justify-content: center !important; }
+  .final-cta-chip { width: 100% !important; justify-content: center !important; text-align: center !important; font-size: 0.78rem !important; }
 }
 
 /* ==========================================================================
@@ -339,17 +515,27 @@ table { width: 100%; }
   .plan-price { font-size: 1.7rem; }
   .floating-card { min-width: 132px; font-size: 0.85rem; }
   .floating-card .fc-value { font-size: 0.8rem; }
+  .calc-total-amount { font-size: 1.65rem !important; }
+  .calc-segment-btn { font-size: 0.8rem !important; padding: 8px 10px !important; }
+  .addon-card-body, .trust-card-body { padding: 14px 10px !important; }
+  .addon-price { font-size: 0.85rem !important; }
 }
 
 /* ==========================================================================
    MINIMUM FLOOR (≤320px)
    ========================================================================== */
 @media (max-width: 320px) {
-  :root { --container-pad: 1rem; }
+  :root { --container-pad: 0.75rem; }
   /* Scale phone scene to tiny floor */
   .phone-3d-scene { transform: scale(0.60); transform-origin: center top; }
   .hero-phone-wrap { padding: 20px 10px 30px; max-width: 300px; }
   .h-display { font-size: 1.9rem; }
+  .calc-container-card,
+  .calc-results-panel,
+  .enterprise-content,
+  .enterprise-stats-panel {
+    padding: 0.875rem 0.5rem !important;
+  }
 }
 
 
