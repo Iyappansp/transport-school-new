@@ -795,7 +795,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: var(--shadow-card);
   transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
-.journey-step::before{ display: none !important; }
+.journey-step::before,
+.journey-step::after{ display: none !important; content: none !important; }
 .journey-step:hover{
   transform: translateY(-4px);
   border-color: var(--color-primary);
@@ -3964,6 +3965,142 @@ a.chip-item:hover{ border-color: var(--color-primary); color: var(--color-primar
 }
 .landmark-card:hover .landmark-thumb {
   transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Home 2 Hero Background Video & Visual Card Video
+   ========================================================================== */
+.hero--video-bg {
+  position: relative;
+  overflow: hidden;
+}
+.hero-video-bg-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-video-bg-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.16;
+  filter: blur(1px);
+}
+[data-theme="dark"] .hero-video-bg-media {
+  opacity: 0.25;
+}
+.hero-video-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--surface-page) 15%, rgba(21, 94, 239, 0.06) 60%, var(--surface-page) 100%);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+[data-theme="dark"] .hero-video-bg-overlay {
+  background: linear-gradient(135deg, rgba(11, 17, 32, 0.88) 15%, rgba(14, 22, 38, 0.72) 60%, rgba(11, 17, 32, 0.94) 100%);
+}
+
+.hero-video-card-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  display: block;
+}
+
+/* ==========================================================================
+   Contact Page: Dedicated Channels Grid & Cards
+   ========================================================================== */
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.contact-channel-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.contact-channel-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+  box-shadow: 0 16px 36px -10px rgba(21, 94, 239, 0.22);
+}
+.contact-channel-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+.contact-channel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  width: 100%;
+}
+.contact-channel-body h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 2px;
+}
+.contact-channel-body p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.contact-channel-action {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  transition: gap var(--dur-fast) var(--ease-out);
+}
+.contact-channel-card:hover .contact-channel-action {
+  gap: 8px;
+}
+
+.contact-card-container {
+  max-width: 820px;
+  margin-inline: auto;
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+.contact-card-container:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-float);
+}
+.contact-card-header {
+  margin-bottom: 2rem;
+}
+.contact-card-header .eyebrow {
+  margin-inline: auto;
 }
 
 

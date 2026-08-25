@@ -19,6 +19,14 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
+  <script>
+    (function(){
+      var t = localStorage.getItem('saferoute-theme') || 'light';
+      var d = localStorage.getItem('saferoute-dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+    })();
+  </script>
 </head>
 
 <body>

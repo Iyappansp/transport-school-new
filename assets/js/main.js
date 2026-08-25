@@ -215,7 +215,7 @@
      Theme toggle sync & listeners
      ------------------------------------------------------------------ */
   function updateAllThemeIcons(theme) {
-    document.querySelectorAll(".theme-toggle-btn i, #theme-toggle i, #theme-toggle-mobile i").forEach((icon) => {
+    document.querySelectorAll(".theme-toggle-btn i, #theme-toggle i, #themeToggle i, #sidebarThemeToggle i, #theme-toggle-mobile i, .theme-toggle i").forEach((icon) => {
       icon.className = theme === "dark" ? "bi bi-sun" : "bi bi-moon-stars";
     });
   }
@@ -226,7 +226,7 @@
     updateAllThemeIcons(saved);
 
     document.addEventListener("click", (e) => {
-      const btn = e.target.closest("#theme-toggle, #themeToggle, #theme-toggle-mobile, .theme-toggle-btn, .theme-toggle");
+      const btn = e.target.closest("#theme-toggle, #themeToggle, #sidebarThemeToggle, #theme-toggle-mobile, .theme-toggle-btn, .theme-toggle");
       if (!btn) return;
       window.SafeRoutePrefs.toggleTheme();
     });
@@ -239,7 +239,7 @@
     document.querySelectorAll(".rtl-label, #rtlLabel").forEach((lbl) => {
       lbl.textContent = dir === "rtl" ? "LTR" : "RTL";
     });
-    document.querySelectorAll(".btn-rtl-toggle, #rtl-toggle, #rtlToggle, #rtl-toggle-mobile").forEach((btn) => {
+    document.querySelectorAll(".btn-rtl-toggle, #rtl-toggle, #rtlToggle, #sidebarRtlToggle, #rtl-toggle-mobile, .rtl-toggle-btn").forEach((btn) => {
       btn.classList.toggle("is-active", dir === "rtl");
     });
   }
@@ -250,7 +250,7 @@
     updateAllRtlLabels(saved);
 
     document.addEventListener("click", (e) => {
-      const btn = e.target.closest("#rtl-toggle, #rtlToggle, #rtl-toggle-mobile, .btn-rtl-toggle, .rtl-toggle-btn");
+      const btn = e.target.closest("#rtl-toggle, #rtlToggle, #sidebarRtlToggle, #rtl-toggle-mobile, .btn-rtl-toggle, .rtl-toggle-btn");
       if (!btn) return;
       window.SafeRoutePrefs.toggleDir();
     });

@@ -221,14 +221,14 @@
 
     /* RTL & Theme sync for dashboard topbar and sidebar */
     function syncThemeIcons() {
-      var theme = document.documentElement.getAttribute('data-theme') || 'light';
-      document.querySelectorAll('.theme-toggle-btn i').forEach(function (icon) {
+      var theme = (window.SafeRoutePrefs ? window.SafeRoutePrefs.getTheme() : document.documentElement.getAttribute('data-theme')) || 'light';
+      document.querySelectorAll('.theme-toggle-btn i, #themeToggle i, #sidebarThemeToggle i').forEach(function (icon) {
         icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
       });
     }
 
     function syncRtl() {
-      var isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+      var isRtl = (window.SafeRoutePrefs ? window.SafeRoutePrefs.getDir() === 'rtl' : document.documentElement.getAttribute('dir') === 'rtl');
       document.querySelectorAll('#rtlLabel, .rtl-label').forEach(function (lbl) {
         lbl.textContent = isRtl ? 'LTR' : 'RTL';
       });
@@ -237,40 +237,8 @@
       });
     }
 
-    function toggleTheme() {
-      if (window.SafeRoutePrefs) {
-        window.SafeRoutePrefs.toggleTheme();
-      } else {
-        var curr = document.documentElement.getAttribute('data-theme') || 'light';
-        var next = curr === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('saferoute-theme', next);
-      }
-      syncThemeIcons();
-    }
-
-    function toggleRtl() {
-      if (window.SafeRoutePrefs) {
-        window.SafeRoutePrefs.toggleDir();
-      } else {
-        var curr = document.documentElement.getAttribute('dir') || 'ltr';
-        var next = curr === 'rtl' ? 'ltr' : 'rtl';
-        document.documentElement.setAttribute('dir', next);
-        localStorage.setItem('saferoute-dir', next);
-      }
-      syncRtl();
-    }
-
     initLogoutModal();
     syncRtl();
     syncThemeIcons();
-
-    document.querySelectorAll('#rtlToggle, #sidebarRtlToggle, .btn-rtl-toggle, .rtl-toggle-btn').forEach(function (btn) {
-      btn.addEventListener('click', toggleRtl);
-    });
-
-    document.querySelectorAll('#themeToggle, #sidebarThemeToggle, .theme-toggle-btn').forEach(function (btn) {
-      btn.addEventListener('click', toggleTheme);
-    });
   });
 })();

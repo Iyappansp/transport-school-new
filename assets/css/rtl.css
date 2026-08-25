@@ -12,7 +12,8 @@
 [dir="rtl"] .hero-actions,
 [dir="rtl"] .footer-bottom-links{ flex-direction: row-reverse; }
 
-[dir="rtl"] .journey-step::before{ direction: ltr; display:inline-block; }
+[dir="rtl"] .journey-step::before,
+[dir="rtl"] .journey-step::after{ display: none !important; content: none !important; }
 
 [dir="rtl"] .faq-question{ flex-direction: row-reverse; }
 

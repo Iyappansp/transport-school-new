@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/dark-mode.css">
 <link rel="stylesheet" href="assets/css/rtl.css">
+<script>
+  (function(){
+    var t = localStorage.getItem('saferoute-theme') || 'light';
+    var d = localStorage.getItem('saferoute-dir') || 'ltr';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('dir', d);
+  })();
+</script>
 </head>
 <body>
 
@@ -116,7 +124,7 @@
           <span class="pillar-badge"><i class="bi bi-patch-check-fill"></i> 5-Point Vetted</span>
         </div>
         <div class="pillar-body">
-          <h3>Certified &amp; Screened Professional Drivers</h3>
+          <h3>Certified &amp; Screened Professional</h3>
           <p>Every driver undergoes strict criminal background audits, bi-annual drug/alcohol screening, and psychometric defensive driving certification before ever sitting behind the wheel.</p>
           <div class="pillar-points">
             <div class="pillar-point"><i class="bi bi-check-circle-fill"></i><span>100% Police &amp; identity background verification</span></div>
@@ -145,8 +153,8 @@
             <div class="pillar-point"><i class="bi bi-check-circle-fill"></i><span>Monthly comprehensive mechanical bay service</span></div>
           </div>
           <div class="pillar-meta-strip">
-            <span>Inspection Protocol:</span>
-            <b>100% Daily Pre-Trip Certified</b>
+            <span>Inspection:</span>
+            <b>100% Daily Pre-Trip</b>
           </div>
         </div>
       </div>
@@ -167,7 +175,7 @@
           </div>
           <div class="pillar-meta-strip">
             <span>Child Oversight:</span>
-            <b>Door-to-Door Attendant Escort</b>
+            <b>Door-to-Door Attendant</b>
           </div>
         </div>
       </div>
@@ -311,7 +319,7 @@
             <span class="driver-exp-badge"><i class="bi bi-clock-history"></i> 8+ Years Experience</span>
             <span class="driver-trips-badge"><i class="bi bi-shield-fill-check"></i> 4,100+ Safe Trips</span>
           </div>
-          <p class="driver-bio">Pre-trip checklist coordinator ensuring zero equipment faults, RFID tap-in compliance, and secure seatbelt verification.</p>
+          <p class="driver-bio">Pre-trip checklist coordinator ensuring zero equipment faults, RFID tap-in compliance, and secure seatbelt.</p>
           <div class="driver-cert-list">
             <div class="driver-cert-item"><i class="bi bi-check2-circle"></i><span>Comprehensive Pre-Trip Vehicle Inspector</span></div>
             <div class="driver-cert-item"><i class="bi bi-check2-circle"></i><span>Pediatric First Response Certified</span></div>
@@ -414,9 +422,33 @@
       <h2 class="h-section">What We Commit to on Every Route.</h2>
     </div>
     <div class="feature-grid cols-3" data-stagger="90">
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-file-earmark-check-fill"></i></span><h3>Documented Onboarding</h3><p>Driver onboarding follows a documented process.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-tools"></i></span><h3>Routine Vehicle Checks</h3><p>Vehicles are inspected as part of daily readiness.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-journal-check"></i></span><h3>Logged Boarding Records</h3><p>Boarding and drop-off are recorded each day.</p></div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner">
+          <img src="assets/ai/safety/Documented-Onboarding.png" alt="Documented Onboarding" loading="lazy">
+        </div>
+        <div class="feature-card-body">
+          <h3>Documented Onboarding</h3>
+          <p>Driver onboarding follows a documented.</p>
+        </div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner">
+          <img src="assets/ai/safety/Routine-Vehicle.png" alt="Routine Vehicle Checks" loading="lazy">
+        </div>
+        <div class="feature-card-body">
+          <h3>Routine Vehicle Checks</h3>
+          <p>Vehicles are inspected as part of daily readiness.</p>
+        </div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner">
+          <img src="assets/ai/safety/Student-Dropped.png" alt="Logged Boarding Records" loading="lazy">
+        </div>
+        <div class="feature-card-body">
+          <h3>Logged Boarding Records</h3>
+          <p>Boarding and drop-off are recorded each day.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

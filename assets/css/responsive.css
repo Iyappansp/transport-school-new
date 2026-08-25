@@ -53,7 +53,7 @@ table { width: 100%; }
   .calc-grid { grid-template-columns: 1fr; }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 991px) {
   /* 2-Column Layout for Tablet / Tab View */
   .feature-grid,
   .feature-grid.cols-3,
@@ -69,6 +69,7 @@ table { width: 100%; }
   .testimonial-grid,
   .dash-grid,
   .bento-grid,
+  .contact-channels-grid,
   .lifecycle-steps-grid,
   .telematics-grid,
   .step-flow,
@@ -100,6 +101,7 @@ table { width: 100%; }
   .testimonial-grid > :last-child:nth-child(odd),
   .dash-grid > :last-child:nth-child(odd),
   .bento-grid > :last-child:nth-child(odd),
+  .contact-channels-grid > :last-child:nth-child(odd),
   .lifecycle-steps-grid > :last-child:nth-child(odd),
   .telematics-grid > :last-child:nth-child(odd),
   .landmarks-grid > :last-child:nth-child(odd),
@@ -150,6 +152,7 @@ table { width: 100%; }
   .dash-grid,
   .footer-grid,
   .bento-grid,
+  .contact-channels-grid,
   .editorial-block,
   .form-grid-2,
   .lifecycle-steps-grid,

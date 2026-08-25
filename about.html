@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/dark-mode.css">
 <link rel="stylesheet" href="assets/css/rtl.css">
+<script>
+  (function(){
+    var t = localStorage.getItem('saferoute-theme') || 'light';
+    var d = localStorage.getItem('saferoute-dir') || 'ltr';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('dir', d);
+  })();
+</script>
 </head>
 <body>
 
@@ -205,7 +213,7 @@
         <div class="mission-glass-body">
           <div class="mission-icon-halo"><i class="bi bi-eye-fill"></i></div>
           <h3>Our 2030 Vision</h3>
-          <p>To become the gold standard for student mobility across 100+ partner schools, setting benchmarks for zero-incident safety records, green fleet transitions, and effortless parent.</p>
+          <p>To become the gold standard for student mobility across 100+ partner schools, setting benchmarks for zero-incident safety records, green fleet transitions.</p>
           <div class="mission-key-stat">
             <i class="bi bi-patch-check-fill"></i> Zero-Incident Commitment
           </div>

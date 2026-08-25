@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/dark-mode.css">
 <link rel="stylesheet" href="assets/css/rtl.css">
+<script>
+  (function(){
+    var t = localStorage.getItem('saferoute-theme') || 'light';
+    var d = localStorage.getItem('saferoute-dir') || 'ltr';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('dir', d);
+  })();
+</script>
 </head>
 <body>
 
@@ -97,10 +105,37 @@
       <span class="eyebrow">More Options</span>
       <h2 class="h-section">Other Ways to Reach Us.</h2>
     </div>
-    <div class="bento-grid" data-stagger="80">
-      <a href="tel:+91XXXXXXXXXX" class="bento-card text-decoration-none" data-reveal="fade-up"><span class="bento-icon" style="background:var(--color-primary-tint); color:var(--color-primary);"><i class="bi bi-telephone-fill"></i></span><h4>Call Support</h4><p>Monday&ndash;Saturday, 6:00 AM&ndash;7:00 PM.</p></a>
-      <a href="mailto:support@example.com" class="bento-card text-decoration-none" data-reveal="fade-up"><span class="bento-icon" style="background:var(--color-success-tint); color:var(--color-success);"><i class="bi bi-envelope-fill"></i></span><h4>Email Us</h4><p>support@example.com</p></a>
-      <a href="faq.html" class="bento-card text-decoration-none" data-reveal="fade-up"><span class="bento-icon" style="background:var(--color-secondary-tint); color:#A87700;"><i class="bi bi-question-circle-fill"></i></span><h4>Browse FAQ</h4><p>Find quick answers before reaching out.</p></a>
+    <div class="contact-channels-grid" data-stagger="80">
+      <a href="tel:+919876543210" class="contact-channel-card text-decoration-none" data-reveal="fade-up">
+        <div class="contact-channel-icon-wrap" style="background:var(--color-primary-tint); color:var(--color-primary);">
+          <i class="bi bi-telephone-fill"></i>
+        </div>
+        <div class="contact-channel-body">
+          <h4>Call Support</h4>
+          <p>Monday&ndash;Saturday, 6:00 AM&ndash;7:00 PM.</p>
+          <span class="contact-channel-action">Speak with Dispatch &rarr;</span>
+        </div>
+      </a>
+      <a href="mailto:support@example.com" class="contact-channel-card text-decoration-none" data-reveal="fade-up">
+        <div class="contact-channel-icon-wrap" style="background:var(--color-success-tint); color:var(--color-success);">
+          <i class="bi bi-envelope-fill"></i>
+        </div>
+        <div class="contact-channel-body">
+          <h4>Email Us</h4>
+          <p>support@example.com</p>
+          <span class="contact-channel-action">Send an Email &rarr;</span>
+        </div>
+      </a>
+      <a href="faq.html" class="contact-channel-card text-decoration-none" data-reveal="fade-up">
+        <div class="contact-channel-icon-wrap" style="background:var(--color-secondary-tint); color:#A87700;">
+          <i class="bi bi-question-circle-fill"></i>
+        </div>
+        <div class="contact-channel-body">
+          <h4>Browse FAQ</h4>
+          <p>Find quick answers before reaching out.</p>
+          <span class="contact-channel-action">View Common Questions &rarr;</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>

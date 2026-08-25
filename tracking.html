@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/dark-mode.css">
 <link rel="stylesheet" href="assets/css/rtl.css">
+<script>
+  (function(){
+    var t = localStorage.getItem('saferoute-theme') || 'light';
+    var d = localStorage.getItem('saferoute-dir') || 'ltr';
+    document.documentElement.setAttribute('data-theme', t);
+    document.documentElement.setAttribute('dir', d);
+  })();
+</script>
 </head>
 <body>
 
@@ -62,9 +70,8 @@
         <div class="tracking-info-row"><span class="ti-label">Route</span><span class="ti-value">Route 08</span></div>
         <div class="tracking-info-row"><span class="ti-label">Female Attendant</span><span class="ti-value">Lakshmi</span></div>
         <div class="d-flex gap-2 flex-wrap mt-4">
-          <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Location refreshed.','bi-arrow-clockwise')">Refresh Location</button>
-          <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Simulating today\'s trip…','bi-play-circle')">Simulate Trip</button>
-          <!-- <a href="routes.html" class="btn-secondary-custom">View Route</a> -->
+          <button type="button" class="btn-primary-custom" onclick="window.SafeRouteToast('Location refreshed.','bi-arrow-clockwise')"><i class="bi bi-arrow-clockwise me-1"></i> Refresh Location</button>
+          <button type="button" class="btn-secondary-custom" onclick="window.SafeRouteToast('Simulating today\'s trip…','bi-play-circle')"><i class="bi bi-play-circle me-1"></i> Simulate Trip</button>
         </div>
       </div>
     </div>
@@ -132,9 +139,13 @@
             <div class="driver-feed-time">07:22 AM · Driver Murugan</div>
             <div>Cleared Gandhipuram flyover without congestion.</div>
           </div>
+           <div class="driver-feed-msg">
+            <!-- <div class="driver-feed-time">07:22 AM · Driver Murugan</div> -->
+              <div>cleared the bills.</div>
+          </div>
         </div>
         <div class="telemetry-subnote">
-          <span>2-Way Radio: <b>Connected</b></span>
+          <span>2-Way Radio</span>
           <span style="color:var(--color-success);"><i class="bi bi-mic-fill"></i> HD Voice</span>
         </div>
       </div>
