@@ -486,16 +486,16 @@
 
       const mode = tab.getAttribute("data-lifecycle-tab");
       const morningSteps = [
-        { icon: "bi-house-heart", title: "1. Stop Arrival", time: "07:15 AM", badge: "On Time", desc: "Bus 24 arrives at Green Park stop." },
-        { icon: "bi-upc-scan", title: "2. RFID Boarded", time: "07:18 AM", badge: "Confirmed", desc: "Aarav tapped card. Parent notified." },
-        { icon: "bi-signpost-2-fill", title: "3. En Route", time: "07:42 AM", badge: "Speed 34 km/h", desc: "Crossing Central Avenue flyover." },
-        { icon: "bi-building-check", title: "4. Campus Arrival", time: "08:05 AM", badge: "Safely Reached", desc: "Handover to school gate warden." }
+        { img: `${root}assets/ai/home/Stop-Arrival.png`, title: "1. Stop Arrival", time: "07:15 AM", badge: "On Time", desc: "Bus 24 arrives at Green Park stop." },
+        { img: `${root}assets/ai/home/RFID-Boarded.png`, title: "2. RFID Boarded", time: "07:18 AM", badge: "Confirmed", desc: "Aarav tapped card. Parent notified." },
+        { img: `${root}assets/ai/home/En-Route.png`, title: "3. En Route", time: "07:42 AM", badge: "Speed 34 km/h", desc: "Crossing Central Avenue flyover." },
+        { img: `${root}assets/ai/home/Campus-Arrival.png`, title: "4. Campus Arrival", time: "08:05 AM", badge: "Safely Reached", desc: "Handover to school gate warden." }
       ];
       const eveningSteps = [
-        { icon: "bi-bell-fill", title: "1. Boarding Call", time: "03:15 PM", badge: "Assembling", desc: "Students board at designated school bay." },
-        { icon: "bi-upc-scan", title: "2. RFID Return Tap", time: "03:30 PM", badge: "Confirmed", desc: "Boarded bus. Afternoon transit active." },
-        { icon: "bi-geo-alt-fill", title: "3. Returning Route", time: "03:48 PM", badge: "ETA 12 min", desc: "Approaching Lakeview residential zone." },
-        { icon: "bi-house-check-fill", title: "4. Parent Hand-off", time: "04:02 PM", badge: "Complete", desc: "Safe drop-off to verified guardian." }
+        { img: `${root}assets/ai/home/Boarding-Call.png`, title: "1. Boarding Call", time: "03:15 PM", badge: "Assembling", desc: "Students board at designated school bay." },
+        { img: `${root}assets/ai/home/RFID-Return-Tap.png`, title: "2. RFID Return Tap", time: "03:30 PM", badge: "Confirmed", desc: "Boarded bus. Afternoon transit active." },
+        { img: `${root}assets/ai/home/Returning-Route.png`, title: "3. Returning Route", time: "03:48 PM", badge: "ETA 12 min", desc: "Approaching Lakeview residential zone." },
+        { img: `${root}assets/ai/home/Parent-Hand-off.png`, title: "4. Parent Hand-off", time: "04:02 PM", badge: "Complete", desc: "Safe drop-off to verified guardian." }
       ];
 
       const data = mode === "evening" ? eveningSteps : morningSteps;
@@ -503,8 +503,13 @@
       cards.forEach((card, idx) => {
         if (!data[idx]) return;
         const item = data[idx];
+        const imgEl = card.querySelector(".card-media-banner img, .lifecycle-icon img");
+        if (imgEl && item.img) {
+          imgEl.src = item.img;
+          imgEl.alt = item.title;
+        }
         const iconEl = card.querySelector(".lifecycle-icon i");
-        if (iconEl) iconEl.className = `bi ${item.icon}`;
+        if (iconEl && item.icon) iconEl.className = `bi ${item.icon}`;
         const titleEl = card.querySelector(".lifecycle-card-body h4");
         if (titleEl) titleEl.textContent = item.title;
         const descEl = card.querySelector(".lifecycle-card-body p");

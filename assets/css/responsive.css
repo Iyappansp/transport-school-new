@@ -67,6 +67,8 @@ table { width: 100%; }
   .milestone-stats-strip,
   .mega-stats,
   .stat-strip,
+  .safety-flow-grid,
+  .tracking-log-grid,
   .addons-grid,
   .trust-guarantee-grid,
   .impact-hero-strip {
@@ -152,13 +154,21 @@ table { width: 100%; }
   .milestones-track-grid,
   .milestone-stats-strip,
   .env-metrics-grid,
-  .addons-grid,
-  .trust-guarantee-grid,
+  .safety-flow-grid,
+  .tracking-log-grid,
   .enterprise-grid,
   .enterprise-checklist,
   .calc-grid,
   .calc-segmented {
     grid-template-columns: 1fr !important;
+  }
+
+  .step-flow {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px 10px !important;
+  }
+  .step-flow::before {
+    display: none !important;
   }
 
   .enterprise-stats-panel {
@@ -264,6 +274,7 @@ table { width: 100%; }
 
 
   .flow-node { font-size: 0.85rem; padding: 12px 16px; }
+  .step-flow { grid-template-columns: repeat(2, 1fr) !important; }
   .side-info-card { padding: 1.5rem; }
   .lifecycle-header { flex-direction: column; align-items: flex-start; }
 

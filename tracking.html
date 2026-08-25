@@ -178,13 +178,49 @@
       <span class="eyebrow">Journey Log</span>
       <h2 class="h-section">Today's Stops, In Order.</h2>
     </div>
-    <div class="vtimeline mx-auto" data-reveal="fade-up">
-      <div class="vtimeline-item is-done"><div class="vtimeline-time">07:15 AM</div><div class="vtimeline-title">Pickup Stop</div></div>
-      <div class="vtimeline-item is-done"><div class="vtimeline-time">07:18 AM</div><div class="vtimeline-title">Child Boarded</div></div>
-      <div class="vtimeline-item is-done"><div class="vtimeline-time">08:05 AM</div><div class="vtimeline-title">School Arrival</div></div>
-      <div class="vtimeline-item is-done"><div class="vtimeline-time">03:30 PM</div><div class="vtimeline-title">Return Started</div></div>
-      <div class="vtimeline-item"><div class="vtimeline-time">03:58 PM</div><div class="vtimeline-title">Approaching Stop</div></div>
-      <div class="vtimeline-item"><div class="vtimeline-time">04:02 PM</div><div class="vtimeline-title">Expected Drop</div></div>
+    <div class="tracking-log-grid" data-stagger="80">
+      <div class="tracking-log-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Pickup-Stop.png" alt="Pickup Stop"></div>
+        <div class="tracking-log-body">
+          <span class="tlog-title">Pickup Stop</span>
+          <span class="tlog-time">07:15 AM</span>
+        </div>
+      </div>
+      <div class="tracking-log-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Child-Boarded.png" alt="Child Boarded"></div>
+        <div class="tracking-log-body">
+          <span class="tlog-title">Child Boarded</span>
+          <span class="tlog-time">07:18 AM</span>
+        </div>
+      </div>
+      <div class="tracking-log-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/School-Arrival.png" alt="School Arrival"></div>
+        <div class="tracking-log-body">
+          <span class="tlog-title">School Arrival</span>
+          <span class="tlog-time">08:05 AM</span>
+        </div>
+      </div>
+      <div class="tracking-log-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Return-Startedi.png" alt="Return Started"></div>
+        <div class="tracking-log-body">
+          <span class="tlog-title">Return Started</span>
+          <span class="tlog-time">03:30 PM</span>
+        </div>
+      </div>
+      <div class="tracking-log-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Approaching-Stop.png" alt="Approaching Stop"></div>
+        <div class="tracking-log-body">
+          <span class="tlog-title">Approaching Stop</span>
+          <span class="tlog-time">03:58 PM</span>
+        </div>
+      </div>
+      <div class="tracking-log-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Drop-Status.png" alt="Expected Drop"></div>
+        <div class="tracking-log-body">
+          <span class="tlog-title">Expected Drop</span>
+          <span class="tlog-time">04:02 PM</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -196,13 +232,34 @@
       <h2 class="h-section">What Parents Can See.</h2>
     </div>
     <div class="feature-grid" data-stagger="80">
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-bus-front-fill"></i></span><h3>Assigned Bus</h3><p>Which bus your child travels on.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-geo-alt-fill"></i></span><h3>Current Location</h3><p>Where the bus is right now.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-signpost-split-fill"></i></span><h3>Next Stop</h3><p>The upcoming stop on the route.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-clock-fill"></i></span><h3>ETA</h3><p>Estimated time to your stop.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-person-check-fill"></i></span><h3>Boarding Status</h3><p>Confirmation your child boarded.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-signpost-2-fill"></i></span><h3>Route Progress</h3><p>How far along the route the bus is.</p></div>
-      <div class="feature-card" data-reveal="fade-up"><span class="feature-icon"><i class="bi bi-house-check-fill"></i></span><h3>Drop Status</h3><p>Confirmation of the afternoon drop.</p></div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Assigned-Bus.png" alt="Assigned Bus"></div>
+        <div class="feature-card-body"><h3>Assigned Bus</h3><p>Which bus your child travels on.</p></div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Current-Location.png" alt="Current Location"></div>
+        <div class="feature-card-body"><h3>Current Location</h3><p>Where the bus is right now.</p></div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Next-Stop.png" alt="Next Stop"></div>
+        <div class="feature-card-body"><h3>Next Stop</h3><p>The upcoming stop on the route.</p></div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Estimated-time.png" alt="ETA"></div>
+        <div class="feature-card-body"><h3>ETA</h3><p>Estimated time to your stop.</p></div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Boarding-Status.png" alt="Boarding Status"></div>
+        <div class="feature-card-body"><h3>Boarding Status</h3><p>Confirmation your child boarded.</p></div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Route-Progress.png" alt="Route Progress"></div>
+        <div class="feature-card-body"><h3>Route Progress</h3><p>How far along the route the bus is.</p></div>
+      </div>
+      <div class="feature-card" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Drop-Status.png" alt="Drop Status"></div>
+        <div class="feature-card-body"><h3>Drop Status</h3><p>Confirmation of the afternoon drop.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -216,10 +273,34 @@
       <h2 class="h-section">How Tracking Works.</h2>
     </div>
     <div class="journey-timeline cols-4" data-stagger="80">
-      <div class="journey-step" data-reveal="fade-up"><h4>Bus Starts Route</h4><p style="font-size:0.85rem; color:var(--text-muted);">The assigned bus begins its scheduled route.</p></div>
-      <div class="journey-step" data-reveal="fade-up"><h4>Position Shared</h4><p style="font-size:0.85rem; color:var(--text-muted);">The bus's location is shared with the parent portal.</p></div>
-      <div class="journey-step" data-reveal="fade-up"><h4>Portal Updates</h4><p style="font-size:0.85rem; color:var(--text-muted);">The route map and ETA refresh as the journey progresses.</p></div>
-      <div class="journey-step" data-reveal="fade-up"><h4>Notifications Sent</h4><p style="font-size:0.85rem; color:var(--text-muted);">Parents are notified at key points like boarding and arrival.</p></div>
+      <div class="journey-step" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Bus-Starts.png" alt="Bus Starts Route"></div>
+        <div class="journey-step-body">
+          <h4>Bus Starts Route</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">The assigned bus begins its scheduled route.</p>
+        </div>
+      </div>
+      <div class="journey-step" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Position-Shared.png" alt="Position Shared"></div>
+        <div class="journey-step-body">
+          <h4>Position Shared</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">The bus's location is shared with the parent portal.</p>
+        </div>
+      </div>
+      <div class="journey-step" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Portal-Updates.png" alt="Portal Updates"></div>
+        <div class="journey-step-body">
+          <h4>Portal Updates</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">The route map and ETA refresh as the journey progresses.</p>
+        </div>
+      </div>
+      <div class="journey-step" data-reveal="fade-up">
+        <div class="card-media-banner"><img src="assets/ai/tracking/Boarding-Status.png" alt="Notifications Sent"></div>
+        <div class="journey-step-body">
+          <h4>Notifications Sent</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Parents are notified at key points like boarding and arrival.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
