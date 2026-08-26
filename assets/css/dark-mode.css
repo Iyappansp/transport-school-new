@@ -301,6 +301,21 @@
 [data-theme="dark"] .auth-section::before {
   background: linear-gradient(135deg, rgba(5, 12, 28, 0.92) 0%, rgba(9, 20, 44, 0.96) 100%);
 }
+[data-theme="dark"] .auth-top-controls .icon-btn,
+[data-theme="dark"] .auth-top-controls .btn-rtl-toggle,
+[data-theme="dark"] .auth-top-controls .btn-rtl {
+  background: #131D31;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #F9FAFB;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+[data-theme="dark"] .auth-top-controls .icon-btn:hover,
+[data-theme="dark"] .auth-top-controls .btn-rtl-toggle:hover,
+[data-theme="dark"] .auth-top-controls .btn-rtl:hover {
+  background: #1E2D4A;
+  border-color: var(--color-primary-light, #4B88FF);
+  color: var(--color-primary-light, #4B88FF);
+}
 [data-theme="dark"] .auth-card {
   background: rgba(19, 29, 49, 0.95);
   border-color: rgba(255, 255, 255, 0.14);
