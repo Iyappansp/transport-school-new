@@ -207,7 +207,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>&copy; 2026 SafeRoute Student Transport. Demo project — sample data.</span>
+          <span>&copy; 2026 SafeRoute Student Transport.</span>
           <div class="footer-bottom-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms</a>
