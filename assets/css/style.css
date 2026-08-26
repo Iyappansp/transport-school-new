@@ -804,7 +804,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ==========================================================================
    Journey timeline (Clean layout with full media card banners)
    ========================================================================== */
-.journey-timeline{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.journey-timeline{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: stretch; }
 .journey-step{
   position: relative;
   background: var(--surface-card);
@@ -1026,7 +1026,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    ========================================================================== */
 .route-filter-bar{
   display:flex; flex-wrap:wrap; gap: 12px; background: var(--surface-card);
-  border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 16px; margin-bottom: 28px;
+  border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 16px; margin-bottom: 0;
 }
 .route-filter-bar select, .route-filter-bar input{
   flex: 1 1 160px; border: 1px solid var(--border-soft); background: var(--surface-page);
@@ -1657,9 +1657,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 /* ---- Journey timeline column modifiers (desktop & tablet 992px+) ---- */
 @media (min-width: 992px){
-  .journey-timeline.cols-3{ grid-template-columns: repeat(3, 1fr) !important; max-width: 1080px; margin-inline: auto; width: 100%; }
-  .journey-timeline.cols-5{ grid-template-columns: repeat(5, 1fr) !important; width: 100%; }
-  .journey-timeline.cols-8{ grid-template-columns: repeat(4, 1fr) !important; width: 100%; }
+  .journey-timeline.cols-3{ grid-template-columns: repeat(3, 1fr) !important; max-width: 1080px; margin-inline: auto; width: 100%; align-items: stretch; }
+  .journey-timeline.cols-5{ grid-template-columns: repeat(5, 1fr) !important; width: 100%; align-items: stretch; }
+  .journey-timeline.cols-8{ grid-template-columns: repeat(4, 1fr) !important; width: 100%; align-items: stretch; }
 }
 
 .journey-timeline.cols-3 .journey-step{

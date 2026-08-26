@@ -557,6 +557,23 @@
     .skip-link:focus {
       top: 0;
     }
+
+    /* ── Mobile: Move controls inside card flow ── */
+    @media (max-width: 520px) {
+      .auth-top-controls {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 200;
+      }
+      [dir="rtl"] .auth-top-controls {
+        right: auto;
+        left: 1rem;
+      }
+      .auth-section {
+        padding-top: 5rem;
+      }
+    }
   </style>
 </head>
 

@@ -37,7 +37,10 @@ table { width: 100%; }
   .hamburger-btn { display: flex !important; }
 
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-copy { order: 1; }
+  .hero-copy { order: 1; text-align: center; }
+  .hero-copy p.lead-text { margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-stats { justify-content: center; }
   .hero-visual { order: 2 !important; max-width: 480px; margin-inline: auto; width: 100%; margin-top: 2rem; }
   /* Phone mockup tablet — scale whole scene down, phone stays 260px internally */
   .hero-phone-wrap { order: 2 !important; max-width: 520px; margin-inline: auto; width: 100%; padding: 40px 40px 60px; margin-top: 1.5rem; }

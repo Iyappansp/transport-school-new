@@ -1898,7 +1898,23 @@ body[data-dashboard] *::after {
     font-size: 0.75rem;
   }
 
+
   .sub-actions {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Mobile Map Fix — SVG route line not cut off on small screens
+   ========================================================================== */
+@media (max-width: 640px) {
+  .map-canvas {
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+  }
+
+  .map-panel[style*="height:420px"],
+  .map-panel[style*="height: 420px"] {
+    height: auto !important;
+  }
+}

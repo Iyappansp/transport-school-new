@@ -262,23 +262,23 @@
                 <div class="map-panel" style="border:none;border-radius:0">
                   <span class="map-demo-label"><span class="pulse-dot" style="background:#F4B400"></span> Demo Tracking
                     Data</span>
-                  <svg class="map-canvas" viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice" role="img"
+                  <svg class="map-canvas" viewBox="0 0 640 310" preserveAspectRatio="xMidYMid meet" role="img"
                     aria-label="Live map showing Bus 24 position">
-                    <path class="map-street" d="M20 240 C 120 220 160 160 220 130 S 380 80 440 55 S 560 30 610 10" />
-                    <path class="map-route-path" d="M60 225 C 150 200 195 145 252 120 S 405 70 462 44 S 560 18 590 5" />
-                    <g transform="translate(60,225)">
+                    <path class="map-street" d="M20 270 C 120 250 160 190 220 160 S 380 110 440 85 S 560 60 610 40" />
+                    <path class="map-route-path" d="M60 255 C 150 230 195 175 252 150 S 405 100 462 74 S 560 48 590 35" />
+                    <g transform="translate(60,255)">
                       <circle class="map-stop-dot" r="6" /><text class="map-stop-label" x="10" y="4">Lakeview
                         Apartments</text>
                     </g>
-                    <g transform="translate(490,44)">
+                    <g transform="translate(490,74)">
                       <circle class="map-stop-dot" r="6" /><text class="map-stop-label" x="10" y="-8">Riverside
                         Road</text>
                     </g>
-                    <g transform="translate(595,8)">
-                      <circle class="map-school-marker" r="9" /><text class="map-stop-label" x="-36" y="-13"
+                    <g transform="translate(590,38)">
+                      <circle class="map-school-marker" r="9" /><text class="map-stop-label" x="-36" y="-14"
                         font-weight="700">SCHOOL</text>
                     </g>
-                    <g id="dashBusMarker" class="map-bus-marker" transform="translate(250,120)">
+                    <g id="dashBusMarker" class="map-bus-marker" transform="translate(250,150)">
                       <circle class="bus-dot" r="9" />
                       <circle r="9" fill="none" stroke="#155EEF" stroke-width="2" opacity=".5">
                         <animate attributeName="r" values="9;18;9" dur="2s" repeatCount="indefinite" />
@@ -427,15 +427,15 @@
             </div>
             <div class="map-panel" style="height:420px;border-radius:0;border:none">
               <span class="map-demo-label"><span class="pulse-dot" style="background:#F4B400"></span> Live Demo Stream</span>
-              <svg class="map-canvas" style="height:420px" viewBox="0 0 800 420" preserveAspectRatio="xMidYMid slice"
+              <svg class="map-canvas" style="height:420px" viewBox="0 0 800 460" preserveAspectRatio="xMidYMid meet"
                 role="img" aria-label="Full interactive bus map">
-                <path class="map-street" d="M30 380 C 180 340 240 240 330 200 S 570 120 660 80 S 740 40 770 20" />
-                <path class="map-route-path" d="M80 350 C 220 310 290 220 380 180 S 610 100 690 70 S 740 30 760 15" />
-                <g transform="translate(80,350)"><circle class="map-stop-dot" r="7" /><text class="map-stop-label" x="12" y="4">Stop 1: Lakeview Apts</text></g>
-                <g transform="translate(380,180)"><circle class="map-stop-dot" r="7" /><text class="map-stop-label" x="12" y="-8">Stop 2: Riverside Rd</text></g>
-                <g transform="translate(690,70)"><circle class="map-stop-dot" r="7" /><text class="map-stop-label" x="12" y="-8">Stop 3: North Cross</text></g>
-                <g transform="translate(760,15)"><circle class="map-school-marker" r="10" /><text class="map-stop-label" x="-44" y="-14" font-weight="700">SCHOOL</text></g>
-                <g id="trackingBusMarker" class="map-bus-marker" transform="translate(380,180)">
+                <path class="map-street" d="M30 415 C 180 375 240 275 330 235 S 570 155 660 115 S 740 75 770 55" />
+                <path class="map-route-path" d="M80 385 C 220 345 290 255 380 215 S 610 135 690 105 S 740 65 760 50" />
+                <g transform="translate(80,385)"><circle class="map-stop-dot" r="7" /><text class="map-stop-label" x="12" y="4">Stop 1: Lakeview Apts</text></g>
+                <g transform="translate(380,215)"><circle class="map-stop-dot" r="7" /><text class="map-stop-label" x="12" y="-8">Stop 2: Riverside Rd</text></g>
+                <g transform="translate(690,105)"><circle class="map-stop-dot" r="7" /><text class="map-stop-label" x="12" y="-8">Stop 3: North Cross</text></g>
+                <g transform="translate(760,50)"><circle class="map-school-marker" r="10" /><text class="map-stop-label" x="-44" y="-14" font-weight="700">SCHOOL</text></g>
+                <g id="trackingBusMarker" class="map-bus-marker" transform="translate(380,215)">
                   <circle class="bus-dot" r="10" />
                   <circle r="10" fill="none" stroke="#155EEF" stroke-width="2" opacity=".5">
                     <animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite" />
@@ -764,12 +764,51 @@
           </div>
           <div class="profile-grid">
             <div class="profile-card">
+              <!-- Parent Photo Upload -->
+              <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-5)">
+                <div style="position:relative;flex-shrink:0">
+                  <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;border:2.5px solid var(--color-primary);box-shadow:0 0 0 3px var(--color-primary-50)">
+                    <img src="../assets/image/testimonials/parent-priya.jpg" alt="Parent Photo" id="parentPhotoPreview" style="width:100%;height:100%;object-fit:cover">
+                  </div>
+                  <label for="parentPhotoInput" style="position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--surface-card);box-shadow:var(--shadow-sm);font-size:0.75rem" title="Upload photo">
+                    <i class="bi bi-camera-fill" style="font-size:0.7rem"></i>
+                  </label>
+                  <input type="file" id="parentPhotoInput" accept="image/*" style="display:none" onchange="if(this.files&&this.files[0]){document.getElementById('parentPhotoPreview').src=URL.createObjectURL(this.files[0])}">
+                </div>
+                <div>
+                  <div style="font-weight:700;font-size:var(--fs-sm);color:var(--text-primary)">Priya Kumar</div>
+                  <div style="font-size:var(--fs-xs);color:var(--text-muted);margin-top:2px">Parent Account</div>
+                  <label for="parentPhotoInput" style="display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:var(--fs-2xs);font-weight:600;color:var(--color-primary);cursor:pointer">
+                    <i class="bi bi-upload"></i> Upload Photo
+                  </label>
+                </div>
+              </div>
               <h3 style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:var(--space-5)">Parent Details</h3>
               <div class="form-field"><label for="pfName">Full Name</label><input id="pfName" type="text" value="Priya Kumar"></div>
               <div class="form-field"><label for="pfEmail">Email</label><input id="pfEmail" type="email" value="parent@example.com"></div>
               <div class="form-field" style="margin-bottom:0"><label for="pfPhone">Phone</label><input id="pfPhone" type="tel" value="+91 98765 43210"></div>
             </div>
             <div class="profile-card">
+              <!-- Child Photo Upload -->
+              <div style="display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-5)">
+                <div style="position:relative;flex-shrink:0">
+                  <div style="width:72px;height:72px;border-radius:50%;overflow:hidden;border:2.5px solid var(--color-accent);box-shadow:0 0 0 3px rgba(22,163,74,0.12);background:var(--color-primary-50);display:flex;align-items:center;justify-content:center">
+                    <img src="" alt="" id="childPhotoPreview" style="width:100%;height:100%;object-fit:cover;display:none">
+                    <i class="bi bi-person-fill" id="childPhotoFallback" style="font-size:2rem;color:var(--color-primary)"></i>
+                  </div>
+                  <label for="childPhotoInput" style="position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--color-accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--surface-card);box-shadow:var(--shadow-sm);font-size:0.75rem" title="Upload photo">
+                    <i class="bi bi-camera-fill" style="font-size:0.7rem"></i>
+                  </label>
+                  <input type="file" id="childPhotoInput" accept="image/*" style="display:none" onchange="if(this.files&&this.files[0]){var p=document.getElementById('childPhotoPreview');p.src=URL.createObjectURL(this.files[0]);p.style.display='block';document.getElementById('childPhotoFallback').style.display='none'}">
+                </div>
+                <div>
+                  <div style="font-weight:700;font-size:var(--fs-sm);color:var(--text-primary)">Aarav Kumar</div>
+                  <div style="font-size:var(--fs-xs);color:var(--text-muted);margin-top:2px">Student · Grade 5-B</div>
+                  <label for="childPhotoInput" style="display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:var(--fs-2xs);font-weight:600;color:var(--color-accent);cursor:pointer">
+                    <i class="bi bi-upload"></i> Upload Photo
+                  </label>
+                </div>
+              </div>
               <h3 style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin-bottom:var(--space-5)">Child Details</h3>
               <div class="form-field"><label for="pfChildName">Child Name</label><input id="pfChildName" type="text" value="Aarav Kumar"></div>
               <div class="form-field"><label for="pfSchool">School</label><input id="pfSchool" type="text" value="Green Valley School"></div>
