@@ -4,25 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parent Login — SafeRoute Student Transport</title>
+  <title>Login | SafeRoute Student Transport</title>
   <meta name="description"
-    content="Access your child's transport information, live route, boarding updates and subscription details.">
-  <meta name="robots" content="noindex">
-  <link rel="canonical" href="https://saferoute.example.com/login.html">
+    content="Log in to your SafeRoute Student Transport account to track your child's bus in real time, view boarding logs, and manage transport subscriptions.">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/png" href="assets/image/favicon.png">
+  <link rel="canonical" href="login.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/dark-mode.css">
   <link rel="stylesheet" href="assets/css/rtl.css">
+  <script>
+    (function () {
+      var t = localStorage.getItem('saferoute-theme') || 'light';
+      var d = localStorage.getItem('saferoute-dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+    })();
+  </script>
   <style>
-    /* ── Self-Contained Design Tokens ── */
+    /* ── Design Tokens ── */
     :root {
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
       --fs-2xs: 0.72rem;
       --fs-xs: 0.8rem;
@@ -30,51 +38,52 @@
       --fs-base: 1rem;
       --fs-md: 1.15rem;
       --fs-lg: 1.25rem;
-      --fs-xl: 1.5rem;
+      --fs-xl: 1.6rem;
       --color-primary: #155EEF;
       --color-primary-dark: #0E44B8;
+      --color-primary-light: #4B88FF;
       --color-primary-50: #EFF4FF;
       --color-secondary: #F4B400;
       --color-accent: #16A34A;
-      --color-accent-50: #E8F8EE;
       --surface-page: #F6F8FB;
       --surface-card: #FFFFFF;
-      --surface-sunken: #EEF2F6;
+      --surface-sunken: #F0F4F8;
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-muted: #6B7280;
       --border-subtle: #E5E7EB;
       --border-default: #D1D5DB;
+      --border-color-strong: #E2E8F0;
       --radius-xs: 6px;
       --radius-sm: 10px;
       --radius-md: 14px;
-      --radius-lg: 18px;
-      --radius-xl: 24px;
+      --radius-lg: 20px;
       --radius-pill: 9999px;
       --dur-fast: 180ms;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
-      --focus-ring: 0 0 0 3px rgba(21, 94, 239, 0.25);
+      --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.22);
+      --focus-ring: 0 0 0 3px rgba(21, 94, 239, 0.22);
     }
 
     [data-theme="dark"] {
-      --surface-page: #0B1120;
-      --surface-card: #131D31;
-      --surface-sunken: #0E1626;
+      --surface-page: #081120;
+      --surface-card: rgba(19, 29, 49, 0.95);
+      --surface-sunken: #101B30;
       --text-primary: #F9FAFB;
-      --text-secondary: #D1D5DB;
+      --text-secondary: #CBD5E1;
       --text-muted: #8A93A6;
-      --border-subtle: #1F2E4D;
-      --border-default: #2D3F66;
-      --color-primary-50: rgba(21, 94, 239, 0.15);
-      --color-accent-50: rgba(22, 163, 74, 0.15);
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-default: rgba(255, 255, 255, 0.16);
+      --border-color-strong: rgba(255, 255, 255, 0.14);
+      --color-primary-50: rgba(21, 94, 239, 0.18);
+      --shadow-card: 0 24px 48px rgba(0, 0, 0, 0.45);
     }
 
     /* ── Base Reset ── */
     *, *::before, *::after { box-sizing: border-box; }
 
-    body {
+    body.auth-page {
       margin: 0;
       padding: 0 !important;
       background: var(--surface-page);
@@ -84,42 +93,450 @@
       line-height: 1.5;
     }
 
-    /* Buttons */
-    .btn {
+    /* ── Fullscreen Auth Section ── */
+    .auth-section {
+      position: relative;
+      min-height: 100vh;
+      padding: 4.5rem 1.25rem 3rem;
+      background-image: url('assets/image/hero-main.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .auth-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8, 20, 45, 0.88) 0%, rgba(12, 32, 70, 0.93) 100%);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 1;
+    }
+
+    /* ── Top Right Controls (Theme & RTL Toggle - Solid BG) ── */
+    .auth-top-controls {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.5rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    [dir="rtl"] .auth-top-controls {
+      right: auto;
+      left: 1.5rem;
+    }
+
+    .auth-top-controls .icon-btn,
+    .auth-top-controls .btn-rtl-toggle,
+    .auth-top-controls .btn-rtl {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-default);
+      color: var(--text-primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      border-radius: var(--radius-sm);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: var(--fs-sm);
-      font-weight: 700;
-      text-decoration: none;
       cursor: pointer;
-      border: 1.5px solid transparent;
       transition: all var(--dur-fast) var(--ease-out);
     }
 
-    .btn-primary {
-      background: var(--color-primary);
-      color: #fff;
-      border-color: var(--color-primary);
-      box-shadow: 0 2px 8px rgba(21, 94, 239, 0.28);
+    .auth-top-controls .icon-btn {
+      width: 40px;
+      height: 40px;
     }
-    .btn-primary:hover {
+
+    .auth-top-controls .btn-rtl-toggle,
+    .auth-top-controls .btn-rtl {
+      height: 40px;
+      padding: 0 0.85rem;
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .auth-top-controls .icon-btn:hover,
+    .auth-top-controls .btn-rtl-toggle:hover,
+    .auth-top-controls .btn-rtl:hover {
+      background: var(--surface-sunken);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .auth-top-controls .btn-rtl-toggle.is-active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    [data-theme="dark"] .auth-top-controls .icon-btn,
+    [data-theme="dark"] .auth-top-controls .btn-rtl-toggle,
+    [data-theme="dark"] .auth-top-controls .btn-rtl {
+      background: #131D31;
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #F9FAFB;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="dark"] .auth-top-controls .icon-btn:hover,
+    [data-theme="dark"] .auth-top-controls .btn-rtl-toggle:hover,
+    [data-theme="dark"] .auth-top-controls .btn-rtl:hover {
+      background: #1E2D4A;
+      border-color: var(--color-primary-light);
+      color: var(--color-primary-light);
+    }
+
+    [data-theme="dark"] .auth-top-controls .btn-rtl-toggle.is-active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    /* ── Auth Card ── */
+    .auth-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--border-color-strong);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2.25rem;
+      box-shadow: var(--shadow-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: background var(--dur-fast), border-color var(--dur-fast);
+    }
+
+    [data-theme="dark"] .auth-card {
+      background: rgba(19, 29, 49, 0.95);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    @media (max-width: 576px) {
+      .auth-section {
+        padding: 4.5rem 1rem 2rem;
+      }
+      .auth-card {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+
+    /* ── Logo & Headings ── */
+    .auth-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-logo .brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .auth-logo .brand__logo,
+    .auth-logo img {
+      height: 56px;
+      max-height: 56px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+    }
+
+    .auth-card h2 {
+      font-size: var(--fs-xl);
+      font-weight: 800;
+      text-align: center;
+      margin: 0 0 0.4rem;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .auth-sub {
+      font-size: var(--fs-sm);
+      color: var(--text-secondary);
+      text-align: center;
+      margin: 0 0 1.75rem;
+      line-height: 1.5;
+    }
+
+    /* ── Form Controls ── */
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 48px;
+      padding: 0 1rem;
+      background: var(--surface-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: var(--fs-sm);
+      color: var(--text-primary);
+      transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    [data-theme="dark"] .form-control {
+      background: rgba(14, 22, 38, 0.8);
+      border-color: rgba(255, 255, 255, 0.18);
+      color: var(--text-primary);
+    }
+
+    .form-control:focus {
+      border-color: var(--color-primary);
+      box-shadow: var(--focus-ring);
+    }
+
+    /* Input with Icon & Toggle */
+    .input-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon-wrap .form-control {
+      padding-inline-end: 48px;
+    }
+
+    .input-icon-btn {
+      position: absolute;
+      inset-inline-end: 0;
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color var(--dur-fast) var(--ease-out);
+    }
+
+    .input-icon-btn:hover {
+      color: var(--color-primary);
+    }
+
+    .input-icon-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ── Meta Row (Remember me + Forgot pw) ── */
+    .auth-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--fs-xs);
+      margin-top: 0.5rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .checkbox-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .auth-meta-row a {
+      color: var(--color-primary);
+      font-weight: 700;
+      text-decoration: none;
+      transition: color var(--dur-fast);
+    }
+
+    .auth-meta-row a:hover {
+      text-decoration: underline;
+      color: var(--color-primary-dark);
+    }
+
+    /* ── Submit Button ── */
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 48px;
+      background: var(--color-primary);
+      color: #ffffff;
+      border: 1.5px solid var(--color-primary);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(21, 94, 239, 0.32);
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+
+    .btn-submit:hover {
       background: var(--color-primary-dark);
       border-color: var(--color-primary-dark);
       transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(21, 94, 239, 0.35);
-      color: #fff;
+      box-shadow: 0 6px 20px rgba(21, 94, 239, 0.42);
     }
-    .btn-primary:active {
+
+    .btn-submit:active {
       transform: translateY(0);
     }
 
-    .btn-block {
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    /* ── Divider ── */
+    .divider-or {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: var(--fs-2xs);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+
+    .divider-or::before,
+    .divider-or::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    .divider-or::before {
+      margin-inline-end: 0.85rem;
+    }
+
+    .divider-or::after {
+      margin-inline-start: 0.85rem;
+    }
+
+    /* ── Social Login Stack ── */
+    .social-login-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
       width: 100%;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      height: 46px;
+      padding: 0 1.25rem;
+      background: var(--surface-card);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      box-sizing: border-box;
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+
+    [data-theme="dark"] .social-btn {
+      background: rgba(14, 22, 38, 0.8);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: var(--text-primary);
+    }
+
+    .social-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: var(--surface-sunken);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer Link ── */
+    .auth-footer-text {
+      text-align: center;
+      font-size: var(--fs-sm);
+      color: var(--text-secondary);
+      margin: 1.5rem 0 0;
+    }
+
+    .auth-footer-text a {
+      color: var(--color-primary);
+      font-weight: 700;
+      text-decoration: none;
+      transition: color var(--dur-fast);
+    }
+
+    .auth-footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── RTL Rules ── */
+    [dir="rtl"] {
+      text-align: right;
+    }
+
+    [dir="rtl"] .auth-meta-row {
+      flex-direction: row;
     }
 
     /* Skip link */
@@ -140,836 +557,100 @@
     .skip-link:focus {
       top: 0;
     }
-
-    /* Top Controls */
-    .icon-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius-sm);
-      background: var(--surface-card);
-      border: 1.5px solid var(--border-subtle);
-      color: var(--text-secondary);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all var(--dur-fast) var(--ease-out);
-    }
-    .icon-btn:hover {
-      background: var(--surface-sunken);
-      color: var(--color-primary);
-      border-color: var(--border-default);
-    }
-    .icon-btn svg { width: 18px; height: 18px; }
-
-    .theme-toggle .icon-sun { display: none; }
-    .theme-toggle .icon-moon { display: block; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-
-    .btn-rtl-toggle {
-      width: 38px;
-      height: 38px;
-      padding: 0;
-      border-radius: var(--radius-sm);
-      background: var(--surface-card);
-      border: 1.5px solid var(--border-subtle);
-      color: var(--text-primary);
-      font-family: var(--font-mono);
-      font-size: var(--fs-xs);
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all var(--dur-fast) var(--ease-out);
-    }
-    .btn-rtl-toggle:hover {
-      background: var(--color-primary-50);
-      color: var(--color-primary);
-      border-color: rgba(21, 94, 239, 0.25);
-    }
-
-    /* Pulse Dot & Live Status */
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: currentColor;
-      display: inline-block;
-      flex-shrink: 0;
-      animation: pulseDot 1.6s ease-in-out infinite;
-    }
-    @keyframes pulseDot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
-
-    /* ── Auth Page Specific Layout ── */
-    .auth-shell {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-    }
-
-    /* ── Left Showcase Panel ── */
-    .auth-panel-left {
-      position: relative;
-      background: linear-gradient(145deg, #091a42 0%, #103ba6 45%, #155EEF 80%, #0c2b75 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4.5rem);
-      overflow: hidden;
-    }
-
-    .auth-panel-left::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 65% 55% at 15% 85%, rgba(244, 180, 0, 0.2) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 60% at 85% 10%, rgba(21, 94, 239, 0.4) 0%, transparent 55%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .auth-panel-left > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Animated background orbs */
-    .auth-shapes {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .auth-shape {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      animation: floatShape 9s ease-in-out infinite;
-    }
-
-    .auth-shape:nth-child(1) {
-      width: 220px;
-      height: 220px;
-      top: -60px;
-      right: -60px;
-      animation-delay: 0s;
-    }
-
-    .auth-shape:nth-child(2) {
-      width: 150px;
-      height: 150px;
-      bottom: 12%;
-      left: -40px;
-      animation-delay: -3s;
-      animation-duration: 11s;
-    }
-
-    .auth-shape:nth-child(3) {
-      width: 90px;
-      height: 90px;
-      top: 38%;
-      right: 12%;
-      animation-delay: -5s;
-      animation-duration: 13s;
-    }
-
-    .auth-shape:nth-child(4) {
-      width: 65px;
-      height: 65px;
-      bottom: 8%;
-      right: 25%;
-      animation-delay: -2s;
-      background: rgba(244, 180, 0, 0.14);
-    }
-
-    @keyframes floatShape {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-24px) scale(1.05); }
-    }
-
-    .auth-grid-dots {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1.2px, transparent 1.2px);
-      background-size: 28px 28px;
-      pointer-events: none;
-    }
-
-    /* Brand Header on Left */
-    .auth-left-brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      align-self: center;
-      margin-left: auto;
-      margin-right: auto;
-      gap: 0.85rem;
-      margin-bottom: 2.75rem;
-      text-decoration: none;
-    }
-
-    .auth-left-brand .brand-logo-img {
-      height: 54px;
-      width: auto;
-      object-fit: contain;
-      border: none !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      background: transparent !important;
-    }
-
-    .auth-left-brand .brand-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
-
-    .auth-left-brand .brand-sub {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.7);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .auth-left-headline {
-      font-size: clamp(1.85rem, 2.7vw, 2.75rem);
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.16;
-      margin-bottom: 1.15rem;
-      letter-spacing: -0.025em;
-    }
-
-    .auth-left-desc {
-      font-size: clamp(0.92rem, 1.1vw, 1.05rem);
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.65;
-      max-width: 440px;
-      margin-bottom: 2.25rem;
-    }
-
-    /* Feature Pills */
-    .auth-features {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .auth-feature-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: var(--radius-pill);
-      padding: 0.55rem 1.15rem 0.55rem 0.6rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #fff;
-      backdrop-filter: blur(8px);
-      width: fit-content;
-      transition: background 0.2s;
-    }
-
-    .auth-feature-pill:hover {
-      background: rgba(255, 255, 255, 0.18);
-    }
-
-    .auth-feature-pill .pill-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .auth-feature-pill .pill-icon svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* Floating Status Card */
-    .auth-bus-card {
-      position: absolute;
-      bottom: 2.5rem;
-      right: 2.5rem;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.26);
-      border-radius: var(--radius-lg);
-      padding: 1.1rem 1.35rem;
-      backdrop-filter: blur(16px);
-      color: #fff;
-      z-index: 2;
-      min-width: 195px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
-    }
-
-    [dir="rtl"] .auth-bus-card {
-      right: auto;
-      left: 2.5rem;
-    }
-
-    .auth-bus-card-top {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .auth-bus-card-top svg {
-      width: 17px;
-      height: 17px;
-      color: var(--color-secondary);
-    }
-
-    .auth-bus-card-label {
-      font-size: 0.72rem;
-      opacity: 0.8;
-      font-weight: 600;
-    }
-
-    .auth-bus-card-value {
-      font-size: 0.95rem;
-      font-weight: 800;
-    }
-
-    .auth-bus-card-pulse {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.75rem;
-      margin-top: 0.35rem;
-      color: #bbf7d0;
-      font-weight: 600;
-    }
-
-    .auth-bus-card-pulse .pulse-dot {
-      background: #4ade80;
-    }
-
-    /* ── Right Form Panel ── */
-    .auth-panel-right {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
-      background: var(--surface-page);
-    }
-
-    /* Top Controls (Theme & RTL) */
-    .auth-top-controls {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      z-index: 10;
-    }
-
-    [dir="rtl"] .auth-top-controls {
-      right: auto;
-      left: 1.5rem;
-    }
-
-    /* Auth Card Form */
-    .auth-card {
-      width: 100%;
-      max-width: 420px;
-    }
-
-    .auth-card-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .auth-card-header h1 {
-      font-size: clamp(1.6rem, 2.2vw, 1.95rem);
-      font-weight: 800;
-      margin-bottom: 0.45rem;
-      letter-spacing: -0.025em;
-      color: var(--text-primary);
-    }
-
-    .auth-card-header p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
-
-    /* Form Fields */
-    .auth-form .form-field {
-      margin-bottom: 1.25rem;
-    }
-
-    .auth-form label {
-      display: block;
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .auth-field-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .auth-field-wrap .field-icon {
-      position: absolute;
-      left: 1rem;
-      color: var(--text-muted);
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-    }
-
-    .auth-field-wrap .field-icon svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    [dir="rtl"] .auth-field-wrap .field-icon {
-      left: auto;
-      right: 1rem;
-    }
-
-    .auth-form input[type="text"],
-    .auth-form input[type="email"],
-    .auth-form input[type="password"],
-    .auth-form input[type="tel"] {
-      width: 100%;
-      padding: 0.85rem 1rem 0.85rem 2.85rem;
-      background: var(--surface-card);
-      border: 1.5px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: var(--fs-sm);
-      color: var(--text-primary);
-      transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    [dir="rtl"] .auth-form input {
-      padding-right: 2.85rem;
-      padding-left: 1rem;
-    }
-
-    .auth-form input:focus {
-      border-color: var(--color-primary);
-      box-shadow: var(--focus-ring);
-    }
-
-    .pw-toggle {
-      position: absolute;
-      right: 0.85rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.4rem;
-      border-radius: 4px;
-      transition: color var(--dur-fast);
-    }
-
-    .pw-toggle:hover {
-      color: var(--color-primary);
-    }
-
-    .pw-toggle svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    [dir="rtl"] .pw-toggle {
-      right: auto;
-      left: 0.85rem;
-    }
-
-    /* Remember Me & Forgot Password */
-    .auth-row-between {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      font-size: var(--fs-xs);
-    }
-
-    .auth-checkbox {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--text-secondary);
-      user-select: none;
-    }
-
-    .auth-checkbox input {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--color-primary);
-      cursor: pointer;
-      margin: 0;
-    }
-
-    .auth-forgot {
-      color: var(--color-primary);
-      font-weight: 700;
-      text-decoration: none;
-      transition: color var(--dur-fast);
-    }
-
-    .auth-forgot:hover {
-      text-decoration: underline;
-      color: var(--color-primary-dark);
-    }
-
-    /* Submit Button */
-    .auth-form button[type="submit"] {
-      height: 48px;
-      font-size: var(--fs-base);
-      font-weight: 700;
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* Divider */
-    .auth-divider {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      margin: 1.5rem 0;
-      color: var(--text-muted);
-      font-size: var(--fs-2xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .auth-divider::before,
-    .auth-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border-subtle);
-    }
-
-    /* Social Buttons */
-    .auth-social-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn-social {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 0.78rem 1rem;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--border-default);
-      background: var(--surface-card);
-      color: var(--text-primary);
-      font-size: var(--fs-sm);
-      font-weight: 600;
-      font-family: var(--font-body);
-      cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-out);
-    }
-
-    .btn-social:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
-      background: var(--surface-sunken);
-    }
-
-    .btn-social svg {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-    }
-
-    /* Footer Links */
-    .auth-footer-link {
-      text-align: center;
-      font-size: var(--fs-sm);
-      color: var(--text-muted);
-      margin-top: 1.5rem;
-    }
-
-    .auth-footer-link a {
-      color: var(--color-primary);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .auth-footer-link a:hover {
-      text-decoration: underline;
-    }
-
-    .auth-demo-note {
-      text-align: center;
-      font-size: var(--fs-2xs);
-      color: var(--text-muted);
-      margin-top: 1rem;
-      opacity: 0.8;
-    }
-
-    /* ── Responsive Stacking ── */
-    @media (max-width: 900px) {
-      .auth-shell {
-        grid-template-columns: 1fr;
-      }
-
-      .auth-panel-left {
-        padding: 2.75rem 2rem;
-        min-height: auto;
-        justify-content: flex-start;
-      }
-
-      .auth-left-brand {
-        margin-bottom: 1.5rem;
-      }
-
-      .auth-left-headline {
-        font-size: 1.75rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .auth-left-desc {
-        display: none;
-      }
-
-      .auth-features {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-      }
-
-      .auth-bus-card {
-        display: none;
-      }
-
-      .auth-top-controls {
-        position: absolute;
-        top: 1.25rem;
-        right: 1.25rem;
-      }
-    }
   </style>
 </head>
 
-<body>
-  <a class="skip-link" href="#authMain">Skip to content</a>
+<body class="auth-page">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="auth-shell">
-
-    <!-- ═══ LEFT PANEL ═══ -->
-    <div class="auth-panel-left" role="presentation">
-      <div class="auth-grid-dots"></div>
-      <div class="auth-shapes">
-        <div class="auth-shape"></div>
-        <div class="auth-shape"></div>
-        <div class="auth-shape"></div>
-        <div class="auth-shape"></div>
-      </div>
-
-      <a class="auth-left-brand" href="index.html" aria-label="SafeRoute home">
-        <img src="assets/image/logo1.png" alt="SafeRoute Logo" class="brand-logo-img">
-      </a>
-
-      <h2 class="auth-left-headline">Your child's journey,<br>always in your hands.</h2>
-      <p class="auth-left-desc">Log in to track the school bus in real time, get arrival alerts, view boarding logs, and
-        manage your monthly transport subscription — all in one place.</p>
-
-      <div class="auth-features">
-        <div class="auth-feature-pill">
-          <span class="pill-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z" />
-              <circle cx="12" cy="9.5" r="2.4" />
-            </svg>
-          </span>
-          Real-Time GPS Tracking
-        </div>
-        <div class="auth-feature-pill">
-          <span class="pill-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-              <path d="M13.7 21a2 2 0 0 1-3.4 0" />
-            </svg>
-          </span>
-          Arrival & Boarding Alerts
-        </div>
-        <div class="auth-feature-pill">
-          <span class="pill-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-              <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
-              <path d="M3.5 9.5h17" />
-            </svg>
-          </span>
-          Subscription & Receipts
-        </div>
-      </div>
-
-      <!-- Floating live card -->
-      <div class="auth-bus-card">
-        <div class="auth-bus-card-top">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M4 16V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9" />
-            <path d="M4 16h16v1.5a1 1 0 0 1-1 1h-1" />
-            <path d="M6 18.5a1 1 0 0 1-1-1V16" />
-            <circle cx="8" cy="18.5" r="1.6" />
-            <circle cx="16" cy="18.5" r="1.6" />
-          </svg>
-          <span class="auth-bus-card-label">Bus 24 · Route 08</span>
-        </div>
-        <div class="auth-bus-card-value">Approaching Stop</div>
-        <div class="auth-bus-card-pulse">
-          <span class="pulse-dot"></span> Live · 08 min away
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ RIGHT PANEL ═══ -->
-    <div class="auth-panel-right">
-
-      <!-- Theme + RTL controls -->
+  <main id="main">
+    <section class="auth-section">
+      <!-- Top Right Controls (Theme & RTL Toggle) -->
       <div class="auth-top-controls">
-        <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round">
-            <circle cx="12" cy="12" r="4.2" />
-            <path
-              d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7" />
+        <button type="button" class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <path d="M12 2.5v2.4M12 19.1v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"></path>
           </svg>
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" />
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+            <path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z"></path>
           </svg>
         </button>
-        <button class="btn-rtl-toggle" id="rtlToggle" type="button" aria-label="Toggle right-to-left layout" title="Toggle RTL"><span
-            id="rtlLabel">EN</span></button>
+        <button type="button" class="btn-rtl-toggle rtl-toggle-btn" id="rtlToggle" aria-label="Toggle right-to-left layout" title="Toggle RTL"><span class="rtl-label" id="rtlLabel">RTL</span></button>
       </div>
 
-      <main id="authMain" class="auth-card">
-        <div class="auth-card-header">
-          <h1>Welcome Back, Parent.</h1>
-          <p>Access your child's transport portal to track the bus, view boarding logs and manage your subscription.</p>
+      <div class="auth-card">
+        <div class="auth-logo">
+          <a href="index.html" class="brand" aria-label="SafeRoute Student Transport — Home">
+            <img src="assets/image/logo1.png" alt="SafeRoute Student Transport Logo" class="brand__logo">
+          </a>
         </div>
 
-        <form id="loginForm" class="auth-form" novalidate>
-          <div class="form-field">
-            <label for="loginEmail">Email / Phone</label>
-            <div class="auth-field-wrap">
-              <span class="field-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
-                  <path d="m4 6.5 8 6 8-6" />
-                </svg>
-              </span>
-              <input id="loginEmail" type="email" placeholder="parent@example.com" autocomplete="email" required>
-            </div>
+        <h2>Welcome Back</h2>
+        <p class="auth-sub">Log in to track your child's bus, view boarding logs, and manage subscriptions.</p>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email / Phone</label>
+            <input type="text" id="loginEmail" class="form-control" placeholder="parent@example.com or +91..." autocomplete="username" required>
           </div>
 
-          <div class="form-field">
-            <label for="loginPassword">Password</label>
-            <div class="auth-field-wrap">
-              <span class="field-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <rect x="5" y="10.5" width="14" height="9" rx="2" />
-                  <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
-                </svg>
-              </span>
-              <input id="loginPassword" type="password" placeholder="Enter your password"
-                autocomplete="current-password" required style="padding-right:3rem">
-              <button class="pw-toggle" type="button" id="pwToggle" aria-label="Show password">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M2.5 12s3.5-7 9.5-7 9.5 7 9.5 7-3.5 7-9.5 7-9.5-7-9.5-7Z" />
-                  <circle cx="12" cy="12" r="3" />
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password</label>
+            <div class="input-icon-wrap">
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+              <button type="button" class="input-icon-btn" id="pwToggle" aria-label="Show password" title="Toggle password visibility">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
                 </svg>
               </button>
             </div>
           </div>
 
-          <div class="auth-row-between">
-            <label class="auth-checkbox"><input type="checkbox"> Remember me</label>
-            <a class="auth-forgot" href="#">Forgot Password?</a>
+          <div class="auth-meta-row">
+            <label class="checkbox-row">
+              <input type="checkbox" id="rememberMe">
+              <span>Remember Me</span>
+            </label>
+            <a href="#" onclick="window.SafeRouteToast('Password reset link sent to your registered email.', 'bi-envelope-check-fill'); return false;">Forgot Password?</a>
           </div>
 
-          <button class="btn btn-primary btn-block btn-lg" type="submit" id="loginSubmitBtn">Login to Portal</button>
+          <button type="submit" class="btn-submit" id="loginSubmitBtn">Log In</button>
         </form>
 
-        <div class="auth-divider"><span>or continue with</span></div>
+        <div class="divider-or">or continue with</div>
 
-        <div class="auth-social-grid">
-          <button class="btn-social" type="button" aria-label="Continue with Google">
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <path fill="#4285F4"
-                d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.87c2.27-2.09 3.56-5.17 3.56-8.74Z" />
-              <path fill="#34A853"
-                d="M12 24c3.24 0 5.95-1.07 7.94-2.9l-3.87-3c-1.08.72-2.46 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.1A12 12 0 0 0 12 24Z" />
-              <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56v-3.1H1.27a12 12 0 0 0 0 10.76l4-3.1Z" />
-              <path fill="#EA4335"
-                d="M12 4.75c1.76 0 3.34.6 4.58 1.79l3.44-3.44C17.94 1.19 15.24 0 12 0A12 12 0 0 0 1.27 6.62l4 3.1C6.22 6.86 8.87 4.75 12 4.75Z" />
+        <div class="social-login-row">
+          <button type="button" class="social-btn" onclick="window.SafeRouteToast('Connecting with Google...', 'bi-google')">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.5 12.27c0-.82-.07-1.6-.2-2.36H12v4.47h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.87c2.27-2.09 3.56-5.17 3.56-8.74Z"></path>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.07 7.94-2.9l-3.87-3c-1.08.72-2.46 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.96H1.27v3.1A12 12 0 0 0 12 24Z"></path>
+              <path fill="#FBBC05" d="M5.27 14.28a7.2 7.2 0 0 1 0-4.56v-3.1H1.27a12 12 0 0 0 0 10.76l4-3.1Z"></path>
+              <path fill="#EA4335" d="M12 4.75c1.76 0 3.34.6 4.58 1.79l3.44-3.44C17.94 1.19 15.24 0 12 0A12 12 0 0 0 1.27 6.62l4 3.1C6.22 6.86 8.87 4.75 12 4.75Z"></path>
             </svg>
-            Continue with Google
+            <span>Continue with Google</span>
           </button>
-          <button class="btn-social" type="button" aria-label="Continue with Facebook" onclick="window.SafeRouteToast('Connecting with Facebook...','bi-facebook')">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="#1877F2">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+
+          <button type="button" class="social-btn" onclick="window.SafeRouteToast('Connecting with Apple...', 'bi-apple')">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.78 1.06-1.85.94-2.94-.92.04-2.02.63-2.67 1.4-.58.68-1.09 1.77-.95 2.83 1.03.08 2.06-.52 2.68-1.29z"></path>
             </svg>
-            Continue with Facebook
+            <span>Continue with Apple</span>
           </button>
-          <button class="btn-social" type="button" aria-label="Continue with Apple" onclick="window.SafeRouteToast('Connecting with Apple...','bi-apple')">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.63-.78 1.06-1.85.94-2.94-.92.04-2.02.63-2.67 1.4-.58.68-1.09 1.77-.95 2.83 1.03.08 2.06-.52 2.68-1.29z"/>
+
+          <button type="button" class="social-btn" onclick="window.SafeRouteToast('Connecting with Facebook...', 'bi-facebook')">
+            <svg viewBox="0 0 24 24" fill="#1877F2">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
             </svg>
-            Continue with Apple
+            <span>Continue with Facebook</span>
           </button>
         </div>
 
-        <p class="auth-footer-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
-        <p class="auth-demo-note">Frontend demonstration only — no data is sent or stored.</p>
-      </main>
-    </div>
-  </div>
+        <p class="auth-footer-text">Don't have an account? <a href="signup.html">Sign Up</a></p>
+      </div>
+    </section>
+  </main>
 
   <script src="assets/js/main.js"></script>
   <script>
@@ -979,41 +660,13 @@
       var pwInput = document.getElementById('loginPassword');
       if (pwToggle && pwInput) {
         pwToggle.addEventListener('click', function () {
-          pwInput.type = pwInput.type === 'password' ? 'text' : 'password';
+          var isPw = pwInput.type === 'password';
+          pwInput.type = isPw ? 'text' : 'password';
+          pwToggle.innerHTML = isPw
+            ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>'
+            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
         });
       }
-
-      // RTL label sync
-      function syncRtlLabel() {
-        var lbl = document.getElementById('rtlLabel');
-        if (lbl) lbl.textContent = document.documentElement.getAttribute('dir') === 'rtl' ? 'AR' : 'EN';
-      }
-      syncRtlLabel();
-
-      var themeBtn = document.getElementById('themeToggle');
-      if (themeBtn) themeBtn.addEventListener('click', function () {
-        if (window.SafeRoutePrefs) {
-          window.SafeRoutePrefs.toggleTheme();
-        } else {
-          var curr = document.documentElement.getAttribute('data-theme') || 'light';
-          var next = curr === 'dark' ? 'light' : 'dark';
-          document.documentElement.setAttribute('data-theme', next);
-          localStorage.setItem('saferoute-theme', next);
-        }
-      });
-
-      var rtlBtn = document.getElementById('rtlToggle');
-      if (rtlBtn) rtlBtn.addEventListener('click', function () {
-        if (window.SafeRoutePrefs) {
-          window.SafeRoutePrefs.toggleDir();
-        } else {
-          var curr = document.documentElement.getAttribute('dir') || 'ltr';
-          var next = curr === 'rtl' ? 'ltr' : 'rtl';
-          document.documentElement.setAttribute('dir', next);
-          localStorage.setItem('saferoute-dir', next);
-        }
-        syncRtlLabel();
-      });
 
       // Form submit → redirect to dashboard
       var form = document.getElementById('loginForm');
@@ -1021,8 +674,16 @@
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           var btn = document.getElementById('loginSubmitBtn');
-          if (btn) { btn.textContent = 'Logging in…'; btn.disabled = true; }
-          setTimeout(function () { window.location.href = 'dashboard/index.html'; }, 800);
+          if (btn) {
+            btn.textContent = 'Logging in…';
+            btn.disabled = true;
+          }
+          if (window.SafeRouteToast) {
+            window.SafeRouteToast('Welcome back! Logging you into SafeRoute portal...', 'bi-check-circle-fill');
+          }
+          setTimeout(function () {
+            window.location.href = 'dashboard/index.html';
+          }, 800);
         });
       }
     })();

@@ -122,15 +122,6 @@
       </nav>
 
       <div class="dash-sidebar-foot">
-        <div class="dash-sidebar-controls" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <button class="icon-toggle theme-toggle-btn" id="sidebarThemeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
-              <i class="bi bi-moon-stars"></i>
-            </button>
-            <button class="btn-rtl-toggle rtl-toggle-btn" id="sidebarRtlToggle" type="button" aria-label="Toggle right-to-left layout" title="Toggle RTL"><span class="rtl-label">RTL</span></button>
-          </div>
-          <!-- <span style="font-size: var(--fs-2xs); color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Preferences</span> -->
-        </div>
         <button type="button" class="dash-logout-btn" id="dashLogoutBtn" aria-label="Log Out">
           <i class="bi bi-box-arrow-right"></i>
           <span>Log Out</span>
@@ -645,32 +636,36 @@
               <tbody>
                 <tr>
                   <td>August 2026</td>
-                  <td>₹1499</td>
+                  <td><strong>₹2,999</strong></td>
                   <td><span class="badge badge-accent">Paid</span></td>
-                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">Download</button></td>
+                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026" data-receipt-no="SR-DEMO-2026-008" data-receipt-amount="₹2,999">Download</button></td>
                 </tr>
                 <tr>
                   <td>July 2026</td>
-                  <td>₹999</td>
+                  <td><strong>₹2,999</strong></td>
                   <td><span class="badge badge-accent">Paid</span></td>
-                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">Download</button></td>
+                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026" data-receipt-no="SR-DEMO-2026-007" data-receipt-amount="₹2,999">Download</button></td>
                 </tr>
                 <tr>
                   <td>June 2026</td>
-                  <td>₹2999</td>
+                  <td><strong>₹2,999</strong></td>
                   <td><span class="badge badge-accent">Paid</span></td>
-                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026">Download</button></td>
+                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026" data-receipt-no="SR-DEMO-2026-006" data-receipt-amount="₹2,999">Download</button></td>
                 </tr>
               </tbody>
             </table>
             <div class="card-rows">
               <div class="pay-card-row">
-                <div class="pcr-top"><span>August 2026</span><span>₹5999</span></div>
-                <div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">Download</button></div>
+                <div class="pcr-top"><span>August 2026</span><span style="color:var(--color-primary);font-weight:800">₹2,999</span></div>
+                <div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-primary btn-sm" data-receipt-open data-receipt-month="August 2026" data-receipt-no="SR-DEMO-2026-008" data-receipt-amount="₹2,999">Download</button></div>
               </div>
               <div class="pay-card-row">
-                <div class="pcr-top"><span>July 2026</span><span>₹4999</span></div>
-                <div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">Download</button></div>
+                <div class="pcr-top"><span>July 2026</span><span style="color:var(--color-primary);font-weight:800">₹2,999</span></div>
+                <div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-primary btn-sm" data-receipt-open data-receipt-month="July 2026" data-receipt-no="SR-DEMO-2026-007" data-receipt-amount="₹2,999">Download</button></div>
+              </div>
+              <div class="pay-card-row">
+                <div class="pcr-top"><span>June 2026</span><span style="color:var(--color-primary);font-weight:800">₹2,999</span></div>
+                <div class="pcr-meta"><span class="badge badge-accent">Paid</span><button class="btn btn-primary btn-sm" data-receipt-open data-receipt-month="June 2026" data-receipt-no="SR-DEMO-2026-006" data-receipt-amount="₹2,999">Download</button></div>
               </div>
             </div>
           </div>
@@ -689,24 +684,75 @@
                   <th>Receipt No.</th>
                   <th>Billing Period</th>
                   <th>Amount</th>
+                  <th>Status</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>SR-DEMO-2026-008</td>
+                  <td><strong style="font-family:var(--font-mono)">SR-DEMO-2026-008</strong></td>
                   <td>August 2026</td>
-                  <td>₹2599</td>
-                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026">View</button></td>
+                  <td><strong>₹2,999</strong></td>
+                  <td><span class="badge badge-accent">Paid</span></td>
+                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="August 2026" data-receipt-no="SR-DEMO-2026-008" data-receipt-amount="₹2,999">View</button></td>
                 </tr>
                 <tr>
-                  <td>SR-DEMO-2026-007</td>
+                  <td><strong style="font-family:var(--font-mono)">SR-DEMO-2026-007</strong></td>
                   <td>July 2026</td>
-                  <td>₹5999</td>
-                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026">View</button></td>
+                  <td><strong>₹2,999</strong></td>
+                  <td><span class="badge badge-accent">Paid</span></td>
+                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="July 2026" data-receipt-no="SR-DEMO-2026-007" data-receipt-amount="₹2,999">View</button></td>
+                </tr>
+                <tr>
+                  <td><strong style="font-family:var(--font-mono)">SR-DEMO-2026-006</strong></td>
+                  <td>June 2026</td>
+                  <td><strong>₹2,999</strong></td>
+                  <td><span class="badge badge-accent">Paid</span></td>
+                  <td><button class="btn btn-ghost btn-sm" data-receipt-open data-receipt-month="June 2026" data-receipt-no="SR-DEMO-2026-006" data-receipt-amount="₹2,999">View</button></td>
                 </tr>
               </tbody>
             </table>
+            <div class="card-rows">
+              <div class="pay-card-row">
+                <div class="pcr-top">
+                  <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:700">SR-DEMO-2026-008</span>
+                  <span style="color:var(--color-primary);font-weight:800">₹2,999</span>
+                </div>
+                <div class="pcr-meta">
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:var(--fs-xs);color:var(--text-muted);font-weight:600">August 2026</span>
+                    <span class="badge badge-accent" style="font-size:0.65rem;padding:0.15rem 0.45rem">Paid</span>
+                  </div>
+                  <button class="btn btn-primary btn-sm" data-receipt-open data-receipt-month="August 2026" data-receipt-no="SR-DEMO-2026-008" data-receipt-amount="₹2,999">View Receipt</button>
+                </div>
+              </div>
+              <div class="pay-card-row">
+                <div class="pcr-top">
+                  <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:700">SR-DEMO-2026-007</span>
+                  <span style="color:var(--color-primary);font-weight:800">₹2,999</span>
+                </div>
+                <div class="pcr-meta">
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:var(--fs-xs);color:var(--text-muted);font-weight:600">July 2026</span>
+                    <span class="badge badge-accent" style="font-size:0.65rem;padding:0.15rem 0.45rem">Paid</span>
+                  </div>
+                  <button class="btn btn-primary btn-sm" data-receipt-open data-receipt-month="July 2026" data-receipt-no="SR-DEMO-2026-007" data-receipt-amount="₹2,999">View Receipt</button>
+                </div>
+              </div>
+              <div class="pay-card-row">
+                <div class="pcr-top">
+                  <span style="font-family:var(--font-mono);font-size:var(--fs-xs);font-weight:700">SR-DEMO-2026-006</span>
+                  <span style="color:var(--color-primary);font-weight:800">₹2,999</span>
+                </div>
+                <div class="pcr-meta">
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:var(--fs-xs);color:var(--text-muted);font-weight:600">June 2026</span>
+                    <span class="badge badge-accent" style="font-size:0.65rem;padding:0.15rem 0.45rem">Paid</span>
+                  </div>
+                  <button class="btn btn-primary btn-sm" data-receipt-open data-receipt-month="June 2026" data-receipt-no="SR-DEMO-2026-006" data-receipt-amount="₹2,999">View Receipt</button>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -748,12 +794,12 @@
     <h3 id="receiptModalTitle" style="margin-bottom:var(--space-5);font-size:var(--fs-md);font-weight:800">Receipt Preview</h3>
     <div class="receipt-box">
       <div class="rb-brand">SafeRoute Student Transport</div>
-      <div class="receipt-row"><span>Receipt No.</span><span>SR-DEMO-2026-008</span></div>
+      <div class="receipt-row"><span>Receipt No.</span><span id="receiptNoValue">SR-DEMO-2026-008</span></div>
       <div class="receipt-row"><span>Parent</span><span>Priya Kumar</span></div>
       <div class="receipt-row"><span>Student</span><span>Aarav Kumar</span></div>
       <div class="receipt-row"><span>Plan</span><span>Monthly Plus</span></div>
       <div class="receipt-row"><span>Billing Period</span><span id="receiptMonthValue">August 2026</span></div>
-      <div class="receipt-row"><span>Amount</span><span>₹4999</span></div>
+      <div class="receipt-row"><span>Amount</span><span id="receiptAmountValue">₹2,999</span></div>
       <div class="receipt-row"><span>Status</span><span style="color:var(--color-accent);font-weight:800">PAID</span></div>
     </div>
     <button class="btn btn-primary btn-block" type="button" style="margin-top:var(--space-5)">Download Receipt (PDF)</button>

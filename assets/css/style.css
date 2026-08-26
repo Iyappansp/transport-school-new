@@ -1795,12 +1795,8 @@ textarea.form-control-custom{ resize: vertical; min-height: 110px; }
 .side-info-row b{ display:block; font-size:0.9rem; }
 .side-info-row span{ font-size:0.8rem; color: rgba(255,255,255,0.65); }
 
-/* ---- Auth (login.html) ---- */
-.auth-wrap{ display:grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius-lg); overflow:hidden; box-shadow: var(--shadow-card); }
-.auth-side{ background: linear-gradient(155deg, var(--color-primary), #0E44B8); color:#fff; padding: clamp(2rem, 4vw, 3rem); display:flex; flex-direction:column; justify-content:center; gap: 22px; }
-.auth-side .ai-item{ display:flex; align-items:center; gap:12px; font-size:0.9rem; }
-.auth-side .ai-item i{ width:34px; height:34px; border-radius:9px; background: rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.auth-form-side{ background: var(--surface-card); padding: clamp(2rem, 4vw, 3rem); display:flex; flex-direction:column; justify-content:center; }
+/* ---- Auth (login.html & signup.html) ---- */
+.auth-form-side{ background: transparent; padding: 0; display:flex; flex-direction:column; justify-content:center; }
 .auth-divider{ text-align:center; font-size:0.78rem; color: var(--text-muted); margin-block:6px 18px; }
 
 /* ---- FAQ page category rail ---- */

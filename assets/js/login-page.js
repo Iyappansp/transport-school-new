@@ -6,7 +6,7 @@
   "use strict";
 
   function initPasswordToggle() {
-    var toggle = document.getElementById("passwordToggle");
+    var toggle = document.getElementById("pwToggle") || document.getElementById("passwordToggle");
     var input = document.getElementById("loginPassword");
     if (!toggle || !input) return;
     toggle.addEventListener("click", function () {
@@ -21,7 +21,14 @@
     if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      window.location.href = "dashboard/index.html";
+      var btn = document.getElementById("loginSubmitBtn");
+      if (btn) { btn.textContent = 'Logging in…'; btn.disabled = true; }
+      if (window.SafeRouteToast) {
+        window.SafeRouteToast('Welcome back! Logging you into SafeRoute portal...', 'bi-check-circle-fill');
+      }
+      setTimeout(function () {
+        window.location.href = "dashboard/index.html";
+      }, 800);
     });
   }
 

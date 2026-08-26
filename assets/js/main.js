@@ -225,6 +225,10 @@
     document.querySelectorAll(".theme-toggle-btn i, #theme-toggle i, #themeToggle i, #sidebarThemeToggle i, #theme-toggle-mobile i, .theme-toggle i").forEach((icon) => {
       icon.className = theme === "dark" ? "bi bi-sun" : "bi bi-moon-stars";
     });
+    document.querySelectorAll(".theme-toggle-btn, #theme-toggle, #themeToggle, #sidebarThemeToggle, #theme-toggle-mobile, .theme-toggle, .icon-btn.theme-toggle").forEach((btn) => {
+      btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      btn.setAttribute("title", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    });
   }
 
   function initTheme() {
@@ -243,11 +247,13 @@
      RTL toggle sync & listeners
      ------------------------------------------------------------------ */
   function updateAllRtlLabels(dir) {
-    document.querySelectorAll(".rtl-label, #rtlLabel").forEach((lbl) => {
+    document.querySelectorAll(".rtl-label, #rtlLabel, .btn-rtl-toggle span, .rtl-toggle-btn span").forEach((lbl) => {
       lbl.textContent = dir === "rtl" ? "LTR" : "RTL";
     });
-    document.querySelectorAll(".btn-rtl-toggle, #rtl-toggle, #rtlToggle, #sidebarRtlToggle, #rtl-toggle-mobile, .rtl-toggle-btn").forEach((btn) => {
+    document.querySelectorAll(".btn-rtl-toggle, #rtl-toggle, #rtlToggle, #sidebarRtlToggle, #rtl-toggle-mobile, .rtl-toggle-btn, .rtl-toggle").forEach((btn) => {
       btn.classList.toggle("is-active", dir === "rtl");
+      btn.setAttribute("aria-label", dir === "rtl" ? "Switch to left-to-right layout" : "Switch to right-to-left layout");
+      btn.setAttribute("title", dir === "rtl" ? "Switch to LTR" : "Switch to RTL");
     });
   }
 
@@ -257,7 +263,7 @@
     updateAllRtlLabels(saved);
 
     document.addEventListener("click", (e) => {
-      const btn = e.target.closest("#rtl-toggle, #rtlToggle, #sidebarRtlToggle, #rtl-toggle-mobile, .btn-rtl-toggle, .rtl-toggle-btn");
+      const btn = e.target.closest("#rtl-toggle, #rtlToggle, #sidebarRtlToggle, #rtl-toggle-mobile, .btn-rtl-toggle, .rtl-toggle-btn, .rtl-toggle");
       if (!btn) return;
       window.SafeRoutePrefs.toggleDir();
     });
@@ -737,7 +743,7 @@
   /* ------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------ */
-  document.addEventListener("DOMContentLoaded", () => {
+  function boot() {
     buildHeader();
     buildFooter();
     initTheme();
@@ -750,5 +756,11 @@
     initPlanModal();
     initFaqCategoryFilter();
     initInteractiveSections();
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
 })();

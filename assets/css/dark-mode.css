@@ -297,3 +297,36 @@
 [data-theme="dark"] ::-webkit-scrollbar-track{ background: #0B1120; }
 [data-theme="dark"] ::-webkit-scrollbar-thumb{ background: #26314A; border-radius: 10px; }
 
+/* Auth (Login & Signup) Dark Mode */
+[data-theme="dark"] .auth-section::before {
+  background: linear-gradient(135deg, rgba(5, 12, 28, 0.92) 0%, rgba(9, 20, 44, 0.96) 100%);
+}
+[data-theme="dark"] .auth-card {
+  background: rgba(19, 29, 49, 0.95);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--text-primary, #F9FAFB);
+}
+[data-theme="dark"] .auth-card .form-control {
+  background: rgba(14, 22, 38, 0.85);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--text-primary, #F9FAFB);
+}
+[data-theme="dark"] .auth-card .form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(21, 94, 239, 0.3);
+}
+[data-theme="dark"] .social-btn,
+[data-theme="dark"] .btn-social {
+  background: rgba(14, 22, 38, 0.8);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--text-primary, #F9FAFB);
+}
+[data-theme="dark"] .social-btn:hover,
+[data-theme="dark"] .btn-social:hover {
+  background: var(--surface-sunken, #101B30);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+
+

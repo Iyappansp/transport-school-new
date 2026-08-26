@@ -89,23 +89,31 @@
     var scrimEl = document.getElementById("receiptScrim");
     var closeBtn = document.getElementById("receiptModalClose");
     var monthValue = document.getElementById("receiptMonthValue");
+    var noValue = document.getElementById("receiptNoValue");
+    var amountValue = document.getElementById("receiptAmountValue");
     if (!modal) return;
 
-    function open(month) {
-      if (monthValue) monthValue.textContent = month;
+    function open(month, no, amount) {
+      if (monthValue && month) monthValue.textContent = month;
+      if (noValue && no) noValue.textContent = no;
+      if (amountValue && amount) amountValue.textContent = amount;
       modal.classList.add("is-open");
-      scrimEl.classList.add("is-open");
+      if (scrimEl) scrimEl.classList.add("is-open");
       document.body.classList.add("nav-locked");
     }
     function close() {
       modal.classList.remove("is-open");
-      scrimEl.classList.remove("is-open");
+      if (scrimEl) scrimEl.classList.remove("is-open");
       document.body.classList.remove("nav-locked");
     }
 
     document.querySelectorAll("[data-receipt-open]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        open(btn.getAttribute("data-receipt-month") || "August 2026");
+        open(
+          btn.getAttribute("data-receipt-month") || "August 2026",
+          btn.getAttribute("data-receipt-no") || "SR-DEMO-2026-008",
+          btn.getAttribute("data-receipt-amount") || "₹2,999"
+        );
       });
     });
     if (closeBtn) closeBtn.addEventListener("click", close);
@@ -219,10 +227,10 @@
       });
     }
 
-    /* RTL & Theme sync for dashboard topbar and sidebar */
+    /* RTL & Theme sync for dashboard topbar */
     function syncThemeIcons() {
       var theme = (window.SafeRoutePrefs ? window.SafeRoutePrefs.getTheme() : document.documentElement.getAttribute('data-theme')) || 'light';
-      document.querySelectorAll('.theme-toggle-btn i, #themeToggle i, #sidebarThemeToggle i').forEach(function (icon) {
+      document.querySelectorAll('.theme-toggle-btn i, #themeToggle i, #theme-toggle i').forEach(function (icon) {
         icon.className = theme === 'dark' ? 'bi bi-sun' : 'bi bi-moon-stars';
       });
     }
@@ -232,7 +240,7 @@
       document.querySelectorAll('#rtlLabel, .rtl-label').forEach(function (lbl) {
         lbl.textContent = isRtl ? 'LTR' : 'RTL';
       });
-      document.querySelectorAll('#rtlToggle, #sidebarRtlToggle, .btn-rtl-toggle, .rtl-toggle-btn').forEach(function (btn) {
+      document.querySelectorAll('#rtlToggle, #rtl-toggle, .btn-rtl-toggle, .rtl-toggle-btn').forEach(function (btn) {
         btn.classList.toggle('is-active', isRtl);
       });
     }

@@ -47,8 +47,6 @@ table { width: 100%; }
   .editorial-hero-grid { grid-template-columns: 1fr; }
   .editorial-hero-visual { order: 2 !important; max-width: 420px; margin-inline: auto; width: 100%; margin-top: 2rem; }
 
-  .auth-side { display: none; }
-  .auth-wrap { grid-template-columns: 1fr; }
   .tracking-panel { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .calc-grid { grid-template-columns: 1fr; }

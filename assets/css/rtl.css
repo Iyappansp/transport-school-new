@@ -138,4 +138,41 @@
   display: inline-block;
 }
 
+/* Auth (Login & Signup) RTL Rules */
+[dir="rtl"] .auth-top-controls {
+  right: auto;
+  left: 1.5rem;
+}
+[dir="rtl"] .auth-card {
+  text-align: right;
+}
+[dir="rtl"] .auth-card h2,
+[dir="rtl"] .auth-sub,
+[dir="rtl"] .auth-footer-text,
+[dir="rtl"] .divider-or {
+  text-align: center;
+}
+[dir="rtl"] .form-label {
+  text-align: right;
+}
+[dir="rtl"] .auth-meta-row {
+  flex-direction: row;
+}
+[dir="rtl"] .input-icon-wrap .form-control {
+  padding-left: 48px;
+  padding-right: 1rem;
+}
+[dir="rtl"] .input-icon-btn,
+[dir="rtl"] .pw-toggle {
+  right: auto;
+  left: 0;
+}
+[dir="rtl"] .checkbox-row {
+  text-align: right;
+}
+[dir="rtl"] .pay-card-row {
+  text-align: right;
+}
+
+
 
